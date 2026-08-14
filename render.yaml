@@ -10,7 +10,7 @@ services:
     initialDeployHook: pnpm run seed:billing:plans && pnpm run bootstrap:phase9 -- --create-tenant --tenant buildwatch --tenant-name BuildWatch
     healthCheckPath: /health/live
     autoDeployTrigger: commit
-    maxShutdownDelaySeconds: 30
+   
     envVars:
       - key: NODE_VERSION
         value: 22.22.0
