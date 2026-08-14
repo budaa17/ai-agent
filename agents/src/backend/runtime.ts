@@ -38,7 +38,7 @@ import { CompanySignupService } from "./billing-signup-service.js";
 import { BillingWebhookService } from "./billing-webhook-service.js";
 import { PrismaTenantUsageReader, TenantBillingService } from "./tenant-billing-service.js";
 import { PlatformBillingService } from "./platform-billing-service.js";
-import { createMailer, resolveSmtpConfig } from "./mailer.js";
+import { createMailer, resolveResendConfig, resolveSmtpConfig } from "./mailer.js";
 import { createTenantLimitReservation } from "./tenant-limit-reservation.js";
 import { LocalPhase10ArtifactStorage, Phase10FrontendService } from "./phase10-service.js";
 import { SupabaseArtifactStorage } from "./supabase-artifact-storage.js";
@@ -125,19 +125,22 @@ export function createPhase9ProductionRuntime(client: PrismaClient, config: Phas
     priceResolver: billingPriceResolver,
     idempotency: new PrismaCheckoutIdempotencyStore(client),
   });
-  // A configured SMTP transport is what turns a paid signup into an account the
+  // A configured email transport is what turns a paid signup into an account the
   // buyer can actually use; without one the password link has nowhere to go.
   const smtpConfig = resolveSmtpConfig();
-  if (config.nodeEnv === "production" && smtpConfig === null) {
+  const resendConfig = resolveResendConfig();
+  if (config.nodeEnv === "production" && smtpConfig === null && resendConfig === null) {
     throw new Error(
-      "Refusing to start: production company signup requires SMTP_HOST and SMTP_FROM",
+      "Refusing to start: production company signup requires Resend or SMTP configuration",
     );
   }
   const mailer = createMailer({
     config: smtpConfig,
+    resendConfig,
     logger,
     production: config.nodeEnv === "production",
   });
+  logger.info("mail_transport_configured", { provider: mailer.kind });
   const billingSignups = new CompanySignupService({
     client,
     checkout: billingCheckout,

@@ -65,6 +65,20 @@ export const smtpConfigSchema = z
 
 export type SmtpConfig = z.infer<typeof smtpConfigSchema>;
 
+export const resendConfigSchema = z
+  .object({
+    apiKey: z.string().trim().min(8).max(1_024),
+    endpoint: z.string().url(),
+    from: mailboxSchema,
+    replyTo: mailboxSchema.nullable(),
+    timeoutMs: z.number().int().min(1_000).max(60_000),
+  })
+  .strict();
+
+export type ResendConfig = z.infer<typeof resendConfigSchema>;
+
+const resendAcceptedSchema = z.object({ id: z.string().trim().min(1).max(500) }).passthrough();
+
 function nonBlank(value: string | undefined): string | undefined {
   const normalized = value?.trim();
   return normalized ? normalized : undefined;
@@ -110,6 +124,88 @@ export function resolveSmtpConfig(environment: NodeJS.ProcessEnv = process.env):
     from,
     replyTo: nonBlank(environment.SMTP_REPLY_TO) ?? null,
   });
+}
+
+export function resolveResendConfig(
+  environment: NodeJS.ProcessEnv = process.env,
+): ResendConfig | null {
+  const apiKey = nonBlank(environment.RESEND_API_KEY);
+  const from = nonBlank(environment.RESEND_FROM);
+  if (apiKey === undefined && from === undefined) return null;
+  if (apiKey === undefined || from === undefined) {
+    throw new Error("RESEND_API_KEY and RESEND_FROM must be configured together");
+  }
+  return resendConfigSchema.parse({
+    apiKey,
+    endpoint: nonBlank(environment.RESEND_API_URL) ?? "https://api.resend.com/emails",
+    from,
+    replyTo: nonBlank(environment.RESEND_REPLY_TO) ?? null,
+    timeoutMs: Number(environment.RESEND_TIMEOUT_MS ?? "10000"),
+  });
+}
+
+export class ResendMailer implements Mailer {
+  readonly kind = "resend";
+  readonly #config: ResendConfig;
+  readonly #fetch: typeof fetch;
+  readonly #logger?: { info?(event: string, fields?: Record<string, unknown>): void };
+
+  constructor(
+    config: ResendConfig,
+    fetchImpl: typeof fetch = globalThis.fetch,
+    logger?: { info?(event: string, fields?: Record<string, unknown>): void },
+  ) {
+    this.#config = config;
+    this.#fetch = fetchImpl;
+    this.#logger = logger;
+  }
+
+  async send(message: MailMessage): Promise<void> {
+    const recipientTag = createHash("sha256")
+      .update(message.to.trim().toLowerCase())
+      .digest("hex")
+      .slice(0, 12);
+    const idempotencyKey = `buildwatch-${createHash("sha256")
+      .update([message.to.trim().toLowerCase(), message.subject, message.body].join("\n"))
+      .digest("hex")}`;
+    let response: Response;
+    try {
+      response = await this.#fetch(this.#config.endpoint, {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          authorization: `Bearer ${this.#config.apiKey}`,
+          "content-type": "application/json",
+          "idempotency-key": idempotencyKey,
+        },
+        body: JSON.stringify({
+          from: this.#config.from,
+          to: [message.to],
+          subject: message.subject,
+          text: message.body,
+          ...(this.#config.replyTo === null ? {} : { reply_to: this.#config.replyTo }),
+        }),
+        signal: AbortSignal.timeout(this.#config.timeoutMs),
+      });
+    } catch (error) {
+      throw new Error(
+        `Resend API request failed: ${error instanceof Error ? error.name : "unknown"}`,
+      );
+    }
+    if (!response.ok) {
+      throw new Error(`Resend API returned ${response.status}`);
+    }
+    let accepted: z.infer<typeof resendAcceptedSchema>;
+    try {
+      accepted = resendAcceptedSchema.parse(await response.json());
+    } catch {
+      throw new Error("Resend API returned an invalid response");
+    }
+    this.#logger?.info?.("mail_resend_accepted", {
+      recipientTag,
+      messageId: accepted.id,
+    });
+  }
 }
 
 export class SmtpMailer implements Mailer {
@@ -218,6 +314,7 @@ export function bestEffort(
 
 export function createMailer(options: {
   config: SmtpConfig | null;
+  resendConfig?: ResendConfig | null;
   logger: {
     warn(event: string, fields?: Record<string, unknown>): void;
     info?(event: string, fields?: Record<string, unknown>): void;
@@ -225,9 +322,11 @@ export function createMailer(options: {
   production: boolean;
 }): Mailer {
   const base =
-    options.config === null
-      ? new LoggingMailer(options.logger, options.production)
-      : new SmtpMailer(options.config, undefined, options.logger);
+    options.resendConfig !== undefined && options.resendConfig !== null
+      ? new ResendMailer(options.resendConfig, globalThis.fetch, options.logger)
+      : options.config === null
+        ? new LoggingMailer(options.logger, options.production)
+        : new SmtpMailer(options.config, undefined, options.logger);
   return bestEffort(base, options.logger);
 }
 

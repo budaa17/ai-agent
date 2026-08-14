@@ -5,6 +5,8 @@ import {
   LoggingMailer,
   hashEmailVerificationCode,
   newEmailVerificationCode,
+  ResendMailer,
+  resolveResendConfig,
   resolveSmtpConfig,
   type MailMessage,
 } from "../../src/backend/index.js";
@@ -103,6 +105,87 @@ describe("mail transport resolution", () => {
       } as NodeJS.ProcessEnv),
     ).toMatchObject({ from: "BuildWatch <buildwatch.sender@gmail.com>" });
   });
+
+  it("resolves Resend only when its API key and sender are both configured", () => {
+    expect(resolveResendConfig({} as NodeJS.ProcessEnv)).toBeNull();
+    expect(() =>
+      resolveResendConfig({ RESEND_API_KEY: "re_test_123456" } as NodeJS.ProcessEnv),
+    ).toThrow(/configured together/iu);
+    expect(
+      resolveResendConfig({
+        RESEND_API_KEY: "re_test_123456",
+        RESEND_FROM: "BuildWatch <onboarding@resend.dev>",
+      } as NodeJS.ProcessEnv),
+    ).toMatchObject({
+      endpoint: "https://api.resend.com/emails",
+      from: "BuildWatch <onboarding@resend.dev>",
+      timeoutMs: 10_000,
+    });
+  });
+});
+
+describe("Resend HTTPS delivery", () => {
+  it("sends a plain-text transactional email without exposing the API key in its body", async () => {
+    const requests: Array<{ url: string; init?: RequestInit }> = [];
+    const fetchImpl = (async (input: string | URL | Request, init?: RequestInit) => {
+      requests.push({ url: String(input), ...(init === undefined ? {} : { init }) });
+      return new Response(JSON.stringify({ id: "email_123" }), {
+        status: 200,
+        headers: { "content-type": "application/json" },
+      });
+    }) as typeof fetch;
+    const config = resolveResendConfig({
+      RESEND_API_KEY: "re_test_123456",
+      RESEND_FROM: "BuildWatch <onboarding@resend.dev>",
+      RESEND_REPLY_TO: "support@buildwatch.mn",
+    } as NodeJS.ProcessEnv)!;
+    const events: Array<{ event: string; fields?: Record<string, unknown> }> = [];
+    const mailer = new ResendMailer(config, fetchImpl, {
+      info: (event, fields) => events.push(fields === undefined ? { event } : { event, fields }),
+    });
+
+    await mailer.send({
+      to: "owner@gmail.com",
+      subject: "Verify BuildWatch",
+      body: "Your code is 042731",
+      required: true,
+    });
+
+    expect(requests).toHaveLength(1);
+    expect(requests[0]?.url).toBe("https://api.resend.com/emails");
+    const headers = new Headers(requests[0]?.init?.headers);
+    expect(headers.get("authorization")).toBe("Bearer re_test_123456");
+    expect(headers.get("idempotency-key")).toMatch(/^buildwatch-[a-f0-9]{64}$/u);
+    const body = JSON.parse(String(requests[0]?.init?.body)) as Record<string, unknown>;
+    expect(body).toMatchObject({
+      from: "BuildWatch <onboarding@resend.dev>",
+      to: ["owner@gmail.com"],
+      subject: "Verify BuildWatch",
+      text: "Your code is 042731",
+      reply_to: "support@buildwatch.mn",
+    });
+    expect(JSON.stringify(body)).not.toContain("re_test_123456");
+    expect(events).toEqual([
+      {
+        event: "mail_resend_accepted",
+        fields: { recipientTag: expect.any(String), messageId: "email_123" },
+      },
+    ]);
+  });
+
+  it("reports a rejected Resend request to required-delivery callers", async () => {
+    const config = resolveResendConfig({
+      RESEND_API_KEY: "re_test_123456",
+      RESEND_FROM: "BuildWatch <onboarding@resend.dev>",
+    } as NodeJS.ProcessEnv)!;
+    const mailer = new ResendMailer(
+      config,
+      (async () => new Response("forbidden", { status: 403 })) as typeof fetch,
+    );
+    await expect(
+      mailer.send({ to: "owner@gmail.com", subject: "Verify", body: "042731" }),
+    ).rejects.toThrow("Resend API returned 403");
+  });
 });
 
 describe("required transactional delivery", () => {
@@ -158,6 +241,17 @@ describe("delivery never decides state", () => {
   it("falls back to logging when nothing is configured", () => {
     const { logger } = recorder();
     expect(createMailer({ config: null, logger, production: false }).kind).toBe("logging");
+  });
+
+  it("prefers Resend over SMTP when the HTTPS provider is configured", () => {
+    const { logger } = recorder();
+    const resendConfig = resolveResendConfig({
+      RESEND_API_KEY: "re_test_123456",
+      RESEND_FROM: "BuildWatch <onboarding@resend.dev>",
+    } as NodeJS.ProcessEnv)!;
+    expect(
+      createMailer({ config: null, resendConfig, logger, production: true }).kind,
+    ).toBe("resend");
   });
 });
 
