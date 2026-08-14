@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "recordId": "review-daily-draft-44e2999f567cbdb45507",
+  "draftId": "daily-draft-44e2999f567cbdb45507",
+  "requestId": "unified-image-live-20260729-001",
+  "sourceSha256": "c1e272a1f4ad9c26a29e6cdaa205a23ea7048d0c4ca2f7a1e6cc683913e02b70",
+  "tenantId": "tenant-demo",
+  "projectId": "project-buildwatch-simulation",
+  "status": "NEEDS_CORRECTION",
+  "draft": {
+    "schemaVersion": 1,
+    "draftType": "DAILY_REPORT",
+    "draftId": "daily-draft-44e2999f567cbdb45507",
+    "requestId": "unified-image-live-20260729-001",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "sourceArtifacts": [
+      {
+        "artifactId": "source-image-1a932eb478349583ef50",
+        "kind": "SOURCE_IMAGE",
+        "mediaType": "image/png",
+        "sha256": "1a932eb478349583ef5002fc6966b6c0d6eae91e45312786ef5ece1757ddafaf",
+        "storageKey": "artifacts/1a932eb478349583ef5002fc6966b6c0d6eae91e45312786ef5ece1757ddafaf.png",
+        "sizeBytes": 154278
+      }
+    ],
+    "rawText": null,
+    "language": "mixed",
+    "reportDate": "2026-03-01",
+    "location": {
+      "block": null,
+      "stage": null,
+      "floor": null,
+      "zone": null
+    },
+    "progressEntries": [
+      {
+        "entryId": "daily-draft-44e2999f567cbdb45507-progress-001",
+        "workItem": {
+          "code": null,
+          "name": "Дэд бүтэц нийлүүлэх ажил",
+          "candidateCodes": []
+        },
+        "progressMode": "UNSPECIFIED",
+        "progressPercent": 75,
+        "quantityDone": null,
+        "unit": null,
+        "status": "IN_PROGRESS",
+        "blocker": null,
+        "note": "Ажил 9 хоног хугацаа хэтэрсэн. Төлөвлөсөн дуусах огноо: 2026-02-20; илэрсэн огноо: 2026-02-21.",
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.0.workItem.name",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "IMAGE",
+                "sourceId": "source-image-1a932eb478349583ef50",
+                "fieldPath": "progressEntries.0.workItem.name",
+                "quote": "AT-004 Дэд бүтэц нийлүүлэх ажил",
+                "imageRegion": {
+                  "x": 0.009,
+                  "y": 0.813,
+                  "width": 0.26,
+                  "height": 0.026,
+                  "description": "Илэрсэн асуудлын картын гарчиг"
+                }
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressPercent",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "IMAGE",
+                "sourceId": "source-image-1a932eb478349583ef50",
+                "fieldPath": "progressEntries.0.progressPercent",
+                "quote": "\"progressPercent\":75",
+                "imageRegion": {
+                  "x": 0.009,
+                  "y": 0.885,
+                  "width": 0.204,
+                  "height": 0.074,
+                  "description": "Асуудлын карт дахь JSON мэдээлэл"
+                }
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.status",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "IMAGE",
+                "sourceId": "source-image-1a932eb478349583ef50",
+                "fieldPath": "progressEntries.0.status",
+                "quote": "\"status\":\"IN_PROGRESS\"",
+                "imageRegion": {
+                  "x": 0.009,
+                  "y": 0.885,
+                  "width": 0.204,
+                  "height": 0.074,
+                  "description": "Асуудлын карт дахь JSON мэдээлэл"
+                }
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.note",
+            "score": 0.97,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "IMAGE",
+                "sourceId": "source-image-1a932eb478349583ef50",
+                "fieldPath": "progressEntries.0.note",
+                "quote": "AT-004 Дэд бүтэц нийлүүлэх ажил 9 хоног хугацаа хэтэрсэн.",
+                "imageRegion": {
+                  "x": 0.009,
+                  "y": 0.842,
+                  "width": 0.308,
+                  "height": 0.022,
+                  "description": "Асуудлын тайлбар"
+                }
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.note.plannedEnd",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "IMAGE",
+                "sourceId": "source-image-1a932eb478349583ef50",
+                "fieldPath": "progressEntries.0.note.plannedEnd",
+                "quote": "\"plannedEnd\":\"2026-02-20T00:00:00.000Z\"",
+                "imageRegion": {
+                  "x": 0.009,
+                  "y": 0.885,
+                  "width": 0.204,
+                  "height": 0.074,
+                  "description": "Асуудлын карт дахь JSON мэдээлэл"
+                }
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.note.daysOverdue",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "IMAGE",
+                "sourceId": "source-image-1a932eb478349583ef50",
+                "fieldPath": "progressEntries.0.note.daysOverdue",
+                "quote": "\"daysOverdue\":9",
+                "imageRegion": {
+                  "x": 0.009,
+                  "y": 0.885,
+                  "width": 0.204,
+                  "height": 0.074,
+                  "description": "Асуудлын карт дахь JSON мэдээлэл"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attendanceEntries": [],
+    "materialSignals": [],
+    "photoObservations": [],
+    "clarificationQuestions": [
+      {
+        "questionId": "daily-draft-44e2999f567cbdb45507-question-001",
+        "fieldPath": "progressEntries.0.workItem.code",
+        "reason": "AMBIGUOUS_REFERENCE",
+        "question": "Энэ ахиц аль ажлын мөрөнд хамаарахыг сонгоно уу.",
+        "options": [],
+        "requiredForApproval": true
+      }
+    ],
+    "duplicateCandidates": [],
+    "fieldConfidence": [
+      {
+        "fieldPath": "dailyReport.reportDate",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "IMAGE",
+            "sourceId": "source-image-1a932eb478349583ef50",
+            "fieldPath": "dailyReport.reportDate",
+            "quote": "Тайлангийн огноо: 2026.03.01",
+            "imageRegion": {
+              "x": 0.098,
+              "y": 0.044,
+              "width": 0.101,
+              "height": 0.018,
+              "description": "Зургийн дээд хэсгийн төслийн мэдээлэл"
+            }
+          }
+        ]
+      }
+    ],
+    "overallConfidence": 0.8829,
+    "confidenceLevel": "HIGH",
+    "validationIssues": [
+      {
+        "code": "UNRESOLVED_WORK_ITEM_progressEntries.0.workItem",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "progressEntries.0.workItem.code"
+        ],
+        "message": "Progress entry could not be resolved to exactly one project work item.",
+        "deterministic": true
+      }
+    ],
+    "status": "NEEDS_CORRECTION",
+    "requiresHumanReview": true
+  },
+  "humanEditedFieldPaths": [],
+  "approvedCommand": null,
+  "approvalEvent": null,
+  "rejection": null,
+  "createdAt": "2026-07-29T06:14:42.485Z",
+  "updatedAt": "2026-07-29T06:14:42.485Z"
+}

@@ -1,0 +1,263 @@
+.bw-pricing-page {
+  --pricing-amber: #ba7517;
+  --pricing-amber-dark: #754506;
+  --pricing-paper: #fbfaf6;
+  --pricing-ink: #2c2c2a;
+  --pricing-muted: #65635d;
+  --pricing-line: #d3d1c7;
+  color: var(--pricing-ink);
+}
+
+.bw-pricing-header p {
+  color: var(--pricing-muted);
+}
+
+.bw-billing-switch {
+  border-color: var(--pricing-line);
+  background: #e9e6dc;
+  box-shadow: inset 0 1px 2px rgb(44 44 42 / 5%);
+}
+
+.bw-billing-switch button {
+  min-height: 2.7rem;
+  padding: 0.55rem 1rem;
+  border: 0;
+  border-radius: 0.4rem;
+  color: var(--pricing-muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.bw-billing-switch button:hover {
+  color: var(--pricing-ink);
+}
+
+.bw-billing-switch button.is-active {
+  color: #17140e;
+  background: var(--pricing-amber);
+  box-shadow: 0 5px 14px rgb(186 117 23 / 20%);
+}
+
+.bw-billing-switch button:focus-visible,
+.bw-price-cta:focus-visible {
+  outline: 3px solid rgb(186 117 23 / 32%);
+  outline-offset: 3px;
+}
+
+.bw-pricing-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1.25rem;
+}
+
+.bw-pricing-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 38rem;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  overflow: hidden;
+  border: 1px solid var(--pricing-line);
+  border-radius: 1.25rem;
+  background: var(--pricing-paper);
+  box-shadow:
+    0 1px 2px rgb(44 44 42 / 6%),
+    0 18px 42px rgb(44 44 42 / 6%);
+}
+
+.bw-pricing-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.25rem;
+  content: "";
+  background: #b8b4a9;
+}
+
+.bw-pricing-card.is-recommended {
+  border-color: rgb(186 117 23 / 52%);
+  background: linear-gradient(180deg, #fff7e8 0, var(--pricing-paper) 34%);
+  box-shadow:
+    0 1px 2px rgb(44 44 42 / 7%),
+    0 22px 48px rgb(186 117 23 / 12%);
+}
+
+.bw-pricing-card.is-recommended::before {
+  background: var(--pricing-amber);
+}
+
+.bw-pricing-card-heading {
+  display: flex;
+  min-height: 2.1rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bw-pricing-card-heading h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.bw-recommended-badge {
+  flex: none;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgb(186 117 23 / 28%);
+  border-radius: 999px;
+  color: var(--pricing-amber-dark);
+  background: rgb(186 117 23 / 9%);
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+
+.bw-pricing-description {
+  min-height: 3rem;
+  margin: 0.75rem 0 0;
+  color: var(--pricing-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.bw-price-block {
+  min-height: 8.7rem;
+  margin-top: 1.4rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgb(44 44 42 / 9%);
+}
+
+.bw-price-value {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.55rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 760;
+  letter-spacing: -0.04em;
+}
+
+.bw-price-value span {
+  color: var(--pricing-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.bw-vat-note,
+.bw-saving-note,
+.bw-price-alternative {
+  margin: 0.35rem 0 0;
+  color: var(--pricing-muted);
+  font-size: 0.76rem;
+}
+
+.bw-saving-note {
+  color: #0f6e56;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.bw-saving-note span {
+  color: var(--pricing-muted);
+  font-weight: 450;
+}
+
+.bw-plan-benefits {
+  display: grid;
+  gap: 0.72rem;
+  margin: 1.4rem 0 1.75rem;
+  padding: 0;
+  color: var(--pricing-ink);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  list-style: none;
+}
+
+.bw-plan-benefits li {
+  position: relative;
+  padding-left: 1.45rem;
+}
+
+.bw-plan-benefits li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #0f6e56;
+  content: "✓";
+  font-weight: 900;
+}
+
+.bw-price-cta {
+  display: flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.8rem 1rem;
+  border: 1px solid #b8b4a9;
+  border-radius: 0.7rem;
+  color: var(--pricing-ink);
+  background: #f1efe8;
+  font-weight: 750;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.bw-price-cta:hover {
+  border-color: var(--pricing-amber);
+  background: #fff8ec;
+  transform: translateY(-1px);
+}
+
+.bw-price-cta.is-primary {
+  border-color: var(--pricing-amber);
+  color: #17140e;
+  background: var(--pricing-amber);
+}
+
+.bw-price-cta.is-primary:hover {
+  background: #cf8a28;
+}
+
+.bw-enterprise-pricing {
+  padding: 1.5rem;
+  border: 1px solid var(--pricing-line);
+  border-radius: 1rem;
+  background: #e9e6dc;
+}
+
+@media (max-width: 720px) {
+  .bw-pricing-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bw-pricing-card {
+    min-height: auto;
+  }
+
+  .bw-pricing-description,
+  .bw-price-block {
+    min-height: 0;
+  }
+
+  .bw-billing-switch {
+    width: 100%;
+  }
+
+  .bw-billing-switch button {
+    flex: 1;
+    padding-inline: 0.65rem;
+  }
+}

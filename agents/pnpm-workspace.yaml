@@ -1,0 +1,12 @@
+allowBuilds:
+  "@prisma/engines": true
+  esbuild: true
+  prisma: true
+  protobufjs: false
+  puppeteer: true
+minimumReleaseAgeExclude:
+  - "@sentry/core@10.69.0"
+  - "@sentry/node-core@10.69.0"
+  - "@sentry/node@10.69.0"
+  - "@sentry/opentelemetry@10.69.0"
+  - "@sentry/server-utils@10.69.0"

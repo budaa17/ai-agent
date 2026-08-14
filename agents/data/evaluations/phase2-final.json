@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "gate": "PHASE_2_AGENT_PRODUCTION",
+  "generatedAt": "2026-07-29T19:40:06.871Z",
+  "technicalPass": true,
+  "releasePass": false,
+  "a1": {
+    "textContractCaseCount": 120,
+    "syntheticContractCaseCount": 64,
+    "technicalPass": true,
+    "realImageEvidenceProvided": false,
+    "realImageMetrics": null,
+    "releaseEvidencePass": false
+  },
+  "a2": {
+    "caseCount": 36,
+    "passedCases": 36,
+    "allCasesPass": true,
+    "fallbackPass": true,
+    "expectedIssueCount": 9,
+    "detectedMappedCount": 45,
+    "precision": 1,
+    "recall": 1,
+    "falseAlertRate": 0,
+    "averageDetectionLagDays": -15.555555555555555,
+    "maxDetectionLagDays": 3,
+    "forecastCandidateCount": 202,
+    "forecastSampleCount": 77,
+    "forecastInsufficientDataExcludedCount": 125,
+    "forecastMeanAbsoluteErrorDays": 0.33766233766233766,
+    "forecastP90AbsoluteErrorDays": 1,
+    "forecastMaximumAbsoluteErrorDays": 3,
+    "deterministicRecoveryScenarioCount": 4,
+    "rootCauseLinkRate": 1
+  },
+  "a2Pass": true,
+  "a3": {
+    "caseCount": 24,
+    "passedCases": 24,
+    "unsupportedClaimCount": 0,
+    "sourceCoverage": 1,
+    "allCasesPass": true
+  },
+  "a3Pass": true,
+  "a4": {
+    "questionCount": 99,
+    "readQuestionCount": 88,
+    "passedReadQuestions": 88,
+    "toolCoverage": 11,
+    "sourcePrecision": 1,
+    "policyCaseCount": 10,
+    "policyMatchRate": 1,
+    "tenantLeakCount": 0,
+    "allCasesPass": true
+  },
+  "a4Pass": true,
+  "externalRequirements": [
+    "60+ anonymized real construction images with human-reviewed labels and model predictions"
+  ]
+}

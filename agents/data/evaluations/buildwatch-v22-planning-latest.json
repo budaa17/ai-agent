@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "reportType": "A5_PLANNING_EVALUATION",
+  "seed": "buildwatch-v22-phase2-v1",
+  "generatedAt": "2026-03-28T23:59:59.000Z",
+  "deterministic": true,
+  "llmRequired": false,
+  "cases": [
+    {
+      "caseId": "operational-answer-healthy-control",
+      "scenario": "HEALTHY_CONTROL",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": true,
+      "actualEligible": true,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": "16.75",
+      "actualTarget": "16.75",
+      "expectedConflicts": [],
+      "actualConflicts": [],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-predecessor-unfinished",
+      "scenario": "PREDECESSOR_UNFINISHED",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": false,
+      "actualEligible": false,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": null,
+      "actualTarget": null,
+      "expectedConflicts": [
+        "PRECONDITION_UNSATISFIED"
+      ],
+      "actualConflicts": [
+        "PRECONDITION_UNSATISFIED"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-material-shortage",
+      "scenario": "MATERIAL_SHORTAGE",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": false,
+      "actualEligible": false,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": null,
+      "actualTarget": null,
+      "expectedConflicts": [
+        "MATERIAL_SHORTAGE"
+      ],
+      "actualConflicts": [
+        "MATERIAL_SHORTAGE"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-crew-unavailable",
+      "scenario": "CREW_UNAVAILABLE",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": false,
+      "actualEligible": false,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": null,
+      "actualTarget": null,
+      "expectedConflicts": [
+        "CREW_UNAVAILABLE"
+      ],
+      "actualConflicts": [
+        "CREW_UNAVAILABLE"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-equipment-double-booking",
+      "scenario": "EQUIPMENT_DOUBLE_BOOKING",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": true,
+      "actualEligible": true,
+      "expectedPriority": 2,
+      "actualPriority": 2,
+      "expectedTarget": "14.25",
+      "actualTarget": "14.25",
+      "expectedConflicts": [
+        "EQUIPMENT_DOUBLE_BOOKING"
+      ],
+      "actualConflicts": [
+        "EQUIPMENT_DOUBLE_BOOKING"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-zone-conflict",
+      "scenario": "ZONE_CONFLICT",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": true,
+      "actualEligible": true,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": "15.5",
+      "actualTarget": "15.5",
+      "expectedConflicts": [
+        "ZONE_OVER_CAPACITY"
+      ],
+      "actualConflicts": [
+        "ZONE_OVER_CAPACITY"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-heavy-rain-restriction",
+      "scenario": "HEAVY_RAIN_RESTRICTION",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": false,
+      "actualEligible": false,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": null,
+      "actualTarget": null,
+      "expectedConflicts": [
+        "WEATHER_RESTRICTION"
+      ],
+      "actualConflicts": [
+        "WEATHER_RESTRICTION"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-inspection-pending",
+      "scenario": "INSPECTION_PENDING",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": false,
+      "actualEligible": false,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": null,
+      "actualTarget": null,
+      "expectedConflicts": [
+        "PRECONDITION_UNSATISFIED"
+      ],
+      "actualConflicts": [
+        "PRECONDITION_UNSATISFIED"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-critical-work-omitted",
+      "scenario": "CRITICAL_WORK_OMITTED",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": true,
+      "actualEligible": true,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": "10.5",
+      "actualTarget": "10.5",
+      "expectedConflicts": [
+        "CRITICAL_WORK_OMITTED"
+      ],
+      "actualConflicts": [
+        "CRITICAL_WORK_OMITTED"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-planned-target-partial",
+      "scenario": "PLANNED_TARGET_PARTIAL",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": true,
+      "actualEligible": true,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": "4",
+      "actualTarget": "4.000001",
+      "expectedConflicts": [
+        "PARTIAL_TARGET"
+      ],
+      "actualConflicts": [
+        "PARTIAL_TARGET"
+      ],
+      "pass": true
+    },
+    {
+      "caseId": "operational-answer-approved-blocker",
+      "scenario": "APPROVED_BLOCKER",
+      "eligibleMatch": true,
+      "priorityMatch": true,
+      "targetMatch": true,
+      "conflictMatch": true,
+      "deterministicReplayMatch": true,
+      "expectedEligible": false,
+      "actualEligible": false,
+      "expectedPriority": 1,
+      "actualPriority": 1,
+      "expectedTarget": null,
+      "actualTarget": null,
+      "expectedConflicts": [
+        "APPROVED_BLOCKER"
+      ],
+      "actualConflicts": [
+        "APPROVED_BLOCKER"
+      ],
+      "pass": true
+    }
+  ],
+  "metrics": {
+    "casePassRate": 1,
+    "eligiblePrecision": 1,
+    "eligibleRecall": 1,
+    "priorityAccuracy": 1,
+    "targetAccuracy": 1,
+    "conflictPrecision": 1,
+    "conflictRecall": 1,
+    "autoCriticalOmissionCount": 0,
+    "criticalOmissionDetectionFailures": 0,
+    "undetectedResourceConflictCount": 0,
+    "shortageClassifiedFeasibleCount": 0,
+    "deterministicReplayFailures": 0
+  },
+  "pass": true
+}

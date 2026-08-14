@@ -1,0 +1,428 @@
+{
+  "mode": "live",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "suite": "a4-reference-assistant-v1",
+  "generatedAt": "2026-07-28T13:08:28.222Z",
+  "totalCases": 6,
+  "successfulCases": 6,
+  "passedCases": 4,
+  "groundedCases": 6,
+  "matchedFields": 34,
+  "totalFields": 36,
+  "passRate": 0.6666666666666666,
+  "groundingRate": 1,
+  "fieldAccuracy": 0.9444444444444444,
+  "tools": {
+    "truePositive": 6,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "sources": {
+    "truePositive": 14,
+    "falsePositive": 7,
+    "falseNegative": 3,
+    "precision": 0.6666666666666666,
+    "recall": 0.8235294117647058
+  },
+  "cases": [
+    {
+      "caseId": "a4-atlas-integration-stall",
+      "tags": [
+        "progress-history",
+        "stall",
+        "duration"
+      ],
+      "succeeded": true,
+      "passed": false,
+      "matchedFields": 5,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 2,
+        "falsePositive": 0,
+        "falseNegative": 1,
+        "precision": 1,
+        "recall": 0.6666666666666666
+      },
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": false,
+          "matched": false
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-license-overrun",
+      "tags": [
+        "cost",
+        "budget",
+        "decimal"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 4,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-migration-dependency",
+      "tags": [
+        "dependency",
+        "status",
+        "critical-path"
+      ],
+      "succeeded": true,
+      "passed": false,
+      "matchedFields": 5,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 2,
+        "falsePositive": 3,
+        "falseNegative": 2,
+        "precision": 0.4,
+        "recall": 0.5
+      },
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": false,
+          "matched": false
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-procurement-status",
+      "tags": [
+        "status",
+        "progress",
+        "date"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 3,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-work-item-count",
+      "tags": [
+        "aggregate",
+        "work-items",
+        "authorization"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-private-tenant-isolation",
+      "tags": [
+        "tenant-isolation",
+        "authorization",
+        "work-items"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 2,
+        "falsePositive": 4,
+        "falseNegative": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

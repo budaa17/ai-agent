@@ -1,0 +1,8 @@
+dist/
+node_modules/
+coverage/
+data/
+pnpm-lock.yaml
+# Handlebars PDF templates: Prettier reflows the embedded CSS and produces a
+# large diff for no behavioural change.
+*.hbs

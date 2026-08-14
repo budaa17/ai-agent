@@ -1,0 +1,305 @@
+{
+  "mode": "live",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "suite": "a4-reference-assistant-v1",
+  "generatedAt": "2026-07-28T13:13:37.907Z",
+  "totalCases": 2,
+  "successfulCases": 2,
+  "passedCases": 2,
+  "groundedCases": 2,
+  "matchedFields": 12,
+  "totalFields": 12,
+  "passRate": 1,
+  "groundingRate": 1,
+  "fieldAccuracy": 1,
+  "tools": {
+    "truePositive": 2,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "sources": {
+    "truePositive": 6,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "cases": [
+    {
+      "caseId": "a4-atlas-integration-stall",
+      "tags": [
+        "progress-history",
+        "stall",
+        "duration"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 2,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "AT-005 ажлын сүүлийн явц 45%, өмнөх бүртгэлээс хойш 9 хоног өнгөрсөн байна.",
+            "sources": [
+              {
+                "toolName": "lookupProgressHistory",
+                "sourceId": "snapshot-integration-03",
+                "field": "progressPercent"
+              },
+              {
+                "toolName": "lookupProgressHistory",
+                "sourceId": "snapshot-integration-03",
+                "field": "daysSincePrevious"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "progressPercent",
+          "value": 45
+        },
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "daysSincePrevious",
+          "value": 9
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "progressPercent",
+          "value": 45
+        },
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "daysSincePrevious",
+          "value": 9
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-migration-dependency",
+      "tags": [
+        "dependency",
+        "status",
+        "critical-path"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 4,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "AT-006 нь AT-005-ын дараах ажил бөгөөд хамаарлын төрөл нь FINISH_TO_START (өмнөх ажил дууссаны дараа дараагийн ажил эхлэх) байна.",
+            "sources": [
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "predecessor.code"
+              },
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "successor.code"
+              },
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "type"
+              }
+            ]
+          },
+          {
+            "text": "Өмнөх AT-005 ажил IN_PROGRESS буюу хэрэгжиж байгаа төлөвтэй.",
+            "sources": [
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "predecessor.status"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "type",
+          "value": "FINISH_TO_START"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.code",
+          "value": "AT-005"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.status",
+          "value": "IN_PROGRESS"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "successor.code",
+          "value": "AT-006"
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.code",
+          "value": "AT-005"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "successor.code",
+          "value": "AT-006"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "type",
+          "value": "FINISH_TO_START"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.status",
+          "value": "IN_PROGRESS"
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

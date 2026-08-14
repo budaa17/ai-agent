@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "evaluationType": "BUILDWATCH_V22_DESIGN_INTAKE",
+  "evaluatedAt": "2026-08-01T00:03:00.000Z",
+  "metrics": {
+    "workbookValid": true,
+    "workbookFormulaRejected": true,
+    "elementTruePositive": 6,
+    "elementFalsePositive": 0,
+    "elementFalseNegative": 0,
+    "elementPrecision": 1,
+    "elementRecall": 1,
+    "unverifiedMetricDimensionCount": 0,
+    "verifiedMetricDimensionCount": 11,
+    "sourceLessAcceptedElementCount": 0,
+    "revisionConflictRoutedToReview": true,
+    "rotatedPageDetected": true,
+    "mixedScaleRoutedToReview": true,
+    "missingScaleMetricDimensionCount": 0,
+    "rejectedScaleMetricDimensionCount": 0
+  },
+  "thresholds": {
+    "minimumElementPrecision": 0.95,
+    "minimumElementRecall": 0.95
+  },
+  "passed": true
+}

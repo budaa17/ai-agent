@@ -1,0 +1,317 @@
+{
+  "suite": "a3-document-agent-v1",
+  "generatedAt": "2026-07-29T05:48:38.640Z",
+  "totalCases": 3,
+  "successfulCases": 3,
+  "passedCases": 3,
+  "matchedFields": 39,
+  "totalFields": 39,
+  "passRate": 1,
+  "fieldAccuracy": 1,
+  "cases": [
+    {
+      "caseId": "a3-atlas-document-bundle",
+      "tags": [
+        "report",
+        "conclusion",
+        "official-letter",
+        "risk"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 13,
+      "totalFields": 13,
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-demo",
+          "actual": "tenant-demo",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-atlas",
+          "actual": "project-atlas",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "documentTypes",
+          "expected": [
+            "EXECUTIVE_CONCLUSION",
+            "OFFICIAL_LETTER",
+            "PROJECT_REPORT"
+          ],
+          "actual": [
+            "EXECUTIVE_CONCLUSION",
+            "OFFICIAL_LETTER",
+            "PROJECT_REPORT"
+          ],
+          "matched": true
+        },
+        {
+          "field": "workItemCount",
+          "expected": 9,
+          "actual": 9,
+          "matched": true
+        },
+        {
+          "field": "issueCount",
+          "expected": 5,
+          "actual": 5,
+          "matched": true
+        },
+        {
+          "field": "projectDurationDays",
+          "expected": 125,
+          "actual": 125,
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "CRITICAL",
+          "actual": "CRITICAL",
+          "matched": true
+        },
+        {
+          "field": "precision",
+          "expected": 1,
+          "actual": 1,
+          "matched": true
+        },
+        {
+          "field": "recall",
+          "expected": 1,
+          "actual": 1,
+          "matched": true
+        },
+        {
+          "field": "forecastErrorDays",
+          "expected": 3,
+          "actual": 3,
+          "matched": true
+        },
+        {
+          "field": "draftStatus",
+          "expected": "PENDING_APPROVAL",
+          "actual": "PENDING_APPROVAL",
+          "matched": true
+        },
+        {
+          "field": "numericNarrativeSafe",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a3-private-tenant-bundle",
+      "tags": [
+        "tenant-isolation",
+        "official-letter",
+        "approval"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 13,
+      "totalFields": 13,
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-isolation",
+          "actual": "tenant-isolation",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-private",
+          "actual": "project-private",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "documentTypes",
+          "expected": [
+            "EXECUTIVE_CONCLUSION",
+            "OFFICIAL_LETTER",
+            "PROJECT_REPORT"
+          ],
+          "actual": [
+            "EXECUTIVE_CONCLUSION",
+            "OFFICIAL_LETTER",
+            "PROJECT_REPORT"
+          ],
+          "matched": true
+        },
+        {
+          "field": "workItemCount",
+          "expected": 1,
+          "actual": 1,
+          "matched": true
+        },
+        {
+          "field": "issueCount",
+          "expected": 0,
+          "actual": 0,
+          "matched": true
+        },
+        {
+          "field": "projectDurationDays",
+          "expected": 26,
+          "actual": 26,
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "NONE",
+          "actual": "NONE",
+          "matched": true
+        },
+        {
+          "field": "precision",
+          "expected": 1,
+          "actual": 1,
+          "matched": true
+        },
+        {
+          "field": "recall",
+          "expected": 1,
+          "actual": 1,
+          "matched": true
+        },
+        {
+          "field": "forecastErrorDays",
+          "expected": null,
+          "actual": null,
+          "matched": true
+        },
+        {
+          "field": "draftStatus",
+          "expected": "PENDING_APPROVAL",
+          "actual": "PENDING_APPROVAL",
+          "matched": true
+        },
+        {
+          "field": "numericNarrativeSafe",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a3-river-no-risk-bundle",
+      "tags": [
+        "no-risk",
+        "empty-recommendations",
+        "approval"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 13,
+      "totalFields": 13,
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-demo",
+          "actual": "tenant-demo",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-river",
+          "actual": "project-river",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "documentTypes",
+          "expected": [
+            "EXECUTIVE_CONCLUSION",
+            "OFFICIAL_LETTER",
+            "PROJECT_REPORT"
+          ],
+          "actual": [
+            "EXECUTIVE_CONCLUSION",
+            "OFFICIAL_LETTER",
+            "PROJECT_REPORT"
+          ],
+          "matched": true
+        },
+        {
+          "field": "workItemCount",
+          "expected": 2,
+          "actual": 2,
+          "matched": true
+        },
+        {
+          "field": "issueCount",
+          "expected": 0,
+          "actual": 0,
+          "matched": true
+        },
+        {
+          "field": "projectDurationDays",
+          "expected": 42,
+          "actual": 42,
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "NONE",
+          "actual": "NONE",
+          "matched": true
+        },
+        {
+          "field": "precision",
+          "expected": 1,
+          "actual": 1,
+          "matched": true
+        },
+        {
+          "field": "recall",
+          "expected": 1,
+          "actual": 1,
+          "matched": true
+        },
+        {
+          "field": "forecastErrorDays",
+          "expected": null,
+          "actual": null,
+          "matched": true
+        },
+        {
+          "field": "draftStatus",
+          "expected": "PENDING_APPROVAL",
+          "actual": "PENDING_APPROVAL",
+          "matched": true
+        },
+        {
+          "field": "numericNarrativeSafe",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

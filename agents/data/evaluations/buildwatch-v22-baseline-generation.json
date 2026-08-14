@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "evaluationType": "BUILDWATCH_V22_BASELINE_GENERATION",
+  "evaluatedAt": "2026-08-03T01:40:00.000Z",
+  "metrics": {
+    "formulaCaseCount": 5,
+    "formulaAccuracy": 1,
+    "quantitySourceCoverage": 1,
+    "materialSourceCoverage": 1,
+    "estimateSourceCoverage": 1,
+    "sourceLessFinalRowCount": 0,
+    "unverifiedScaleFinalRowCount": 0,
+    "missingNormFinalRowCount": 0,
+    "missingPriceFinalRowCount": 0,
+    "zeroPriceFinalRowCount": 0,
+    "approvedEstimateLineCount": 11,
+    "cpmPassed": true,
+    "baselineMutationCount": 0,
+    "supersessionReasonPassed": true,
+    "deterministicReplayPassed": true,
+    "reviewerChainPassed": true,
+    "adversarialPassCount": 7,
+    "adversarialCaseCount": 7
+  },
+  "thresholds": {
+    "minimumFormulaAccuracy": 1,
+    "minimumSourceCoverage": 1,
+    "maximumFabricatedFinalRows": 0,
+    "minimumAdversarialAccuracy": 1
+  },
+  "passed": true
+}

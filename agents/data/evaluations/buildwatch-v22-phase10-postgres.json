@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "suite": "BUILDWATCH_V22_PHASE10_POSTGRES",
+  "generatedAt": "2026-08-06T17:26:38.544Z",
+  "passed": true,
+  "fixture": {
+    "tenantId": "phase10-smoke-tenant",
+    "projectId": "phase10-smoke-project",
+    "durableAndIdempotent": true
+  },
+  "checks": [
+    {
+      "name": "tenant-scoped-production-workspace",
+      "passed": true,
+      "evidence": "project=P10-SMOKE role=SITE_SUPERVISOR workItems=1 progress=42"
+    },
+    {
+      "name": "cross-tenant-project-isolation",
+      "passed": true,
+      "evidence": "result=404:PROJECT_NOT_FOUND"
+    },
+    {
+      "name": "project-create-idempotency",
+      "passed": true,
+      "evidence": "project=46beab9b-8e27-47a1-a759-f192027b27ab replay=true rows=1/1/1"
+    },
+    {
+      "name": "artifact-upload-checksum-idempotency",
+      "passed": true,
+      "evidence": "artifact=53c97c81-97fb-421f-9989-06a462979b88 sha256=9cb8ccbfa2e2 replay=true rows=1/1/1"
+    },
+    {
+      "name": "offline-report-review-outbox-idempotency",
+      "passed": true,
+      "evidence": "report=5b31418a-5a90-460a-8777-78d3113f4cc1 review=a1655d84-2b15-451e-b6b5-5c35656667e7 replay=true rows=1/1/1/1/1"
+    },
+    {
+      "name": "a4-read-only-source-grounding",
+      "passed": true,
+      "evidence": "status=ANSWERED claims=3 sources=3 fields=actualCostMnt,actualProgressPercent,budgetMnt"
+    },
+    {
+      "name": "workspace-reflects-persisted-report",
+      "passed": true,
+      "evidence": "reports=1 photos=1 reviews=1"
+    }
+  ]
+}

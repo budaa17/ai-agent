@@ -1,0 +1,256 @@
+{
+  "schemaVersion": 1,
+  "fixtureType": "CROSS_TENANT_PRIVATE",
+  "marker": "TENANT-PRIVATE-ONLY",
+  "tenantId": "tenant-private",
+  "projectId": "project-private-operational",
+  "operationalSnapshot": {
+    "schemaVersion": 1,
+    "snapshotType": "OPERATIONAL_PLANNING",
+    "snapshotId": "private-operational-snapshot-001",
+    "tenantId": "tenant-private",
+    "projectId": "project-private-operational",
+    "asOf": "2026-03-28T23:59:59.000Z",
+    "baselineVersionId": "private-baseline-version-001",
+    "scheduleVersionId": "private-schedule-version-001",
+    "policyVersion": {
+      "policyVersionId": "private-policy-version-001",
+      "version": 1,
+      "effectiveFrom": "2026-01-05"
+    },
+    "calendar": {
+      "calendarVersionId": "private-calendar-version-001",
+      "timezone": "Asia/Ulaanbaatar",
+      "workingWeekdays": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "workHoursPerDay": 8,
+      "holidays": [],
+      "effectiveFrom": "2026-01-05",
+      "effectiveTo": null,
+      "sourceRefs": [
+        {
+          "sourceRefId": "source-ref-private-calendar-version-001",
+          "tenantId": "tenant-private",
+          "projectId": "project-private-operational",
+          "sourceType": "CALENDAR_VERSION",
+          "sourceId": "private-calendar-version-001",
+          "sourceVersionId": null,
+          "artifactId": null,
+          "pageNumber": null,
+          "sheetName": null,
+          "rowNumber": null,
+          "fieldPath": null,
+          "region": null,
+          "asOf": null,
+          "sha256": null
+        }
+      ]
+    },
+    "workItems": [
+      {
+        "workItemId": "private-work-item-001",
+        "activityId": "private-activity-001",
+        "code": "PRIVATE-001",
+        "name": "TENANT-PRIVATE-ONLY confidential work",
+        "zoneCode": "PRIVATE-ZONE-01",
+        "workClassCode": "PRIVATE_CLASS",
+        "unit": "m2",
+        "plannedQuantity": {
+          "value": "100",
+          "unit": "m2",
+          "sourceRefs": [
+            {
+              "sourceRefId": "source-ref-private-schedule-version-001",
+              "tenantId": "tenant-private",
+              "projectId": "project-private-operational",
+              "sourceType": "SCHEDULE_VERSION",
+              "sourceId": "private-schedule-version-001",
+              "sourceVersionId": null,
+              "artifactId": null,
+              "pageNumber": null,
+              "sheetName": null,
+              "rowNumber": null,
+              "fieldPath": null,
+              "region": null,
+              "asOf": null,
+              "sha256": null
+            }
+          ]
+        },
+        "remainingQuantity": {
+          "value": "40",
+          "unit": "m2",
+          "sourceRefs": [
+            {
+              "sourceRefId": "source-ref-private-schedule-version-001",
+              "tenantId": "tenant-private",
+              "projectId": "project-private-operational",
+              "sourceType": "SCHEDULE_VERSION",
+              "sourceId": "private-schedule-version-001",
+              "sourceVersionId": null,
+              "artifactId": null,
+              "pageNumber": null,
+              "sheetName": null,
+              "rowNumber": null,
+              "fieldPath": null,
+              "region": null,
+              "asOf": null,
+              "sha256": null
+            }
+          ]
+        },
+        "status": "IN_PROGRESS",
+        "priority": "HIGH",
+        "isCritical": true,
+        "totalFloatWorkingDays": 0,
+        "downstreamUnlockCount": 0,
+        "contractMilestone": false,
+        "plannedStart": "2026-01-05",
+        "plannedFinish": "2026-03-28",
+        "predecessorWorkItemIds": [],
+        "requiredInspectionIds": [],
+        "requiredCrewType": "PRIVATE_CREW",
+        "requiredEquipmentIds": [],
+        "requiredMaterials": [],
+        "weatherRestrictions": [],
+        "safetyRestrictions": [],
+        "sourceRefs": [
+          {
+            "sourceRefId": "source-ref-private-schedule-version-001",
+            "tenantId": "tenant-private",
+            "projectId": "project-private-operational",
+            "sourceType": "SCHEDULE_VERSION",
+            "sourceId": "private-schedule-version-001",
+            "sourceVersionId": null,
+            "artifactId": null,
+            "pageNumber": null,
+            "sheetName": null,
+            "rowNumber": null,
+            "fieldPath": null,
+            "region": null,
+            "asOf": null,
+            "sha256": null
+          }
+        ]
+      }
+    ],
+    "crews": [
+      {
+        "crewId": "private-crew-001",
+        "crewType": "PRIVATE_CREW",
+        "headcount": 4,
+        "shiftStart": "08:00",
+        "shiftEnd": "17:00",
+        "productivityPerShift": {
+          "value": "10",
+          "unit": "m2",
+          "sourceRefs": [
+            {
+              "sourceRefId": "source-ref-private-resource-availability-001",
+              "tenantId": "tenant-private",
+              "projectId": "project-private-operational",
+              "sourceType": "RESOURCE_AVAILABILITY",
+              "sourceId": "private-resource-availability-001",
+              "sourceVersionId": null,
+              "artifactId": null,
+              "pageNumber": null,
+              "sheetName": null,
+              "rowNumber": null,
+              "fieldPath": null,
+              "region": null,
+              "asOf": null,
+              "sha256": null
+            }
+          ]
+        },
+        "productivityVersion": {
+          "tenantId": "tenant-private",
+          "projectId": "project-private-operational",
+          "catalogType": "PRODUCTIVITY",
+          "versionId": "private-productivity-version-001",
+          "version": 1,
+          "effectiveFrom": "2026-01-05",
+          "effectiveTo": null,
+          "approvedBy": "private-manager",
+          "approvedAt": "2026-01-02T05:00:00.000Z",
+          "sourceRefs": [
+            {
+              "sourceRefId": "source-ref-private-productivity-catalog-001",
+              "tenantId": "tenant-private",
+              "projectId": "project-private-operational",
+              "sourceType": "CATALOG_VERSION",
+              "sourceId": "private-productivity-catalog-001",
+              "sourceVersionId": null,
+              "artifactId": null,
+              "pageNumber": null,
+              "sheetName": null,
+              "rowNumber": null,
+              "fieldPath": null,
+              "region": null,
+              "asOf": null,
+              "sha256": null
+            }
+          ]
+        },
+        "availableFrom": "2026-01-05",
+        "availableTo": "2026-03-28",
+        "available": true,
+        "sourceRefs": [
+          {
+            "sourceRefId": "source-ref-private-resource-availability-001",
+            "tenantId": "tenant-private",
+            "projectId": "project-private-operational",
+            "sourceType": "RESOURCE_AVAILABILITY",
+            "sourceId": "private-resource-availability-001",
+            "sourceVersionId": null,
+            "artifactId": null,
+            "pageNumber": null,
+            "sheetName": null,
+            "rowNumber": null,
+            "fieldPath": null,
+            "region": null,
+            "asOf": null,
+            "sha256": null
+          }
+        ]
+      }
+    ],
+    "equipment": [],
+    "materials": [],
+    "zones": [
+      {
+        "zoneCode": "PRIVATE-ZONE-01",
+        "maxConcurrentActivities": 1,
+        "available": true,
+        "sourceRefs": [
+          {
+            "sourceRefId": "source-ref-private-resource-availability-001",
+            "tenantId": "tenant-private",
+            "projectId": "project-private-operational",
+            "sourceType": "RESOURCE_AVAILABILITY",
+            "sourceId": "private-resource-availability-001",
+            "sourceVersionId": null,
+            "artifactId": null,
+            "pageNumber": null,
+            "sheetName": null,
+            "rowNumber": null,
+            "fieldPath": null,
+            "region": null,
+            "asOf": null,
+            "sha256": null
+          }
+        ]
+      }
+    ],
+    "inspections": [],
+    "blockers": [],
+    "weatherConstraints": [],
+    "approvedActuals": []
+  }
+}

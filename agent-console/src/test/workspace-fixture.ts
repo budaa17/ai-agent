@@ -1,0 +1,62 @@
+import type { Workspace } from "../api/schemas";
+
+/** Minimal valid-shaped Workspace fixture for page smoke tests. */
+export function buildWorkspaceFixture(overrides: Partial<Workspace> = {}): Workspace {
+  return {
+    schemaVersion: 1,
+    generatedAt: "2026-08-01T00:00:00Z",
+    role: "PROJECT_MANAGER",
+    permissions: ["PROJECT_READ"],
+    project: {
+      id: "project-1",
+      code: "BW-001",
+      name: "Test Project",
+      description: null,
+      location: null,
+      status: "ACTIVE",
+      plannedStart: "2026-01-01T00:00:00Z",
+      plannedEnd: "2026-12-01T00:00:00Z",
+      budgetMnt: null,
+      actualCostMnt: null,
+      rowVersion: 1,
+    },
+    dashboard: {
+      plannedProgressPercent: 40,
+      actualProgressPercent: 35,
+      projectedFinish: null,
+      projectedDelayDays: null,
+      costVarianceMnt: null,
+      criticalActivityCount: 0,
+      openAlertCount: 0,
+    },
+    workItems: [],
+    dependencies: [],
+    design: { documents: [], revisions: [], pages: [], scales: [], elements: [] },
+    commercial: {
+      quantityVersions: [],
+      quantityItems: [],
+      estimateVersions: [],
+      estimateLines: [],
+      estimateAssumptions: [],
+      baselines: [],
+    },
+    schedule: { versions: [], activities: [], dependencies: [] },
+    resources: { crews: [], equipment: [] },
+    operations: {
+      plans: [],
+      planItems: [],
+      reports: [],
+      progress: [],
+      attendance: [],
+      photos: [],
+      verifications: [],
+      variances: [],
+    },
+    forecast: { snapshots: [], workItems: [], drivers: [], recoveryScenarios: [] },
+    reviews: [],
+    artifacts: [],
+    assistants: { a1Drafts: [], a3Drafts: [] },
+    alerts: [],
+    ...overrides,
+  };
+}

@@ -1,0 +1,97 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: diplom-agents-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: diplom_agents
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d diplom_agents"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  a1-worker:
+    profiles: ["agents"]
+    build: .
+    image: diplom-agents:phase2
+    init: true
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/diplom_agents?schema=public"
+      AGENT_WORKER: a1
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - agent-data:/app/data
+    tmpfs:
+      - /tmp
+      - /home/node/.cache
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 35s
+
+  a2-worker:
+    profiles: ["agents"]
+    build: .
+    image: diplom-agents:phase2
+    init: true
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/diplom_agents?schema=public"
+      AGENT_WORKER: a2
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - agent-data:/app/data
+    tmpfs:
+      - /tmp
+      - /home/node/.cache
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 35s
+
+  a3-worker:
+    profiles: ["agents"]
+    build: .
+    image: diplom-agents:phase2
+    init: true
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/diplom_agents?schema=public"
+      AGENT_WORKER: a3
+      PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium
+      PUPPETEER_DISABLE_SANDBOX: "true"
+      PUPPETEER_SKIP_DOWNLOAD: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - agent-data:/app/data
+    tmpfs:
+      - /tmp
+      - /home/node/.cache
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 35s
+
+volumes:
+  postgres-data:
+  agent-data:

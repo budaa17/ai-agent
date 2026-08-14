@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "evaluationType": "BUILDWATCH_V22_A0_A5_ORCHESTRATION",
+  "evaluatedAt": "2026-08-03T03:00:00.000Z",
+  "metrics": {
+    "toolDefinitionCount": 26,
+    "invokedToolCount": 26,
+    "toolCoverage": 1,
+    "a0ToolCoverage": 1,
+    "a5ToolCoverage": 1,
+    "numericHallucinationCount": 0,
+    "unauthorizedSourceCount": 0,
+    "unauthorizedObjectDisclosureCount": 0,
+    "tenantIsolationViolationCount": 0,
+    "unsignedArtifactLeakCount": 0,
+    "catalogScopeLeakCount": 0,
+    "baselineMutationCount": 0,
+    "goldenPassCount": 10,
+    "goldenCaseCount": 10,
+    "adversarialPassCount": 10,
+    "adversarialCaseCount": 10,
+    "deterministicReplayPassed": true,
+    "versionAsOfLimitPassed": true,
+    "readOnlyMutationPassed": true,
+    "runVersionPersistencePassed": true,
+    "llmOffCorePassed": true
+  },
+  "cases": [
+    {
+      "caseId": "a0-document-classification",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "A0 classified authorized design documents through signed-read bounded tools."
+    },
+    {
+      "caseId": "a0-element-candidate",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "A0 matched reviewed element candidates to the authorized extraction set."
+    },
+    {
+      "caseId": "a0-scale-safety",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "Only engineer-verified scale reached deterministic metric quantity."
+    },
+    {
+      "caseId": "a0-quantity-source-grounding",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "Quantity replay remained source-backed with zero unauthorized sources."
+    },
+    {
+      "caseId": "a5-planning",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "A5 eligibility, priority, target, and conflict logic ran deterministically."
+    },
+    {
+      "caseId": "a5-photo-verification",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "Signed photo metadata and deterministic verification were joined."
+    },
+    {
+      "caseId": "a5-forecast",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "Rolling productivity and projected finish were available from deterministic services."
+    },
+    {
+      "caseId": "a5-recovery",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "Recovery impacts remained advisory and did not mutate the baseline."
+    },
+    {
+      "caseId": "tenant-isolation",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "No private-tenant marker appeared in either orchestration result."
+    },
+    {
+      "caseId": "llm-off-fallback",
+      "category": "GOLDEN",
+      "passed": true,
+      "message": "A0/A5 core completed without an LLM or API quota."
+    },
+    {
+      "caseId": "unverified-scale-block",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Removing verified scale blocked every metric quantity and downstream draft."
+    },
+    {
+      "caseId": "cross-tenant-nondisclosure",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "An assigned project ID in another tenant returned no object or existence marker."
+    },
+    {
+      "caseId": "project-assignment-denial",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Unassigned project access failed with the same non-disclosing error."
+    },
+    {
+      "caseId": "role-permission-denial",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Role policy denied estimator cost tooling to a site-engineer-only context."
+    },
+    {
+      "caseId": "cost-permission-denial",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Missing cost permission denied price data."
+    },
+    {
+      "caseId": "report-text-permission-denial",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Missing report-text permission denied daily actual data."
+    },
+    {
+      "caseId": "unsigned-artifact-denial",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Design artifact records disappeared when no valid signed-read grant was present."
+    },
+    {
+      "caseId": "catalog-scope-denial",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Catalog records outside the explicit source catalog scope were hidden."
+    },
+    {
+      "caseId": "version-asof-source-limit",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Version/as-of/item/source bounds were enforced before tool output."
+    },
+    {
+      "caseId": "read-only-repository",
+      "category": "ADVERSARIAL",
+      "passed": true,
+      "message": "Mutating one returned object did not mutate repository state."
+    }
+  ],
+  "passed": true
+}

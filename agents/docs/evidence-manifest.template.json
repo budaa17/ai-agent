@@ -1,0 +1,142 @@
+{
+  "_comment": "TEMPLATE ONLY -- not valid release evidence. Every value below is a placeholder that will fail phase11ReleaseEvidenceSchema (schemaVersion/regex/datetime/url checks) and, even where a placeholder happens to parse, will fail the checksum step in validatePhase11ReleaseEvidence because the referenced file does not exist. Replace every field with a real artifact before running `pnpm run phase11:release:v22:gate -- --evidence <this-file>`. This file's schema is .strict() at every level, so you MUST delete every _comment/_todo key (here and inside drawingBoq/photoDataset/deployment/signoffs[0]) once you fill in that section -- leaving one in is a deliberate reminder, not an oversight. Schema source: agents/src/operations/release-evidence.ts",
+  "schemaVersion": 1,
+  "release": "REPLACE-WITH-RELEASE-TAG-e.g-v2.2.0",
+  "generatedAt": "1970-01-01T00:00:00Z",
+  "deployedBaseUrl": "https://REPLACE-WITH-DEPLOYED-HTTPS-URL.example.com",
+  "drawingBoq": {
+    "_todo": "TODO 4.1 -- real (non-synthetic) drawing/BOQ dataset, 10+ cases, engineer-reviewed",
+    "caseCount": 10,
+    "datasetManifest": {
+      "path": "release-evidence/drawing-boq-dataset-manifest.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "engineerReview": {
+      "path": "release-evidence/drawing-boq-engineer-review.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    }
+  },
+  "photoDataset": {
+    "_todo": "TODO 4.2 -- real, consented field photos, 60+ images, human-reviewed (A1-16 external evidence)",
+    "imageCount": 60,
+    "datasetManifest": {
+      "path": "release-evidence/photo-dataset-manifest.json",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "ownerConsent": {
+      "path": "release-evidence/photo-owner-consent.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "humanReview": {
+      "path": "release-evidence/photo-human-review.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    }
+  },
+  "deployment": {
+    "_todo": "TODO 4.4-4.9",
+    "twoTenantIsolation": {
+      "path": "release-evidence/two-tenant-isolation-report.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "authRbacRefresh": {
+      "path": "release-evidence/auth-rbac-refresh-smoke.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "offlineFieldTest": {
+      "path": "release-evidence/offline-field-test-report.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "productionLoadTest": {
+      "path": "release-evidence/production-load-test-report.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "independentSecurityAssessment": {
+      "path": "release-evidence/owasp-pentest-report.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "backupRestoreDrill": {
+      "path": "release-evidence/backup-restore-drill-report.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "sentryAlert": {
+      "path": "release-evidence/sentry-live-alert-screenshot.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    },
+    "langfuseTraceCost": {
+      "path": "release-evidence/langfuse-trace-cost-export.pdf",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+      "result": "PASS",
+      "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+      "issuedAt": "1970-01-01T00:00:00Z"
+    }
+  },
+  "signoffs": [
+    {
+      "_todo": "TODO 4.10",
+      "role": "DOMAIN_ENGINEER",
+      "evidence": {
+        "path": "release-evidence/signoff-domain-engineer.pdf",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+        "result": "PASS",
+        "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+        "issuedAt": "1970-01-01T00:00:00Z"
+      }
+    },
+    {
+      "role": "SECURITY_OWNER",
+      "evidence": {
+        "path": "release-evidence/signoff-security-owner.pdf",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+        "result": "PASS",
+        "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+        "issuedAt": "1970-01-01T00:00:00Z"
+      }
+    },
+    {
+      "role": "OPERATIONS_OWNER",
+      "evidence": {
+        "path": "release-evidence/signoff-operations-owner.pdf",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000",
+        "result": "PASS",
+        "issuer": "REPLACE-WITH-REAL-REVIEWER-NAME",
+        "issuedAt": "1970-01-01T00:00:00Z"
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "suite": "BUILDWATCH_V22_PHASE9_POSTGRES",
+  "generatedAt": "2026-08-08T14:01:52.815Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "canonical-migration-applied",
+      "passed": true,
+      "evidence": "1/1 migration row"
+    },
+    {
+      "name": "canonical-tables-present",
+      "passed": true,
+      "evidence": "38/38 required tables"
+    },
+    {
+      "name": "database-invariant-triggers-present",
+      "passed": true,
+      "evidence": "18/18 required triggers"
+    },
+    {
+      "name": "serializable-transaction-outbox-rollback",
+      "passed": true,
+      "evidence": "rollback=true tenantRows=0 outboxRows=0"
+    },
+    {
+      "name": "append-only-audit-enforced",
+      "passed": true,
+      "evidence": "AuditLog UPDATE rejected by PostgreSQL trigger"
+    },
+    {
+      "name": "production-api-database-readiness",
+      "passed": true,
+      "evidence": "status=200 body=ready"
+    },
+    {
+      "name": "production-openapi-contract",
+      "passed": true,
+      "evidence": "status=200 openapi=3.1.0"
+    }
+  ]
+}

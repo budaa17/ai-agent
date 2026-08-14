@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "recordId": "review-daily-draft-493f2d9c790056c53832",
+  "draftId": "daily-draft-493f2d9c790056c53832",
+  "requestId": "manual-a1-1785343419",
+  "sourceSha256": "ffff46c18fc8f56acc89c9b8bda756975a6a14d7c80d3879f0d6f9175af2a398",
+  "tenantId": "tenant-demo",
+  "projectId": "project-buildwatch-simulation",
+  "status": "NEEDS_CORRECTION",
+  "draft": {
+    "schemaVersion": 1,
+    "draftType": "DAILY_REPORT",
+    "draftId": "daily-draft-493f2d9c790056c53832",
+    "requestId": "manual-a1-1785343419",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "sourceArtifacts": [],
+    "rawText": "2026-03-28-нд BW-017 шатны марш 60 хувьтай. Өрлөгийн багийн 6 хүн тус бүр 8 цаг ажиллаж, 100 ширхэг тоосго зарцуулсан. Материалын нийлүүлэлт 2 хоног хоцорсон.",
+    "language": "mn",
+    "reportDate": "2026-03-28",
+    "location": {
+      "block": "A блок",
+      "stage": "Каркас",
+      "floor": null,
+      "zone": null
+    },
+    "progressEntries": [
+      {
+        "entryId": "daily-draft-493f2d9c790056c53832-progress-001",
+        "workItem": {
+          "code": "BW-017",
+          "name": "Шатны марш",
+          "candidateCodes": []
+        },
+        "progressMode": "UNSPECIFIED",
+        "progressPercent": 60,
+        "quantityDone": null,
+        "unit": null,
+        "status": "IN_PROGRESS",
+        "blocker": {
+          "category": "MATERIAL",
+          "description": "Материалын нийлүүлэлт 2 хоног хоцорсон.",
+          "isBlocking": true,
+          "startedOn": null,
+          "responsibleParty": null
+        },
+        "note": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.0.workItem.code",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "progressEntries.0.workItem.code",
+                "quote": "BW-017 шатны марш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressPercent",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "progressEntries.0.progressPercent",
+                "quote": "BW-017 шатны марш 60 хувьтай",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.status",
+            "score": 0.95,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "progressEntries.0.status",
+                "quote": "60 хувьтай",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.blocker",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "progressEntries.0.blocker",
+                "quote": "Материалын нийлүүлэлт 2 хоног хоцорсон",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attendanceEntries": [
+      {
+        "entryId": "daily-draft-493f2d9c790056c53832-attendance-001",
+        "teamType": "UNKNOWN",
+        "teamRef": null,
+        "teamName": "Өрлөгийн баг",
+        "workItemCodes": [],
+        "headcount": 6,
+        "hoursPerPerson": 8,
+        "totalHours": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "attendanceEntries.0.teamName",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "attendanceEntries.0.teamName",
+                "quote": "Өрлөгийн багийн 6 хүн",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.headcount",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "attendanceEntries.0.headcount",
+                "quote": "6 хүн",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.hoursPerPerson",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "attendanceEntries.0.hoursPerPerson",
+                "quote": "тус бүр 8 цаг ажиллаж",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.teamType",
+            "score": 0.4,
+            "level": "LOW",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "materialSignals": [
+      {
+        "signalId": "daily-draft-493f2d9c790056c53832-material-001",
+        "signalType": "CONSUMED",
+        "rawName": "тоосго",
+        "normalizedName": "Барилгын тоосго",
+        "materialRef": "material-brick",
+        "quantity": "100",
+        "unit": "ш",
+        "supplierName": null,
+        "workItemCodes": [],
+        "note": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "materialSignals.0.signalType",
+            "score": 0.95,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "materialSignals.0.signalType",
+                "quote": "100 ширхэг тоосго зарцуулсан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.rawName",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "materialSignals.0.rawName",
+                "quote": "тоосго",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.quantity",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "materialSignals.0.quantity",
+                "quote": "100 ширхэг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.unit",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-bba05bac11dca73c4447",
+                "fieldPath": "materialSignals.0.unit",
+                "quote": "ширхэг",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "photoObservations": [],
+    "clarificationQuestions": [
+      {
+        "questionId": "daily-draft-493f2d9c790056c53832-question-001",
+        "fieldPath": "progressEntries.0.progressPercent",
+        "reason": "LOGIC_CONFLICT",
+        "question": "Явцын хувь өмнөх бүртгэлээс буурсан байна. Утгыг баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-493f2d9c790056c53832-question-002",
+        "fieldPath": "attendanceEntries.0.teamType",
+        "reason": "LOW_CONFIDENCE",
+        "question": "attendanceEntries.0.teamType утгын эх сурвалж, зөв эсэхийг баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-493f2d9c790056c53832-question-003",
+        "fieldPath": "dailyReport.location.block",
+        "reason": "UNREADABLE_SOURCE",
+        "question": "dailyReport.location.block утгыг эх тайлантай тулгаж баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-493f2d9c790056c53832-question-004",
+        "fieldPath": "dailyReport.location.stage",
+        "reason": "UNREADABLE_SOURCE",
+        "question": "dailyReport.location.stage утгыг эх тайлантай тулгаж баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-493f2d9c790056c53832-question-005",
+        "fieldPath": "duplicateCandidates",
+        "reason": "LOGIC_CONFLICT",
+        "question": "Энэ тайлан давхардсан эсэхийг шалгана уу.",
+        "options": [
+          {
+            "value": "daily-report-2026-03-28",
+            "label": "daily-report-2026-03-28 (81%)"
+          }
+        ],
+        "requiredForApproval": true
+      }
+    ],
+    "duplicateCandidates": [
+      {
+        "candidateReportId": "daily-report-2026-03-28",
+        "similarity": 0.8095,
+        "reasons": [
+          "Ижил тайлангийн огноо",
+          "Давхцсан ажлын код"
+        ]
+      }
+    ],
+    "fieldConfidence": [
+      {
+        "fieldPath": "dailyReport.reportDate",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-bba05bac11dca73c4447",
+            "fieldPath": "dailyReport.reportDate",
+            "quote": "2026-03-28-нд",
+            "imageRegion": null
+          }
+        ]
+      },
+      {
+        "fieldPath": "dailyReport.location.block",
+        "score": 0.49,
+        "level": "LOW",
+        "evidence": []
+      },
+      {
+        "fieldPath": "dailyReport.location.stage",
+        "score": 0.49,
+        "level": "LOW",
+        "evidence": []
+      }
+    ],
+    "overallConfidence": 0.6373,
+    "confidenceLevel": "LOW",
+    "validationIssues": [
+      {
+        "code": "PROGRESS_REGRESSION_0",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "progressEntries.0.progressPercent"
+        ],
+        "message": "Progress 60% is below the existing 67.14%.",
+        "deterministic": true
+      },
+      {
+        "code": "UNKNOWN_ATTENDANCE_TEAM_TYPE_0",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "attendanceEntries.0.teamType"
+        ],
+        "message": "Attendance team type must be confirmed before approval.",
+        "deterministic": true
+      },
+      {
+        "code": "POSSIBLE_DUPLICATE_REPORT",
+        "severity": "WARNING",
+        "fieldPaths": [
+          "duplicateCandidates"
+        ],
+        "message": "A similar daily-report draft already exists.",
+        "deterministic": true
+      }
+    ],
+    "status": "NEEDS_CORRECTION",
+    "requiresHumanReview": true
+  },
+  "humanEditedFieldPaths": [],
+  "approvedCommand": null,
+  "approvalEvent": null,
+  "rejection": null,
+  "createdAt": "2026-07-29T16:43:56.463Z",
+  "updatedAt": "2026-07-29T16:43:56.463Z"
+}

@@ -1,0 +1,188 @@
+{
+  "mode": "live",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "suite": "a2-project-observer-v1",
+  "generatedAt": "2026-07-28T13:35:27.625Z",
+  "totalCases": 2,
+  "successfulCases": 2,
+  "passedCases": 2,
+  "groundedCases": 2,
+  "matchedFields": 16,
+  "totalFields": 16,
+  "passRate": 1,
+  "groundingRate": 1,
+  "fieldAccuracy": 1,
+  "observationKinds": {
+    "truePositive": 0,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "recommendationImpacts": {
+    "truePositive": 0,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "cases": [
+    {
+      "caseId": "a2-private-tenant-isolation",
+      "tags": [
+        "no-risk",
+        "tenant-isolation",
+        "authorization"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "groundingValid": true,
+      "observationKinds": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "recommendationImpacts": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-isolation",
+          "actual": "tenant-isolation",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-private",
+          "actual": "project-private",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "NONE",
+          "actual": "NONE",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "observationKinds",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "recommendationImpactRefs",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a2-river-no-risk",
+      "tags": [
+        "no-risk",
+        "empty-output",
+        "same-tenant"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "groundingValid": true,
+      "observationKinds": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "recommendationImpacts": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-demo",
+          "actual": "tenant-demo",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-river",
+          "actual": "project-river",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "NONE",
+          "actual": "NONE",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "observationKinds",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "recommendationImpactRefs",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

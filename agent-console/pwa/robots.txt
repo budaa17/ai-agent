@@ -1,0 +1,22 @@
+# BuildWatch — public marketing pages only.
+# The workspace and the platform console hold customer data and must never be
+# indexed, whatever a crawler is told elsewhere.
+
+User-agent: *
+Allow: /$
+Allow: /features
+Allow: /pricing
+Allow: /security
+Allow: /contact
+Allow: /terms
+Allow: /privacy
+Disallow: /projects
+Disallow: /admin
+Disallow: /platform
+Disallow: /login
+Disallow: /register
+Disallow: /company-signup
+Disallow: /checkout
+Disallow: /api
+
+Sitemap: https://REPLACE-WITH-YOUR-DOMAIN/sitemap.xml

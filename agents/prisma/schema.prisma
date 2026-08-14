@@ -1,0 +1,2659 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProjectStatus {
+  PLANNED
+  ACTIVE
+  PAUSED
+  COMPLETED
+}
+
+enum WorkItemStatus {
+  PLANNED
+  IN_PROGRESS
+  BLOCKED
+  COMPLETED
+  CANCELLED
+}
+
+enum WorkItemPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum DependencyType {
+  FINISH_TO_START
+  START_TO_START
+  FINISH_TO_FINISH
+  START_TO_FINISH
+}
+
+enum CostCategory {
+  LABOR
+  MATERIAL
+  EQUIPMENT
+  SOFTWARE
+  TRAVEL
+  OTHER
+}
+
+enum AgentRunStatus {
+  RUNNING
+  COMPLETED
+  REJECTED
+  FAILED
+  DEGRADED
+}
+
+enum AgentToolCallStatus {
+  COMPLETED
+  FAILED
+  REJECTED
+}
+
+enum RegistrationSourceType {
+  TEXT
+  IMAGE
+  TEXT_IMAGE
+}
+
+enum RegistrationDraftStatus {
+  PROCESSING
+  READY_FOR_REVIEW
+  NEEDS_CORRECTION
+  APPROVED
+  APPLIED
+  REJECTED
+  FAILED
+}
+
+enum A3DocumentType {
+  PROJECT_REPORT
+  EXECUTIVE_CONCLUSION
+  OFFICIAL_LETTER
+}
+
+enum A3DocumentDraftStatus {
+  PENDING_APPROVAL
+  APPROVED
+  REJECTED
+}
+
+enum IdentityRole {
+  SUPER_ADMIN
+  COMPANY_ADMIN
+  PROJECT_MANAGER
+  ENGINEER
+  SITE_SUPERVISOR
+  STOREKEEPER
+  OBSERVER
+}
+
+enum IdentityUserStatus {
+  INVITED
+  ACTIVE
+  SUSPENDED
+  DISABLED
+}
+
+enum PlatformRole {
+  PLATFORM_SUPER_ADMIN
+  PLATFORM_OPERATOR
+  PLATFORM_AUDITOR
+}
+
+enum PlatformAuditResult {
+  SUCCESS
+  DENIED
+  FAILED
+}
+
+enum PlatformIncidentSeverity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum PlatformIncidentState {
+  OPEN
+  ACKNOWLEDGED
+  RESOLVED
+  REOPENED
+}
+
+enum PlatformSupportAccessState {
+  REQUESTED
+  APPROVED
+  DENIED
+  REVOKED
+  EXPIRED
+}
+
+enum PlatformSupportAccessEventType {
+  REQUESTED
+  APPROVED
+  DENIED
+  REVOKED
+  EXPIRED
+  USED
+}
+
+enum PlatformIncidentEventType {
+  OPENED
+  SEVERITY_CHANGED
+  ACKNOWLEDGED
+  ASSIGNED
+  RESOLVED
+  AUTO_RESOLVED
+  REOPENED
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  REVOKED
+  EXPIRED
+}
+
+enum SecurityTokenType {
+  EMAIL_VERIFICATION
+  PASSWORD_RESET
+}
+
+enum VersionLifecycleStatus {
+  DRAFT
+  REVIEW_REQUIRED
+  APPROVED
+  APPLIED
+  SUPERSEDED
+  REJECTED
+  CANCELLED
+}
+
+enum ReviewTargetType {
+  REGISTRATION_DRAFT
+  QUANTITY_TAKEOFF
+  ESTIMATE
+  SCHEDULE
+  BASELINE
+  DAILY_WORK_PLAN
+  DAILY_REPORT
+  PROGRESS_VERIFICATION
+  RECOVERY_SCENARIO
+}
+
+enum ReviewTaskStatus {
+  DRAFT
+  REVIEW_REQUIRED
+  APPROVED
+  APPLIED
+  SUPERSEDED
+  REJECTED
+  CANCELLED
+}
+
+enum ReviewDecisionType {
+  SUBMIT
+  APPROVE
+  REJECT
+  CANCEL
+  APPLY
+  SUPERSEDE
+  CORRECT
+}
+
+enum OutboxEventStatus {
+  PENDING
+  PUBLISHED
+  FAILED
+  DEAD_LETTER
+}
+
+enum FileAssetStatus {
+  PENDING
+  AVAILABLE
+  QUARANTINED
+  DELETED
+}
+
+enum DesignDocumentType {
+  DRAWING
+  SPECIFICATION
+  BOQ
+  METHOD_STATEMENT
+  OTHER
+}
+
+enum SourceVerificationStatus {
+  UNVERIFIED
+  VERIFIED
+  REJECTED
+}
+
+enum StockMovementType {
+  RECEIPT
+  ISSUE
+  TRANSFER_IN
+  TRANSFER_OUT
+  ADJUSTMENT
+  REVERSAL
+}
+
+enum PhotoEvidenceStatus {
+  UPLOADED
+  VALIDATED
+  LINKED
+  REJECTED
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+  READ
+}
+
+enum AppliedCommandStatus {
+  APPLIED
+  REPLAYED
+}
+
+enum TenantLifecycleStatus {
+  PENDING_PAYMENT
+  ACTIVE
+  PAYMENT_GRACE
+  SUSPENDED
+  ARCHIVED
+}
+
+enum BillingProviderKind {
+  STRIPE
+  LEMON_SQUEEZY
+  PADDLE
+  MANUAL_INVOICE
+}
+
+enum SubscriptionStatus {
+  PENDING
+  TRIALING
+  ACTIVE
+  PAST_DUE
+  PAUSED
+  CANCELED
+  EXPIRED
+}
+
+enum BillingInterval {
+  MONTH
+  YEAR
+  CUSTOM
+}
+
+enum BillingEventProcessingStatus {
+  RECEIVED
+  PROCESSING
+  PROCESSED
+  IGNORED
+  FAILED
+}
+
+enum InvoiceStatus {
+  DRAFT
+  OPEN
+  PAID
+  VOID
+  UNCOLLECTIBLE
+  REFUNDED
+}
+
+enum CompanySignupIntentStatus {
+  PENDING_VERIFICATION
+  VERIFIED
+  CHECKOUT_STARTED
+  COMPLETED
+  EXPIRED
+  ABANDONED
+}
+
+model Tenant {
+  id                  String                       @id @default(cuid())
+  slug                String                       @unique
+  name                String
+  lifecycleStatus     TenantLifecycleStatus        @default(PENDING_PAYMENT)
+  accessChangedAt     DateTime?
+  accessReason        String?
+  createdAt           DateTime                     @default(now())
+  updatedAt           DateTime                     @updatedAt
+  projects            Project[]
+  workItems           WorkItem[]
+  dependencies        WorkItemDependency[]
+  snapshots           WorkItemSnapshot[]
+  costEntries         CostEntry[]
+  agentRuns           AgentRun[]
+  agentFeedback       AgentFeedback[]
+  agentUsageBudgets   AgentUsageBudget[]
+  registrationDrafts  RegistrationDraft[]
+  a3DocumentDrafts    A3DocumentDraft[]
+  users               User[]
+  invitations         TenantInvitation[]
+  materialCatalogs    MaterialCatalog[]
+  normCatalogs        NormCatalog[]
+  priceCatalogs       PriceCatalog[]
+  ruleCatalogs        RuleCatalog[]
+  approvalMatrices    ApprovalMatrix[]
+  auditLogs           AuditLog[]
+  outboxEvents        OutboxEvent[]
+  idempotencyRecords  IdempotencyRecord[]
+  appliedCommands     AppliedCommand[]
+  consumedEvents      ConsumedEvent[]
+  notifications       Notification[]
+  supportAccessGrants PlatformSupportAccessGrant[]
+  billingCustomer     BillingCustomer?
+  subscriptions       TenantSubscription[]
+  entitlementSnapshot TenantEntitlementSnapshot?
+  invoices            BillingInvoice[]
+
+  @@index([lifecycleStatus])
+}
+
+model Project {
+  id                  String                   @id @default(cuid())
+  tenantId            String
+  code                String
+  name                String
+  description         String?
+  location            String?
+  status              ProjectStatus            @default(PLANNED)
+  plannedStart        DateTime
+  plannedEnd          DateTime
+  budget              Decimal                  @db.Decimal(18, 2)
+  actualCost          Decimal                  @default(0) @db.Decimal(18, 2)
+  rowVersion          Int                      @default(1)
+  createdAt           DateTime                 @default(now())
+  updatedAt           DateTime                 @updatedAt
+  tenant              Tenant                   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  workItems           WorkItem[]
+  dependencies        WorkItemDependency[]
+  snapshots           WorkItemSnapshot[]
+  costEntries         CostEntry[]
+  agentRuns           AgentRun[]
+  agentFeedback       AgentFeedback[]
+  registrationDrafts  RegistrationDraft[]
+  a3DocumentDrafts    A3DocumentDraft[]
+  members             ProjectMember[]
+  fileAssets          FileAsset[]
+  designDocuments     DesignDocument[]
+  quantityVersions    QuantityTakeoffVersion[]
+  estimateVersions    EstimateVersion[]
+  scheduleVersions    ScheduleVersion[]
+  baselineVersions    BaselineVersion[]
+  crews               Crew[]
+  equipment           Equipment[]
+  dailyWorkPlans      DailyWorkPlan[]
+  dailyReports        DailyReport[]
+  stockMovements      StockMovement[]
+  verifications       ProgressVerification[]
+  dailyVariances      DailyVariance[]
+  forecastSnapshots   ForecastSnapshot[]
+  recoveryScenarios   RecoveryScenario[]
+  reviewTasks         ReviewTask[]
+  auditLogs           AuditLog[]
+  outboxEvents        OutboxEvent[]
+  idempotencyRecords  IdempotencyRecord[]
+  appliedCommands     AppliedCommand[]
+  notifications       Notification[]
+  agentToolReadModels AgentToolReadModel[]
+
+  @@unique([tenantId, code])
+  @@unique([tenantId, id])
+  @@index([tenantId, status])
+}
+
+model WorkItem {
+  id               String               @id @default(cuid())
+  tenantId         String
+  projectId        String
+  code             String
+  name             String
+  description      String?
+  assigneeName     String?
+  status           WorkItemStatus       @default(PLANNED)
+  priority         WorkItemPriority     @default(MEDIUM)
+  plannedStart     DateTime
+  plannedEnd       DateTime
+  actualStart      DateTime?
+  actualEnd        DateTime?
+  progressPercent  Int                  @default(0)
+  budget           Decimal              @db.Decimal(18, 2)
+  actualCost       Decimal              @default(0) @db.Decimal(18, 2)
+  isCritical       Boolean              @default(false)
+  createdAt        DateTime             @default(now())
+  updatedAt        DateTime             @updatedAt
+  tenant           Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project          Project              @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  predecessorLinks WorkItemDependency[] @relation("DependencyPredecessor")
+  successorLinks   WorkItemDependency[] @relation("DependencySuccessor")
+  snapshots        WorkItemSnapshot[]
+  costEntries      CostEntry[]
+
+  @@unique([projectId, code])
+  @@index([tenantId, projectId, status])
+  @@index([projectId, plannedEnd])
+}
+
+model WorkItemDependency {
+  id            String         @id @default(cuid())
+  tenantId      String
+  projectId     String
+  predecessorId String
+  successorId   String
+  type          DependencyType @default(FINISH_TO_START)
+  lagDays       Int            @default(0)
+  createdAt     DateTime       @default(now())
+  tenant        Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project       Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  predecessor   WorkItem       @relation("DependencyPredecessor", fields: [predecessorId], references: [id], onDelete: Cascade)
+  successor     WorkItem       @relation("DependencySuccessor", fields: [successorId], references: [id], onDelete: Cascade)
+
+  @@unique([predecessorId, successorId, type])
+  @@index([tenantId, projectId])
+  @@index([successorId])
+}
+
+model WorkItemSnapshot {
+  id              String         @id @default(cuid())
+  tenantId        String
+  projectId       String
+  workItemId      String
+  capturedAt      DateTime
+  status          WorkItemStatus
+  progressPercent Int
+  actualCost      Decimal        @db.Decimal(18, 2)
+  note            String?
+  tenant          Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project         Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  workItem        WorkItem       @relation(fields: [workItemId], references: [id], onDelete: Cascade)
+
+  @@unique([workItemId, capturedAt])
+  @@index([tenantId, projectId, capturedAt])
+}
+
+model CostEntry {
+  id          String       @id @default(cuid())
+  tenantId    String
+  projectId   String
+  workItemId  String
+  reference   String
+  occurredAt  DateTime
+  category    CostCategory
+  amount      Decimal      @db.Decimal(18, 2)
+  description String
+  createdAt   DateTime     @default(now())
+  tenant      Tenant       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project     Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  workItem    WorkItem     @relation(fields: [workItemId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, reference])
+  @@index([tenantId, projectId, occurredAt])
+  @@index([workItemId])
+}
+
+model AgentRun {
+  id                    String            @id @default(cuid())
+  tenantId              String
+  projectId             String
+  agentType             String
+  status                AgentRunStatus    @default(RUNNING)
+  trigger               String            @default("REQUEST")
+  requestId             String?
+  eventId               String?
+  promptVersion         String            @default("legacy")
+  toolBundleVersion     String            @default("legacy")
+  outputSchemaVersion   Int               @default(1)
+  provider              String
+  modelId               String
+  asOf                  DateTime
+  request               Json
+  researchText          String?
+  output                Json?
+  validation            Json?
+  inputTokens           Int               @default(0)
+  outputTokens          Int               @default(0)
+  cachedInputTokens     Int               @default(0)
+  reasoningTokens       Int               @default(0)
+  estimatedCostMicroUsd Int               @default(0)
+  actualCostMicroUsd    Int?
+  latencyMs             Int               @default(0)
+  retryCount            Int               @default(0)
+  failureCategory       String            @default("NONE")
+  traceId               String?
+  dataSnapshotVersion   String            @default("legacy")
+  outputSha256          String?
+  contentLoggingEnabled Boolean           @default(false)
+  errorMessage          String?
+  langfuseTraceId       String?
+  startedAt             DateTime          @default(now())
+  completedAt           DateTime?
+  tenant                Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project               Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  toolCalls             AgentToolCall[]
+  documentDrafts        A3DocumentDraft[]
+  feedback              AgentFeedback[]
+
+  @@index([tenantId, projectId, startedAt])
+  @@index([tenantId, requestId])
+  @@index([tenantId, eventId])
+  @@index([status, startedAt])
+  @@index([failureCategory, startedAt])
+  @@index([langfuseTraceId])
+  @@index([traceId])
+}
+
+model AgentToolCall {
+  id                    String              @id @default(cuid())
+  agentRunId            String
+  schemaVersion         Int                 @default(1)
+  stepNumber            Int
+  toolCallId            String
+  toolName              String
+  input                 Json
+  output                Json?
+  authorizedScopeSha256 String?
+  argumentsSha256       String?
+  rowCount              Int                 @default(0)
+  returnedRowCount      Int                 @default(0)
+  truncated             Boolean             @default(false)
+  outputSha256          String?
+  status                AgentToolCallStatus
+  failureCategory       String              @default("NONE")
+  errorMessage          String?
+  durationMs            Int?
+  occurredAt            DateTime            @default(now())
+  createdAt             DateTime            @default(now())
+  agentRun              AgentRun            @relation(fields: [agentRunId], references: [id], onDelete: Cascade)
+
+  @@unique([agentRunId, toolCallId])
+  @@index([agentRunId, stepNumber])
+  @@index([toolName, status, occurredAt])
+}
+
+model AgentFeedback {
+  id                  String    @id
+  agentRunId          String?
+  tenantId            String
+  projectId           String
+  agentType           String
+  feedbackType        String
+  artifactId          String
+  fieldPath           String?
+  beforeValue         Json?
+  afterValue          Json?
+  reason              String
+  category            String
+  reviewerId          String
+  reviewedAt          DateTime
+  promptVersion       String
+  modelVersion        String?
+  toolBundleVersion   String
+  dataSnapshotVersion String
+  regressionStatus    String
+  createdAt           DateTime  @default(now())
+  tenant              Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project             Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  agentRun            AgentRun? @relation(fields: [agentRunId], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, projectId, agentType, reviewedAt])
+  @@index([artifactId, reviewedAt])
+  @@index([regressionStatus, reviewedAt])
+}
+
+model AgentUsageBudget {
+  tenantId     String
+  month        String
+  usedMicroUsd Int      @default(0)
+  updatedAt    DateTime @updatedAt
+  tenant       Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@id([tenantId, month])
+  @@index([month, usedMicroUsd])
+}
+
+model RegistrationDraft {
+  id                  String                  @id
+  requestId           String                  @unique
+  tenantId            String
+  projectId           String?
+  sourceType          RegistrationSourceType
+  sourceText          String?
+  sourceImage         Bytes?
+  sourceFileName      String?
+  sourceMediaType     String?
+  sourceImageMetadata Json?
+  sourceSha256        String
+  referenceDate       DateTime
+  status              RegistrationDraftStatus @default(PROCESSING)
+  rowVersion          Int                     @default(1)
+  provider            String
+  modelId             String
+  structuredData      Json?
+  confidence          Json?
+  validation          Json?
+  errorMessage        String?
+  createdAt           DateTime                @default(now())
+  updatedAt           DateTime                @updatedAt
+  completedAt         DateTime?
+  reviewedAt          DateTime?
+  tenant              Tenant                  @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project             Project?                @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  @@index([tenantId, status, createdAt])
+  @@index([projectId, createdAt])
+  @@index([sourceSha256])
+}
+
+model A3DocumentDraft {
+  id           String                @id
+  requestId    String
+  tenantId     String
+  projectId    String
+  agentRunId   String?
+  type         A3DocumentType
+  status       A3DocumentDraftStatus @default(PENDING_APPROVAL)
+  title        String
+  content      Json
+  sourceAsOf   DateTime
+  trigger      String
+  artifactPath String?
+  reviewedBy   String?
+  reviewNote   String?
+  createdAt    DateTime              @default(now())
+  updatedAt    DateTime              @updatedAt
+  reviewedAt   DateTime?
+  tenant       Tenant                @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project      Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  agentRun     AgentRun?             @relation(fields: [agentRunId], references: [id], onDelete: SetNull)
+
+  @@unique([tenantId, projectId, requestId, type])
+  @@index([tenantId, projectId, status, createdAt])
+  @@index([agentRunId])
+}
+
+model User {
+  id                   String                @id @default(cuid())
+  tenantId             String
+  email                String
+  emailNormalized      String
+  displayName          String
+  tenantRole           IdentityRole          @default(OBSERVER)
+  status               IdentityUserStatus    @default(INVITED)
+  emailVerifiedAt      DateTime?
+  lastLoginAt          DateTime?
+  tokenVersion         Int                   @default(1)
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  deletedAt            DateTime?
+  tenant               Tenant                @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  credential           UserCredential?
+  memberships          ProjectMember[]
+  refreshSessions      RefreshSession[]
+  securityTokens       SecurityToken[]
+  invitationsSent      TenantInvitation[]    @relation("InvitationSender")
+  invitationsAccepted  TenantInvitation[]    @relation("InvitationAcceptor")
+  uploadedFiles        FileAsset[]
+  artifactAccessGrants ArtifactAccessGrant[]
+
+  @@unique([tenantId, emailNormalized])
+  @@unique([tenantId, id])
+  @@index([tenantId, status])
+  // Sign-in resolves the tenant from the email alone, so this lookup crosses
+  // tenants and cannot use the composite unique index above.
+  @@index([emailNormalized])
+}
+
+model UserCredential {
+  userId            String    @id
+  passwordHash      String
+  passwordChangedAt DateTime  @default(now())
+  failedLoginCount  Int       @default(0)
+  lockedUntil       DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Platform operators are intentionally not tenant users. Keeping this
+// identity graph separate prevents a platform token from becoming an implicit
+// tenant/project wildcard and gives Control Tower actions their own audit
+// trail. See ADR 0017.
+model PlatformPrincipal {
+  id                     String                       @id @default(cuid())
+  email                  String
+  emailNormalized        String                       @unique
+  displayName            String
+  role                   PlatformRole                 @default(PLATFORM_AUDITOR)
+  status                 IdentityUserStatus           @default(ACTIVE)
+  tokenVersion           Int                          @default(1)
+  lastLoginAt            DateTime?
+  /// Set once a second factor is enrolled. Production refuses platform sign-in
+  /// while this is null, so the console cannot ship without MFA behind it.
+  mfaEnrolledAt          DateTime?
+  createdAt              DateTime                     @default(now())
+  updatedAt              DateTime                     @updatedAt
+  credential             PlatformCredential?
+  refreshSessions        PlatformRefreshSession[]
+  auditLogs              PlatformAuditLog[]           @relation("PlatformAuditActor")
+  acknowledgedIncidents  PlatformIncident[]           @relation("PlatformIncidentAcknowledger")
+  assignedIncidents      PlatformIncident[]           @relation("PlatformIncidentAssignee")
+  resolvedIncidents      PlatformIncident[]           @relation("PlatformIncidentResolver")
+  incidentEvents         PlatformIncidentEvent[]      @relation("PlatformIncidentEventActor")
+  requestedSupportGrants PlatformSupportAccessGrant[] @relation("PlatformSupportRequester")
+  approvedSupportGrants  PlatformSupportAccessGrant[] @relation("PlatformSupportApprover")
+  revokedSupportGrants   PlatformSupportAccessGrant[] @relation("PlatformSupportRevoker")
+  supportAccessEvents    PlatformSupportAccessEvent[] @relation("PlatformSupportEventActor")
+
+  @@index([status, role])
+  @@index([mfaEnrolledAt])
+}
+
+model PlatformCredential {
+  principalId       String            @id
+  passwordHash      String
+  passwordChangedAt DateTime          @default(now())
+  failedLoginCount  Int               @default(0)
+  lockedUntil       DateTime?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  principal         PlatformPrincipal @relation(fields: [principalId], references: [id], onDelete: Cascade)
+}
+
+model PlatformRefreshSession {
+  id              String            @id @default(cuid())
+  principalId     String
+  familyId        String
+  tokenHash       String            @unique
+  parentSessionId String?
+  replacedById    String?
+  deviceName      String?
+  userAgent       String?
+  ipAddressHash   String?
+  expiresAt       DateTime
+  lastUsedAt      DateTime?
+  revokedAt       DateTime?
+  reuseDetectedAt DateTime?
+  createdAt       DateTime          @default(now())
+  principal       PlatformPrincipal @relation(fields: [principalId], references: [id], onDelete: Cascade)
+
+  @@index([principalId, expiresAt])
+  @@index([familyId])
+}
+
+model PlatformAuditLog {
+  id               String              @id @default(cuid())
+  actorPrincipalId String?
+  actorRole        PlatformRole?
+  tenantId         String?
+  action           String
+  entityType       String
+  entityId         String
+  result           PlatformAuditResult @default(SUCCESS)
+  reason           String?
+  correlationId    String
+  sourceVersion    String?
+  beforeHash       String?
+  afterHash        String?
+  metadata         Json
+  occurredAt       DateTime            @default(now())
+  actor            PlatformPrincipal?  @relation("PlatformAuditActor", fields: [actorPrincipalId], references: [id], onDelete: SetNull)
+
+  @@index([actorPrincipalId, occurredAt])
+  @@index([correlationId])
+  @@index([action, occurredAt])
+  @@index([occurredAt])
+  @@index([occurredAt, id])
+  @@index([tenantId, occurredAt])
+}
+
+/// One row per deduplicated platform signal. The alert evaluator upserts by
+/// `signalId`, so a rule that keeps firing stays a single incident with history
+/// rather than becoming a new row on every evaluation.
+model PlatformIncident {
+  id                String                   @id @default(cuid())
+  signalId          String                   @unique
+  ruleKey           String
+  ruleVersion       String
+  severity          PlatformIncidentSeverity
+  state             PlatformIncidentState    @default(OPEN)
+  title             String
+  impact            String
+  recommendedAction String
+  diagnosticsHref   String
+  tenantId          String?
+  tenantName        String?
+  agentType         String?
+  component         String?
+  evidence          Json
+  firstEvidenceAt   DateTime?
+  lastEvidenceAt    DateTime
+  openedAt          DateTime                 @default(now())
+  acknowledgedAt    DateTime?
+  acknowledgedById  String?
+  assignedToId      String?
+  assignedAt        DateTime?
+  resolvedAt        DateTime?
+  resolvedById      String?
+  resolutionNote    String?
+  autoResolvedAt    DateTime?
+  reopenCount       Int                      @default(0)
+  rowVersion        Int                      @default(1)
+  createdAt         DateTime                 @default(now())
+  updatedAt         DateTime                 @updatedAt
+  acknowledgedBy    PlatformPrincipal?       @relation("PlatformIncidentAcknowledger", fields: [acknowledgedById], references: [id], onDelete: SetNull)
+  assignedTo        PlatformPrincipal?       @relation("PlatformIncidentAssignee", fields: [assignedToId], references: [id], onDelete: SetNull)
+  resolvedBy        PlatformPrincipal?       @relation("PlatformIncidentResolver", fields: [resolvedById], references: [id], onDelete: SetNull)
+  events            PlatformIncidentEvent[]
+
+  @@index([state, severity, lastEvidenceAt])
+  @@index([tenantId, state])
+  @@index([agentType, state])
+  @@index([openedAt])
+}
+
+/// Append-only lifecycle history. A resolved incident keeps every transition so
+/// an auto-resolve followed by a reopen is still explainable months later.
+model PlatformIncidentEvent {
+  id               String                    @id @default(cuid())
+  incidentId       String
+  type             PlatformIncidentEventType
+  fromState        PlatformIncidentState?
+  toState          PlatformIncidentState
+  actorPrincipalId String?
+  actorRole        PlatformRole?
+  reason           String?
+  note             String?
+  correlationId    String
+  /// Set on operator-driven transitions so a retried request replays the
+  /// original event instead of writing a second one.
+  idempotencyKey   String?
+  metadata         Json
+  occurredAt       DateTime                  @default(now())
+  incident         PlatformIncident          @relation(fields: [incidentId], references: [id], onDelete: Cascade)
+  actor            PlatformPrincipal?        @relation("PlatformIncidentEventActor", fields: [actorPrincipalId], references: [id], onDelete: SetNull)
+
+  @@unique([incidentId, idempotencyKey])
+  @@index([incidentId, occurredAt])
+  @@index([correlationId])
+}
+
+/// Persisted offline evaluation history. `EvalCase` holds the case catalogue;
+/// this holds what actually happened when a suite was run against a release,
+/// which is what makes a quality trend possible at all.
+model PlatformEvaluationRun {
+  id                String   @id @default(cuid())
+  suiteKey          String
+  suiteVersion      String
+  agentType         String
+  agentRelease      String
+  promptVersion     String
+  toolBundleVersion String
+  provider          String
+  modelId           String
+  caseCount         Int
+  passedCount       Int
+  failedCount       Int
+  skippedCount      Int      @default(0)
+  startedAt         DateTime
+  completedAt       DateTime
+  /// CI run, commit or script identity the result came from.
+  sourceRef         String?
+  createdAt         DateTime @default(now())
+
+  @@unique([suiteKey, suiteVersion, agentRelease, startedAt])
+  @@index([agentType, completedAt])
+  @@index([suiteKey, suiteVersion, completedAt])
+  @@index([completedAt])
+}
+
+/// Time-boxed, read-only, masked access a platform operator may be granted into
+/// one tenant. There is no silent impersonation: a grant is requested, approved
+/// by a second person, expires on its own and leaves an append-only trail.
+model PlatformSupportAccessGrant {
+  id                String                       @id @default(cuid())
+  ticketReference   String
+  reason            String
+  tenantId          String
+  projectId         String?
+  allowedOperations String[]
+  /// Always true today: the grant never unmasks tenant content.
+  maskedOnly        Boolean                      @default(true)
+  state             PlatformSupportAccessState   @default(REQUESTED)
+  requestedById     String
+  requestedAt       DateTime                     @default(now())
+  approvedById      String?
+  approvedAt        DateTime?
+  startsAt          DateTime?
+  expiresAt         DateTime
+  decisionReason    String?
+  revokedById       String?
+  revokedAt         DateTime?
+  useCount          Int                          @default(0)
+  lastUsedAt        DateTime?
+  rowVersion        Int                          @default(1)
+  createdAt         DateTime                     @default(now())
+  updatedAt         DateTime                     @updatedAt
+  tenant            Tenant                       @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  requestedBy       PlatformPrincipal            @relation("PlatformSupportRequester", fields: [requestedById], references: [id], onDelete: Restrict)
+  approvedBy        PlatformPrincipal?           @relation("PlatformSupportApprover", fields: [approvedById], references: [id], onDelete: SetNull)
+  revokedBy         PlatformPrincipal?           @relation("PlatformSupportRevoker", fields: [revokedById], references: [id], onDelete: SetNull)
+  events            PlatformSupportAccessEvent[]
+
+  @@index([state, expiresAt])
+  @@index([tenantId, state])
+  @@index([requestedById, requestedAt])
+  @@index([requestedAt])
+}
+
+/// Append-only history for a support access grant.
+model PlatformSupportAccessEvent {
+  id               String                         @id @default(cuid())
+  grantId          String
+  type             PlatformSupportAccessEventType
+  fromState        PlatformSupportAccessState?
+  toState          PlatformSupportAccessState
+  actorPrincipalId String?
+  actorRole        PlatformRole?
+  reason           String?
+  correlationId    String
+  idempotencyKey   String?
+  metadata         Json
+  occurredAt       DateTime                       @default(now())
+  grant            PlatformSupportAccessGrant     @relation(fields: [grantId], references: [id], onDelete: Cascade)
+  actor            PlatformPrincipal?             @relation("PlatformSupportEventActor", fields: [actorPrincipalId], references: [id], onDelete: SetNull)
+
+  @@unique([grantId, idempotencyKey])
+  @@index([grantId, occurredAt])
+  @@index([correlationId])
+}
+
+model TenantInvitation {
+  id               String           @id @default(cuid())
+  tenantId         String
+  emailNormalized  String
+  role             IdentityRole
+  projectIds       String[]
+  tokenHash        String           @unique
+  status           InvitationStatus @default(PENDING)
+  expiresAt        DateTime
+  invitedByUserId  String
+  acceptedByUserId String?
+  acceptedAt       DateTime?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  tenant           Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  invitedBy        User             @relation("InvitationSender", fields: [tenantId, invitedByUserId], references: [tenantId, id], onDelete: Restrict)
+  acceptedBy       User?            @relation("InvitationAcceptor", fields: [tenantId, acceptedByUserId], references: [tenantId, id], onDelete: Restrict)
+
+  @@index([tenantId, emailNormalized, status])
+  @@index([tenantId, expiresAt])
+}
+
+model ProjectMember {
+  id        String       @id @default(cuid())
+  tenantId  String
+  projectId String
+  userId    String
+  role      IdentityRole
+  active    Boolean      @default(true)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  project   Project      @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  user      User         @relation(fields: [tenantId, userId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([tenantId, projectId, role, active])
+  @@index([tenantId, userId, active])
+}
+
+model RefreshSession {
+  id              String    @id @default(cuid())
+  tenantId        String
+  userId          String
+  familyId        String
+  tokenHash       String    @unique
+  parentSessionId String?
+  replacedById    String?
+  deviceName      String?
+  userAgent       String?
+  ipAddressHash   String?
+  expiresAt       DateTime
+  lastUsedAt      DateTime?
+  revokedAt       DateTime?
+  reuseDetectedAt DateTime?
+  createdAt       DateTime  @default(now())
+  user            User      @relation(fields: [tenantId, userId], references: [tenantId, id], onDelete: Cascade)
+
+  @@index([tenantId, userId, expiresAt])
+  @@index([tenantId, familyId])
+}
+
+model SecurityToken {
+  id         String            @id @default(cuid())
+  tenantId   String
+  userId     String
+  type       SecurityTokenType
+  tokenHash  String            @unique
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime          @default(now())
+  user       User              @relation(fields: [tenantId, userId], references: [tenantId, id], onDelete: Cascade)
+
+  @@index([tenantId, userId, type, expiresAt])
+}
+
+model FileAsset {
+  id               String                @id @default(cuid())
+  tenantId         String
+  projectId        String
+  bucket           String
+  objectKey        String
+  originalFileName String
+  mediaType        String
+  sizeBytes        Int
+  sha256           String
+  status           FileAssetStatus       @default(PENDING)
+  uploadedByUserId String
+  retentionUntil   DateTime?
+  createdAt        DateTime              @default(now())
+  updatedAt        DateTime              @updatedAt
+  deletedAt        DateTime?
+  project          Project               @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  uploadedBy       User                  @relation(fields: [tenantId, uploadedByUserId], references: [tenantId, id], onDelete: Restrict)
+  designDocuments  DesignDocument[]
+  sourceRefs       ElementSourceRef[]
+  accessGrants     ArtifactAccessGrant[]
+  photoEvidence    PhotoEvidence[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([tenantId, projectId, objectKey])
+  @@index([tenantId, projectId, status, createdAt])
+  @@index([sha256])
+}
+
+model ArtifactAccessGrant {
+  id          String    @id @default(cuid())
+  tenantId    String
+  projectId   String
+  fileAssetId String
+  userId      String
+  nonceHash   String    @unique
+  expiresAt   DateTime
+  revokedAt   DateTime?
+  createdAt   DateTime  @default(now())
+  fileAsset   FileAsset @relation(fields: [tenantId, projectId, fileAssetId], references: [tenantId, projectId, id], onDelete: Cascade)
+  user        User      @relation(fields: [tenantId, userId], references: [tenantId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, userId, expiresAt])
+}
+
+model DesignDocument {
+  id                String                 @id @default(cuid())
+  tenantId          String
+  projectId         String
+  fileAssetId       String
+  documentCode      String
+  title             String
+  type              DesignDocumentType
+  classification    Json?
+  status            VersionLifecycleStatus @default(DRAFT)
+  currentRevisionId String?
+  rowVersion        Int                    @default(1)
+  createdByUserId   String
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+  deletedAt         DateTime?
+  project           Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  fileAsset         FileAsset              @relation(fields: [tenantId, projectId, fileAssetId], references: [tenantId, projectId, id], onDelete: Restrict)
+  revisions         DrawingRevision[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, documentCode])
+  @@index([tenantId, projectId, status])
+}
+
+model DrawingRevision {
+  id               String                 @id @default(cuid())
+  tenantId         String
+  projectId        String
+  documentId       String
+  revisionCode     String
+  revisionNumber   Int
+  status           VersionLifecycleStatus @default(DRAFT)
+  issuedAt         DateTime?
+  effectiveFrom    DateTime?
+  supersedesId     String?
+  sourceSha256     String
+  approvedAt       DateTime?
+  approvedByUserId String?
+  createdAt        DateTime               @default(now())
+  document         DesignDocument         @relation(fields: [tenantId, projectId, documentId], references: [tenantId, projectId, id], onDelete: Cascade)
+  pages            DrawingPage[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([documentId, revisionCode])
+  @@index([tenantId, projectId, status, effectiveFrom])
+}
+
+model DrawingPage {
+  id              String          @id @default(cuid())
+  tenantId        String
+  projectId       String
+  revisionId      String
+  pageNumber      Int
+  pageLabel       String?
+  widthPoints     Decimal?        @db.Decimal(18, 6)
+  heightPoints    Decimal?        @db.Decimal(18, 6)
+  rasterObjectKey String?
+  createdAt       DateTime        @default(now())
+  revision        DrawingRevision @relation(fields: [tenantId, projectId, revisionId], references: [tenantId, projectId, id], onDelete: Cascade)
+  scales          DrawingScale[]
+  elements        DesignElement[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([revisionId, pageNumber])
+  @@index([tenantId, projectId, revisionId])
+}
+
+model DrawingScale {
+  id               String                   @id @default(cuid())
+  tenantId         String
+  projectId        String
+  pageId           String
+  scaleText        String?
+  drawingDistance  Decimal                  @db.Decimal(18, 6)
+  realDistance     Decimal                  @db.Decimal(18, 6)
+  unit             String
+  status           SourceVerificationStatus @default(UNVERIFIED)
+  verifiedByUserId String?
+  verifiedAt       DateTime?
+  sourceHash       String
+  createdAt        DateTime                 @default(now())
+  page             DrawingPage              @relation(fields: [tenantId, projectId, pageId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([tenantId, projectId, id])
+  @@index([tenantId, projectId, pageId, status])
+}
+
+model DesignElement {
+  id                 String                   @id @default(cuid())
+  tenantId           String
+  projectId          String
+  pageId             String
+  elementType        String
+  elementCode        String?
+  label              String?
+  properties         Json
+  confidence         Decimal?                 @db.Decimal(5, 4)
+  verificationStatus SourceVerificationStatus @default(UNVERIFIED)
+  reviewedByUserId   String?
+  reviewedAt         DateTime?
+  createdAt          DateTime                 @default(now())
+  page               DrawingPage              @relation(fields: [tenantId, projectId, pageId], references: [tenantId, projectId, id], onDelete: Cascade)
+  geometry           ElementGeometry?
+  sourceRefs         ElementSourceRef[]
+
+  @@unique([tenantId, projectId, id])
+  @@index([tenantId, projectId, pageId, elementType])
+}
+
+model ElementGeometry {
+  id           String        @id @default(cuid())
+  tenantId     String
+  projectId    String
+  elementId    String
+  geometryType String
+  coordinates  Json
+  unit         String?
+  area         Decimal?      @db.Decimal(18, 6)
+  length       Decimal?      @db.Decimal(18, 6)
+  volume       Decimal?      @db.Decimal(18, 6)
+  element      DesignElement @relation(fields: [tenantId, projectId, elementId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([tenantId, projectId, elementId])
+}
+
+model ElementSourceRef {
+  id           String        @id @default(cuid())
+  tenantId     String
+  projectId    String
+  elementId    String
+  fileAssetId  String
+  pageNumber   Int?
+  region       Json?
+  sourceSha256 String
+  createdAt    DateTime      @default(now())
+  element      DesignElement @relation(fields: [tenantId, projectId, elementId], references: [tenantId, projectId, id], onDelete: Cascade)
+  fileAsset    FileAsset     @relation(fields: [tenantId, projectId, fileAssetId], references: [tenantId, projectId, id], onDelete: Restrict)
+
+  @@unique([elementId, fileAssetId, sourceSha256])
+  @@index([tenantId, projectId, elementId])
+}
+
+model QuantityTakeoffVersion {
+  id                String                 @id @default(cuid())
+  tenantId          String
+  projectId         String
+  versionNumber     Int
+  status            VersionLifecycleStatus @default(DRAFT)
+  sourceRevisionIds String[]
+  formulaVersion    String
+  sourceHash        String
+  totalQuantityHash String
+  createdByUserId   String
+  approvedByUserId  String?
+  approvedAt        DateTime?
+  supersedesId      String?
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+  project           Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  items             QuantityTakeoffItem[]
+  baselineVersions  BaselineVersion[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, versionNumber])
+  @@index([tenantId, projectId, status, createdAt])
+}
+
+model QuantityTakeoffItem {
+  id                 String                   @id @default(cuid())
+  tenantId           String
+  projectId          String
+  versionId          String
+  designElementId    String?
+  workCode           String
+  description        String
+  unit               String
+  quantity           Decimal                  @db.Decimal(24, 8)
+  formulaCode        String
+  formulaInputs      Json
+  sourceRefs         Json
+  verificationStatus SourceVerificationStatus @default(UNVERIFIED)
+  createdAt          DateTime                 @default(now())
+  version            QuantityTakeoffVersion   @relation(fields: [tenantId, projectId, versionId], references: [tenantId, projectId, id], onDelete: Cascade)
+  adjustments        TakeoffAdjustment[]
+
+  @@unique([tenantId, projectId, id])
+  @@index([tenantId, projectId, versionId, workCode])
+  @@index([designElementId])
+}
+
+model TakeoffAdjustment {
+  id              String              @id @default(cuid())
+  tenantId        String
+  projectId       String
+  itemId          String
+  adjustmentType  String
+  quantityDelta   Decimal             @db.Decimal(24, 8)
+  reason          String
+  sourceRef       Json
+  createdByUserId String
+  createdAt       DateTime            @default(now())
+  item            QuantityTakeoffItem @relation(fields: [tenantId, projectId, itemId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, itemId])
+}
+
+model MaterialCatalog {
+  id          String                   @id @default(cuid())
+  tenantId    String
+  code        String
+  name        String
+  description String?
+  createdAt   DateTime                 @default(now())
+  updatedAt   DateTime                 @updatedAt
+  tenant      Tenant                   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  versions    MaterialCatalogVersion[]
+
+  @@unique([tenantId, code])
+  @@unique([tenantId, id])
+  @@index([tenantId, createdAt])
+}
+
+model MaterialCatalogVersion {
+  id               String                 @id @default(cuid())
+  tenantId         String
+  catalogId        String
+  versionNumber    Int
+  status           VersionLifecycleStatus @default(DRAFT)
+  effectiveFrom    DateTime
+  effectiveTo      DateTime?
+  sourceReference  String
+  sourceHash       String
+  approvedByUserId String?
+  approvedAt       DateTime?
+  createdAt        DateTime               @default(now())
+  catalog          MaterialCatalog        @relation(fields: [tenantId, catalogId], references: [tenantId, id], onDelete: Cascade)
+  materials        MaterialItem[]
+
+  @@unique([tenantId, id])
+  @@unique([catalogId, versionNumber])
+  @@index([tenantId, status, effectiveFrom])
+}
+
+model MaterialItem {
+  id               String                 @id @default(cuid())
+  tenantId         String
+  catalogVersionId String
+  code             String
+  canonicalName    String
+  unit             String
+  specification    Json?
+  active           Boolean                @default(true)
+  catalogVersion   MaterialCatalogVersion @relation(fields: [tenantId, catalogVersionId], references: [tenantId, id], onDelete: Cascade)
+  aliases          MaterialAlias[]
+  workNorms        WorkNorm[]
+  priceEntries     PriceCatalogEntry[]
+  planMaterials    DailyPlanMaterial[]
+  stockMovements   StockMovement[]
+
+  @@unique([tenantId, id])
+  @@unique([catalogVersionId, code])
+  @@index([tenantId, canonicalName])
+}
+
+model MaterialAlias {
+  id              String       @id @default(cuid())
+  tenantId        String
+  materialItemId  String
+  aliasNormalized String
+  language        String?
+  material        MaterialItem @relation(fields: [tenantId, materialItemId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, aliasNormalized])
+  @@index([tenantId, materialItemId])
+}
+
+model NormCatalog {
+  id        String               @id @default(cuid())
+  tenantId  String
+  code      String
+  name      String
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+  tenant    Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  versions  NormCatalogVersion[]
+
+  @@unique([tenantId, code])
+  @@unique([tenantId, id])
+}
+
+model NormCatalogVersion {
+  id                String                 @id @default(cuid())
+  tenantId          String
+  catalogId         String
+  versionNumber     Int
+  status            VersionLifecycleStatus @default(DRAFT)
+  effectiveFrom     DateTime
+  effectiveTo       DateTime?
+  sourceReference   String
+  sourceHash        String
+  approvedByUserId  String?
+  approvedAt        DateTime?
+  createdAt         DateTime               @default(now())
+  catalog           NormCatalog            @relation(fields: [tenantId, catalogId], references: [tenantId, id], onDelete: Cascade)
+  workNorms         WorkNorm[]
+  productivityRates ProductivityRate[]
+
+  @@unique([tenantId, id])
+  @@unique([catalogId, versionNumber])
+  @@index([tenantId, status, effectiveFrom])
+}
+
+model WorkNorm {
+  id                String             @id @default(cuid())
+  tenantId          String
+  normVersionId     String
+  workCode          String
+  materialItemId    String
+  outputUnit        String
+  materialUnit      String
+  quantityPerOutput Decimal            @db.Decimal(24, 8)
+  wastePercent      Decimal            @default(0) @db.Decimal(9, 6)
+  assumptions       Json?
+  normVersion       NormCatalogVersion @relation(fields: [tenantId, normVersionId], references: [tenantId, id], onDelete: Cascade)
+  material          MaterialItem       @relation(fields: [tenantId, materialItemId], references: [tenantId, id], onDelete: Restrict)
+
+  @@unique([normVersionId, workCode, materialItemId])
+  @@index([tenantId, workCode])
+}
+
+model ProductivityRate {
+  id                String             @id @default(cuid())
+  tenantId          String
+  normVersionId     String
+  workCode          String
+  outputUnit        String
+  crewType          String
+  outputPerCrewHour Decimal            @db.Decimal(24, 8)
+  crewSize          Int
+  assumptions       Json?
+  normVersion       NormCatalogVersion @relation(fields: [tenantId, normVersionId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([normVersionId, workCode, crewType])
+  @@index([tenantId, workCode])
+}
+
+/// Хугацаа хэтрэлт, зардал, бүтээмж зэрэг threshold-харьцуулалттай дүрэм тус бүрийн
+/// (жишээ нь COST_AHEAD_OF_PROGRESS) хувилбарлагдсан GoRules JDM graph.
+/// evaluateProductionRules нь TS дээр тооцсон fact-уудыг ACTIVE (APPLIED) хувилбар руу
+/// дамжуулж threshold/severity шийдвэрийг гаргуулна; мөнгө/CPM тооцоо JDM руу орохгүй.
+model RuleCatalog {
+  id        String               @id @default(cuid())
+  tenantId  String
+  ruleId    String
+  name      String
+  createdAt DateTime             @default(now())
+  updatedAt DateTime             @updatedAt
+  tenant    Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  versions  RuleCatalogVersion[]
+
+  @@unique([tenantId, ruleId])
+  @@unique([tenantId, id])
+}
+
+model RuleCatalogVersion {
+  id               String                 @id @default(cuid())
+  tenantId         String
+  catalogId        String
+  versionNumber    Int
+  status           VersionLifecycleStatus @default(DRAFT)
+  jdmGraph         Json
+  createdByUserId  String
+  approvedByUserId String?
+  approvedAt       DateTime?
+  createdAt        DateTime               @default(now())
+  catalog          RuleCatalog            @relation(fields: [tenantId, catalogId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, id])
+  @@unique([catalogId, versionNumber])
+  @@index([tenantId, status])
+}
+
+model PriceCatalog {
+  id        String                @id @default(cuid())
+  tenantId  String
+  code      String
+  name      String
+  currency  String
+  createdAt DateTime              @default(now())
+  updatedAt DateTime              @updatedAt
+  tenant    Tenant                @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  versions  PriceCatalogVersion[]
+
+  @@unique([tenantId, code])
+  @@unique([tenantId, id])
+}
+
+model PriceCatalogVersion {
+  id               String                 @id @default(cuid())
+  tenantId         String
+  catalogId        String
+  versionNumber    Int
+  status           VersionLifecycleStatus @default(DRAFT)
+  effectiveFrom    DateTime
+  effectiveTo      DateTime?
+  sourceReference  String
+  sourceHash       String
+  approvedByUserId String?
+  approvedAt       DateTime?
+  createdAt        DateTime               @default(now())
+  catalog          PriceCatalog           @relation(fields: [tenantId, catalogId], references: [tenantId, id], onDelete: Cascade)
+  entries          PriceCatalogEntry[]
+
+  @@unique([tenantId, id])
+  @@unique([catalogId, versionNumber])
+  @@index([tenantId, status, effectiveFrom])
+}
+
+model PriceCatalogEntry {
+  id               String              @id @default(cuid())
+  tenantId         String
+  catalogVersionId String
+  materialItemId   String
+  unit             String
+  unitPrice        Decimal             @db.Decimal(24, 6)
+  currency         String
+  supplierName     String?
+  quotationRef     String?
+  validFrom        DateTime
+  validTo          DateTime?
+  catalogVersion   PriceCatalogVersion @relation(fields: [tenantId, catalogVersionId], references: [tenantId, id], onDelete: Cascade)
+  material         MaterialItem        @relation(fields: [tenantId, materialItemId], references: [tenantId, id], onDelete: Restrict)
+
+  @@unique([catalogVersionId, materialItemId, validFrom])
+  @@index([tenantId, materialItemId, validFrom])
+}
+
+model EstimateVersion {
+  id                    String                 @id @default(cuid())
+  tenantId              String
+  projectId             String
+  versionNumber         Int
+  quantityVersionId     String
+  normCatalogVersionId  String
+  priceCatalogVersionId String
+  status                VersionLifecycleStatus @default(DRAFT)
+  currency              String
+  subtotal              Decimal                @db.Decimal(24, 2)
+  taxAmount             Decimal                @db.Decimal(24, 2)
+  contingencyAmount     Decimal                @db.Decimal(24, 2)
+  totalAmount           Decimal                @db.Decimal(24, 2)
+  sourceHash            String
+  createdByUserId       String
+  approvedByUserId      String?
+  approvedAt            DateTime?
+  supersedesId          String?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  project               Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  lines                 EstimateLine[]
+  assumptions           EstimateAssumption[]
+  scenarios             EstimateScenario[]
+  baselineVersions      BaselineVersion[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, versionNumber])
+  @@index([tenantId, projectId, status, createdAt])
+}
+
+model EstimateLine {
+  id                String          @id @default(cuid())
+  tenantId          String
+  projectId         String
+  estimateVersionId String
+  lineCode          String
+  category          String
+  description       String
+  quantity          Decimal         @db.Decimal(24, 8)
+  unit              String
+  unitPrice         Decimal         @db.Decimal(24, 6)
+  amount            Decimal         @db.Decimal(24, 2)
+  sourceRefs        Json
+  estimate          EstimateVersion @relation(fields: [tenantId, projectId, estimateVersionId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([estimateVersionId, lineCode])
+  @@index([tenantId, projectId, estimateVersionId, category])
+}
+
+model EstimateAssumption {
+  id                String          @id @default(cuid())
+  tenantId          String
+  projectId         String
+  estimateVersionId String
+  assumptionCode    String
+  value             Json
+  sourceRef         Json
+  estimate          EstimateVersion @relation(fields: [tenantId, projectId, estimateVersionId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([estimateVersionId, assumptionCode])
+  @@index([tenantId, projectId, estimateVersionId])
+}
+
+model EstimateScenario {
+  id                String          @id @default(cuid())
+  tenantId          String
+  projectId         String
+  estimateVersionId String
+  name              String
+  parameters        Json
+  totalAmount       Decimal         @db.Decimal(24, 2)
+  createdAt         DateTime        @default(now())
+  estimate          EstimateVersion @relation(fields: [tenantId, projectId, estimateVersionId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, estimateVersionId])
+}
+
+model ScheduleVersion {
+  id               String                 @id @default(cuid())
+  tenantId         String
+  projectId        String
+  versionNumber    Int
+  status           VersionLifecycleStatus @default(DRAFT)
+  calendarVersion  String
+  timezone         String
+  plannedStart     DateTime
+  plannedFinish    DateTime
+  sourceHash       String
+  createdByUserId  String
+  approvedByUserId String?
+  approvedAt       DateTime?
+  supersedesId     String?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+  project          Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  activities       ScheduleActivity[]
+  baselineVersions BaselineVersion[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, versionNumber])
+  @@index([tenantId, projectId, status, createdAt])
+}
+
+model ScheduleActivity {
+  id                   String                @id @default(cuid())
+  tenantId             String
+  projectId            String
+  scheduleVersionId    String
+  workItemId           String?
+  code                 String
+  name                 String
+  plannedStart         DateTime
+  plannedFinish        DateTime
+  durationMinutes      Int
+  totalFloatMinutes    Int
+  isCritical           Boolean               @default(false)
+  quantity             Decimal?              @db.Decimal(24, 8)
+  unit                 String?
+  schedule             ScheduleVersion       @relation(fields: [tenantId, projectId, scheduleVersionId], references: [tenantId, projectId, id], onDelete: Cascade)
+  predecessorLinks     ScheduleDependency[]  @relation("SchedulePredecessor")
+  successorLinks       ScheduleDependency[]  @relation("ScheduleSuccessor")
+  resourceRequirements ResourceRequirement[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([scheduleVersionId, code])
+  @@index([tenantId, projectId, scheduleVersionId, isCritical])
+}
+
+model ScheduleDependency {
+  id                String           @id @default(cuid())
+  tenantId          String
+  projectId         String
+  scheduleVersionId String
+  predecessorId     String
+  successorId       String
+  type              DependencyType   @default(FINISH_TO_START)
+  lagMinutes        Int              @default(0)
+  predecessor       ScheduleActivity @relation("SchedulePredecessor", fields: [tenantId, projectId, predecessorId], references: [tenantId, projectId, id], onDelete: Cascade)
+  successor         ScheduleActivity @relation("ScheduleSuccessor", fields: [tenantId, projectId, successorId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([scheduleVersionId, predecessorId, successorId, type])
+  @@index([tenantId, projectId, scheduleVersionId])
+}
+
+model ResourceRequirement {
+  id           String           @id @default(cuid())
+  tenantId     String
+  projectId    String
+  activityId   String
+  resourceType String
+  resourceCode String
+  quantity     Decimal          @db.Decimal(18, 4)
+  unit         String
+  activity     ScheduleActivity @relation(fields: [tenantId, projectId, activityId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, activityId, resourceType])
+}
+
+model BaselineVersion {
+  id                String                 @id @default(cuid())
+  tenantId          String
+  projectId         String
+  versionNumber     Int
+  quantityVersionId String
+  estimateVersionId String
+  scheduleVersionId String
+  status            VersionLifecycleStatus @default(DRAFT)
+  sourceHash        String
+  reason            String
+  createdByUserId   String
+  approvedByUserId  String?
+  approvedAt        DateTime?
+  appliedAt         DateTime?
+  supersedesId      String?
+  createdAt         DateTime               @default(now())
+  project           Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  quantityVersion   QuantityTakeoffVersion @relation(fields: [tenantId, projectId, quantityVersionId], references: [tenantId, projectId, id], onDelete: Restrict)
+  estimateVersion   EstimateVersion        @relation(fields: [tenantId, projectId, estimateVersionId], references: [tenantId, projectId, id], onDelete: Restrict)
+  scheduleVersion   ScheduleVersion        @relation(fields: [tenantId, projectId, scheduleVersionId], references: [tenantId, projectId, id], onDelete: Restrict)
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, versionNumber])
+  @@index([tenantId, projectId, status, createdAt])
+}
+
+model Crew {
+  id           String             @id @default(cuid())
+  tenantId     String
+  projectId    String
+  code         String
+  name         String
+  trade        String
+  memberCount  Int
+  active       Boolean            @default(true)
+  rowVersion   Int                @default(1)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  project      Project            @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  availability CrewAvailability[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, code])
+  @@index([tenantId, projectId, active])
+}
+
+model CrewAvailability {
+  id               String   @id @default(cuid())
+  tenantId         String
+  projectId        String
+  crewId           String
+  availableDate    DateTime @db.Date
+  availableMinutes Int
+  shiftCode        String?
+  reason           String?
+  rowVersion       Int      @default(1)
+  crew             Crew     @relation(fields: [tenantId, projectId, crewId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([crewId, availableDate, shiftCode])
+  @@index([tenantId, projectId, availableDate])
+}
+
+model Equipment {
+  id            String                  @id @default(cuid())
+  tenantId      String
+  projectId     String
+  code          String
+  name          String
+  equipmentType String
+  capacity      Decimal?                @db.Decimal(18, 4)
+  capacityUnit  String?
+  active        Boolean                 @default(true)
+  rowVersion    Int                     @default(1)
+  createdAt     DateTime                @default(now())
+  updatedAt     DateTime                @updatedAt
+  project       Project                 @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  availability  EquipmentAvailability[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, code])
+  @@index([tenantId, projectId, active])
+}
+
+model EquipmentAvailability {
+  id               String    @id @default(cuid())
+  tenantId         String
+  projectId        String
+  equipmentId      String
+  availableDate    DateTime  @db.Date
+  availableMinutes Int
+  status           String
+  reason           String?
+  rowVersion       Int       @default(1)
+  equipment        Equipment @relation(fields: [tenantId, projectId, equipmentId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([equipmentId, availableDate])
+  @@index([tenantId, projectId, availableDate, status])
+}
+
+model DailyWorkPlan {
+  id                String                 @id @default(cuid())
+  tenantId          String
+  projectId         String
+  planDate          DateTime               @db.Date
+  timezone          String
+  status            VersionLifecycleStatus @default(DRAFT)
+  baselineVersionId String
+  scheduleVersionId String
+  sourceHash        String
+  idempotencyKey    String
+  rowVersion        Int                    @default(1)
+  createdByUserId   String
+  approvedByUserId  String?
+  approvedAt        DateTime?
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+  project           Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  items             DailyWorkPlanItem[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([tenantId, projectId, idempotencyKey])
+  @@index([tenantId, projectId, planDate, status])
+}
+
+model DailyWorkPlanItem {
+  id              String                  @id @default(cuid())
+  tenantId        String
+  projectId       String
+  planId          String
+  workItemId      String
+  activityId      String?
+  sequence        Int
+  plannedQuantity Decimal                 @db.Decimal(24, 8)
+  unit            String
+  plannedStart    DateTime
+  plannedFinish   DateTime
+  locationCode    String?
+  decisionReason  String
+  plan            DailyWorkPlan           @relation(fields: [tenantId, projectId, planId], references: [tenantId, projectId, id], onDelete: Cascade)
+  resources       DailyPlanResource[]
+  materials       DailyPlanMaterial[]
+  preconditions   DailyPlanPrecondition[]
+  progressEntries ProgressEntry[]
+  photoLinks      PhotoEvidenceLink[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([planId, workItemId])
+  @@index([tenantId, projectId, planId, sequence])
+}
+
+model DailyPlanResource {
+  id           String            @id @default(cuid())
+  tenantId     String
+  projectId    String
+  planItemId   String
+  resourceType String
+  resourceId   String
+  quantity     Decimal           @db.Decimal(18, 4)
+  unit         String
+  startAt      DateTime
+  finishAt     DateTime
+  planItem     DailyWorkPlanItem @relation(fields: [tenantId, projectId, planItemId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([planItemId, resourceType, resourceId])
+  @@index([tenantId, projectId, resourceType, resourceId])
+}
+
+model DailyPlanMaterial {
+  id                String            @id @default(cuid())
+  tenantId          String
+  projectId         String
+  planItemId        String
+  materialItemId    String
+  requiredQuantity  Decimal           @db.Decimal(24, 8)
+  availableQuantity Decimal           @db.Decimal(24, 8)
+  unit              String
+  shortageQuantity  Decimal           @default(0) @db.Decimal(24, 8)
+  planItem          DailyWorkPlanItem @relation(fields: [tenantId, projectId, planItemId], references: [tenantId, projectId, id], onDelete: Cascade)
+  material          MaterialItem      @relation(fields: [tenantId, materialItemId], references: [tenantId, id], onDelete: Restrict)
+
+  @@unique([planItemId, materialItemId])
+  @@index([tenantId, projectId, materialItemId])
+}
+
+model DailyPlanPrecondition {
+  id               String            @id @default(cuid())
+  tenantId         String
+  projectId        String
+  planItemId       String
+  preconditionType String
+  description      String
+  satisfied        Boolean
+  sourceRef        Json?
+  planItem         DailyWorkPlanItem @relation(fields: [tenantId, projectId, planItemId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, planItemId, satisfied])
+}
+
+model DailyReport {
+  id                String                 @id @default(cuid())
+  tenantId          String
+  projectId         String
+  reportDate        DateTime               @db.Date
+  timezone          String
+  status            VersionLifecycleStatus @default(DRAFT)
+  sourceDraftId     String?
+  sourceHash        String
+  idempotencyKey    String
+  narrative         String?
+  weather           Json?
+  rowVersion        Int                    @default(1)
+  submittedByUserId String
+  approvedByUserId  String?
+  approvedAt        DateTime?
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+  project           Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  progressEntries   ProgressEntry[]
+  attendanceEntries AttendanceEntry[]
+  photoEvidence     PhotoEvidence[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([tenantId, projectId, idempotencyKey])
+  @@index([tenantId, projectId, reportDate, status])
+}
+
+model ProgressEntry {
+  id              String             @id @default(cuid())
+  tenantId        String
+  projectId       String
+  dailyReportId   String
+  planItemId      String?
+  workItemId      String
+  quantity        Decimal            @db.Decimal(24, 8)
+  unit            String
+  progressPercent Decimal?           @db.Decimal(7, 4)
+  sourceRefs      Json
+  createdAt       DateTime           @default(now())
+  report          DailyReport        @relation(fields: [tenantId, projectId, dailyReportId], references: [tenantId, projectId, id], onDelete: Cascade)
+  planItem        DailyWorkPlanItem? @relation(fields: [tenantId, projectId, planItemId], references: [tenantId, projectId, id], onDelete: Restrict)
+
+  @@unique([dailyReportId, workItemId])
+  @@index([tenantId, projectId, workItemId, createdAt])
+}
+
+model AttendanceEntry {
+  id             String      @id @default(cuid())
+  tenantId       String
+  projectId      String
+  dailyReportId  String
+  crewId         String?
+  trade          String
+  workerCount    Int
+  hoursPerWorker Decimal     @db.Decimal(8, 2)
+  laborRate      Decimal?    @db.Decimal(18, 2)
+  sourceRefs     Json
+  report         DailyReport @relation(fields: [tenantId, projectId, dailyReportId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, dailyReportId, trade])
+}
+
+model StockMovement {
+  id              String            @id @default(cuid())
+  tenantId        String
+  projectId       String
+  materialItemId  String
+  movementType    StockMovementType
+  quantity        Decimal           @db.Decimal(24, 8)
+  unit            String
+  occurredAt      DateTime
+  warehouseCode   String
+  referenceType   String
+  referenceId     String
+  idempotencyKey  String
+  reversalOfId    String?
+  reason          String
+  sourceRefs      Json
+  createdByUserId String
+  createdAt       DateTime          @default(now())
+  project         Project           @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  material        MaterialItem      @relation(fields: [tenantId, materialItemId], references: [tenantId, id], onDelete: Restrict)
+  reversalOf      StockMovement?    @relation("StockMovementReversal", fields: [tenantId, projectId, reversalOfId], references: [tenantId, projectId, id], onDelete: Restrict)
+  reversals       StockMovement[]   @relation("StockMovementReversal")
+
+  @@unique([tenantId, projectId, id])
+  @@unique([tenantId, projectId, idempotencyKey])
+  @@index([tenantId, projectId, materialItemId, occurredAt])
+  @@index([reversalOfId])
+}
+
+model PhotoEvidence {
+  id                  String                  @id @default(cuid())
+  tenantId            String
+  projectId           String
+  dailyReportId       String?
+  fileAssetId         String
+  capturedAt          DateTime
+  latitude            Decimal?                @db.Decimal(10, 7)
+  longitude           Decimal?                @db.Decimal(10, 7)
+  orientation         Int?
+  deviceMetadata      Json?
+  status              PhotoEvidenceStatus     @default(UPLOADED)
+  sha256              String
+  perceptualHash      String?
+  sourceHash          String
+  createdByUserId     String
+  createdAt           DateTime                @default(now())
+  report              DailyReport?            @relation(fields: [tenantId, projectId, dailyReportId], references: [tenantId, projectId, id], onDelete: Restrict)
+  fileAsset           FileAsset               @relation(fields: [tenantId, projectId, fileAssetId], references: [tenantId, projectId, id], onDelete: Restrict)
+  links               PhotoEvidenceLink[]
+  quality             PhotoQualityAssessment?
+  duplicateFindings   PhotoDuplicateFinding[] @relation("DuplicatePhoto")
+  duplicateCandidates PhotoDuplicateFinding[] @relation("DuplicateCandidate")
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, sha256])
+  @@index([tenantId, projectId, capturedAt, status])
+}
+
+model PhotoEvidenceLink {
+  id           String            @id @default(cuid())
+  tenantId     String
+  projectId    String
+  photoId      String
+  planItemId   String
+  linkType     String
+  sourceRegion Json?
+  createdAt    DateTime          @default(now())
+  photo        PhotoEvidence     @relation(fields: [tenantId, projectId, photoId], references: [tenantId, projectId, id], onDelete: Cascade)
+  planItem     DailyWorkPlanItem @relation(fields: [tenantId, projectId, planItemId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([photoId, planItemId, linkType])
+  @@index([tenantId, projectId, planItemId])
+}
+
+model PhotoQualityAssessment {
+  id            String        @id @default(cuid())
+  tenantId      String
+  projectId     String
+  photoId       String
+  blurScore     Decimal       @db.Decimal(5, 4)
+  exposureScore Decimal       @db.Decimal(5, 4)
+  framingScore  Decimal       @db.Decimal(5, 4)
+  acceptable    Boolean
+  issues        Json
+  modelVersion  String
+  evaluatedAt   DateTime
+  photo         PhotoEvidence @relation(fields: [tenantId, projectId, photoId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([tenantId, projectId, photoId])
+  @@index([tenantId, projectId, acceptable])
+}
+
+model PhotoDuplicateFinding {
+  id               String        @id @default(cuid())
+  tenantId         String
+  projectId        String
+  photoId          String
+  candidatePhotoId String
+  hammingDistance  Int
+  isDuplicate      Boolean
+  evaluatedAt      DateTime
+  photo            PhotoEvidence @relation("DuplicatePhoto", fields: [tenantId, projectId, photoId], references: [tenantId, projectId, id], onDelete: Cascade)
+  candidate        PhotoEvidence @relation("DuplicateCandidate", fields: [tenantId, projectId, candidatePhotoId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([photoId, candidatePhotoId])
+  @@index([tenantId, projectId, isDuplicate])
+}
+
+model ProgressVerification {
+  id               String                      @id @default(cuid())
+  tenantId         String
+  projectId        String
+  verificationDate DateTime                    @db.Date
+  status           VersionLifecycleStatus      @default(DRAFT)
+  methodVersion    String
+  sourceHash       String
+  claimedPercent   Decimal?                    @db.Decimal(7, 4)
+  verifiedPercent  Decimal?                    @db.Decimal(7, 4)
+  confidence       Decimal?                    @db.Decimal(5, 4)
+  decision         String
+  createdByUserId  String
+  approvedByUserId String?
+  approvedAt       DateTime?
+  createdAt        DateTime                    @default(now())
+  project          Project                     @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  issues           ProgressVerificationIssue[]
+
+  @@unique([tenantId, projectId, id])
+  @@index([tenantId, projectId, verificationDate, status])
+}
+
+model ProgressVerificationIssue {
+  id             String               @id @default(cuid())
+  tenantId       String
+  projectId      String
+  verificationId String
+  issueCode      String
+  severity       String
+  blocksApproval Boolean
+  details        Json
+  sourceRefs     Json
+  verification   ProgressVerification @relation(fields: [tenantId, projectId, verificationId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, verificationId, blocksApproval])
+}
+
+model DailyVariance {
+  id                      String   @id @default(cuid())
+  tenantId                String
+  projectId               String
+  varianceDate            DateTime @db.Date
+  workItemId              String
+  plannedQuantity         Decimal  @db.Decimal(24, 8)
+  actualQuantity          Decimal  @db.Decimal(24, 8)
+  quantityVariance        Decimal  @db.Decimal(24, 8)
+  scheduleVarianceMinutes Int
+  costVariance            Decimal? @db.Decimal(24, 2)
+  sourceRefs              Json
+  createdAt               DateTime @default(now())
+  project                 Project  @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([projectId, varianceDate, workItemId])
+  @@index([tenantId, projectId, varianceDate])
+}
+
+model ForecastSnapshot {
+  id                String             @id @default(cuid())
+  tenantId          String
+  projectId         String
+  asOf              DateTime
+  methodVersion     String
+  thresholdVersion  String
+  status            String
+  projectedFinish   DateTime?
+  delayDays         Decimal?           @db.Decimal(12, 4)
+  confidence        Decimal?           @db.Decimal(5, 4)
+  sourceHash        String
+  baselineVersionId String
+  scheduleVersionId String
+  createdAt         DateTime           @default(now())
+  project           Project            @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  workItems         ForecastWorkItem[]
+  drivers           ForecastDriver[]
+  recoveryScenarios RecoveryScenario[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, asOf, methodVersion])
+  @@index([tenantId, projectId, asOf])
+}
+
+model ForecastWorkItem {
+  id                  String           @id @default(cuid())
+  tenantId            String
+  projectId           String
+  forecastId          String
+  workItemId          String
+  remainingQuantity   Decimal?         @db.Decimal(24, 8)
+  rollingProductivity Decimal?         @db.Decimal(24, 8)
+  projectedFinish     DateTime?
+  delayDays           Decimal?         @db.Decimal(12, 4)
+  isCritical          Boolean
+  confidence          Decimal?         @db.Decimal(5, 4)
+  method              String
+  forecast            ForecastSnapshot @relation(fields: [tenantId, projectId, forecastId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([forecastId, workItemId])
+  @@index([tenantId, projectId, isCritical, projectedFinish])
+}
+
+model ForecastDriver {
+  id           String           @id @default(cuid())
+  tenantId     String
+  projectId    String
+  forecastId   String
+  driverCode   String
+  contribution Decimal          @db.Decimal(12, 4)
+  description  String
+  sourceRefs   Json
+  forecast     ForecastSnapshot @relation(fields: [tenantId, projectId, forecastId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, forecastId, contribution])
+}
+
+model RecoveryScenario {
+  id                 String                 @id @default(cuid())
+  tenantId           String
+  projectId          String
+  forecastId         String
+  name               String
+  status             VersionLifecycleStatus @default(DRAFT)
+  changes            Json
+  projectedFinish    DateTime?
+  delayReductionDays Decimal?               @db.Decimal(12, 4)
+  costImpact         Decimal?               @db.Decimal(24, 2)
+  baselineChanged    Boolean                @default(false)
+  sourceHash         String
+  createdByUserId    String
+  approvedByUserId   String?
+  approvedAt         DateTime?
+  createdAt          DateTime               @default(now())
+  project            Project                @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  forecast           ForecastSnapshot       @relation(fields: [tenantId, projectId, forecastId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([tenantId, projectId, id])
+  @@index([tenantId, projectId, forecastId, status])
+}
+
+model ApprovalMatrix {
+  id                     String           @id @default(cuid())
+  tenantId               String
+  targetType             ReviewTargetType
+  submitterRoles         IdentityRole[]
+  reviewerRoles          IdentityRole[]
+  approverRoles          IdentityRole[]
+  applyRoles             IdentityRole[]
+  prohibitSelfApproval   Boolean          @default(true)
+  emergencyOverrideRoles IdentityRole[]
+  version                Int              @default(1)
+  active                 Boolean          @default(true)
+  createdAt              DateTime         @default(now())
+  updatedAt              DateTime         @updatedAt
+  tenant                 Tenant           @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, targetType, version])
+  @@index([tenantId, active, targetType])
+}
+
+model ReviewTask {
+  id              String             @id @default(cuid())
+  tenantId        String
+  projectId       String
+  targetType      ReviewTargetType
+  targetId        String
+  targetVersion   Int
+  status          ReviewTaskStatus   @default(DRAFT)
+  sourceHash      String
+  createdByUserId String
+  assignedRole    IdentityRole
+  assignedUserId  String?
+  rowVersion      Int                @default(1)
+  dueAt           DateTime?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  project         Project            @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  decisions       ReviewDecision[]
+  corrections     ReviewCorrection[]
+  appliedCommands AppliedCommand[]
+
+  @@unique([tenantId, projectId, id])
+  @@unique([projectId, targetType, targetId, targetVersion])
+  @@index([tenantId, projectId, status, assignedRole])
+}
+
+model ReviewDecision {
+  id                String             @id @default(cuid())
+  tenantId          String
+  projectId         String
+  reviewTaskId      String
+  decision          ReviewDecisionType
+  fromStatus        ReviewTaskStatus
+  toStatus          ReviewTaskStatus
+  actorUserId       String
+  actorRole         IdentityRole
+  reason            String
+  emergencyOverride Boolean            @default(false)
+  sourceHash        String
+  decidedAt         DateTime           @default(now())
+  task              ReviewTask         @relation(fields: [tenantId, projectId, reviewTaskId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@unique([reviewTaskId, sourceHash])
+  @@index([tenantId, projectId, actorUserId, decidedAt])
+}
+
+model ReviewCorrection {
+  id                String     @id @default(cuid())
+  tenantId          String
+  projectId         String
+  reviewTaskId      String
+  fieldPath         String
+  beforeValue       Json?
+  afterValue        Json?
+  reason            String
+  correctedByUserId String
+  correctedAt       DateTime   @default(now())
+  task              ReviewTask @relation(fields: [tenantId, projectId, reviewTaskId], references: [tenantId, projectId, id], onDelete: Cascade)
+
+  @@index([tenantId, projectId, reviewTaskId, correctedAt])
+}
+
+model IdempotencyRecord {
+  id             String   @id @default(cuid())
+  tenantId       String
+  projectId      String
+  key            String
+  route          String
+  requestHash    String
+  responseStatus Int
+  responseBody   Json
+  actorUserId    String
+  expiresAt      DateTime
+  createdAt      DateTime @default(now())
+  tenant         Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project        Project  @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, key])
+  @@index([tenantId, projectId, route, createdAt])
+  @@index([expiresAt])
+}
+
+model AppliedCommand {
+  id                 String               @id @default(cuid())
+  tenantId           String
+  projectId          String
+  reviewTaskId       String
+  idempotencyKey     String
+  commandType        String
+  targetType         ReviewTargetType
+  targetId           String
+  targetVersion      Int
+  expectedRowVersion Int
+  sourceHash         String
+  requestHash        String
+  resultHash         String
+  result             Json
+  status             AppliedCommandStatus @default(APPLIED)
+  actorUserId        String
+  actorRole          IdentityRole
+  reason             String
+  appliedAt          DateTime             @default(now())
+  tenant             Tenant               @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project            Project              @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+  reviewTask         ReviewTask           @relation(fields: [tenantId, projectId, reviewTaskId], references: [tenantId, projectId, id], onDelete: Restrict)
+
+  @@unique([tenantId, idempotencyKey])
+  @@unique([tenantId, projectId, id])
+  @@index([tenantId, projectId, targetType, targetId, appliedAt])
+}
+
+model AuditLog {
+  id            String        @id @default(cuid())
+  tenantId      String
+  projectId     String?
+  actorUserId   String?
+  actorRole     IdentityRole?
+  action        String
+  entityType    String
+  entityId      String
+  reason        String?
+  correlationId String
+  sourceVersion String?
+  beforeHash    String?
+  afterHash     String?
+  metadata      Json
+  occurredAt    DateTime      @default(now())
+  tenant        Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project       Project?      @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Restrict)
+
+  @@index([tenantId, projectId, occurredAt])
+  @@index([tenantId, actorUserId, occurredAt])
+  @@index([occurredAt, id])
+  @@index([correlationId])
+}
+
+model OutboxEvent {
+  id               String            @id @default(cuid())
+  tenantId         String
+  projectId        String
+  eventType        String
+  aggregateType    String
+  aggregateId      String
+  aggregateVersion Int
+  idempotencyKey   String
+  payload          Json
+  headers          Json
+  status           OutboxEventStatus @default(PENDING)
+  availableAt      DateTime          @default(now())
+  publishedAt      DateTime?
+  retryCount       Int               @default(0)
+  lastErrorCode    String?
+  lockedAt         DateTime?
+  lockedBy         String?
+  createdAt        DateTime          @default(now())
+  tenant           Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project          Project           @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, idempotencyKey])
+  @@index([status, availableAt, createdAt])
+  @@index([tenantId, projectId, eventType, createdAt])
+}
+
+model ConsumedEvent {
+  id             String   @id @default(cuid())
+  tenantId       String
+  projectId      String
+  consumer       String
+  eventId        String
+  idempotencyKey String
+  resultHash     String
+  consumedAt     DateTime @default(now())
+  tenant         Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([consumer, idempotencyKey])
+  @@index([tenantId, projectId, consumedAt])
+}
+
+model Notification {
+  id           String             @id @default(cuid())
+  tenantId     String
+  projectId    String
+  userId       String?
+  eventId      String
+  channel      String
+  templateCode String
+  payload      Json
+  status       NotificationStatus @default(PENDING)
+  sentAt       DateTime?
+  readAt       DateTime?
+  retryCount   Int                @default(0)
+  createdAt    DateTime           @default(now())
+  tenant       Tenant             @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  project      Project            @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, eventId, channel, userId])
+  @@index([tenantId, projectId, status, createdAt])
+}
+
+model AgentToolReadModel {
+  id                String   @id @default(cuid())
+  tenantId          String
+  projectId         String
+  toolName          String
+  recordId          String
+  versionId         String
+  effectiveAt       DateTime
+  artifactIds       String[]
+  catalogVersionIds String[]
+  sourceRefs        Json
+  data              Json
+  sourceHash        String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  project           Project  @relation(fields: [tenantId, projectId], references: [tenantId, id], onDelete: Cascade)
+
+  @@unique([tenantId, projectId, toolName, recordId])
+  @@index([tenantId, projectId, toolName, effectiveAt])
+  @@index([tenantId, projectId, versionId])
+}
+
+model EvalCase {
+  id             String   @id
+  suite          String
+  locale         String
+  inputText      String
+  referenceDate  DateTime
+  expectedOutput Json
+  scoredFields   String[]
+  tags           String[]
+  enabled        Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([suite, enabled])
+}
+
+// ---------------------------------------------------------------------------
+// Billing domain (landing-page-roadmap.md Phase 1)
+//
+// Money is stored in ISO 4217 minor units for the row's own currency:
+// MNT has two decimals, so 390,000₮ is persisted as 39_000_000.
+// Plan amounts are never read from the client; checkout always resolves the
+// provider price from BillingProviderPrice on the server.
+// ---------------------------------------------------------------------------
+
+model BillingPlan {
+  id              String                 @id @default(cuid())
+  code            String
+  version         Int
+  name            String
+  description     String
+  interval        BillingInterval
+  currency        String
+  unitAmountMinor BigInt?
+  active          Boolean                @default(true)
+  public          Boolean                @default(false)
+  createdAt       DateTime               @default(now())
+  archivedAt      DateTime?
+  entitlements    PlanEntitlement[]
+  providerPrices  BillingProviderPrice[]
+  subscriptions   TenantSubscription[]
+  signupIntents   CompanySignupIntent[]
+
+  @@unique([code, version, interval])
+  @@index([active, public])
+}
+
+model PlanEntitlement {
+  id         String      @id @default(cuid())
+  planId     String
+  featureKey String
+  enabled    Boolean
+  limitValue BigInt?
+  unit       String?
+  plan       BillingPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@unique([planId, featureKey])
+}
+
+model BillingProviderPrice {
+  id                String              @id @default(cuid())
+  planId            String
+  provider          BillingProviderKind
+  externalProductId String
+  externalPriceId   String
+  environment       String
+  createdAt         DateTime            @default(now())
+  plan              BillingPlan         @relation(fields: [planId], references: [id], onDelete: Restrict)
+
+  @@unique([provider, environment, externalPriceId])
+  @@unique([planId, provider, environment])
+  @@index([planId])
+}
+
+model BillingCustomer {
+  id                 String              @id @default(cuid())
+  tenantId           String              @unique
+  provider           BillingProviderKind
+  providerCustomerId String?
+  billingEmail       String
+  legalName          String?
+  registrationNumber String?
+  vatPayer           Boolean             @default(false)
+  countryCode        String              @default("MN")
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  tenant             Tenant              @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+
+  @@unique([provider, providerCustomerId])
+}
+
+model TenantSubscription {
+  id                     String              @id @default(cuid())
+  tenantId               String
+  planId                 String
+  provider               BillingProviderKind
+  providerCustomerId     String?
+  providerSubscriptionId String?
+  status                 SubscriptionStatus
+  currentPeriodStart     DateTime?
+  currentPeriodEnd       DateTime?
+  graceEndsAt            DateTime?
+  cancelAtPeriodEnd      Boolean             @default(false)
+  canceledAt             DateTime?
+  providerUpdatedAt      DateTime?
+  createdAt              DateTime            @default(now())
+  updatedAt              DateTime            @updatedAt
+  tenant                 Tenant              @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  plan                   BillingPlan         @relation(fields: [planId], references: [id], onDelete: Restrict)
+  invoices               BillingInvoice[]
+
+  @@unique([provider, providerSubscriptionId])
+  @@index([tenantId, status, currentPeriodEnd])
+  @@index([status, graceEndsAt])
+}
+
+model TenantEntitlementSnapshot {
+  tenantId       String    @id
+  subscriptionId String?
+  sourceVersion  String
+  entitlements   Json
+  effectiveFrom  DateTime
+  effectiveUntil DateTime?
+  refreshedAt    DateTime
+  tenant         Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([effectiveUntil])
+}
+
+model CompanySignupIntent {
+  id                            String                    @id @default(cuid())
+  companyName                   String
+  desiredSlug                   String
+  adminEmail                    String
+  adminEmailNormalized          String
+  adminDisplayName              String
+  planId                        String
+  provider                      BillingProviderKind
+  providerCheckoutId            String?                   @unique
+  /**
+   * Cached so pressing "pay" twice reuses the open checkout (§20.2).
+   */
+  providerCheckoutUrl           String?
+  providerCheckoutExpiresAt     DateTime?
+  status                        CompanySignupIntentStatus @default(PENDING_VERIFICATION)
+  expiresAt                     DateTime
+  /**
+   * Cleared the moment it is used, so a verification code works exactly once.
+   */
+  emailVerificationTokenHash    String?                   @unique
+  emailVerificationExpiresAt    DateTime?
+  emailVerificationSentAt       DateTime?
+  emailVerificationAttemptCount Int                       @default(0)
+  emailVerifiedAt               DateTime?
+  completedTenantId             String?
+  idempotencyKeyHash            String
+  createdAt                     DateTime                  @default(now())
+  updatedAt                     DateTime                  @updatedAt
+  plan                          BillingPlan               @relation(fields: [planId], references: [id], onDelete: Restrict)
+
+  @@index([adminEmailNormalized, status])
+  @@index([expiresAt, status])
+  @@index([status, emailVerificationExpiresAt], map: "CompanySignupIntent_verification_expiry_idx")
+}
+
+model BillingWebhookEvent {
+  id              String                       @id @default(cuid())
+  provider        BillingProviderKind
+  providerEventId String
+  eventType       String
+  payloadHash     String
+  occurredAt      DateTime
+  receivedAt      DateTime                     @default(now())
+  processedAt     DateTime?
+  status          BillingEventProcessingStatus @default(RECEIVED)
+  attemptCount    Int                          @default(0)
+  lastErrorCode   String?
+  correlationId   String
+
+  @@unique([provider, providerEventId])
+  @@index([status, receivedAt])
+}
+
+model BillingInvoice {
+  id                String              @id @default(cuid())
+  tenantId          String
+  subscriptionId    String?
+  provider          BillingProviderKind
+  providerInvoiceId String
+  invoiceNumber     String?
+  status            InvoiceStatus
+  currency          String
+  subtotalMinor     BigInt
+  taxMinor          BigInt
+  totalMinor        BigInt
+  paidAt            DateTime?
+  dueAt             DateTime?
+  hostedInvoiceUrl  String?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  tenant            Tenant              @relation(fields: [tenantId], references: [id], onDelete: Restrict)
+  subscription      TenantSubscription? @relation(fields: [subscriptionId], references: [id], onDelete: Restrict)
+
+  @@unique([provider, providerInvoiceId])
+  @@index([tenantId, createdAt])
+  @@index([subscriptionId])
+}

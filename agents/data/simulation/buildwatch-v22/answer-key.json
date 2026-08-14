@@ -1,0 +1,923 @@
+{
+  "schemaVersion": 1,
+  "answerKeyType": "BUILDWATCH_OPERATIONAL_V22",
+  "seed": "buildwatch-v22-phase2-v1",
+  "generatedAt": "2026-03-28T23:59:59.000Z",
+  "windowStart": "2026-01-05",
+  "windowEnd": "2026-03-28",
+  "cases": [
+    {
+      "caseId": "operational-answer-healthy-control",
+      "scenario": "HEALTHY_CONTROL",
+      "controlType": "POSITIVE",
+      "effectiveDate": "2026-02-10",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-046"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-10",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-10",
+      "forecastSnapshotId": "operational-forecast-2026-02-10",
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-10-work-item-046"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "16.75",
+        "unit": "m"
+      },
+      "expectedConflicts": [],
+      "expectedCompletionStatus": "COMPLETED",
+      "expectedVariance": {
+        "quantity": "0",
+        "percentage": "0",
+        "unit": "m"
+      },
+      "expectedForecastStatus": "ON_TRACK",
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-10",
+        "resource-availability-2026-02-10",
+        "material-ledger-2026-02-10",
+        "inspection-work-item-046-2026-02-10",
+        "daily-plan-version-2026-02-10",
+        "operational-daily-report-2026-02-10",
+        "photo-2026-02-10-work-item-046",
+        "verification-calculation-2026-02-10",
+        "forecast-calculation-2026-02-10"
+      ],
+      "rationale": "Бүх precondition, нөөц, evidence болон forecast хэвийн эерэг control."
+    },
+    {
+      "caseId": "operational-answer-predecessor-unfinished",
+      "scenario": "PREDECESSOR_UNFINISHED",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-11",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-017"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-11",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-11",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-11-work-item-017"
+      ],
+      "expectedEligible": false,
+      "expectedPriority": 1,
+      "expectedDailyTarget": null,
+      "expectedConflicts": [
+        "PRECONDITION_UNSATISFIED"
+      ],
+      "expectedCompletionStatus": "NOT_STARTED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m3"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-11",
+        "resource-availability-2026-02-11",
+        "material-ledger-2026-02-11",
+        "inspection-work-item-017-2026-02-11",
+        "daily-plan-version-2026-02-11",
+        "operational-daily-report-2026-02-11",
+        "photo-2026-02-11-work-item-017",
+        "verification-calculation-2026-02-11"
+      ],
+      "rationale": "Өмнөх ажил дуусаагүй тул successor тухайн өдөр eligible биш."
+    },
+    {
+      "caseId": "operational-answer-material-shortage",
+      "scenario": "MATERIAL_SHORTAGE",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-12",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-023"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-12",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-12",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-12-work-item-023"
+      ],
+      "expectedEligible": false,
+      "expectedPriority": 1,
+      "expectedDailyTarget": null,
+      "expectedConflicts": [
+        "MATERIAL_SHORTAGE"
+      ],
+      "expectedCompletionStatus": "NOT_STARTED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m2"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-12",
+        "resource-availability-2026-02-12",
+        "material-ledger-2026-02-12",
+        "inspection-work-item-023-2026-02-12",
+        "daily-plan-version-2026-02-12",
+        "operational-daily-report-2026-02-12",
+        "photo-2026-02-12-work-item-023",
+        "verification-calculation-2026-02-12"
+      ],
+      "rationale": "Өдрийн хэрэгцээнээс материалын боломжит үлдэгдэл бага."
+    },
+    {
+      "caseId": "operational-answer-crew-unavailable",
+      "scenario": "CREW_UNAVAILABLE",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-13",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-029"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-13",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-13",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-13-work-item-029"
+      ],
+      "expectedEligible": false,
+      "expectedPriority": 1,
+      "expectedDailyTarget": null,
+      "expectedConflicts": [
+        "CREW_UNAVAILABLE"
+      ],
+      "expectedCompletionStatus": "NOT_STARTED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-13",
+        "resource-availability-2026-02-13",
+        "material-ledger-2026-02-13",
+        "inspection-work-item-029-2026-02-13",
+        "daily-plan-version-2026-02-13",
+        "operational-daily-report-2026-02-13",
+        "photo-2026-02-13-work-item-029",
+        "verification-calculation-2026-02-13"
+      ],
+      "rationale": "Тухайн work class-д шаардлагатай баг unavailable төлөвтэй."
+    },
+    {
+      "caseId": "operational-answer-equipment-double-booking",
+      "scenario": "EQUIPMENT_DOUBLE_BOOKING",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-14",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-035",
+        "work-item-041"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-14",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-14",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-14-work-item-035",
+        "photo-2026-02-14-work-item-041"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 2,
+      "expectedDailyTarget": {
+        "value": "14.25",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "EQUIPMENT_DOUBLE_BOOKING"
+      ],
+      "expectedCompletionStatus": "NOT_STARTED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-14",
+        "resource-availability-2026-02-14",
+        "material-ledger-2026-02-14",
+        "inspection-work-item-035-2026-02-14",
+        "daily-plan-version-2026-02-14",
+        "operational-daily-report-2026-02-14",
+        "photo-2026-02-14-work-item-035",
+        "verification-calculation-2026-02-14",
+        "photo-2026-02-14-work-item-041"
+      ],
+      "rationale": "Хоёр ажил ижил тоног төхөөрөмжийг давхцсан цагаар ашиглахаар төлөвлөсөн."
+    },
+    {
+      "caseId": "operational-answer-zone-conflict",
+      "scenario": "ZONE_CONFLICT",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-16",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-038",
+        "work-item-039"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-16",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-16",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-16-work-item-038",
+        "photo-2026-02-16-work-item-039"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "15.5",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "ZONE_OVER_CAPACITY"
+      ],
+      "expectedCompletionStatus": "NOT_STARTED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-16",
+        "resource-availability-2026-02-16",
+        "material-ledger-2026-02-16",
+        "inspection-work-item-038-2026-02-16",
+        "weather-logistics-2026-02-16",
+        "daily-plan-version-2026-02-16",
+        "operational-daily-report-2026-02-16",
+        "photo-2026-02-16-work-item-038",
+        "verification-calculation-2026-02-16",
+        "photo-2026-02-16-work-item-039"
+      ],
+      "rationale": "Нэг zone-ийн concurrency capacity-аас олон ажил зэрэг төлөвлөгдсөн."
+    },
+    {
+      "caseId": "operational-answer-heavy-rain-restriction",
+      "scenario": "HEAVY_RAIN_RESTRICTION",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-18",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-038"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-18",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-18",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-18-work-item-038"
+      ],
+      "expectedEligible": false,
+      "expectedPriority": 1,
+      "expectedDailyTarget": null,
+      "expectedConflicts": [
+        "WEATHER_RESTRICTION"
+      ],
+      "expectedCompletionStatus": "NOT_STARTED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-18",
+        "resource-availability-2026-02-18",
+        "material-ledger-2026-02-18",
+        "inspection-work-item-038-2026-02-18",
+        "weather-logistics-2026-02-18",
+        "daily-plan-version-2026-02-18",
+        "operational-daily-report-2026-02-18",
+        "photo-2026-02-18-work-item-038",
+        "verification-calculation-2026-02-18"
+      ],
+      "rationale": "Хүчтэй борооны logistics constraint нь гадна ажлыг хориглосон."
+    },
+    {
+      "caseId": "operational-answer-inspection-pending",
+      "scenario": "INSPECTION_PENDING",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-19",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-041"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-19",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-19",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-19-work-item-041"
+      ],
+      "expectedEligible": false,
+      "expectedPriority": 1,
+      "expectedDailyTarget": null,
+      "expectedConflicts": [
+        "PRECONDITION_UNSATISFIED"
+      ],
+      "expectedCompletionStatus": "NOT_STARTED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-19",
+        "resource-availability-2026-02-19",
+        "material-ledger-2026-02-19",
+        "inspection-work-item-041-2026-02-19",
+        "weather-logistics-2026-02-19",
+        "daily-plan-version-2026-02-19",
+        "operational-daily-report-2026-02-19",
+        "photo-2026-02-19-work-item-041",
+        "verification-calculation-2026-02-19"
+      ],
+      "rationale": "Заавал тэнцсэн байх inspection pending тул ажил эхлэхгүй."
+    },
+    {
+      "caseId": "operational-answer-critical-work-omitted",
+      "scenario": "CRITICAL_WORK_OMITTED",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-20",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-017"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-20",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-20",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "10.5",
+        "unit": "m3"
+      },
+      "expectedConflicts": [
+        "CRITICAL_WORK_OMITTED"
+      ],
+      "expectedCompletionStatus": null,
+      "expectedVariance": null,
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-20",
+        "resource-availability-2026-02-20",
+        "material-ledger-2026-02-20",
+        "inspection-work-item-030-2026-02-20",
+        "inspection-work-item-032-2026-02-20",
+        "inspection-work-item-033-2026-02-20"
+      ],
+      "rationale": "Eligible critical ажил өдөр тутмын төлөвлөгөөнөөс зориудаар хасагдсан."
+    },
+    {
+      "caseId": "operational-answer-planned-target-partial",
+      "scenario": "PLANNED_TARGET_PARTIAL",
+      "controlType": "BOUNDARY",
+      "effectiveDate": "2026-02-21",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-029"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-21",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-21",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-21-work-item-029"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "4",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "PARTIAL_TARGET"
+      ],
+      "expectedCompletionStatus": "COMPLETED",
+      "expectedVariance": {
+        "quantity": "0",
+        "percentage": "0",
+        "unit": "m"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-21",
+        "resource-availability-2026-02-21",
+        "material-ledger-2026-02-21",
+        "inspection-work-item-029-2026-02-21",
+        "daily-plan-version-2026-02-21",
+        "operational-daily-report-2026-02-21",
+        "photo-2026-02-21-work-item-029",
+        "verification-calculation-2026-02-21"
+      ],
+      "rationale": "Нөөцийн хязгаарлалтаар бүтэн shift target-ийг бууруулсан boundary case."
+    },
+    {
+      "caseId": "operational-answer-approved-blocker",
+      "scenario": "APPROVED_BLOCKER",
+      "controlType": "BOUNDARY",
+      "effectiveDate": "2026-02-23",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-023"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-23",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-23",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-23-work-item-023"
+      ],
+      "expectedEligible": false,
+      "expectedPriority": 1,
+      "expectedDailyTarget": null,
+      "expectedConflicts": [
+        "APPROVED_BLOCKER"
+      ],
+      "expectedCompletionStatus": "BLOCKED",
+      "expectedVariance": {
+        "quantity": "-8",
+        "percentage": "-100",
+        "unit": "m2"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-23",
+        "resource-availability-2026-02-23",
+        "material-ledger-2026-02-23",
+        "inspection-work-item-023-2026-02-23",
+        "approved-blocker-material-001",
+        "daily-plan-version-2026-02-23",
+        "operational-daily-report-2026-02-23",
+        "photo-2026-02-23-work-item-023",
+        "verification-calculation-2026-02-23"
+      ],
+      "rationale": "Батлагдсан blocker-той ажлыг BLOCKED гэж зөв ангилах boundary case."
+    },
+    {
+      "caseId": "operational-answer-missing-report",
+      "scenario": "MISSING_REPORT",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-03-25",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-029"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-03-25",
+      "progressVerificationDraftId": null,
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "13",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "MISSING_DAILY_REPORT"
+      ],
+      "expectedCompletionStatus": "UNVERIFIABLE",
+      "expectedVariance": null,
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-03-25",
+        "resource-availability-2026-03-25",
+        "material-ledger-2026-03-25",
+        "inspection-work-item-029-2026-03-25"
+      ],
+      "rationale": "Төлөвлөгөө байгаа боловч өдрийн тайлан байхгүй тул үр дүн баталгаажихгүй."
+    },
+    {
+      "caseId": "operational-answer-blurry-dark-photo",
+      "scenario": "BLURRY_DARK_PHOTO",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-24",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-035"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-24",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-24",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-24-work-item-035"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "14.25",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "PHOTO_BLUR",
+        "PHOTO_DARK"
+      ],
+      "expectedCompletionStatus": "UNVERIFIABLE",
+      "expectedVariance": null,
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-24",
+        "resource-availability-2026-02-24",
+        "material-ledger-2026-02-24",
+        "inspection-work-item-035-2026-02-24",
+        "daily-plan-version-2026-02-24",
+        "operational-daily-report-2026-02-24",
+        "photo-2026-02-24-work-item-035",
+        "verification-calculation-2026-02-24"
+      ],
+      "rationale": "Blur болон brightness deterministic босго хоёул зөрчигдсөн."
+    },
+    {
+      "caseId": "operational-answer-duplicate-photo",
+      "scenario": "DUPLICATE_PHOTO",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-25",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-038"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-25",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-25",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-25-work-item-038"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "15.5",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "DUPLICATE_PHOTO"
+      ],
+      "expectedCompletionStatus": "UNVERIFIABLE",
+      "expectedVariance": null,
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-25",
+        "resource-availability-2026-02-25",
+        "material-ledger-2026-02-25",
+        "inspection-work-item-038-2026-02-25",
+        "weather-logistics-2026-02-25",
+        "daily-plan-version-2026-02-25",
+        "operational-daily-report-2026-02-25",
+        "photo-2026-02-25-work-item-038",
+        "verification-calculation-2026-02-25"
+      ],
+      "rationale": "Ижил hash бүхий өмнөх зураг duplicate lineage-тай."
+    },
+    {
+      "caseId": "operational-answer-previous-day-reused-photo",
+      "scenario": "PREVIOUS_DAY_REUSED_PHOTO",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-26",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-041"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-26",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-26",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-26-work-item-041"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "15.5",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "PREVIOUS_DAY_REUSED_PHOTO"
+      ],
+      "expectedCompletionStatus": "UNVERIFIABLE",
+      "expectedVariance": null,
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-26",
+        "resource-availability-2026-02-26",
+        "material-ledger-2026-02-26",
+        "inspection-work-item-041-2026-02-26",
+        "weather-logistics-2026-02-26",
+        "daily-plan-version-2026-02-26",
+        "operational-daily-report-2026-02-26",
+        "photo-2026-02-26-work-item-041",
+        "verification-calculation-2026-02-26"
+      ],
+      "rationale": "Өмнөх өдрийн зураг шинэ тайланд дахин ашиглагдсан."
+    },
+    {
+      "caseId": "operational-answer-report-photo-mismatch",
+      "scenario": "REPORT_PHOTO_MISMATCH",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-27",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-038"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-27",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-27",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-27-work-item-038"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "15.5",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "REPORT_PHOTO_MISMATCH"
+      ],
+      "expectedCompletionStatus": "UNVERIFIABLE",
+      "expectedVariance": null,
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-27",
+        "resource-availability-2026-02-27",
+        "material-ledger-2026-02-27",
+        "inspection-work-item-038-2026-02-27",
+        "weather-logistics-2026-02-27",
+        "daily-plan-version-2026-02-27",
+        "operational-daily-report-2026-02-27",
+        "photo-2026-02-27-work-item-038",
+        "verification-calculation-2026-02-27"
+      ],
+      "rationale": "Тайлангийн work item болон зурагт танигдсан work item зөрсөн."
+    },
+    {
+      "caseId": "operational-answer-false-completed",
+      "scenario": "FALSE_COMPLETED",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-02-28",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-041"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-02-28",
+      "progressVerificationDraftId": "progress-verification-draft-2026-02-28",
+      "forecastSnapshotId": null,
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-02-28-work-item-041"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "15.5",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "FALSE_COMPLETED_CLAIM"
+      ],
+      "expectedCompletionStatus": "PARTIALLY_COMPLETED",
+      "expectedVariance": {
+        "quantity": "-4",
+        "percentage": "-50",
+        "unit": "m"
+      },
+      "expectedForecastStatus": null,
+      "expectedDrivers": [],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-02-28",
+        "resource-availability-2026-02-28",
+        "material-ledger-2026-02-28",
+        "inspection-work-item-041-2026-02-28",
+        "weather-logistics-2026-02-28",
+        "daily-plan-version-2026-02-28",
+        "operational-daily-report-2026-02-28",
+        "photo-2026-02-28-work-item-041",
+        "verification-calculation-2026-02-28"
+      ],
+      "rationale": "Тайланд бүтэн гэж мэдүүлсэн ч verified quantity target-аас бага."
+    },
+    {
+      "caseId": "operational-answer-insufficient-forecast-data",
+      "scenario": "INSUFFICIENT_FORECAST_DATA",
+      "controlType": "BOUNDARY",
+      "effectiveDate": "2026-03-02",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-046"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-03-02",
+      "progressVerificationDraftId": "progress-verification-draft-2026-03-02",
+      "forecastSnapshotId": "operational-forecast-2026-03-02",
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-03-02-work-item-046"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "16.75",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "INSUFFICIENT_FORECAST_DATA"
+      ],
+      "expectedCompletionStatus": "COMPLETED",
+      "expectedVariance": {
+        "quantity": "0",
+        "percentage": "0",
+        "unit": "m"
+      },
+      "expectedForecastStatus": "INSUFFICIENT_DATA",
+      "expectedDrivers": [
+        "DATA_QUALITY"
+      ],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-03-02",
+        "resource-availability-2026-03-02",
+        "material-ledger-2026-03-02",
+        "inspection-work-item-046-2026-03-02",
+        "daily-plan-version-2026-03-02",
+        "operational-daily-report-2026-03-02",
+        "photo-2026-03-02-work-item-046",
+        "verification-calculation-2026-03-02",
+        "forecast-calculation-2026-03-02"
+      ],
+      "rationale": "Хүчинтэй productivity sample хүрэлцээгүй тул finish тооцохгүй."
+    },
+    {
+      "caseId": "operational-answer-critical-delay",
+      "scenario": "CRITICAL_DELAY",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-03-03",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-017"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-03-03",
+      "progressVerificationDraftId": "progress-verification-draft-2026-03-03",
+      "forecastSnapshotId": "operational-forecast-2026-03-03",
+      "recoveryProposalDraftId": null,
+      "photoIds": [
+        "photo-2026-03-03-work-item-017"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "10.5",
+        "unit": "m3"
+      },
+      "expectedConflicts": [
+        "CRITICAL_DELAY"
+      ],
+      "expectedCompletionStatus": "COMPLETED",
+      "expectedVariance": {
+        "quantity": "0",
+        "percentage": "0",
+        "unit": "m3"
+      },
+      "expectedForecastStatus": "CRITICAL_LATE",
+      "expectedDrivers": [
+        "DEPENDENCY"
+      ],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-03-03",
+        "resource-availability-2026-03-03",
+        "material-ledger-2026-03-03",
+        "inspection-work-item-017-2026-03-03",
+        "daily-plan-version-2026-03-03",
+        "operational-daily-report-2026-03-03",
+        "photo-2026-03-03-work-item-017",
+        "verification-calculation-2026-03-03",
+        "forecast-calculation-2026-03-03"
+      ],
+      "rationale": "Projected delay нь critical threshold-оос давсан."
+    },
+    {
+      "caseId": "operational-answer-recovery-option-conflict",
+      "scenario": "RECOVERY_OPTION_CONFLICT",
+      "controlType": "NEGATIVE",
+      "effectiveDate": "2026-03-04",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-041"
+      ],
+      "dailyPlanDraftId": "daily-plan-draft-2026-03-04",
+      "progressVerificationDraftId": "progress-verification-draft-2026-03-04",
+      "forecastSnapshotId": "operational-forecast-2026-03-04",
+      "recoveryProposalDraftId": "recovery-proposal-2026-03-04",
+      "photoIds": [
+        "photo-2026-03-04-work-item-041"
+      ],
+      "expectedEligible": true,
+      "expectedPriority": 1,
+      "expectedDailyTarget": {
+        "value": "15.5",
+        "unit": "m"
+      },
+      "expectedConflicts": [
+        "RECOVERY_RESOURCE_CONFLICT"
+      ],
+      "expectedCompletionStatus": "COMPLETED",
+      "expectedVariance": {
+        "quantity": "0",
+        "percentage": "0",
+        "unit": "m"
+      },
+      "expectedForecastStatus": "CRITICAL_LATE",
+      "expectedDrivers": [
+        "DEPENDENCY"
+      ],
+      "expectedSourceIds": [
+        "schedule-version-001",
+        "daily-plan-calculation-2026-03-04",
+        "resource-availability-2026-03-04",
+        "material-ledger-2026-03-04",
+        "inspection-work-item-041-2026-03-04",
+        "weather-logistics-2026-03-04",
+        "daily-plan-version-2026-03-04",
+        "operational-daily-report-2026-03-04",
+        "photo-2026-03-04-work-item-041",
+        "verification-calculation-2026-03-04",
+        "forecast-calculation-2026-03-04",
+        "recovery-calculation-2026-03-04"
+      ],
+      "rationale": "Recovery хувилбар шаардлагатай resource/dependency conflict-той."
+    }
+  ]
+}

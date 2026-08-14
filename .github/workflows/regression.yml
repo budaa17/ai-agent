@@ -1,0 +1,127 @@
+name: Agent Regression
+
+on:
+  workflow_dispatch:
+    inputs:
+      live_llm:
+        description: Run the optional paid/quota-limited A3 narrative and judge
+        required: false
+        default: false
+        type: boolean
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  agents:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agents
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: diplom_agents
+        ports:
+          - 5434:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      CI: "true"
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5434/diplom_agents?schema=public"
+      PUPPETEER_SKIP_DOWNLOAD: "true"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.17.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: agents/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec prisma generate
+      - run: pnpm exec prisma migrate deploy
+      - run: pnpm seed
+
+      # Documentation gate first: it is the entry step of every phase gate, so a
+      # failure here means no `DONE` row in REQUIREMENT-TRACEABILITY.md is backed
+      # by a passing gate. Keeping it in CI stops that regressing unnoticed again.
+      - run: pnpm run docs:check:v22
+
+      - run: pnpm run check
+      - run: pnpm run build
+      - run: pnpm test
+      - run: pnpm phase2:gate -- --output data/evaluations/phase2-gate.json
+      - run: pnpm eval:agents -- --project project-atlas
+      - run: pnpm eval:a3
+      - run: pnpm eval:a4
+      - run: pnpm report -- --project project-atlas --analysis-only --no-pdf
+      - run: docker build -t diplom-agents:ci .
+      - run: docker run --rm --entrypoint node diplom-agents:ci dist/scripts/health.js
+      - run: docker run --rm --entrypoint node diplom-agents:ci dist/scripts/pdf-smoke.js
+
+      - name: Optional live A3 regression
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.live_llm }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          A3_OPENAI_MODEL: "gpt-5.6-luna"
+        run: pnpm report -- --project project-atlas --analysis-only --narrative llm --judge --no-pdf
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agent-regression-artifacts
+          path: |
+            agents/data/evaluations/agents-latest.json
+            agents/data/evaluations/agents-latest.md
+            agents/data/evaluations/a3-latest.json
+            agents/data/evaluations/a3-latest.md
+            agents/data/evaluations/a4-latest.json
+            agents/data/evaluations/a4-latest.md
+            agents/data/evaluations/phase2-gate.json
+            agents/data/reports/
+
+  agent-console:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agent-console
+
+    env:
+      CI: "true"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.17.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: agent-console/pnpm-lock.yaml
+
+      - run: pnpm install --frozen-lockfile
+
+      # The generated OpenAPI client is committed, so typecheck/test/build run
+      # against it directly; regenerating it would require the agents workspace.
+      - run: pnpm run typecheck
+      - run: pnpm run lint
+      - run: pnpm run test
+      - run: pnpm exec vite build

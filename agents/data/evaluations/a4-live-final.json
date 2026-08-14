@@ -1,0 +1,837 @@
+{
+  "mode": "live",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "suite": "a4-reference-assistant-v1",
+  "generatedAt": "2026-07-28T13:20:28.463Z",
+  "totalCases": 6,
+  "successfulCases": 6,
+  "passedCases": 6,
+  "groundedCases": 6,
+  "matchedFields": 36,
+  "totalFields": 36,
+  "passRate": 1,
+  "groundingRate": 1,
+  "fieldAccuracy": 1,
+  "tools": {
+    "truePositive": 6,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "sources": {
+    "truePositive": 15,
+    "falsePositive": 2,
+    "falseNegative": 0,
+    "precision": 0.8823529411764706,
+    "recall": 1
+  },
+  "cases": [
+    {
+      "caseId": "a4-atlas-integration-stall",
+      "tags": [
+        "progress-history",
+        "stall",
+        "duration"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 2,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "AT-005 ажлын сүүлийн бүртгэгдсэн явц 45%, өмнөх бүртгэлээс хойш 9 хоног өнгөрсөн байна.",
+            "sources": [
+              {
+                "toolName": "lookupProgressHistory",
+                "sourceId": "snapshot-integration-03",
+                "field": "progressPercent"
+              },
+              {
+                "toolName": "lookupProgressHistory",
+                "sourceId": "snapshot-integration-03",
+                "field": "daysSincePrevious"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "progressPercent",
+          "value": 45
+        },
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "daysSincePrevious",
+          "value": 9
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "progressPercent",
+          "value": 45
+        },
+        {
+          "toolName": "lookupProgressHistory",
+          "sourceId": "snapshot-integration-03",
+          "field": "daysSincePrevious",
+          "value": 9
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-license-overrun",
+      "tags": [
+        "cost",
+        "budget",
+        "decimal"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 3,
+        "falsePositive": 1,
+        "falseNegative": 0,
+        "precision": 0.75,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "AT-003 лицензийн ажлын төсөв 20,000,000 төгрөг.",
+            "sources": [
+              {
+                "toolName": "lookupCostLedger",
+                "sourceId": "wi-atlas-license",
+                "field": "budget"
+              }
+            ]
+          },
+          {
+            "text": "Бодит зардал 27,000,000 төгрөг.",
+            "sources": [
+              {
+                "toolName": "lookupCostLedger",
+                "sourceId": "wi-atlas-license",
+                "field": "recordedActualCost"
+              }
+            ]
+          },
+          {
+            "text": "Төсвийн зөрүү 7,000,000 төгрөгөөр хэтэрсэн.",
+            "sources": [
+              {
+                "toolName": "lookupCostLedger",
+                "sourceId": "wi-atlas-license",
+                "field": "budgetVariance"
+              },
+              {
+                "toolName": "lookupCostLedger",
+                "sourceId": "wi-atlas-license",
+                "field": "isOverBudget"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budget",
+          "value": "20000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "recordedActualCost",
+          "value": "27000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budgetVariance",
+          "value": "7000000.00"
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budget",
+          "value": "20000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "recordedActualCost",
+          "value": "27000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budgetVariance",
+          "value": "7000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "isOverBudget",
+          "value": true
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-migration-dependency",
+      "tags": [
+        "dependency",
+        "status",
+        "critical-path"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 4,
+        "falsePositive": 1,
+        "falseNegative": 0,
+        "precision": 0.8,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "AT-006 нь AT-005 дууссаны дараа эхлэх (FINISH_TO_START), 0 хоногийн завсартай хамааралтай.",
+            "sources": [
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "predecessor.code"
+              },
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "successor.code"
+              },
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "type"
+              },
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "lagDays"
+              }
+            ]
+          },
+          {
+            "text": "Өмнөх AT-005 ажил одоогоор IN_PROGRESS буюу хэрэгжиж байна.",
+            "sources": [
+              {
+                "toolName": "lookupDependencies",
+                "sourceId": "dep-atlas-006",
+                "field": "predecessor.status"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "type",
+          "value": "FINISH_TO_START"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.code",
+          "value": "AT-005"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.status",
+          "value": "IN_PROGRESS"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "successor.code",
+          "value": "AT-006"
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.code",
+          "value": "AT-005"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "successor.code",
+          "value": "AT-006"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "type",
+          "value": "FINISH_TO_START"
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "lagDays",
+          "value": 0
+        },
+        {
+          "toolName": "lookupDependencies",
+          "sourceId": "dep-atlas-006",
+          "field": "predecessor.status",
+          "value": "IN_PROGRESS"
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-procurement-status",
+      "tags": [
+        "status",
+        "progress",
+        "date"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 3,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "AT-004 ажлын төлөв: хэрэгжиж байгаа (IN_PROGRESS).",
+            "sources": [
+              {
+                "toolName": "lookupWorkItems",
+                "sourceId": "wi-atlas-procurement",
+                "field": "status"
+              }
+            ]
+          },
+          {
+            "text": "Явц: 75%.",
+            "sources": [
+              {
+                "toolName": "lookupWorkItems",
+                "sourceId": "wi-atlas-procurement",
+                "field": "progressPercent"
+              }
+            ]
+          },
+          {
+            "text": "Төлөвлөсөн дуусах огноо: 2026-02-20.",
+            "sources": [
+              {
+                "toolName": "lookupWorkItems",
+                "sourceId": "wi-atlas-procurement",
+                "field": "plannedEnd"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-atlas-procurement",
+          "field": "status",
+          "value": "IN_PROGRESS"
+        },
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-atlas-procurement",
+          "field": "progressPercent",
+          "value": 75
+        },
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-atlas-procurement",
+          "field": "plannedEnd",
+          "value": "2026-02-20T00:00:00.000Z"
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-atlas-procurement",
+          "field": "status",
+          "value": "IN_PROGRESS"
+        },
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-atlas-procurement",
+          "field": "progressPercent",
+          "value": 75
+        },
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-atlas-procurement",
+          "field": "plannedEnd",
+          "value": "2026-02-20T00:00:00.000Z"
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-atlas-work-item-count",
+      "tags": [
+        "aggregate",
+        "work-items",
+        "authorization"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "ATLAS төсөл нийт 9 ажилтай.",
+            "sources": [
+              {
+                "toolName": "lookupWorkItems",
+                "sourceId": "lookupWorkItems:aggregate",
+                "field": "total"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "lookupWorkItems:aggregate",
+          "field": "total",
+          "value": 9
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "lookupWorkItems:aggregate",
+          "field": "total",
+          "value": 9
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a4-private-tenant-isolation",
+      "tags": [
+        "tenant-isolation",
+        "authorization",
+        "work-items"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 2,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "PR-001 ажлын төлөв: дууссан (COMPLETED).",
+            "sources": [
+              {
+                "toolName": "lookupWorkItems",
+                "sourceId": "wi-private-analysis",
+                "field": "status"
+              }
+            ]
+          },
+          {
+            "text": "Явц: 100%.",
+            "sources": [
+              {
+                "toolName": "lookupWorkItems",
+                "sourceId": "wi-private-analysis",
+                "field": "progressPercent"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-private-analysis",
+          "field": "status",
+          "value": "COMPLETED"
+        },
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-private-analysis",
+          "field": "progressPercent",
+          "value": 100
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-private-analysis",
+          "field": "status",
+          "value": "COMPLETED"
+        },
+        {
+          "toolName": "lookupWorkItems",
+          "sourceId": "wi-private-analysis",
+          "field": "progressPercent",
+          "value": 100
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

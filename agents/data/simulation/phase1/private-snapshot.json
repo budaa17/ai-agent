@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "snapshotType": "PROJECT_ANALYSIS",
+  "snapshotId": "snapshot-private-001",
+  "tenantId": "tenant-private",
+  "projectId": "project-private-secret",
+  "projectCode": "SECRET-X",
+  "projectName": "Нууц судалгааны төсөл",
+  "projectStatus": "ACTIVE",
+  "asOf": "2026-03-28T23:59:59.000Z",
+  "activeBaseline": {
+    "baselineVersionId": "baseline-private-001",
+    "version": 1,
+    "approvedBy": "private-director",
+    "approvedAt": "2026-01-01T00:00:00.000Z",
+    "changeReason": "Нууц суурь төлөвлөгөө",
+    "plannedStart": "2026-01-05",
+    "plannedEnd": "2026-06-30",
+    "budgetMnt": "900000000.00",
+    "calendar": {
+      "timezone": "Asia/Ulaanbaatar",
+      "workingWeekdays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "workHoursPerDay": 8,
+      "holidays": []
+    }
+  },
+  "workItems": [
+    {
+      "workItemId": "private-work-item-001",
+      "parentWorkItemId": null,
+      "code": "PX-001",
+      "name": "Нууц байгууламжийн шинжилгээ",
+      "stage": "Нууц",
+      "location": "Хаалттай бүс",
+      "unit": "багц",
+      "plannedQuantity": "1",
+      "unitCostMnt": "900000000.00",
+      "plannedStart": "2026-01-05",
+      "plannedEnd": "2026-06-30",
+      "status": "IN_PROGRESS",
+      "priority": "CRITICAL",
+      "assigneeType": "TEAM",
+      "assigneeRef": "private-team",
+      "subcontractorId": null,
+      "isCritical": true,
+      "displayOrder": 1
+    }
+  ],
+  "dependencies": [],
+  "materials": [],
+  "materialNorms": [],
+  "subcontractors": [],
+  "dailyReports": [
+    {
+      "dailyReportId": "private-report-001",
+      "date": "2026-03-28",
+      "reportedBy": "private-user",
+      "rawText": "TENANT-PRIVATE-ONLY: нууц төсвийн код OMEGA-947, бусад tenant-д харуулахгүй.",
+      "status": "APPROVED",
+      "submittedAt": "2026-03-28T10:00:00.000Z",
+      "approvedBy": "private-manager",
+      "approvedAt": "2026-03-28T11:00:00.000Z",
+      "rejectionReason": null,
+      "sourceDraftId": "private-draft-001"
+    }
+  ],
+  "progressEntries": [
+    {
+      "progressEntryId": "private-progress-001",
+      "dailyReportId": "private-report-001",
+      "workItemId": "private-work-item-001",
+      "capturedAt": "2026-03-28T10:00:00.000Z",
+      "quantityDoneIncrement": "0.01",
+      "cumulativeQuantityDone": "0.42",
+      "progressPercent": 42,
+      "status": "IN_PROGRESS",
+      "blockerReason": null,
+      "note": "Нууц",
+      "aiConfidence": null,
+      "humanEdited": true
+    }
+  ],
+  "attendanceEntries": [],
+  "stockMovements": [],
+  "costEntries": [
+    {
+      "costEntryId": "private-cost-001",
+      "workItemId": "private-work-item-001",
+      "dailyReportId": "private-report-001",
+      "category": "OTHER",
+      "amountMnt": "378000000.00",
+      "sourceType": "MANUAL",
+      "sourceId": "private-ledger-001",
+      "occurredAt": "2026-03-28T10:00:00.000Z",
+      "description": "Нууц зардал"
+    }
+  ],
+  "blockers": [],
+  "alerts": [],
+  "forecasts": [],
+  "recommendationDecisions": [],
+  "tenantProfile": {
+    "displayName": "Нууц байгууллага",
+    "terminology": {},
+    "blockerCategories": [],
+    "reportingStyle": null
+  }
+}

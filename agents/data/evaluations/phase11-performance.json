@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "suite": "BUILDWATCH_V22_PHASE11_PERFORMANCE",
+  "generatedAt": "2026-08-06T17:27:05.507Z",
+  "environment": {
+    "node": "v22.23.2",
+    "platform": "win32",
+    "architecture": "x64",
+    "logicalCpuCount": 20
+  },
+  "passed": true,
+  "cases": [
+    {
+      "id": "api-p95",
+      "targetP95Ms": 250,
+      "measuredP95Ms": 16.11,
+      "sampleCount": 40,
+      "passed": true,
+      "evidence": "40 local HTTP requests through the production Express middleware stack"
+    },
+    {
+      "id": "planning-50",
+      "targetP95Ms": 500,
+      "measuredP95Ms": 12.742,
+      "sampleCount": 10,
+      "passed": true,
+      "evidence": "50 deterministic A5 work-item decisions"
+    },
+    {
+      "id": "pdf-20-pages",
+      "targetP95Ms": 5000,
+      "measuredP95Ms": 20.748,
+      "sampleCount": 3,
+      "passed": true,
+      "evidence": "20-page vector architectural PDF parsed with eval disabled"
+    },
+    {
+      "id": "quantity-baseline",
+      "targetP95Ms": 1000,
+      "measuredP95Ms": 42.461,
+      "sampleCount": 10,
+      "passed": true,
+      "evidence": "Quantity → material/cost → schedule → approved baseline pipeline"
+    },
+    {
+      "id": "dashboard-payload",
+      "targetP95Ms": 500,
+      "measuredP95Ms": 4.277,
+      "sampleCount": 25,
+      "passed": true,
+      "evidence": "Canonical latest plan/forecast/verification dashboard payload assembly"
+    },
+    {
+      "id": "nightly-batch",
+      "targetP95Ms": 30000,
+      "measuredP95Ms": 882.614,
+      "sampleCount": 3,
+      "passed": true,
+      "evidence": "A5 planning and rolling-forecast correctness evaluation batch"
+    },
+    {
+      "id": "artifact-25mb-scan",
+      "targetP95Ms": 3000,
+      "measuredP95Ms": 33.97,
+      "sampleCount": 5,
+      "passed": true,
+      "evidence": "Configured 25 MB artifact limit scanned and checksum-verified"
+    }
+  ]
+}

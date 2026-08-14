@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "seed": "diplom-agents-v1",
+  "asOf": "2026-03-01T00:00:00.000Z",
+  "issues": [
+    {
+      "id": "issue-atlas-overdue-procurement",
+      "type": "OVERDUE_WORK_ITEM",
+      "severity": "HIGH",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-procurement",
+      "effectiveFrom": "2026-02-21T00:00:00.000Z",
+      "summary": "Дэд бүтэц нийлүүлэх ажил төлөвлөсөн хугацаандаа дуусаагүй.",
+      "expectedEvidence": {
+        "plannedEnd": "2026-02-20T00:00:00.000Z",
+        "status": "IN_PROGRESS",
+        "progressPercent": 75
+      }
+    },
+    {
+      "id": "issue-atlas-stalled-integration",
+      "type": "STALLED_PROGRESS",
+      "severity": "HIGH",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-integration",
+      "effectiveFrom": "2026-02-27T00:00:00.000Z",
+      "summary": "Интеграц хөгжүүлэлтийн ахиц есөн хоног өөрчлөгдөөгүй.",
+      "expectedEvidence": {
+        "previousProgressPercent": 45,
+        "currentProgressPercent": 45,
+        "daysWithoutProgress": 9
+      }
+    },
+    {
+      "id": "issue-atlas-dependency-migration",
+      "type": "DEPENDENCY_VIOLATION",
+      "severity": "CRITICAL",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-migration",
+      "effectiveFrom": "2026-02-18T00:00:00.000Z",
+      "summary": "Өгөгдөл шилжүүлэх ажил өмнөх хоёр critical ажил дуусаагүй байхад эхэлсэн.",
+      "expectedEvidence": {
+        "predecessorId": "wi-atlas-integration",
+        "successorActualStart": "2026-02-18T00:00:00.000Z",
+        "predecessorStatus": "IN_PROGRESS"
+      }
+    },
+    {
+      "id": "issue-atlas-budget-license",
+      "type": "BUDGET_OVERRUN",
+      "severity": "MEDIUM",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-license",
+      "effectiveFrom": "2026-01-31T00:00:00.000Z",
+      "summary": "Програмын лицензийн бодит зардал төсвөөс долоон сая төгрөгөөр хэтэрсэн.",
+      "expectedEvidence": {
+        "budget": "20000000.00",
+        "actualCost": "27000000.00",
+        "variance": "7000000.00"
+      }
+    },
+    {
+      "id": "issue-atlas-ledger-procurement",
+      "type": "LEDGER_MISMATCH",
+      "severity": "HIGH",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-procurement",
+      "effectiveFrom": "2026-03-01T00:00:00.000Z",
+      "summary": "Ажлын бодит зардал ledger-ийн нийлбэрээс хоёр сая төгрөгөөр зөрсөн.",
+      "expectedEvidence": {
+        "recordedActualCost": "72000000.00",
+        "ledgerTotal": "70000000.00",
+        "variance": "2000000.00"
+      }
+    }
+  ],
+  "projectOutcomes": [
+    {
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "actualFinish": "2026-05-12T00:00:00.000Z"
+    }
+  ]
+}

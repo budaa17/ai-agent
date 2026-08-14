@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 1,
+  "tenantId": "tenant-demo",
+  "projectId": "project-atlas",
+  "projectCode": "ATLAS",
+  "projectName": "ERP шинэчлэлийн төсөл",
+  "asOf": "2026-03-01T00:00:00.000Z",
+  "cpm": {
+    "projectStart": "2026-01-05T00:00:00.000Z",
+    "projectFinish": "2026-05-09T00:00:00.000Z",
+    "projectDurationDays": 125,
+    "topologicalOrder": [
+      "wi-atlas-discovery",
+      "wi-atlas-design",
+      "wi-atlas-license",
+      "wi-atlas-procurement",
+      "wi-atlas-integration",
+      "wi-atlas-migration",
+      "wi-atlas-training",
+      "wi-atlas-pilot",
+      "wi-atlas-rollout"
+    ],
+    "criticalWorkItemIds": [
+      "wi-atlas-discovery",
+      "wi-atlas-design",
+      "wi-atlas-integration",
+      "wi-atlas-migration",
+      "wi-atlas-training",
+      "wi-atlas-pilot",
+      "wi-atlas-rollout"
+    ],
+    "criticalPaths": [
+      [
+        "wi-atlas-discovery",
+        "wi-atlas-design",
+        "wi-atlas-integration",
+        "wi-atlas-migration",
+        "wi-atlas-training",
+        "wi-atlas-pilot",
+        "wi-atlas-rollout"
+      ]
+    ],
+    "tasks": [
+      {
+        "workItemId": "wi-atlas-discovery",
+        "code": "AT-001",
+        "name": "Шаардлага тодорхойлох",
+        "durationDays": 11,
+        "earliestStartOffset": 0,
+        "earliestFinishOffset": 11,
+        "latestStartOffset": 0,
+        "latestFinishOffset": 11,
+        "totalFloatDays": 0,
+        "freeFloatDays": 0,
+        "earliestStart": "2026-01-05T00:00:00.000Z",
+        "earliestFinish": "2026-01-15T00:00:00.000Z",
+        "latestStart": "2026-01-05T00:00:00.000Z",
+        "latestFinish": "2026-01-15T00:00:00.000Z",
+        "isCritical": true
+      },
+      {
+        "workItemId": "wi-atlas-design",
+        "code": "AT-002",
+        "name": "Шийдлийн архитектур",
+        "durationDays": 17,
+        "earliestStartOffset": 11,
+        "earliestFinishOffset": 28,
+        "latestStartOffset": 11,
+        "latestFinishOffset": 28,
+        "totalFloatDays": 0,
+        "freeFloatDays": 0,
+        "earliestStart": "2026-01-16T00:00:00.000Z",
+        "earliestFinish": "2026-02-01T00:00:00.000Z",
+        "latestStart": "2026-01-16T00:00:00.000Z",
+        "latestFinish": "2026-02-01T00:00:00.000Z",
+        "isCritical": true
+      },
+      {
+        "workItemId": "wi-atlas-license",
+        "code": "AT-003",
+        "name": "Програмын лиценз худалдан авах",
+        "durationDays": 12,
+        "earliestStartOffset": 28,
+        "earliestFinishOffset": 40,
+        "latestStartOffset": 113,
+        "latestFinishOffset": 125,
+        "totalFloatDays": 85,
+        "freeFloatDays": 85,
+        "earliestStart": "2026-02-02T00:00:00.000Z",
+        "earliestFinish": "2026-02-13T00:00:00.000Z",
+        "latestStart": "2026-04-28T00:00:00.000Z",
+        "latestFinish": "2026-05-09T00:00:00.000Z",
+        "isCritical": false
+      },
+      {
+        "workItemId": "wi-atlas-procurement",
+        "code": "AT-004",
+        "name": "Дэд бүтэц нийлүүлэх",
+        "durationDays": 19,
+        "earliestStartOffset": 28,
+        "earliestFinishOffset": 47,
+        "latestStartOffset": 46,
+        "latestFinishOffset": 65,
+        "totalFloatDays": 18,
+        "freeFloatDays": 18,
+        "earliestStart": "2026-02-02T00:00:00.000Z",
+        "earliestFinish": "2026-02-20T00:00:00.000Z",
+        "latestStart": "2026-02-20T00:00:00.000Z",
+        "latestFinish": "2026-03-10T00:00:00.000Z",
+        "isCritical": false
+      },
+      {
+        "workItemId": "wi-atlas-integration",
+        "code": "AT-005",
+        "name": "Системийн интеграц хөгжүүлэх",
+        "durationDays": 37,
+        "earliestStartOffset": 28,
+        "earliestFinishOffset": 65,
+        "latestStartOffset": 28,
+        "latestFinishOffset": 65,
+        "totalFloatDays": 0,
+        "freeFloatDays": 0,
+        "earliestStart": "2026-02-02T00:00:00.000Z",
+        "earliestFinish": "2026-03-10T00:00:00.000Z",
+        "latestStart": "2026-02-02T00:00:00.000Z",
+        "latestFinish": "2026-03-10T00:00:00.000Z",
+        "isCritical": true
+      },
+      {
+        "workItemId": "wi-atlas-migration",
+        "code": "AT-006",
+        "name": "Өгөгдөл шилжүүлэх",
+        "durationDays": 20,
+        "earliestStartOffset": 65,
+        "earliestFinishOffset": 85,
+        "latestStartOffset": 65,
+        "latestFinishOffset": 85,
+        "totalFloatDays": 0,
+        "freeFloatDays": 0,
+        "earliestStart": "2026-03-11T00:00:00.000Z",
+        "earliestFinish": "2026-03-30T00:00:00.000Z",
+        "latestStart": "2026-03-11T00:00:00.000Z",
+        "latestFinish": "2026-03-30T00:00:00.000Z",
+        "isCritical": true
+      },
+      {
+        "workItemId": "wi-atlas-training",
+        "code": "AT-007",
+        "name": "Хэрэглэгчийн сургалт",
+        "durationDays": 15,
+        "earliestStartOffset": 85,
+        "earliestFinishOffset": 100,
+        "latestStartOffset": 85,
+        "latestFinishOffset": 100,
+        "totalFloatDays": 0,
+        "freeFloatDays": 0,
+        "earliestStart": "2026-03-31T00:00:00.000Z",
+        "earliestFinish": "2026-04-14T00:00:00.000Z",
+        "latestStart": "2026-03-31T00:00:00.000Z",
+        "latestFinish": "2026-04-14T00:00:00.000Z",
+        "isCritical": true
+      },
+      {
+        "workItemId": "wi-atlas-pilot",
+        "code": "AT-008",
+        "name": "Пилот нэвтрүүлэлт",
+        "durationDays": 10,
+        "earliestStartOffset": 100,
+        "earliestFinishOffset": 110,
+        "latestStartOffset": 100,
+        "latestFinishOffset": 110,
+        "totalFloatDays": 0,
+        "freeFloatDays": 0,
+        "earliestStart": "2026-04-15T00:00:00.000Z",
+        "earliestFinish": "2026-04-24T00:00:00.000Z",
+        "latestStart": "2026-04-15T00:00:00.000Z",
+        "latestFinish": "2026-04-24T00:00:00.000Z",
+        "isCritical": true
+      },
+      {
+        "workItemId": "wi-atlas-rollout",
+        "code": "AT-009",
+        "name": "Үндсэн нэвтрүүлэлт",
+        "durationDays": 15,
+        "earliestStartOffset": 110,
+        "earliestFinishOffset": 125,
+        "latestStartOffset": 110,
+        "latestFinishOffset": 125,
+        "totalFloatDays": 0,
+        "freeFloatDays": 0,
+        "earliestStart": "2026-04-25T00:00:00.000Z",
+        "earliestFinish": "2026-05-09T00:00:00.000Z",
+        "latestStart": "2026-04-25T00:00:00.000Z",
+        "latestFinish": "2026-05-09T00:00:00.000Z",
+        "isCritical": true
+      }
+    ]
+  },
+  "ruleEvaluations": [
+    {
+      "decisionId": "project.overdue-work-item.v1",
+      "decisionVersion": 1,
+      "hitPolicy": "COLLECT",
+      "matchedCount": 1,
+      "outputs": [
+        {
+          "id": "detected-overdue-work-item-wi-atlas-procurement",
+          "ruleId": "project.overdue-work-item.v1",
+          "type": "OVERDUE_WORK_ITEM",
+          "severity": "HIGH",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-procurement",
+          "effectiveFrom": "2026-02-21T00:00:00.000Z",
+          "summary": "AT-004 Дэд бүтэц нийлүүлэх ажил 9 хоног хугацаа хэтэрсэн.",
+          "evidence": {
+            "plannedEnd": "2026-02-20T00:00:00.000Z",
+            "status": "IN_PROGRESS",
+            "progressPercent": 75,
+            "daysOverdue": 9
+          }
+        }
+      ]
+    },
+    {
+      "decisionId": "project.stalled-progress.v1",
+      "decisionVersion": 1,
+      "hitPolicy": "COLLECT",
+      "matchedCount": 1,
+      "outputs": [
+        {
+          "id": "detected-stalled-progress-wi-atlas-integration",
+          "ruleId": "project.stalled-progress.v1",
+          "type": "STALLED_PROGRESS",
+          "severity": "HIGH",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-integration",
+          "effectiveFrom": "2026-02-27T00:00:00.000Z",
+          "summary": "AT-005 Системийн интеграц хөгжүүлэх ажлын ахиц 9 хоног өөрчлөгдөөгүй.",
+          "evidence": {
+            "previousCapturedAt": "2026-02-20T00:00:00.000Z",
+            "latestCapturedAt": "2026-03-01T00:00:00.000Z",
+            "previousProgressPercent": 45,
+            "currentProgressPercent": 45,
+            "daysWithoutProgress": 9
+          }
+        }
+      ]
+    },
+    {
+      "decisionId": "project.dependency-violation.v1",
+      "decisionVersion": 1,
+      "hitPolicy": "COLLECT",
+      "matchedCount": 1,
+      "outputs": [
+        {
+          "id": "detected-dependency-violation-wi-atlas-migration",
+          "ruleId": "project.dependency-violation.v1",
+          "type": "DEPENDENCY_VIOLATION",
+          "severity": "CRITICAL",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-migration",
+          "effectiveFrom": "2026-02-18T00:00:00.000Z",
+          "summary": "AT-006 Өгөгдөл шилжүүлэх ажил 2 дуусаагүй predecessor-тэй үед эхэлсэн.",
+          "evidence": {
+            "dependencyIds": [
+              "dep-atlas-006",
+              "dep-atlas-005"
+            ],
+            "predecessorIds": [
+              "wi-atlas-integration",
+              "wi-atlas-procurement"
+            ],
+            "predecessorId": "wi-atlas-integration",
+            "predecessorStatus": "IN_PROGRESS",
+            "successorActualStart": "2026-02-18T00:00:00.000Z",
+            "violationCount": 2
+          }
+        }
+      ]
+    },
+    {
+      "decisionId": "project.budget-overrun.v1",
+      "decisionVersion": 1,
+      "hitPolicy": "COLLECT",
+      "matchedCount": 1,
+      "outputs": [
+        {
+          "id": "detected-budget-overrun-wi-atlas-license",
+          "ruleId": "project.budget-overrun.v1",
+          "type": "BUDGET_OVERRUN",
+          "severity": "MEDIUM",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-license",
+          "effectiveFrom": "2026-01-31T00:00:00.000Z",
+          "summary": "AT-003 Програмын лиценз худалдан авах ажлын зардал төсвөөс 7000000.00 төгрөгөөр хэтэрсэн.",
+          "evidence": {
+            "budget": "20000000.00",
+            "actualCost": "27000000.00",
+            "variance": "7000000.00",
+            "overrunPercent": 35
+          }
+        }
+      ]
+    },
+    {
+      "decisionId": "project.ledger-mismatch.v1",
+      "decisionVersion": 1,
+      "hitPolicy": "COLLECT",
+      "matchedCount": 1,
+      "outputs": [
+        {
+          "id": "detected-ledger-mismatch-wi-atlas-procurement",
+          "ruleId": "project.ledger-mismatch.v1",
+          "type": "LEDGER_MISMATCH",
+          "severity": "HIGH",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-procurement",
+          "effectiveFrom": "2026-03-01T00:00:00.000Z",
+          "summary": "AT-004 Дэд бүтэц нийлүүлэх ажлын бүртгэсэн зардал ledger-ээс 2000000.00 төгрөгөөр зөрсөн.",
+          "evidence": {
+            "recordedActualCost": "72000000.00",
+            "ledgerTotal": "70000000.00",
+            "variance": "2000000.00"
+          }
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "id": "detected-overdue-work-item-wi-atlas-procurement",
+      "ruleId": "project.overdue-work-item.v1",
+      "type": "OVERDUE_WORK_ITEM",
+      "severity": "HIGH",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-procurement",
+      "effectiveFrom": "2026-02-21T00:00:00.000Z",
+      "summary": "AT-004 Дэд бүтэц нийлүүлэх ажил 9 хоног хугацаа хэтэрсэн.",
+      "evidence": {
+        "plannedEnd": "2026-02-20T00:00:00.000Z",
+        "status": "IN_PROGRESS",
+        "progressPercent": 75,
+        "daysOverdue": 9
+      }
+    },
+    {
+      "id": "detected-stalled-progress-wi-atlas-integration",
+      "ruleId": "project.stalled-progress.v1",
+      "type": "STALLED_PROGRESS",
+      "severity": "HIGH",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-integration",
+      "effectiveFrom": "2026-02-27T00:00:00.000Z",
+      "summary": "AT-005 Системийн интеграц хөгжүүлэх ажлын ахиц 9 хоног өөрчлөгдөөгүй.",
+      "evidence": {
+        "previousCapturedAt": "2026-02-20T00:00:00.000Z",
+        "latestCapturedAt": "2026-03-01T00:00:00.000Z",
+        "previousProgressPercent": 45,
+        "currentProgressPercent": 45,
+        "daysWithoutProgress": 9
+      }
+    },
+    {
+      "id": "detected-dependency-violation-wi-atlas-migration",
+      "ruleId": "project.dependency-violation.v1",
+      "type": "DEPENDENCY_VIOLATION",
+      "severity": "CRITICAL",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-migration",
+      "effectiveFrom": "2026-02-18T00:00:00.000Z",
+      "summary": "AT-006 Өгөгдөл шилжүүлэх ажил 2 дуусаагүй predecessor-тэй үед эхэлсэн.",
+      "evidence": {
+        "dependencyIds": [
+          "dep-atlas-006",
+          "dep-atlas-005"
+        ],
+        "predecessorIds": [
+          "wi-atlas-integration",
+          "wi-atlas-procurement"
+        ],
+        "predecessorId": "wi-atlas-integration",
+        "predecessorStatus": "IN_PROGRESS",
+        "successorActualStart": "2026-02-18T00:00:00.000Z",
+        "violationCount": 2
+      }
+    },
+    {
+      "id": "detected-budget-overrun-wi-atlas-license",
+      "ruleId": "project.budget-overrun.v1",
+      "type": "BUDGET_OVERRUN",
+      "severity": "MEDIUM",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-license",
+      "effectiveFrom": "2026-01-31T00:00:00.000Z",
+      "summary": "AT-003 Програмын лиценз худалдан авах ажлын зардал төсвөөс 7000000.00 төгрөгөөр хэтэрсэн.",
+      "evidence": {
+        "budget": "20000000.00",
+        "actualCost": "27000000.00",
+        "variance": "7000000.00",
+        "overrunPercent": 35
+      }
+    },
+    {
+      "id": "detected-ledger-mismatch-wi-atlas-procurement",
+      "ruleId": "project.ledger-mismatch.v1",
+      "type": "LEDGER_MISMATCH",
+      "severity": "HIGH",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "workItemId": "wi-atlas-procurement",
+      "effectiveFrom": "2026-03-01T00:00:00.000Z",
+      "summary": "AT-004 Дэд бүтэц нийлүүлэх ажлын бүртгэсэн зардал ledger-ээс 2000000.00 төгрөгөөр зөрсөн.",
+      "evidence": {
+        "recordedActualCost": "72000000.00",
+        "ledgerTotal": "70000000.00",
+        "variance": "2000000.00"
+      }
+    }
+  ],
+  "summary": {
+    "workItemCount": 9,
+    "dependencyCount": 9,
+    "projectDurationDays": 125,
+    "criticalWorkItemCount": 7,
+    "criticalPathCount": 1,
+    "issueCount": 5,
+    "issuesByType": {
+      "OVERDUE_WORK_ITEM": 1,
+      "STALLED_PROGRESS": 1,
+      "DEPENDENCY_VIOLATION": 1,
+      "BUDGET_OVERRUN": 1,
+      "LEDGER_MISMATCH": 1
+    },
+    "issuesBySeverity": {
+      "LOW": 0,
+      "MEDIUM": 1,
+      "HIGH": 3,
+      "CRITICAL": 1
+    }
+  },
+  "answerKeyEvaluation": {
+    "expectedCount": 5,
+    "detectedCount": 5,
+    "truePositiveCount": 5,
+    "falsePositiveCount": 0,
+    "falseNegativeCount": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "matched": [
+      "BUDGET_OVERRUN:project-atlas:wi-atlas-license",
+      "DEPENDENCY_VIOLATION:project-atlas:wi-atlas-migration",
+      "LEDGER_MISMATCH:project-atlas:wi-atlas-procurement",
+      "OVERDUE_WORK_ITEM:project-atlas:wi-atlas-procurement",
+      "STALLED_PROGRESS:project-atlas:wi-atlas-integration"
+    ],
+    "missing": [],
+    "unexpected": []
+  }
+}

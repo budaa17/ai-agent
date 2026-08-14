@@ -1,0 +1,2062 @@
+{
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "suite": "a1-project-update-v1",
+  "generatedAt": "2026-07-28T13:34:43.176Z",
+  "totalCases": 25,
+  "successfulExtractions": 25,
+  "exactCaseMatches": 20,
+  "extractionSuccessRate": 1,
+  "exactCaseAccuracy": 0.8,
+  "fieldAccuracy": 0.9637681159420289,
+  "matchedFields": 133,
+  "totalFields": 138,
+  "byField": {
+    "actualCostMnt": {
+      "matched": 7,
+      "total": 7,
+      "accuracy": 1
+    },
+    "actualEndDate": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "actualStartDate": {
+      "matched": 3,
+      "total": 3,
+      "accuracy": 1
+    },
+    "budgetMnt": {
+      "matched": 5,
+      "total": 5,
+      "accuracy": 1
+    },
+    "daysWithoutProgress": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "forecastEndDate": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "issueTypes": {
+      "matched": 16,
+      "total": 16,
+      "accuracy": 1
+    },
+    "language": {
+      "matched": 4,
+      "total": 4,
+      "accuracy": 1
+    },
+    "ledgerTotalMnt": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "plannedEndDate": {
+      "matched": 3,
+      "total": 3,
+      "accuracy": 1
+    },
+    "plannedStartDate": {
+      "matched": 1,
+      "total": 1,
+      "accuracy": 1
+    },
+    "predecessorStatus": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "predecessorWorkItemCode": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "previousProgressPercent": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "priority": {
+      "matched": 2,
+      "total": 2,
+      "accuracy": 1
+    },
+    "progressPercent": {
+      "matched": 14,
+      "total": 14,
+      "accuracy": 1
+    },
+    "projectCode": {
+      "matched": 6,
+      "total": 6,
+      "accuracy": 1
+    },
+    "reportDate": {
+      "matched": 3,
+      "total": 3,
+      "accuracy": 1
+    },
+    "status": {
+      "matched": 14,
+      "total": 15,
+      "accuracy": 0.9333333333333333
+    },
+    "workItemCode": {
+      "matched": 24,
+      "total": 24,
+      "accuracy": 1
+    },
+    "workItemName": {
+      "matched": 17,
+      "total": 21,
+      "accuracy": 0.8095238095238095
+    }
+  },
+  "byTag": {
+    "blocked": {
+      "matched": 5,
+      "total": 5,
+      "accuracy": 1
+    },
+    "budget": {
+      "matched": 17,
+      "total": 18,
+      "accuracy": 0.9444444444444444
+    },
+    "cancelled": {
+      "matched": 3,
+      "total": 3,
+      "accuracy": 1
+    },
+    "completed": {
+      "matched": 12,
+      "total": 12,
+      "accuracy": 1
+    },
+    "currency-symbol": {
+      "matched": 4,
+      "total": 5,
+      "accuracy": 0.8
+    },
+    "date": {
+      "matched": 31,
+      "total": 31,
+      "accuracy": 1
+    },
+    "decimal": {
+      "matched": 4,
+      "total": 5,
+      "accuracy": 0.8
+    },
+    "dependency": {
+      "matched": 13,
+      "total": 13,
+      "accuracy": 1
+    },
+    "english": {
+      "matched": 7,
+      "total": 7,
+      "accuracy": 1
+    },
+    "forecast": {
+      "matched": 11,
+      "total": 11,
+      "accuracy": 1
+    },
+    "healthy": {
+      "matched": 14,
+      "total": 15,
+      "accuracy": 0.9333333333333333
+    },
+    "ledger": {
+      "matched": 8,
+      "total": 8,
+      "accuracy": 1
+    },
+    "missing-code": {
+      "matched": 3,
+      "total": 3,
+      "accuracy": 1
+    },
+    "mixed-language": {
+      "matched": 14,
+      "total": 14,
+      "accuracy": 1
+    },
+    "money": {
+      "matched": 17,
+      "total": 19,
+      "accuracy": 0.8947368421052632
+    },
+    "multiple-issues": {
+      "matched": 8,
+      "total": 8,
+      "accuracy": 1
+    },
+    "null-handling": {
+      "matched": 7,
+      "total": 8,
+      "accuracy": 0.875
+    },
+    "overdue": {
+      "matched": 17,
+      "total": 17,
+      "accuracy": 1
+    },
+    "planned": {
+      "matched": 6,
+      "total": 6,
+      "accuracy": 1
+    },
+    "priority": {
+      "matched": 11,
+      "total": 11,
+      "accuracy": 1
+    },
+    "progress": {
+      "matched": 36,
+      "total": 37,
+      "accuracy": 0.972972972972973
+    },
+    "relative-date": {
+      "matched": 10,
+      "total": 11,
+      "accuracy": 0.9090909090909091
+    },
+    "sparse": {
+      "matched": 4,
+      "total": 4,
+      "accuracy": 1
+    },
+    "stalled": {
+      "matched": 15,
+      "total": 15,
+      "accuracy": 1
+    },
+    "status": {
+      "matched": 12,
+      "total": 12,
+      "accuracy": 1
+    },
+    "status-synonym": {
+      "matched": 3,
+      "total": 4,
+      "accuracy": 0.75
+    }
+  },
+  "cases": [
+    {
+      "caseId": "a1-actual-start-end",
+      "tags": [
+        "completed",
+        "date"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "RV-005",
+          "actual": "RV-005",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Кабель татах",
+          "actual": "Кабель татах ажил",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "COMPLETED",
+          "actual": "COMPLETED",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 100,
+          "actual": 100,
+          "matched": true
+        },
+        {
+          "field": "actualStartDate",
+          "expected": "2026-02-12",
+          "actual": "2026-02-12",
+          "matched": true
+        },
+        {
+          "field": "actualEndDate",
+          "expected": "2026-02-24",
+          "actual": "2026-02-24",
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "RV-005",
+        "workItemName": "Кабель татах ажил",
+        "reportDate": null,
+        "status": "COMPLETED",
+        "priority": null,
+        "progressPercent": 100,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": "2026-02-12",
+        "actualEndDate": "2026-02-24",
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-blocked-critical",
+      "tags": [
+        "blocked",
+        "priority"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 5,
+      "totalFields": 5,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-007",
+          "actual": "AT-007",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Сургалт ба нэвтрүүлэлт",
+          "actual": "Сургалт ба нэвтрүүлэлт",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "BLOCKED",
+          "actual": "BLOCKED",
+          "matched": true
+        },
+        {
+          "field": "priority",
+          "expected": "CRITICAL",
+          "actual": "CRITICAL",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 30,
+          "actual": 30,
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mixed",
+        "projectCode": null,
+        "workItemCode": "AT-007",
+        "workItemName": "Сургалт ба нэвтрүүлэлт",
+        "reportDate": null,
+        "status": "BLOCKED",
+        "priority": "CRITICAL",
+        "progressPercent": 30,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-budget-overrun",
+      "tags": [
+        "budget",
+        "money"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 5,
+      "totalFields": 5,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-003",
+          "actual": "AT-003",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Програмын лиценз худалдан авах",
+          "actual": "Програмын лиценз худалдан авах",
+          "matched": true
+        },
+        {
+          "field": "budgetMnt",
+          "expected": "20000000.00",
+          "actual": "20000000.00",
+          "matched": true
+        },
+        {
+          "field": "actualCostMnt",
+          "expected": "27000000.00",
+          "actual": "27000000.00",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "BUDGET_OVERRUN"
+          ],
+          "actual": [
+            "BUDGET_OVERRUN"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-003",
+        "workItemName": "Програмын лиценз худалдан авах",
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": "20000000.00",
+        "actualCostMnt": "27000000.00",
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": [
+          "BUDGET_OVERRUN"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-cancelled",
+      "tags": [
+        "cancelled",
+        "status"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 3,
+      "totalFields": 3,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "RV-004",
+          "actual": "RV-004",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Хуучин агуулах буулгах",
+          "actual": "Хуучин агуулах буулгах",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "CANCELLED",
+          "actual": "CANCELLED",
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "RV-004",
+        "workItemName": "Хуучин агуулах буулгах",
+        "reportDate": null,
+        "status": "CANCELLED",
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-completed-healthy",
+      "tags": [
+        "healthy",
+        "completed"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-001",
+          "actual": "AT-001",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Шаардлага тодорхойлох",
+          "actual": "Шаардлага тодорхойлох",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "COMPLETED",
+          "actual": "COMPLETED",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 100,
+          "actual": 100,
+          "matched": true
+        },
+        {
+          "field": "actualEndDate",
+          "expected": "2026-01-14",
+          "actual": "2026-01-14",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-001",
+        "workItemName": "Шаардлага тодорхойлох",
+        "reportDate": null,
+        "status": "COMPLETED",
+        "priority": null,
+        "progressPercent": 100,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": "2026-01-14",
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-currency-symbol",
+      "tags": [
+        "money",
+        "currency-symbol"
+      ],
+      "extractionSucceeded": true,
+      "passed": false,
+      "matchedFields": 4,
+      "totalFields": 5,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-014",
+          "actual": "AT-014",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Сүлжээний төхөөрөмж",
+          "actual": "Сүлжээний төхөөрөмжийн төсөв",
+          "matched": false
+        },
+        {
+          "field": "budgetMnt",
+          "expected": "45000000.00",
+          "actual": "45000000.00",
+          "matched": true
+        },
+        {
+          "field": "actualCostMnt",
+          "expected": "42750000.00",
+          "actual": "42750000.00",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-014",
+        "workItemName": "Сүлжээний төхөөрөмжийн төсөв",
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": "45000000.00",
+        "actualCostMnt": "42750000.00",
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-decimal-million",
+      "tags": [
+        "money",
+        "decimal"
+      ],
+      "extractionSucceeded": true,
+      "passed": false,
+      "matchedFields": 4,
+      "totalFields": 5,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "RV-001",
+          "actual": "RV-001",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Талбайн хэмжилт",
+          "actual": "Талбайн хэмжилтийн",
+          "matched": false
+        },
+        {
+          "field": "budgetMnt",
+          "expected": "15000000.00",
+          "actual": "15000000.00",
+          "matched": true
+        },
+        {
+          "field": "actualCostMnt",
+          "expected": "12500000.00",
+          "actual": "12500000.00",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "RV-001",
+        "workItemName": "Талбайн хэмжилтийн",
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": "15000000.00",
+        "actualCostMnt": "12500000.00",
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-dependency-english-status",
+      "tags": [
+        "mixed-language",
+        "dependency"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 7,
+      "totalFields": 7,
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mixed",
+          "actual": "mixed",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": "AT-018",
+          "actual": "AT-018",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Deployment",
+          "actual": "Deployment",
+          "matched": true
+        },
+        {
+          "field": "actualStartDate",
+          "expected": "2026-02-27",
+          "actual": "2026-02-27",
+          "matched": true
+        },
+        {
+          "field": "predecessorWorkItemCode",
+          "expected": "AT-017",
+          "actual": "AT-017",
+          "matched": true
+        },
+        {
+          "field": "predecessorStatus",
+          "expected": "BLOCKED",
+          "actual": "BLOCKED",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "DEPENDENCY_VIOLATION"
+          ],
+          "actual": [
+            "DEPENDENCY_VIOLATION"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mixed",
+        "projectCode": null,
+        "workItemCode": "AT-018",
+        "workItemName": "Deployment",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": "2026-02-27",
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": "AT-017",
+        "predecessorStatus": "BLOCKED",
+        "issueTypes": [
+          "DEPENDENCY_VIOLATION"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-dependency-violation",
+      "tags": [
+        "dependency",
+        "date"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-006",
+          "actual": "AT-006",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Өгөгдөл шилжүүлэх",
+          "actual": "Өгөгдөл шилжүүлэх",
+          "matched": true
+        },
+        {
+          "field": "actualStartDate",
+          "expected": "2026-02-18",
+          "actual": "2026-02-18",
+          "matched": true
+        },
+        {
+          "field": "predecessorWorkItemCode",
+          "expected": "AT-005",
+          "actual": "AT-005",
+          "matched": true
+        },
+        {
+          "field": "predecessorStatus",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "DEPENDENCY_VIOLATION"
+          ],
+          "actual": [
+            "DEPENDENCY_VIOLATION"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-006",
+        "workItemName": "Өгөгдөл шилжүүлэх",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": "2026-02-18",
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": "AT-005",
+        "predecessorStatus": "IN_PROGRESS",
+        "issueTypes": [
+          "DEPENDENCY_VIOLATION"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-english-stalled",
+      "tags": [
+        "english",
+        "stalled"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 7,
+      "totalFields": 7,
+      "fields": [
+        {
+          "field": "language",
+          "expected": "en",
+          "actual": "en",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": "AT-016",
+          "actual": "AT-016",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "API gateway",
+          "actual": "API gateway",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 35,
+          "actual": 35,
+          "matched": true
+        },
+        {
+          "field": "daysWithoutProgress",
+          "expected": 7,
+          "actual": 7,
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "STALLED_PROGRESS"
+          ],
+          "actual": [
+            "STALLED_PROGRESS"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "en",
+        "projectCode": null,
+        "workItemCode": "AT-016",
+        "workItemName": "API gateway",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": 35,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": 7,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": [
+          "STALLED_PROGRESS"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-forecast-delay",
+      "tags": [
+        "forecast",
+        "date"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 4,
+      "totalFields": 4,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-010",
+          "actual": "AT-010",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Тайлангийн модуль",
+          "actual": "Тайлангийн модуль",
+          "matched": true
+        },
+        {
+          "field": "plannedEndDate",
+          "expected": "2026-03-10",
+          "actual": "2026-03-10",
+          "matched": true
+        },
+        {
+          "field": "forecastEndDate",
+          "expected": "2026-03-18",
+          "actual": "2026-03-18",
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-010",
+        "workItemName": "Тайлангийн модуль",
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": "2026-03-10",
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": "2026-03-18",
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-high-priority",
+      "tags": [
+        "priority",
+        "progress"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "fields": [
+        {
+          "field": "projectCode",
+          "expected": "ATLAS",
+          "actual": "ATLAS",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": "AT-008",
+          "actual": "AT-008",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Аюулгүй байдлын шалгалт",
+          "actual": "Аюулгүй байдлын шалгалт",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "priority",
+          "expected": "HIGH",
+          "actual": "HIGH",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 10,
+          "actual": 10,
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": "ATLAS",
+        "workItemCode": "AT-008",
+        "workItemName": "Аюулгүй байдлын шалгалт",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": "HIGH",
+        "progressPercent": 10,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-ledger-mismatch",
+      "tags": [
+        "ledger",
+        "money"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 4,
+      "totalFields": 4,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-004",
+          "actual": "AT-004",
+          "matched": true
+        },
+        {
+          "field": "actualCostMnt",
+          "expected": "72000000.00",
+          "actual": "72000000.00",
+          "matched": true
+        },
+        {
+          "field": "ledgerTotalMnt",
+          "expected": "70000000.00",
+          "actual": "70000000.00",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "LEDGER_MISMATCH"
+          ],
+          "actual": [
+            "LEDGER_MISMATCH"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mixed",
+        "projectCode": null,
+        "workItemCode": "AT-004",
+        "workItemName": null,
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": "72000000.00",
+        "ledgerTotalMnt": "70000000.00",
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": [
+          "LEDGER_MISMATCH"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-ledger-reconciled",
+      "tags": [
+        "ledger",
+        "healthy"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 4,
+      "totalFields": 4,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-019",
+          "actual": "AT-019",
+          "matched": true
+        },
+        {
+          "field": "actualCostMnt",
+          "expected": "18000000.00",
+          "actual": "18000000.00",
+          "matched": true
+        },
+        {
+          "field": "ledgerTotalMnt",
+          "expected": "18000000.00",
+          "actual": "18000000.00",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mixed",
+        "projectCode": null,
+        "workItemCode": "AT-019",
+        "workItemName": null,
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": "18000000.00",
+        "ledgerTotalMnt": "18000000.00",
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-mixed-language",
+      "tags": [
+        "mixed-language",
+        "forecast"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 7,
+      "totalFields": 7,
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mixed",
+          "actual": "mixed",
+          "matched": true
+        },
+        {
+          "field": "projectCode",
+          "expected": "ATLAS",
+          "actual": "ATLAS",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": "AT-009",
+          "actual": "AT-009",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Data cleanup",
+          "actual": "Data cleanup",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 60,
+          "actual": 60,
+          "matched": true
+        },
+        {
+          "field": "forecastEndDate",
+          "expected": "2026-03-20",
+          "actual": "2026-03-20",
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mixed",
+        "projectCode": "ATLAS",
+        "workItemCode": "AT-009",
+        "workItemName": "Data cleanup",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": 60,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": "2026-03-20",
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-multiple-issues",
+      "tags": [
+        "multiple-issues",
+        "overdue",
+        "budget"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-012",
+          "actual": "AT-012",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Сервер суурилуулах",
+          "actual": "Сервер суурилуулах",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 80,
+          "actual": 80,
+          "matched": true
+        },
+        {
+          "field": "plannedEndDate",
+          "expected": "2026-02-25",
+          "actual": "2026-02-25",
+          "matched": true
+        },
+        {
+          "field": "budgetMnt",
+          "expected": "30000000.00",
+          "actual": "30000000.00",
+          "matched": true
+        },
+        {
+          "field": "actualCostMnt",
+          "expected": "35000000.00",
+          "actual": "35000000.00",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "OVERDUE_WORK_ITEM",
+            "BUDGET_OVERRUN"
+          ],
+          "actual": [
+            "OVERDUE_WORK_ITEM",
+            "BUDGET_OVERRUN"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-012",
+        "workItemName": "Сервер суурилуулах",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": 80,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": "2026-02-25",
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": "30000000.00",
+        "actualCostMnt": "35000000.00",
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": [
+          "OVERDUE_WORK_ITEM",
+          "BUDGET_OVERRUN"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-name-only",
+      "tags": [
+        "missing-code",
+        "progress"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 3,
+      "totalFields": 3,
+      "fields": [
+        {
+          "field": "workItemName",
+          "expected": "Хэрэглэгчийн хүлээн авах туршилт",
+          "actual": "Хэрэглэгчийн хүлээн авах туршилт",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 50,
+          "actual": 50,
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": null,
+        "workItemName": "Хэрэглэгчийн хүлээн авах туршилт",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": 50,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-not-started-synonym",
+      "tags": [
+        "status-synonym",
+        "null-handling"
+      ],
+      "extractionSucceeded": true,
+      "passed": false,
+      "matchedFields": 3,
+      "totalFields": 4,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-015",
+          "actual": "AT-015",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Нөөц сервер тохируулах",
+          "actual": null,
+          "matched": false
+        },
+        {
+          "field": "status",
+          "expected": "PLANNED",
+          "actual": "PLANNED",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": null,
+          "actual": null,
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-015",
+        "workItemName": null,
+        "reportDate": null,
+        "status": "PLANNED",
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-overdue-procurement",
+      "tags": [
+        "overdue",
+        "status",
+        "progress",
+        "date"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 9,
+      "totalFields": 9,
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "projectCode",
+          "expected": "ATLAS",
+          "actual": "ATLAS",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": "AT-004",
+          "actual": "AT-004",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Дэд бүтэц нийлүүлэх",
+          "actual": "Дэд бүтэц нийлүүлэх",
+          "matched": true
+        },
+        {
+          "field": "reportDate",
+          "expected": "2026-03-01",
+          "actual": "2026-03-01",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 75,
+          "actual": 75,
+          "matched": true
+        },
+        {
+          "field": "plannedEndDate",
+          "expected": "2026-02-20",
+          "actual": "2026-02-20",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "OVERDUE_WORK_ITEM"
+          ],
+          "actual": [
+            "OVERDUE_WORK_ITEM"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": "ATLAS",
+        "workItemCode": "AT-004",
+        "workItemName": "Дэд бүтэц нийлүүлэх",
+        "reportDate": "2026-03-01",
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": 75,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": "2026-02-20",
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": [
+          "OVERDUE_WORK_ITEM"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-planned-start",
+      "tags": [
+        "planned",
+        "date"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "fields": [
+        {
+          "field": "projectCode",
+          "expected": "RIVER",
+          "actual": "RIVER",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": "RV-002",
+          "actual": "RV-002",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Суурийн засвар",
+          "actual": "Суурийн засвар",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "PLANNED",
+          "actual": "PLANNED",
+          "matched": true
+        },
+        {
+          "field": "plannedStartDate",
+          "expected": "2026-02-20",
+          "actual": "2026-02-20",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": "RIVER",
+        "workItemCode": "RV-002",
+        "workItemName": "Суурийн засвар",
+        "reportDate": null,
+        "status": "PLANNED",
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": "2026-02-20",
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-progress-improved",
+      "tags": [
+        "progress",
+        "relative-date"
+      ],
+      "extractionSucceeded": true,
+      "passed": false,
+      "matchedFields": 5,
+      "totalFields": 6,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-011",
+          "actual": "AT-011",
+          "matched": true
+        },
+        {
+          "field": "reportDate",
+          "expected": "2026-03-01",
+          "actual": "2026-03-01",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": null,
+          "matched": false
+        },
+        {
+          "field": "progressPercent",
+          "expected": 55,
+          "actual": 55,
+          "matched": true
+        },
+        {
+          "field": "previousProgressPercent",
+          "expected": 40,
+          "actual": 40,
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-011",
+        "workItemName": null,
+        "reportDate": "2026-03-01",
+        "status": null,
+        "priority": null,
+        "progressPercent": 55,
+        "previousProgressPercent": 40,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-sparse-project-note",
+      "tags": [
+        "sparse",
+        "null-handling"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 4,
+      "totalFields": 4,
+      "fields": [
+        {
+          "field": "projectCode",
+          "expected": "ATLAS",
+          "actual": "ATLAS",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": null,
+          "actual": null,
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": null,
+          "actual": null,
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": "ATLAS",
+        "workItemCode": null,
+        "workItemName": null,
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-stalled-integration",
+      "tags": [
+        "stalled",
+        "progress"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "fields": [
+        {
+          "field": "projectCode",
+          "expected": "ATLAS",
+          "actual": "ATLAS",
+          "matched": true
+        },
+        {
+          "field": "workItemCode",
+          "expected": "AT-005",
+          "actual": "AT-005",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Интеграц хөгжүүлэлт",
+          "actual": "Интеграц хөгжүүлэлт",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 45,
+          "actual": 45,
+          "matched": true
+        },
+        {
+          "field": "previousProgressPercent",
+          "expected": 45,
+          "actual": 45,
+          "matched": true
+        },
+        {
+          "field": "daysWithoutProgress",
+          "expected": 9,
+          "actual": 9,
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "STALLED_PROGRESS"
+          ],
+          "actual": [
+            "STALLED_PROGRESS"
+          ],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": "ATLAS",
+        "workItemCode": "AT-005",
+        "workItemName": "Интеграц хөгжүүлэлт",
+        "reportDate": null,
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": 45,
+        "previousProgressPercent": 45,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": 9,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": [
+          "STALLED_PROGRESS"
+        ]
+      }
+    },
+    {
+      "caseId": "a1-under-budget",
+      "tags": [
+        "budget",
+        "healthy"
+      ],
+      "extractionSucceeded": true,
+      "passed": false,
+      "matchedFields": 4,
+      "totalFields": 5,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-020",
+          "actual": "AT-020",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Мэдээлэл шилжүүлэх туршилт",
+          "actual": "Мэдээлэл шилжүүлэх туршилтын",
+          "matched": false
+        },
+        {
+          "field": "budgetMnt",
+          "expected": "10000000.00",
+          "actual": "10000000.00",
+          "matched": true
+        },
+        {
+          "field": "actualCostMnt",
+          "expected": "8200000.00",
+          "actual": "8200000.00",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-020",
+        "workItemName": "Мэдээлэл шилжүүлэх туршилтын",
+        "reportDate": null,
+        "status": null,
+        "priority": null,
+        "progressPercent": null,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": "10000000.00",
+        "actualCostMnt": "8200000.00",
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    },
+    {
+      "caseId": "a1-yesterday-report",
+      "tags": [
+        "relative-date",
+        "progress"
+      ],
+      "extractionSucceeded": true,
+      "passed": true,
+      "matchedFields": 5,
+      "totalFields": 5,
+      "fields": [
+        {
+          "field": "workItemCode",
+          "expected": "AT-013",
+          "actual": "AT-013",
+          "matched": true
+        },
+        {
+          "field": "workItemName",
+          "expected": "Тест автоматжуулалт",
+          "actual": "Тест автоматжуулалт",
+          "matched": true
+        },
+        {
+          "field": "reportDate",
+          "expected": "2026-02-28",
+          "actual": "2026-02-28",
+          "matched": true
+        },
+        {
+          "field": "status",
+          "expected": "IN_PROGRESS",
+          "actual": "IN_PROGRESS",
+          "matched": true
+        },
+        {
+          "field": "progressPercent",
+          "expected": 65,
+          "actual": 65,
+          "matched": true
+        }
+      ],
+      "output": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "projectCode": null,
+        "workItemCode": "AT-013",
+        "workItemName": "Тест автоматжуулалт",
+        "reportDate": "2026-02-28",
+        "status": "IN_PROGRESS",
+        "priority": null,
+        "progressPercent": 65,
+        "previousProgressPercent": null,
+        "plannedStartDate": null,
+        "plannedEndDate": null,
+        "actualStartDate": null,
+        "actualEndDate": null,
+        "forecastEndDate": null,
+        "budgetMnt": null,
+        "actualCostMnt": null,
+        "ledgerTotalMnt": null,
+        "daysWithoutProgress": null,
+        "predecessorWorkItemCode": null,
+        "predecessorStatus": null,
+        "issueTypes": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "tenantId": "tenant-demo",
+  "projectId": "project-atlas",
+  "asOf": "2026-03-01T00:00:00.000Z",
+  "issueDetection": {
+    "expectedCount": 5,
+    "detectedCount": 5,
+    "truePositiveCount": 5,
+    "falsePositiveCount": 0,
+    "falseNegativeCount": 0,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "matched": [
+      "BUDGET_OVERRUN:project-atlas:wi-atlas-license",
+      "DEPENDENCY_VIOLATION:project-atlas:wi-atlas-migration",
+      "LEDGER_MISMATCH:project-atlas:wi-atlas-procurement",
+      "OVERDUE_WORK_ITEM:project-atlas:wi-atlas-procurement",
+      "STALLED_PROGRESS:project-atlas:wi-atlas-integration"
+    ],
+    "missing": [],
+    "unexpected": []
+  },
+  "meanDetectionLagDays": 10,
+  "meanEffectiveDateErrorDays": 0,
+  "forecastFinish": "2026-05-09T00:00:00.000Z",
+  "actualFinish": "2026-05-12T00:00:00.000Z",
+  "forecastErrorDays": 3
+}

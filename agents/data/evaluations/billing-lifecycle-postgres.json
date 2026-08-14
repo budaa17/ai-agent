@@ -1,0 +1,77 @@
+{
+  "suite": "billing-lifecycle-postgres",
+  "generatedAt": "2026-08-13T17:53:12.430Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "a visitor creates a signup intent, not a workspace",
+      "passed": true,
+      "detail": "intent 153c8769-14ca-46f7-8f56-5b25edd786c5"
+    },
+    {
+      "name": "resending invalidates the previous email verification code",
+      "passed": true,
+      "detail": "old code refused; fresh code issued"
+    },
+    {
+      "name": "an email verification code works exactly once",
+      "passed": true,
+      "detail": "second attempt refused"
+    },
+    {
+      "name": "pressing pay twice reuses the open checkout",
+      "passed": true,
+      "detail": "1 provider call(s)"
+    },
+    {
+      "name": "a signed payment provisions exactly one active tenant",
+      "passed": true,
+      "detail": "PROCESSED · ACTIVE"
+    },
+    {
+      "name": "the first Company Admin cannot sign in until they set a password",
+      "passed": true,
+      "detail": "COMPANY_ADMIN/INVITED"
+    },
+    {
+      "name": "the plan entitlements are snapshotted onto the tenant",
+      "passed": true,
+      "detail": "starter limits stored and re-readable"
+    },
+    {
+      "name": "replaying the same payment creates nothing further",
+      "passed": true,
+      "detail": "DUPLICATE"
+    },
+    {
+      "name": "an out-of-order event cannot roll a tenant backwards",
+      "passed": true,
+      "detail": "IGNORED · tenant still ACTIVE"
+    },
+    {
+      "name": "a failed payment opens a bounded grace window",
+      "passed": true,
+      "detail": "PAYMENT_GRACE · grace ends in 7 day(s)"
+    },
+    {
+      "name": "grace keeps the workspace usable, and its expiry closes it",
+      "passed": true,
+      "detail": "during=allowed after=ACCESS_SUSPENDED"
+    },
+    {
+      "name": "four simultaneous creates cannot both take the last free project slot",
+      "passed": true,
+      "detail": "1 accepted, 1 project(s) exist"
+    },
+    {
+      "name": "an event naming an unpublished price grants nothing",
+      "passed": true,
+      "detail": "FAILED · tenant still PAYMENT_GRACE"
+    },
+    {
+      "name": "an unsigned event never reaches the inbox",
+      "passed": true,
+      "detail": "rejected, 0 inbox row(s)"
+    }
+  ]
+}

@@ -1,0 +1,785 @@
+{
+  "schemaVersion": 1,
+  "recordId": "review-daily-draft-fd01e9326fc9b84f8aa6",
+  "draftId": "daily-draft-fd01e9326fc9b84f8aa6",
+  "requestId": "phase1-demo-001",
+  "sourceSha256": "65e3ca0f401f77e96a97b4a099dabe9f89738e4f5a94ae19e9fd2f3398135768",
+  "tenantId": "tenant-demo",
+  "projectId": "project-buildwatch-simulation",
+  "status": "APPROVED",
+  "draft": {
+    "schemaVersion": 1,
+    "draftType": "DAILY_REPORT",
+    "draftId": "daily-draft-fd01e9326fc9b84f8aa6",
+    "requestId": "phase1-demo-001",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "sourceArtifacts": [],
+    "rawText": "2026-03-28-нд A блокийн 2-р давхарт BW-017 Шатны марш 60 хувь, нийт хуримтлагдсан гүйцэтгэл 10 м3. Манай Өрлөгийн баг 6 хүн тус бүр 8 цаг ажилласан. 100 ш тоосго зарцуулсан.",
+    "language": "mn",
+    "reportDate": "2026-03-28",
+    "location": {
+      "block": "A блок",
+      "stage": null,
+      "floor": "2-р давхар",
+      "zone": null
+    },
+    "progressEntries": [
+      {
+        "entryId": "daily-draft-fd01e9326fc9b84f8aa6-progress-001",
+        "workItem": {
+          "code": "BW-017",
+          "name": "Шатны марш",
+          "candidateCodes": []
+        },
+        "progressMode": "CUMULATIVE",
+        "progressPercent": 60,
+        "quantityDone": "10",
+        "unit": "м3",
+        "status": "IN_PROGRESS",
+        "blocker": null,
+        "note": "60 хувь; нийт хуримтлагдсан гүйцэтгэл 10 м3.",
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.0.workItem.code",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "progressEntries.0.workItem.code",
+                "quote": "BW-017",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.workItem.name",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "progressEntries.0.workItem.name",
+                "quote": "Шатны марш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressPercent",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "progressEntries.0.progressPercent",
+                "quote": "60 хувь",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressMode",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "progressEntries.0.progressMode",
+                "quote": "нийт хуримтлагдсан гүйцэтгэл",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.quantityDone",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "progressEntries.0.quantityDone",
+                "quote": "10 м3",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.unit",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "progressEntries.0.unit",
+                "quote": "10 м3",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.status",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "progressEntries.0.status",
+                "quote": "60 хувь",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attendanceEntries": [
+      {
+        "entryId": "daily-draft-fd01e9326fc9b84f8aa6-attendance-001",
+        "teamType": "OWN",
+        "teamRef": null,
+        "teamName": "Өрлөгийн баг",
+        "workItemCodes": [],
+        "headcount": 6,
+        "hoursPerPerson": 8,
+        "totalHours": 48,
+        "fieldConfidence": [
+          {
+            "fieldPath": "attendanceEntries.0.teamType",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "attendanceEntries.0.teamType",
+                "quote": "Манай Өрлөгийн баг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.teamName",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "attendanceEntries.0.teamName",
+                "quote": "Өрлөгийн баг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.headcount",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "attendanceEntries.0.headcount",
+                "quote": "6 хүн",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.hoursPerPerson",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "attendanceEntries.0.hoursPerPerson",
+                "quote": "тус бүр 8 цаг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.totalHours",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "attendanceEntries.0.totalHours",
+                "quote": "6 хүн тус бүр 8 цаг ажилласан",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "materialSignals": [
+      {
+        "signalId": "daily-draft-fd01e9326fc9b84f8aa6-material-001",
+        "signalType": "CONSUMED",
+        "rawName": "тоосго",
+        "normalizedName": "Барилгын тоосго",
+        "materialRef": "material-brick",
+        "quantity": "100",
+        "unit": "ш",
+        "supplierName": null,
+        "workItemCodes": [],
+        "note": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "materialSignals.0.signalType",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "materialSignals.0.signalType",
+                "quote": "тоосго зарцуулсан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.rawName",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "materialSignals.0.rawName",
+                "quote": "тоосго",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.normalizedName",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "materialSignals.0.normalizedName",
+                "quote": "тоосго",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.materialRef",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "materialSignals.0.materialRef",
+                "quote": "тоосго",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.quantity",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "materialSignals.0.quantity",
+                "quote": "100 ш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.unit",
+            "score": 1,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                "fieldPath": "materialSignals.0.unit",
+                "quote": "100 ш",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "photoObservations": [],
+    "clarificationQuestions": [],
+    "duplicateCandidates": [],
+    "fieldConfidence": [
+      {
+        "fieldPath": "dailyReport.reportDate",
+        "score": 1,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-b8a493bb2d38730c4ce2",
+            "fieldPath": "dailyReport.reportDate",
+            "quote": "2026-03-28-нд",
+            "imageRegion": null
+          }
+        ]
+      },
+      {
+        "fieldPath": "dailyReport.location.block",
+        "score": 1,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-b8a493bb2d38730c4ce2",
+            "fieldPath": "dailyReport.location.block",
+            "quote": "A блокийн",
+            "imageRegion": null
+          }
+        ]
+      },
+      {
+        "fieldPath": "dailyReport.location.floor",
+        "score": 1,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-b8a493bb2d38730c4ce2",
+            "fieldPath": "dailyReport.location.floor",
+            "quote": "2-р давхарт",
+            "imageRegion": null
+          }
+        ]
+      }
+    ],
+    "overallConfidence": 0.9952,
+    "confidenceLevel": "HIGH",
+    "validationIssues": [],
+    "status": "APPROVED",
+    "requiresHumanReview": true
+  },
+  "humanEditedFieldPaths": [],
+  "approvedCommand": {
+    "schemaVersion": 1,
+    "commandType": "APPROVE_DAILY_REPORT",
+    "commandId": "command-daily-draft-fd01e9326fc9b84f8aa6",
+    "idempotencyKey": "approve:tenant-demo:project-buildwatch-simulation:daily-draft-fd01e9326fc9b84f8aa6",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "draftId": "daily-draft-fd01e9326fc9b84f8aa6",
+    "reviewedBy": "user-manager",
+    "reviewedAt": "2026-07-29T05:19:55.538Z",
+    "approvedDraft": {
+      "schemaVersion": 1,
+      "draftType": "DAILY_REPORT",
+      "draftId": "daily-draft-fd01e9326fc9b84f8aa6",
+      "requestId": "phase1-demo-001",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "sourceArtifacts": [],
+      "rawText": "2026-03-28-нд A блокийн 2-р давхарт BW-017 Шатны марш 60 хувь, нийт хуримтлагдсан гүйцэтгэл 10 м3. Манай Өрлөгийн баг 6 хүн тус бүр 8 цаг ажилласан. 100 ш тоосго зарцуулсан.",
+      "language": "mn",
+      "reportDate": "2026-03-28",
+      "location": {
+        "block": "A блок",
+        "stage": null,
+        "floor": "2-р давхар",
+        "zone": null
+      },
+      "progressEntries": [
+        {
+          "entryId": "daily-draft-fd01e9326fc9b84f8aa6-progress-001",
+          "workItem": {
+            "code": "BW-017",
+            "name": "Шатны марш",
+            "candidateCodes": []
+          },
+          "progressMode": "CUMULATIVE",
+          "progressPercent": 60,
+          "quantityDone": "10",
+          "unit": "м3",
+          "status": "IN_PROGRESS",
+          "blocker": null,
+          "note": "60 хувь; нийт хуримтлагдсан гүйцэтгэл 10 м3.",
+          "fieldConfidence": [
+            {
+              "fieldPath": "progressEntries.0.workItem.code",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "progressEntries.0.workItem.code",
+                  "quote": "BW-017",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "progressEntries.0.workItem.name",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "progressEntries.0.workItem.name",
+                  "quote": "Шатны марш",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "progressEntries.0.progressPercent",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "progressEntries.0.progressPercent",
+                  "quote": "60 хувь",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "progressEntries.0.progressMode",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "progressEntries.0.progressMode",
+                  "quote": "нийт хуримтлагдсан гүйцэтгэл",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "progressEntries.0.quantityDone",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "progressEntries.0.quantityDone",
+                  "quote": "10 м3",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "progressEntries.0.unit",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "progressEntries.0.unit",
+                  "quote": "10 м3",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "progressEntries.0.status",
+              "score": 0.98,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "progressEntries.0.status",
+                  "quote": "60 хувь",
+                  "imageRegion": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "attendanceEntries": [
+        {
+          "entryId": "daily-draft-fd01e9326fc9b84f8aa6-attendance-001",
+          "teamType": "OWN",
+          "teamRef": null,
+          "teamName": "Өрлөгийн баг",
+          "workItemCodes": [],
+          "headcount": 6,
+          "hoursPerPerson": 8,
+          "totalHours": 48,
+          "fieldConfidence": [
+            {
+              "fieldPath": "attendanceEntries.0.teamType",
+              "score": 0.98,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "attendanceEntries.0.teamType",
+                  "quote": "Манай Өрлөгийн баг",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "attendanceEntries.0.teamName",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "attendanceEntries.0.teamName",
+                  "quote": "Өрлөгийн баг",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "attendanceEntries.0.headcount",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "attendanceEntries.0.headcount",
+                  "quote": "6 хүн",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "attendanceEntries.0.hoursPerPerson",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "attendanceEntries.0.hoursPerPerson",
+                  "quote": "тус бүр 8 цаг",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "attendanceEntries.0.totalHours",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "attendanceEntries.0.totalHours",
+                  "quote": "6 хүн тус бүр 8 цаг ажилласан",
+                  "imageRegion": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "materialSignals": [
+        {
+          "signalId": "daily-draft-fd01e9326fc9b84f8aa6-material-001",
+          "signalType": "CONSUMED",
+          "rawName": "тоосго",
+          "normalizedName": "Барилгын тоосго",
+          "materialRef": "material-brick",
+          "quantity": "100",
+          "unit": "ш",
+          "supplierName": null,
+          "workItemCodes": [],
+          "note": null,
+          "fieldConfidence": [
+            {
+              "fieldPath": "materialSignals.0.signalType",
+              "score": 0.98,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "materialSignals.0.signalType",
+                  "quote": "тоосго зарцуулсан",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "materialSignals.0.rawName",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "materialSignals.0.rawName",
+                  "quote": "тоосго",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "materialSignals.0.normalizedName",
+              "score": 0.98,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "materialSignals.0.normalizedName",
+                  "quote": "тоосго",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "materialSignals.0.materialRef",
+              "score": 0.98,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "materialSignals.0.materialRef",
+                  "quote": "тоосго",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "materialSignals.0.quantity",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "materialSignals.0.quantity",
+                  "quote": "100 ш",
+                  "imageRegion": null
+                }
+              ]
+            },
+            {
+              "fieldPath": "materialSignals.0.unit",
+              "score": 1,
+              "level": "HIGH",
+              "evidence": [
+                {
+                  "sourceType": "TEXT",
+                  "sourceId": "source-text-b8a493bb2d38730c4ce2",
+                  "fieldPath": "materialSignals.0.unit",
+                  "quote": "100 ш",
+                  "imageRegion": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "photoObservations": [],
+      "clarificationQuestions": [],
+      "duplicateCandidates": [],
+      "fieldConfidence": [
+        {
+          "fieldPath": "dailyReport.reportDate",
+          "score": 1,
+          "level": "HIGH",
+          "evidence": [
+            {
+              "sourceType": "TEXT",
+              "sourceId": "source-text-b8a493bb2d38730c4ce2",
+              "fieldPath": "dailyReport.reportDate",
+              "quote": "2026-03-28-нд",
+              "imageRegion": null
+            }
+          ]
+        },
+        {
+          "fieldPath": "dailyReport.location.block",
+          "score": 1,
+          "level": "HIGH",
+          "evidence": [
+            {
+              "sourceType": "TEXT",
+              "sourceId": "source-text-b8a493bb2d38730c4ce2",
+              "fieldPath": "dailyReport.location.block",
+              "quote": "A блокийн",
+              "imageRegion": null
+            }
+          ]
+        },
+        {
+          "fieldPath": "dailyReport.location.floor",
+          "score": 1,
+          "level": "HIGH",
+          "evidence": [
+            {
+              "sourceType": "TEXT",
+              "sourceId": "source-text-b8a493bb2d38730c4ce2",
+              "fieldPath": "dailyReport.location.floor",
+              "quote": "2-р давхарт",
+              "imageRegion": null
+            }
+          ]
+        }
+      ],
+      "overallConfidence": 0.9952,
+      "confidenceLevel": "HIGH",
+      "validationIssues": [],
+      "status": "APPROVED",
+      "requiresHumanReview": true
+    },
+    "humanEditedFieldPaths": [],
+    "reviewNote": null
+  },
+  "approvalEvent": {
+    "schemaVersion": 1,
+    "eventId": "event-daily-draft-fd01e9326fc9b84f8aa6",
+    "eventType": "PROJECT_EXECUTION_APPROVED",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "aggregateId": "daily-draft-fd01e9326fc9b84f8aa6",
+    "aggregateVersion": 1,
+    "occurredAt": "2026-07-29T05:19:55.538Z",
+    "idempotencyKey": "approve:tenant-demo:project-buildwatch-simulation:daily-draft-fd01e9326fc9b84f8aa6",
+    "payload": {
+      "commandId": "command-daily-draft-fd01e9326fc9b84f8aa6",
+      "draftId": "daily-draft-fd01e9326fc9b84f8aa6",
+      "reviewedBy": "user-manager"
+    }
+  },
+  "rejection": null,
+  "createdAt": "2026-07-29T05:09:49.775Z",
+  "updatedAt": "2026-07-29T05:19:55.538Z"
+}

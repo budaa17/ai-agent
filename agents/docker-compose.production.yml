@@ -1,0 +1,300 @@
+name: buildwatch-production
+
+x-backend-common: &backend-common
+  init: true
+  restart: unless-stopped
+  env_file:
+    - path: .env.production
+      required: false
+  environment: &backend-environment
+    NODE_ENV: production
+    DATABASE_URL: ${BUILDWATCH_DATABASE_URL:?Set BUILDWATCH_DATABASE_URL with host postgres}
+    RABBITMQ_URL: ${RABBITMQ_URL:?Set RABBITMQ_URL with host rabbitmq}
+    PHASE9_API_HOST: 0.0.0.0
+    PHASE9_API_PORT: 4180
+    PHASE9_PUBLIC_BASE_URL: ${BUILDWATCH_PUBLIC_BASE_URL:?Set HTTPS public URL}
+    PHASE9_JWT_SECRET: ${PHASE9_JWT_SECRET:?Set an independent 32+ byte secret}
+    PHASE9_CURSOR_SECRET: ${PHASE9_CURSOR_SECRET:?Set an independent 32+ byte secret}
+    PHASE9_ARTIFACT_SIGNING_SECRET: ${PHASE9_ARTIFACT_SIGNING_SECRET:?Set an independent 32+ byte secret}
+    PHASE9_ARTIFACT_ROOT: /app/data/artifacts
+    PHASE11_METRICS_TOKEN: ${PHASE11_METRICS_TOKEN:?Set a 32+ byte metrics token}
+    PHASE11_TRUST_PROXY_HOPS: 1
+    PHASE11_REQUIRE_EXTERNAL_MALWARE_SCAN: "true"
+    CLAMAV_HOST: clamav
+    CLAMAV_PORT: 3310
+    SENTRY_DSN: ${SENTRY_DSN:-}
+    SENTRY_ENVIRONMENT: ${SENTRY_ENVIRONMENT:-production}
+    APP_RELEASE: ${APP_RELEASE:-local-production}
+    LANGFUSE_PUBLIC_KEY: ${LANGFUSE_PUBLIC_KEY:-}
+    LANGFUSE_SECRET_KEY: ${LANGFUSE_SECRET_KEY:-}
+    LANGFUSE_BASE_URL: ${LANGFUSE_BASE_URL:-}
+  volumes:
+    - artifact-data:/app/data
+  tmpfs:
+    - /tmp:size=256m,mode=1777
+    - /home/node/.cache:size=256m,mode=0700,uid=1000,gid=1000
+    - /home/node/.config:size=64m,mode=0700,uid=1000,gid=1000
+  read_only: true
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  stop_grace_period: 35s
+
+services:
+  postgres:
+    image: postgres:16-bookworm
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-buildwatch}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-buildwatch}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    security_opt:
+      - no-new-privileges:true
+
+  rabbitmq:
+    image: rabbitmq:4-management-alpine
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-buildwatch}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Set RABBITMQ_PASSWORD}
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    security_opt:
+      - no-new-privileges:true
+
+  clamav:
+    image: clamav/clamav:1.4
+    restart: unless-stopped
+    volumes:
+      - clamav-data:/var/lib/clamav
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/clamdcheck.sh"]
+      interval: 30s
+      timeout: 10s
+      retries: 20
+      start_period: 90s
+    security_opt:
+      - no-new-privileges:true
+
+  migrate:
+    build:
+      context: .
+      target: migrate
+    image: ${BUILDWATCH_MIGRATE_IMAGE:-buildwatch-migrate}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    restart: "no"
+    command: ["./node_modules/.bin/prisma", "migrate", "deploy"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes: []
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+
+  # A fresh database is not usable for signup until the immutable plan catalog
+  # and the four provider price mappings exist. Both scripts are idempotent;
+  # the Stripe step also verifies that currency, amount and interval match the
+  # local catalog before the API is allowed to start.
+  billing-bootstrap:
+    build:
+      context: .
+      target: migrate
+    image: ${BUILDWATCH_MIGRATE_IMAGE:-buildwatch-migrate}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    restart: "no"
+    command:
+      [
+        "/bin/sh",
+        "-c",
+        "node dist/scripts/seed-billing-plans.js && node dist/scripts/seed-stripe-prices.js",
+      ]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    volumes: []
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+
+  api:
+    build:
+      context: .
+      target: api
+    image: ${BUILDWATCH_API_IMAGE:-buildwatch-api}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    depends_on:
+      billing-bootstrap:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+      clamav:
+        condition: service_healthy
+    expose:
+      - "4180"
+
+  outbox-worker:
+    build:
+      context: .
+      target: outbox-worker
+    image: ${BUILDWATCH_OUTBOX_IMAGE:-buildwatch-outbox}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  # Translates the canonical Phase 9 events the outbox publishes into the agent
+  # job payloads a1/a2/a3 workers consume. Without it every event the outbox
+  # relays lands in a queue nobody listens on.
+  phase9-bridge-worker:
+    build:
+      context: .
+      target: agent-worker
+    image: ${BUILDWATCH_AGENT_IMAGE:-buildwatch-agent}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    environment:
+      <<: *backend-environment
+      AGENT_WORKER: phase9bridge
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  a1-worker:
+    build:
+      context: .
+      target: agent-worker
+    image: ${BUILDWATCH_AGENT_IMAGE:-buildwatch-agent}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    environment:
+      <<: *backend-environment
+      AGENT_WORKER: a1
+      AGENT_HEALTH_REQUIRE_OPENAI: "true"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?Set OPENAI_API_KEY}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.6-sol}
+      A1_OPENAI_MODEL: ${A1_OPENAI_MODEL:-gpt-5.6-luna}
+      AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model input price}
+      AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model output price}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  a2-worker:
+    build:
+      context: .
+      target: agent-worker
+    image: ${BUILDWATCH_AGENT_IMAGE:-buildwatch-agent}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    environment:
+      <<: *backend-environment
+      AGENT_WORKER: a2
+      AGENT_HEALTH_REQUIRE_OPENAI: "true"
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?Set OPENAI_API_KEY}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.6-sol}
+      A2_OPENAI_MODEL: ${A2_OPENAI_MODEL:-gpt-5.6-sol}
+      AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model input price}
+      AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model output price}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  a3-worker:
+    build:
+      context: .
+      target: agent-worker
+    image: ${BUILDWATCH_AGENT_IMAGE:-buildwatch-agent}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    environment:
+      <<: *backend-environment
+      AGENT_WORKER: a3
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?Set OPENAI_API_KEY}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.6-sol}
+      A3_OPENAI_MODEL: ${A3_OPENAI_MODEL:-gpt-5.6-luna}
+      AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model input price}
+      AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model output price}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  analysis-worker:
+    build:
+      context: .
+      target: agent-worker
+    image: ${BUILDWATCH_AGENT_IMAGE:-buildwatch-agent}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    environment:
+      <<: *backend-environment
+      AGENT_WORKER: analysis
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?Set OPENAI_API_KEY}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.6-sol}
+      AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_INPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model input price}
+      AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS: ${AGENT_OUTPUT_COST_MICRO_USD_PER_MILLION_TOKENS:?Set current model output price}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      rabbitmq:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: agent-console/Dockerfile
+    image: ${BUILDWATCH_FRONTEND_IMAGE:-buildwatch-frontend}:${APP_RELEASE:?Set APP_RELEASE}
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "${BUILDWATCH_HTTP_PORT:-8080}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+      - /var/cache/nginx:size=32m,mode=700
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  operations:
+    profiles: ["operations"]
+    build:
+      context: .
+      target: operations
+    image: ${BUILDWATCH_OPERATIONS_IMAGE:-buildwatch-operations}:${APP_RELEASE:?Set APP_RELEASE}
+    <<: *backend-common
+    restart: "no"
+    environment:
+      <<: *backend-environment
+      PHASE11_BACKUP_ROOT: /backups
+      PHASE11_BACKUP_SIGNING_KEY: ${PHASE11_BACKUP_SIGNING_KEY:?Set a 32+ byte backup signing key}
+    volumes:
+      - artifact-data:/app/data
+      - backup-data:/backups
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  rabbitmq-data:
+  clamav-data:
+  artifact-data:
+  backup-data:

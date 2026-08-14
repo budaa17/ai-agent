@@ -1,0 +1,430 @@
+{
+  "schemaVersion": 1,
+  "recordId": "review-daily-draft-257aab7bd9cfbb59eb4f",
+  "draftId": "daily-draft-257aab7bd9cfbb59eb4f",
+  "requestId": "manual-test-002",
+  "sourceSha256": "65e3ca0f401f77e96a97b4a099dabe9f89738e4f5a94ae19e9fd2f3398135768",
+  "tenantId": "tenant-demo",
+  "projectId": "project-buildwatch-simulation",
+  "status": "NEEDS_CORRECTION",
+  "draft": {
+    "schemaVersion": 1,
+    "draftType": "DAILY_REPORT",
+    "draftId": "daily-draft-257aab7bd9cfbb59eb4f",
+    "requestId": "manual-test-002",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "sourceArtifacts": [],
+    "rawText": "2026-03-28-нд A блокийн 2-р давхарт BW-017 Шатны марш 60 хувь, нийт хуримтлагдсан гүйцэтгэл 10 м3. Манай Өрлөгийн баг 6 хүн тус бүр 8 цаг ажилласан. 100 ш тоосго зарцуулсан.",
+    "language": "mn",
+    "reportDate": "2026-03-28",
+    "location": {
+      "block": "A блок",
+      "stage": null,
+      "floor": "2-р давхар",
+      "zone": null
+    },
+    "progressEntries": [
+      {
+        "entryId": "daily-draft-257aab7bd9cfbb59eb4f-progress-001",
+        "workItem": {
+          "code": "BW-017",
+          "name": "Шатны марш",
+          "candidateCodes": []
+        },
+        "progressMode": "CUMULATIVE",
+        "progressPercent": 60,
+        "quantityDone": "10",
+        "unit": "м3",
+        "status": "IN_PROGRESS",
+        "blocker": null,
+        "note": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.0.progressEntries[0].workItemCode",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "progressEntries.0.progressEntries[0].workItemCode",
+                "quote": "BW-017 Шатны марш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressEntries[0].progressPercent",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "progressEntries.0.progressEntries[0].progressPercent",
+                "quote": "60 хувь",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressEntries[0].progressMode",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "progressEntries.0.progressEntries[0].progressMode",
+                "quote": "нийт хуримтлагдсан гүйцэтгэл",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressEntries[0].quantityDone",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "progressEntries.0.progressEntries[0].quantityDone",
+                "quote": "10 м3",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressEntries[0].status",
+            "score": 0.95,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "progressEntries.0.progressEntries[0].status",
+                "quote": "60 хувь",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.workItem.code",
+            "score": 0.4,
+            "level": "LOW",
+            "evidence": []
+          },
+          {
+            "fieldPath": "progressEntries.0.progressPercent",
+            "score": 0.4,
+            "level": "LOW",
+            "evidence": []
+          },
+          {
+            "fieldPath": "progressEntries.0.quantityDone",
+            "score": 0.4,
+            "level": "LOW",
+            "evidence": []
+          },
+          {
+            "fieldPath": "progressEntries.0.status",
+            "score": 0.4,
+            "level": "LOW",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "attendanceEntries": [
+      {
+        "entryId": "daily-draft-257aab7bd9cfbb59eb4f-attendance-001",
+        "teamType": "UNKNOWN",
+        "teamRef": null,
+        "teamName": "Өрлөгийн баг",
+        "workItemCodes": [],
+        "headcount": 6,
+        "hoursPerPerson": 8,
+        "totalHours": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "attendanceEntries.0.attendanceEntries[0].teamType",
+            "score": 0.95,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "attendanceEntries.0.attendanceEntries[0].teamType",
+                "quote": "Манай Өрлөгийн баг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.attendanceEntries[0].teamName",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "attendanceEntries.0.attendanceEntries[0].teamName",
+                "quote": "Өрлөгийн баг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.attendanceEntries[0].headcount",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "attendanceEntries.0.attendanceEntries[0].headcount",
+                "quote": "6 хүн",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.attendanceEntries[0].hoursPerPerson",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "attendanceEntries.0.attendanceEntries[0].hoursPerPerson",
+                "quote": "тус бүр 8 цаг ажилласан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.teamType",
+            "score": 0.4,
+            "level": "LOW",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "materialSignals": [
+      {
+        "signalId": "daily-draft-257aab7bd9cfbb59eb4f-material-001",
+        "signalType": "CONSUMED",
+        "rawName": "тоосго",
+        "normalizedName": "Барилгын тоосго",
+        "materialRef": "material-brick",
+        "quantity": "100",
+        "unit": "ш",
+        "supplierName": null,
+        "workItemCodes": [],
+        "note": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "materialSignals.0.materialSignals[0].signalType",
+            "score": 0.95,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "materialSignals.0.materialSignals[0].signalType",
+                "quote": "100 ш тоосго зарцуулсан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.materialSignals[0].rawName",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "materialSignals.0.materialSignals[0].rawName",
+                "quote": "тоосго",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.materialSignals[0].quantity",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "materialSignals.0.materialSignals[0].quantity",
+                "quote": "100 ш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.materialSignals[0].unit",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-db8d8bd5f0acd2b57265",
+                "fieldPath": "materialSignals.0.materialSignals[0].unit",
+                "quote": "100 ш",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "photoObservations": [],
+    "clarificationQuestions": [
+      {
+        "questionId": "daily-draft-257aab7bd9cfbb59eb4f-question-001",
+        "fieldPath": "progressEntries.0.workItem.code",
+        "reason": "LOW_CONFIDENCE",
+        "question": "progressEntries.0.workItem.code утгын эх сурвалж, зөв эсэхийг баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-257aab7bd9cfbb59eb4f-question-002",
+        "fieldPath": "progressEntries.0.progressPercent",
+        "reason": "LOW_CONFIDENCE",
+        "question": "progressEntries.0.progressPercent утгын эх сурвалж, зөв эсэхийг баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-257aab7bd9cfbb59eb4f-question-003",
+        "fieldPath": "progressEntries.0.quantityDone",
+        "reason": "LOW_CONFIDENCE",
+        "question": "progressEntries.0.quantityDone утгын эх сурвалж, зөв эсэхийг баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-257aab7bd9cfbb59eb4f-question-004",
+        "fieldPath": "progressEntries.0.status",
+        "reason": "LOW_CONFIDENCE",
+        "question": "progressEntries.0.status утгын эх сурвалж, зөв эсэхийг баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-257aab7bd9cfbb59eb4f-question-005",
+        "fieldPath": "attendanceEntries.0.teamType",
+        "reason": "LOW_CONFIDENCE",
+        "question": "attendanceEntries.0.teamType утгын эх сурвалж, зөв эсэхийг баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-257aab7bd9cfbb59eb4f-question-006",
+        "fieldPath": "duplicateCandidates",
+        "reason": "LOGIC_CONFLICT",
+        "question": "Энэ тайлан давхардсан эсэхийг шалгана уу.",
+        "options": [
+          {
+            "value": "daily-draft-b8d09b21952429e38f8a",
+            "label": "daily-draft-b8d09b21952429e38f8a (91%)"
+          }
+        ],
+        "requiredForApproval": true
+      }
+    ],
+    "duplicateCandidates": [
+      {
+        "candidateReportId": "daily-draft-b8d09b21952429e38f8a",
+        "similarity": 0.9069,
+        "reasons": [
+          "Ижил тайлангийн огноо",
+          "Давхцсан ажлын код",
+          "Төстэй эх текст"
+        ]
+      }
+    ],
+    "fieldConfidence": [
+      {
+        "fieldPath": "dailyReport.reportDate",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-db8d8bd5f0acd2b57265",
+            "fieldPath": "dailyReport.reportDate",
+            "quote": "2026-03-28-нд",
+            "imageRegion": null
+          }
+        ]
+      },
+      {
+        "fieldPath": "dailyReport.location.block",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-db8d8bd5f0acd2b57265",
+            "fieldPath": "dailyReport.location.block",
+            "quote": "A блокийн",
+            "imageRegion": null
+          }
+        ]
+      },
+      {
+        "fieldPath": "dailyReport.location.floor",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-db8d8bd5f0acd2b57265",
+            "fieldPath": "dailyReport.location.floor",
+            "quote": "2-р давхарт",
+            "imageRegion": null
+          }
+        ]
+      }
+    ],
+    "overallConfidence": 0.6638,
+    "confidenceLevel": "MEDIUM",
+    "validationIssues": [
+      {
+        "code": "UNKNOWN_ATTENDANCE_TEAM_TYPE_0",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "attendanceEntries.0.teamType"
+        ],
+        "message": "Attendance team type must be confirmed before approval.",
+        "deterministic": true
+      },
+      {
+        "code": "POSSIBLE_DUPLICATE_REPORT",
+        "severity": "WARNING",
+        "fieldPaths": [
+          "duplicateCandidates"
+        ],
+        "message": "A similar daily-report draft already exists.",
+        "deterministic": true
+      }
+    ],
+    "status": "NEEDS_CORRECTION",
+    "requiresHumanReview": true
+  },
+  "humanEditedFieldPaths": [],
+  "approvedCommand": null,
+  "approvalEvent": null,
+  "rejection": null,
+  "createdAt": "2026-07-29T05:00:08.970Z",
+  "updatedAt": "2026-07-29T05:00:08.970Z"
+}

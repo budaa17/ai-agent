@@ -1,0 +1,99 @@
+{
+  "suite": "billing-domain-postgres",
+  "migration": "20260812071010_add_billing_domain",
+  "planCatalogVersion": 1,
+  "generatedAt": "2026-08-12T13:36:54.936Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "migration applied",
+      "passed": true,
+      "detail": "20260812071010_add_billing_domain finished"
+    },
+    {
+      "name": "billing tables exist",
+      "passed": true,
+      "detail": "all 9"
+    },
+    {
+      "name": "billing enums exist",
+      "passed": true,
+      "detail": "all 7"
+    },
+    {
+      "name": "new tenants default to PENDING_PAYMENT",
+      "passed": true,
+      "detail": "'PENDING_PAYMENT'::\"TenantLifecycleStatus\""
+    },
+    {
+      "name": "pre-billing tenants keep access",
+      "passed": true,
+      "detail": "4 grandfathered, 0 locked out"
+    },
+    {
+      "name": "canonical subscription index covers every access-granting status",
+      "passed": true,
+      "detail": "CREATE UNIQUE INDEX \"TenantSubscription_one_canonical_per_tenant_key\" ON public.\"TenantSubscription\" USING btree (\"tenantId\") WHERE (status = ANY (ARRAY['PENDING'::\"SubscriptionStatus\", 'TRIALING'::\"SubscriptionStatus\", 'ACTIVE'::\"SubscriptionStatus\", 'PAST_DUE'::\"SubscriptionStatus\", 'PAUSED'::\"SubscriptionStatus\"]))"
+    },
+    {
+      "name": "money integrity constraints installed",
+      "passed": true,
+      "detail": "all 5"
+    },
+    {
+      "name": "deleting a tenant cannot erase its financial history",
+      "passed": true,
+      "detail": "3/3 RESTRICT"
+    },
+    {
+      "name": "a second access-granting subscription is refused",
+      "passed": true,
+      "detail": "rejected by the partial unique index"
+    },
+    {
+      "name": "an invoice whose total does not add up is refused",
+      "passed": true,
+      "detail": "rejected by the check constraint"
+    },
+    {
+      "name": "a public plan without a price is refused",
+      "passed": true,
+      "detail": "rejected by the check constraint"
+    },
+    {
+      "name": "the access policy can read a real tenant snapshot",
+      "passed": true,
+      "detail": "lifecycle=ACTIVE plan=none entitlements=none (grandfathered)"
+    },
+    {
+      "name": "a grandfathered tenant can still write and run agents",
+      "passed": true,
+      "detail": "WRITE and AI_JOB allowed"
+    },
+    {
+      "name": "an unknown tenant is denied by default",
+      "passed": true,
+      "detail": "denied"
+    },
+    {
+      "name": "seeded plan catalog matches the contract module",
+      "passed": true,
+      "detail": "5 plan rows, 13 entitlements each"
+    },
+    {
+      "name": "a published plan resolves to a server-side price",
+      "passed": true,
+      "detail": "starter/MONTH → starter-month"
+    },
+    {
+      "name": "a negotiated plan cannot be bought through self-serve checkout",
+      "passed": true,
+      "detail": "refused"
+    },
+    {
+      "name": "the domestic invoice channel completes a checkout without any third party",
+      "passed": true,
+      "detail": "manual_smoke-intent → https://app.buildwatch.test/company-signup/smoke-intent"
+    }
+  ]
+}

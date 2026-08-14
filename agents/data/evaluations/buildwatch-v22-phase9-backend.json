@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "suite": "BUILDWATCH_V22_PHASE9_BACKEND",
+  "generatedAt": "2026-08-03T08:10:00.000Z",
+  "passed": true,
+  "metrics": {
+    "roleCoverage": 1,
+    "tenantIsolationViolationCount": 0,
+    "atomicWriteCount": 1,
+    "duplicateCommandCount": 0,
+    "duplicateConsumerSideEffectCount": 0,
+    "staleQueueReplayPassed": true,
+    "signedArtifactAccessPassed": true,
+    "auditCoverage": 1,
+    "outboxCoverage": 1,
+    "agentAdapterCoverage": 1,
+    "goldenPassCount": 10,
+    "goldenCaseCount": 10
+  },
+  "cases": [
+    {
+      "caseId": "seven-role-rbac",
+      "passed": true,
+      "evidence": "Exactly seven production RBAC roles are contract-bound."
+    },
+    {
+      "caseId": "tenant-project-isolation",
+      "passed": true,
+      "evidence": "Cross-tenant project IDs did not disclose data or existence markers."
+    },
+    {
+      "caseId": "approved-command-atomicity",
+      "passed": true,
+      "evidence": "Approved command, audit, outbox, and idempotency persisted together."
+    },
+    {
+      "caseId": "command-idempotency",
+      "passed": true,
+      "evidence": "Duplicate command replay did not duplicate canonical writes."
+    },
+    {
+      "caseId": "server-authoritative-payload",
+      "passed": true,
+      "evidence": "Outbox used the approved server-side version snapshot, not client payload."
+    },
+    {
+      "caseId": "signed-artifact",
+      "passed": true,
+      "evidence": "Signed URL resolved only with bound tenant/project/user/hash claims."
+    },
+    {
+      "caseId": "queue-restart-replay",
+      "passed": true,
+      "evidence": "A stale outbox lock was reclaimed after worker restart."
+    },
+    {
+      "caseId": "consumer-deduplication",
+      "passed": true,
+      "evidence": "Duplicate event delivery executed one consumer side effect."
+    },
+    {
+      "caseId": "audit-coverage",
+      "passed": true,
+      "evidence": "Canonical command and signed artifact access both emitted actor audit rows."
+    },
+    {
+      "caseId": "agent-adapter-coverage",
+      "passed": true,
+      "evidence": "A0 through A5 have versioned canonical production adapters; A4 stays read-only."
+    }
+  ]
+}

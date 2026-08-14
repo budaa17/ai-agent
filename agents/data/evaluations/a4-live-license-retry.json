@@ -1,0 +1,176 @@
+{
+  "mode": "live",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "suite": "a4-reference-assistant-v1",
+  "generatedAt": "2026-07-28T13:19:44.970Z",
+  "totalCases": 1,
+  "successfulCases": 1,
+  "passedCases": 1,
+  "groundedCases": 1,
+  "matchedFields": 6,
+  "totalFields": 6,
+  "passRate": 1,
+  "groundingRate": 1,
+  "fieldAccuracy": 1,
+  "tools": {
+    "truePositive": 1,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "sources": {
+    "truePositive": 3,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "cases": [
+    {
+      "caseId": "a4-atlas-license-overrun",
+      "tags": [
+        "cost",
+        "budget",
+        "decimal"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 6,
+      "totalFields": 6,
+      "groundingValid": true,
+      "tools": {
+        "truePositive": 1,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "sources": {
+        "truePositive": 3,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "answer": {
+        "schemaVersion": 1,
+        "language": "mn",
+        "status": "ANSWERED",
+        "claims": [
+          {
+            "text": "AT-003 лицензийн ажлын төсөв 20,000,000 төгрөг.",
+            "sources": [
+              {
+                "toolName": "lookupCostLedger",
+                "sourceId": "wi-atlas-license",
+                "field": "budget"
+              }
+            ]
+          },
+          {
+            "text": "Бодит зардал 27,000,000 төгрөг.",
+            "sources": [
+              {
+                "toolName": "lookupCostLedger",
+                "sourceId": "wi-atlas-license",
+                "field": "recordedActualCost"
+              }
+            ]
+          },
+          {
+            "text": "Төсвийн зөрүү 7,000,000 төгрөгөөр хэтэрсэн.",
+            "sources": [
+              {
+                "toolName": "lookupCostLedger",
+                "sourceId": "wi-atlas-license",
+                "field": "budgetVariance"
+              }
+            ]
+          }
+        ]
+      },
+      "expectedSources": [
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budget",
+          "value": "20000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "recordedActualCost",
+          "value": "27000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budgetVariance",
+          "value": "7000000.00"
+        }
+      ],
+      "actualSources": [
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budget",
+          "value": "20000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "recordedActualCost",
+          "value": "27000000.00"
+        },
+        {
+          "toolName": "lookupCostLedger",
+          "sourceId": "wi-atlas-license",
+          "field": "budgetVariance",
+          "value": "7000000.00"
+        }
+      ],
+      "missingRequiredSources": [],
+      "fields": [
+        {
+          "field": "language",
+          "expected": "mn",
+          "actual": "mn",
+          "matched": true
+        },
+        {
+          "field": "answerStatus",
+          "expected": "ANSWERED",
+          "actual": "ANSWERED",
+          "matched": true
+        },
+        {
+          "field": "requiredToolCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "requiredSourceCoverage",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "forbiddenSourcesExcluded",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "BuildWatch",
+  "short_name": "BuildWatch",
+  "description": "Барилгын төслийн AI хяналт, өдрийн төлөвлөлтийн PWA",
+  "lang": "mn",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07131f",
+  "theme_color": "#07131f",
+  "icons": [
+    {
+      "src": "/icons/buildwatch.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

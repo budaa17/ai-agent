@@ -1,0 +1,1896 @@
+{
+  "report": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-07-28T14:12:12.242Z",
+    "project": {
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "projectCode": "ATLAS",
+      "projectName": "ERP шинэчлэлийн төсөл",
+      "asOf": "2026-03-01T00:00:00.000Z"
+    },
+    "narrative": {
+      "language": "mn",
+      "executiveOverview": "Төслийн төлөвийг хугацаа, хамаарал, явц болон зардлын баталгаажсан мэдээлэлд тулгуурлан нэгтгэв.",
+      "riskNarrative": "Илэрсэн эрсдэлүүд нь ажлын уялдаа, хэрэгжилтийн дараалал болон санхүүгийн хяналтад анхаарал шаардаж байна.",
+      "recommendationNarrative": "Баталгаажсан зөвлөмжүүдийг эх баримттай нь тулган, хариуцагч болон хэрэгжилтийн дарааллаар удирдах шаардлагатай.",
+      "conclusion": "Шийдвэр бүрийг эх өгөгдөл, дүрмийн үр дүн болон баталгаажсан эх сурвалжтай холбоотой хэрэгжүүлэх нь зүйтэй."
+    },
+    "analysis": {
+      "schemaVersion": 1,
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "projectCode": "ATLAS",
+      "projectName": "ERP шинэчлэлийн төсөл",
+      "asOf": "2026-03-01T00:00:00.000Z",
+      "cpm": {
+        "projectStart": "2026-01-05T00:00:00.000Z",
+        "projectFinish": "2026-05-09T00:00:00.000Z",
+        "projectDurationDays": 125,
+        "topologicalOrder": [
+          "wi-atlas-discovery",
+          "wi-atlas-design",
+          "wi-atlas-license",
+          "wi-atlas-procurement",
+          "wi-atlas-integration",
+          "wi-atlas-migration",
+          "wi-atlas-training",
+          "wi-atlas-pilot",
+          "wi-atlas-rollout"
+        ],
+        "criticalWorkItemIds": [
+          "wi-atlas-discovery",
+          "wi-atlas-design",
+          "wi-atlas-integration",
+          "wi-atlas-migration",
+          "wi-atlas-training",
+          "wi-atlas-pilot",
+          "wi-atlas-rollout"
+        ],
+        "criticalPaths": [
+          [
+            "wi-atlas-discovery",
+            "wi-atlas-design",
+            "wi-atlas-integration",
+            "wi-atlas-migration",
+            "wi-atlas-training",
+            "wi-atlas-pilot",
+            "wi-atlas-rollout"
+          ]
+        ],
+        "tasks": [
+          {
+            "workItemId": "wi-atlas-discovery",
+            "code": "AT-001",
+            "name": "Шаардлага тодорхойлох",
+            "durationDays": 11,
+            "earliestStartOffset": 0,
+            "earliestFinishOffset": 11,
+            "latestStartOffset": 0,
+            "latestFinishOffset": 11,
+            "totalFloatDays": 0,
+            "freeFloatDays": 0,
+            "earliestStart": "2026-01-05T00:00:00.000Z",
+            "earliestFinish": "2026-01-15T00:00:00.000Z",
+            "latestStart": "2026-01-05T00:00:00.000Z",
+            "latestFinish": "2026-01-15T00:00:00.000Z",
+            "isCritical": true
+          },
+          {
+            "workItemId": "wi-atlas-design",
+            "code": "AT-002",
+            "name": "Шийдлийн архитектур",
+            "durationDays": 17,
+            "earliestStartOffset": 11,
+            "earliestFinishOffset": 28,
+            "latestStartOffset": 11,
+            "latestFinishOffset": 28,
+            "totalFloatDays": 0,
+            "freeFloatDays": 0,
+            "earliestStart": "2026-01-16T00:00:00.000Z",
+            "earliestFinish": "2026-02-01T00:00:00.000Z",
+            "latestStart": "2026-01-16T00:00:00.000Z",
+            "latestFinish": "2026-02-01T00:00:00.000Z",
+            "isCritical": true
+          },
+          {
+            "workItemId": "wi-atlas-license",
+            "code": "AT-003",
+            "name": "Програмын лиценз худалдан авах",
+            "durationDays": 12,
+            "earliestStartOffset": 28,
+            "earliestFinishOffset": 40,
+            "latestStartOffset": 113,
+            "latestFinishOffset": 125,
+            "totalFloatDays": 85,
+            "freeFloatDays": 85,
+            "earliestStart": "2026-02-02T00:00:00.000Z",
+            "earliestFinish": "2026-02-13T00:00:00.000Z",
+            "latestStart": "2026-04-28T00:00:00.000Z",
+            "latestFinish": "2026-05-09T00:00:00.000Z",
+            "isCritical": false
+          },
+          {
+            "workItemId": "wi-atlas-procurement",
+            "code": "AT-004",
+            "name": "Дэд бүтэц нийлүүлэх",
+            "durationDays": 19,
+            "earliestStartOffset": 28,
+            "earliestFinishOffset": 47,
+            "latestStartOffset": 46,
+            "latestFinishOffset": 65,
+            "totalFloatDays": 18,
+            "freeFloatDays": 18,
+            "earliestStart": "2026-02-02T00:00:00.000Z",
+            "earliestFinish": "2026-02-20T00:00:00.000Z",
+            "latestStart": "2026-02-20T00:00:00.000Z",
+            "latestFinish": "2026-03-10T00:00:00.000Z",
+            "isCritical": false
+          },
+          {
+            "workItemId": "wi-atlas-integration",
+            "code": "AT-005",
+            "name": "Системийн интеграц хөгжүүлэх",
+            "durationDays": 37,
+            "earliestStartOffset": 28,
+            "earliestFinishOffset": 65,
+            "latestStartOffset": 28,
+            "latestFinishOffset": 65,
+            "totalFloatDays": 0,
+            "freeFloatDays": 0,
+            "earliestStart": "2026-02-02T00:00:00.000Z",
+            "earliestFinish": "2026-03-10T00:00:00.000Z",
+            "latestStart": "2026-02-02T00:00:00.000Z",
+            "latestFinish": "2026-03-10T00:00:00.000Z",
+            "isCritical": true
+          },
+          {
+            "workItemId": "wi-atlas-migration",
+            "code": "AT-006",
+            "name": "Өгөгдөл шилжүүлэх",
+            "durationDays": 20,
+            "earliestStartOffset": 65,
+            "earliestFinishOffset": 85,
+            "latestStartOffset": 65,
+            "latestFinishOffset": 85,
+            "totalFloatDays": 0,
+            "freeFloatDays": 0,
+            "earliestStart": "2026-03-11T00:00:00.000Z",
+            "earliestFinish": "2026-03-30T00:00:00.000Z",
+            "latestStart": "2026-03-11T00:00:00.000Z",
+            "latestFinish": "2026-03-30T00:00:00.000Z",
+            "isCritical": true
+          },
+          {
+            "workItemId": "wi-atlas-training",
+            "code": "AT-007",
+            "name": "Хэрэглэгчийн сургалт",
+            "durationDays": 15,
+            "earliestStartOffset": 85,
+            "earliestFinishOffset": 100,
+            "latestStartOffset": 85,
+            "latestFinishOffset": 100,
+            "totalFloatDays": 0,
+            "freeFloatDays": 0,
+            "earliestStart": "2026-03-31T00:00:00.000Z",
+            "earliestFinish": "2026-04-14T00:00:00.000Z",
+            "latestStart": "2026-03-31T00:00:00.000Z",
+            "latestFinish": "2026-04-14T00:00:00.000Z",
+            "isCritical": true
+          },
+          {
+            "workItemId": "wi-atlas-pilot",
+            "code": "AT-008",
+            "name": "Пилот нэвтрүүлэлт",
+            "durationDays": 10,
+            "earliestStartOffset": 100,
+            "earliestFinishOffset": 110,
+            "latestStartOffset": 100,
+            "latestFinishOffset": 110,
+            "totalFloatDays": 0,
+            "freeFloatDays": 0,
+            "earliestStart": "2026-04-15T00:00:00.000Z",
+            "earliestFinish": "2026-04-24T00:00:00.000Z",
+            "latestStart": "2026-04-15T00:00:00.000Z",
+            "latestFinish": "2026-04-24T00:00:00.000Z",
+            "isCritical": true
+          },
+          {
+            "workItemId": "wi-atlas-rollout",
+            "code": "AT-009",
+            "name": "Үндсэн нэвтрүүлэлт",
+            "durationDays": 15,
+            "earliestStartOffset": 110,
+            "earliestFinishOffset": 125,
+            "latestStartOffset": 110,
+            "latestFinishOffset": 125,
+            "totalFloatDays": 0,
+            "freeFloatDays": 0,
+            "earliestStart": "2026-04-25T00:00:00.000Z",
+            "earliestFinish": "2026-05-09T00:00:00.000Z",
+            "latestStart": "2026-04-25T00:00:00.000Z",
+            "latestFinish": "2026-05-09T00:00:00.000Z",
+            "isCritical": true
+          }
+        ]
+      },
+      "ruleEvaluations": [
+        {
+          "decisionId": "project.overdue-work-item.v1",
+          "decisionVersion": 1,
+          "hitPolicy": "COLLECT",
+          "matchedCount": 1,
+          "outputs": [
+            {
+              "id": "detected-overdue-work-item-wi-atlas-procurement",
+              "ruleId": "project.overdue-work-item.v1",
+              "type": "OVERDUE_WORK_ITEM",
+              "severity": "HIGH",
+              "tenantId": "tenant-demo",
+              "projectId": "project-atlas",
+              "workItemId": "wi-atlas-procurement",
+              "effectiveFrom": "2026-02-21T00:00:00.000Z",
+              "summary": "AT-004 Дэд бүтэц нийлүүлэх ажил 9 хоног хугацаа хэтэрсэн.",
+              "evidence": {
+                "plannedEnd": "2026-02-20T00:00:00.000Z",
+                "status": "IN_PROGRESS",
+                "progressPercent": 75,
+                "daysOverdue": 9
+              }
+            }
+          ]
+        },
+        {
+          "decisionId": "project.stalled-progress.v1",
+          "decisionVersion": 1,
+          "hitPolicy": "COLLECT",
+          "matchedCount": 1,
+          "outputs": [
+            {
+              "id": "detected-stalled-progress-wi-atlas-integration",
+              "ruleId": "project.stalled-progress.v1",
+              "type": "STALLED_PROGRESS",
+              "severity": "HIGH",
+              "tenantId": "tenant-demo",
+              "projectId": "project-atlas",
+              "workItemId": "wi-atlas-integration",
+              "effectiveFrom": "2026-02-27T00:00:00.000Z",
+              "summary": "AT-005 Системийн интеграц хөгжүүлэх ажлын ахиц 9 хоног өөрчлөгдөөгүй.",
+              "evidence": {
+                "previousCapturedAt": "2026-02-20T00:00:00.000Z",
+                "latestCapturedAt": "2026-03-01T00:00:00.000Z",
+                "previousProgressPercent": 45,
+                "currentProgressPercent": 45,
+                "daysWithoutProgress": 9
+              }
+            }
+          ]
+        },
+        {
+          "decisionId": "project.dependency-violation.v1",
+          "decisionVersion": 1,
+          "hitPolicy": "COLLECT",
+          "matchedCount": 1,
+          "outputs": [
+            {
+              "id": "detected-dependency-violation-wi-atlas-migration",
+              "ruleId": "project.dependency-violation.v1",
+              "type": "DEPENDENCY_VIOLATION",
+              "severity": "CRITICAL",
+              "tenantId": "tenant-demo",
+              "projectId": "project-atlas",
+              "workItemId": "wi-atlas-migration",
+              "effectiveFrom": "2026-02-18T00:00:00.000Z",
+              "summary": "AT-006 Өгөгдөл шилжүүлэх ажил 2 дуусаагүй predecessor-тэй үед эхэлсэн.",
+              "evidence": {
+                "dependencyIds": [
+                  "dep-atlas-006",
+                  "dep-atlas-005"
+                ],
+                "predecessorIds": [
+                  "wi-atlas-integration",
+                  "wi-atlas-procurement"
+                ],
+                "predecessorId": "wi-atlas-integration",
+                "predecessorStatus": "IN_PROGRESS",
+                "successorActualStart": "2026-02-18T00:00:00.000Z",
+                "violationCount": 2
+              }
+            }
+          ]
+        },
+        {
+          "decisionId": "project.budget-overrun.v1",
+          "decisionVersion": 1,
+          "hitPolicy": "COLLECT",
+          "matchedCount": 1,
+          "outputs": [
+            {
+              "id": "detected-budget-overrun-wi-atlas-license",
+              "ruleId": "project.budget-overrun.v1",
+              "type": "BUDGET_OVERRUN",
+              "severity": "MEDIUM",
+              "tenantId": "tenant-demo",
+              "projectId": "project-atlas",
+              "workItemId": "wi-atlas-license",
+              "effectiveFrom": "2026-01-31T00:00:00.000Z",
+              "summary": "AT-003 Програмын лиценз худалдан авах ажлын зардал төсвөөс 7000000.00 төгрөгөөр хэтэрсэн.",
+              "evidence": {
+                "budget": "20000000.00",
+                "actualCost": "27000000.00",
+                "variance": "7000000.00",
+                "overrunPercent": 35
+              }
+            }
+          ]
+        },
+        {
+          "decisionId": "project.ledger-mismatch.v1",
+          "decisionVersion": 1,
+          "hitPolicy": "COLLECT",
+          "matchedCount": 1,
+          "outputs": [
+            {
+              "id": "detected-ledger-mismatch-wi-atlas-procurement",
+              "ruleId": "project.ledger-mismatch.v1",
+              "type": "LEDGER_MISMATCH",
+              "severity": "HIGH",
+              "tenantId": "tenant-demo",
+              "projectId": "project-atlas",
+              "workItemId": "wi-atlas-procurement",
+              "effectiveFrom": "2026-03-01T00:00:00.000Z",
+              "summary": "AT-004 Дэд бүтэц нийлүүлэх ажлын бүртгэсэн зардал ledger-ээс 2000000.00 төгрөгөөр зөрсөн.",
+              "evidence": {
+                "recordedActualCost": "72000000.00",
+                "ledgerTotal": "70000000.00",
+                "variance": "2000000.00"
+              }
+            }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "id": "detected-overdue-work-item-wi-atlas-procurement",
+          "ruleId": "project.overdue-work-item.v1",
+          "type": "OVERDUE_WORK_ITEM",
+          "severity": "HIGH",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-procurement",
+          "effectiveFrom": "2026-02-21T00:00:00.000Z",
+          "summary": "AT-004 Дэд бүтэц нийлүүлэх ажил 9 хоног хугацаа хэтэрсэн.",
+          "evidence": {
+            "plannedEnd": "2026-02-20T00:00:00.000Z",
+            "status": "IN_PROGRESS",
+            "progressPercent": 75,
+            "daysOverdue": 9
+          }
+        },
+        {
+          "id": "detected-stalled-progress-wi-atlas-integration",
+          "ruleId": "project.stalled-progress.v1",
+          "type": "STALLED_PROGRESS",
+          "severity": "HIGH",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-integration",
+          "effectiveFrom": "2026-02-27T00:00:00.000Z",
+          "summary": "AT-005 Системийн интеграц хөгжүүлэх ажлын ахиц 9 хоног өөрчлөгдөөгүй.",
+          "evidence": {
+            "previousCapturedAt": "2026-02-20T00:00:00.000Z",
+            "latestCapturedAt": "2026-03-01T00:00:00.000Z",
+            "previousProgressPercent": 45,
+            "currentProgressPercent": 45,
+            "daysWithoutProgress": 9
+          }
+        },
+        {
+          "id": "detected-dependency-violation-wi-atlas-migration",
+          "ruleId": "project.dependency-violation.v1",
+          "type": "DEPENDENCY_VIOLATION",
+          "severity": "CRITICAL",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-migration",
+          "effectiveFrom": "2026-02-18T00:00:00.000Z",
+          "summary": "AT-006 Өгөгдөл шилжүүлэх ажил 2 дуусаагүй predecessor-тэй үед эхэлсэн.",
+          "evidence": {
+            "dependencyIds": [
+              "dep-atlas-006",
+              "dep-atlas-005"
+            ],
+            "predecessorIds": [
+              "wi-atlas-integration",
+              "wi-atlas-procurement"
+            ],
+            "predecessorId": "wi-atlas-integration",
+            "predecessorStatus": "IN_PROGRESS",
+            "successorActualStart": "2026-02-18T00:00:00.000Z",
+            "violationCount": 2
+          }
+        },
+        {
+          "id": "detected-budget-overrun-wi-atlas-license",
+          "ruleId": "project.budget-overrun.v1",
+          "type": "BUDGET_OVERRUN",
+          "severity": "MEDIUM",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-license",
+          "effectiveFrom": "2026-01-31T00:00:00.000Z",
+          "summary": "AT-003 Програмын лиценз худалдан авах ажлын зардал төсвөөс 7000000.00 төгрөгөөр хэтэрсэн.",
+          "evidence": {
+            "budget": "20000000.00",
+            "actualCost": "27000000.00",
+            "variance": "7000000.00",
+            "overrunPercent": 35
+          }
+        },
+        {
+          "id": "detected-ledger-mismatch-wi-atlas-procurement",
+          "ruleId": "project.ledger-mismatch.v1",
+          "type": "LEDGER_MISMATCH",
+          "severity": "HIGH",
+          "tenantId": "tenant-demo",
+          "projectId": "project-atlas",
+          "workItemId": "wi-atlas-procurement",
+          "effectiveFrom": "2026-03-01T00:00:00.000Z",
+          "summary": "AT-004 Дэд бүтэц нийлүүлэх ажлын бүртгэсэн зардал ledger-ээс 2000000.00 төгрөгөөр зөрсөн.",
+          "evidence": {
+            "recordedActualCost": "72000000.00",
+            "ledgerTotal": "70000000.00",
+            "variance": "2000000.00"
+          }
+        }
+      ],
+      "summary": {
+        "workItemCount": 9,
+        "dependencyCount": 9,
+        "projectDurationDays": 125,
+        "criticalWorkItemCount": 7,
+        "criticalPathCount": 1,
+        "issueCount": 5,
+        "issuesByType": {
+          "OVERDUE_WORK_ITEM": 1,
+          "STALLED_PROGRESS": 1,
+          "DEPENDENCY_VIOLATION": 1,
+          "BUDGET_OVERRUN": 1,
+          "LEDGER_MISMATCH": 1
+        },
+        "issuesBySeverity": {
+          "LOW": 0,
+          "MEDIUM": 1,
+          "HIGH": 3,
+          "CRITICAL": 1
+        }
+      }
+    },
+    "recommendations": {
+      "schemaVersion": 1,
+      "language": "mn",
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "projectCode": "ATLAS",
+      "projectName": "ERP шинэчлэлийн төсөл",
+      "asOf": "2026-03-01T00:00:00.000Z",
+      "executiveSummary": "Төслийн гүйцэтгэлд хамаарлын сахилга, ахицын тасалдал, хугацааны хоцрогдол болон зардлын хяналтын зөрүү зэрэг харилцан уялдсан асуудлууд илэрсэн. Нэн тэргүүнд өгөгдөл шилжүүлэх ажлын хамаарлыг зөвшөөрөгдсөн дараалалд оруулж, интеграц ба нийлүүлэлтийн ажлуудад сэргээх арга хэмжээ хэрэгжүүлэх шаардлагатай. Үүний зэрэгцээ лицензийн төсвийн хэтрэлт болон нийлүүлэлтийн зардлын бүртгэлийг санхүүгийн хяналтаар баталгаажуулах нь зүйтэй.",
+      "riskBrief": {
+        "posture": "CRITICAL",
+        "summary": "Төслийн эрсдэлийн төлөв ноцтой байна. Дуусаагүй өмнөх ажлуудтай холбоотой хамаарлын зөрчил нь критик гинжин хэлхээнд нөлөөлөх боломжтой бөгөөд ахицын зогсонги байдал, хугацааны хоцрогдол, санхүүгийн зөрчлүүд нэмэлт удирдлагын анхаарал шаардаж байна.",
+        "observations": [
+          {
+            "id": "obs-execution-control-pattern",
+            "kind": "PATTERN",
+            "priority": "CRITICAL",
+            "confidence": "HIGH",
+            "direction": null,
+            "title": "Гүйцэтгэл ба хяналтын олон төрлийн зөрчил давхар илэрсэн",
+            "summary": "Хугацаа хэтэрсэн ажил, ахицын зогсонги байдал, хамаарлын зөрчил, төсвийн хэтрэлт болон зардлын бүртгэлийн зөрүү зэрэг асуудлууд зэрэгцэн илэрсэн нь төслийн гүйцэтгэл, хамаарал, санхүүгийн хяналтыг нэгдсэн байдлаар чангатгах шаардлагатайг харуулж байна.",
+            "workItemIds": [
+              "wi-atlas-procurement",
+              "wi-atlas-integration",
+              "wi-atlas-migration",
+              "wi-atlas-license"
+            ],
+            "impactRefs": [
+              "detected-overdue-work-item-wi-atlas-procurement",
+              "detected-stalled-progress-wi-atlas-integration",
+              "detected-dependency-violation-wi-atlas-migration",
+              "detected-budget-overrun-wi-atlas-license",
+              "detected-ledger-mismatch-wi-atlas-procurement"
+            ],
+            "sources": [
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+                "field": "type",
+                "value": "OVERDUE_WORK_ITEM"
+              },
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-stalled-progress-wi-atlas-integration",
+                "field": "type",
+                "value": "STALLED_PROGRESS"
+              },
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                "field": "type",
+                "value": "DEPENDENCY_VIOLATION"
+              },
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-budget-overrun-wi-atlas-license",
+                "field": "type",
+                "value": "BUDGET_OVERRUN"
+              },
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+                "field": "type",
+                "value": "LEDGER_MISMATCH"
+              },
+              {
+                "sourceType": "ANALYSIS_SUMMARY",
+                "sourceId": "project-atlas",
+                "field": "issueCount",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "obs-migration-dependency-condition",
+            "kind": "ROOT_CAUSE",
+            "priority": "CRITICAL",
+            "confidence": "HIGH",
+            "direction": null,
+            "title": "Өгөгдөл шилжүүлэх ажил хамаарлын нөхцөл хангагдахаас өмнө эхэлсэн",
+            "summary": "Өгөгдөл шилжүүлэх ажил нь нийлүүлэлт болон интеграцын ажлуудтай дууссаны дараа эхлэх хамааралтай боловч бодит эхлэл бүртгэгдэх үед өмнөх ажлууд дуусаагүй байсан нь илэрсэн хамаарлын зөрчлийн шууд нөхцөлтэй нийцэж байна.",
+            "workItemIds": [
+              "wi-atlas-migration",
+              "wi-atlas-integration",
+              "wi-atlas-procurement"
+            ],
+            "impactRefs": [
+              "detected-dependency-violation-wi-atlas-migration"
+            ],
+            "sources": [
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                "field": "evidence.predecessorStatus",
+                "value": "IN_PROGRESS"
+              },
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                "field": "evidence.successorActualStart",
+                "value": "2026-02-18T00:00:00.000Z"
+              },
+              {
+                "sourceType": "DEPENDENCY",
+                "sourceId": "dep-atlas-005",
+                "field": "predecessorId",
+                "value": "wi-atlas-procurement"
+              },
+              {
+                "sourceType": "DEPENDENCY",
+                "sourceId": "dep-atlas-005",
+                "field": "successorId",
+                "value": "wi-atlas-migration"
+              },
+              {
+                "sourceType": "DEPENDENCY",
+                "sourceId": "dep-atlas-005",
+                "field": "type",
+                "value": "FINISH_TO_START"
+              },
+              {
+                "sourceType": "DEPENDENCY",
+                "sourceId": "dep-atlas-006",
+                "field": "predecessorId",
+                "value": "wi-atlas-integration"
+              },
+              {
+                "sourceType": "DEPENDENCY",
+                "sourceId": "dep-atlas-006",
+                "field": "successorId",
+                "value": "wi-atlas-migration"
+              },
+              {
+                "sourceType": "DEPENDENCY",
+                "sourceId": "dep-atlas-006",
+                "field": "type",
+                "value": "FINISH_TO_START"
+              },
+              {
+                "sourceType": "WORK_ITEM",
+                "sourceId": "wi-atlas-migration",
+                "field": "actualStart",
+                "value": "2026-02-18T00:00:00.000Z"
+              }
+            ]
+          },
+          {
+            "id": "obs-integration-stall-trend",
+            "kind": "TREND",
+            "priority": "HIGH",
+            "confidence": "HIGH",
+            "direction": "DETERIORATING",
+            "title": "Интеграцын ахиц зогсонги болсон",
+            "summary": "Дараалсан ахицын бүртгэлүүдэд интеграцын гүйцэтгэл өөрчлөгдөөгүй бөгөөд энэ ажил критик гинжин хэлхээнд багтаж байна. Иймээс саадыг арилгахгүй бол дараагийн ажлуудын хуваарийн эрсдэл нэмэгдэх төлөвтэй.",
+            "workItemIds": [
+              "wi-atlas-integration"
+            ],
+            "impactRefs": [
+              "detected-stalled-progress-wi-atlas-integration"
+            ],
+            "sources": [
+              {
+                "sourceType": "ISSUE",
+                "sourceId": "detected-stalled-progress-wi-atlas-integration",
+                "field": "type",
+                "value": "STALLED_PROGRESS"
+              },
+              {
+                "sourceType": "PROGRESS_SNAPSHOT",
+                "sourceId": "snapshot-integration-02",
+                "field": "progressPercent",
+                "value": 45
+              },
+              {
+                "sourceType": "PROGRESS_SNAPSHOT",
+                "sourceId": "snapshot-integration-02",
+                "field": "capturedAt",
+                "value": "2026-02-20T00:00:00.000Z"
+              },
+              {
+                "sourceType": "PROGRESS_SNAPSHOT",
+                "sourceId": "snapshot-integration-03",
+                "field": "progressPercent",
+                "value": 45
+              },
+              {
+                "sourceType": "PROGRESS_SNAPSHOT",
+                "sourceId": "snapshot-integration-03",
+                "field": "capturedAt",
+                "value": "2026-03-01T00:00:00.000Z"
+              },
+              {
+                "sourceType": "CPM_TASK",
+                "sourceId": "wi-atlas-integration",
+                "field": "isCritical",
+                "value": true
+              }
+            ]
+          }
+        ]
+      },
+      "recommendations": [
+        {
+          "id": "rec-procurement-overdue-recovery",
+          "priority": "HIGH",
+          "workItemId": "wi-atlas-procurement",
+          "workItemName": "Дэд бүтэц нийлүүлэх",
+          "title": "Нийлүүлэлтийн ажлын сэргээх төлөвлөгөөг батлах",
+          "action": "Үлдсэн нийлүүлэлтийн хамрах хүрээ, саад, хариуцагч болон гүйцэтгэлийн дарааллыг нягталж, ажлыг дуусгах сэргээх төлөвлөгөөг удирдлагын түвшинд батлан хэрэгжилтийг ойр давтамжаар хяна.",
+          "rationale": "Ажил төлөвлөсөн дуусах хугацаанаас 9 хоног хэтэрсэн бөгөөд гүйцэтгэл 75 хувьтай, үргэлжилж буй төлөвтэй байна. Хоцрогдлыг шуурхай удирдахгүй бол хамааралтай ажлуудын гүйцэтгэлд дарамт үүсгэнэ.",
+          "impactRef": "detected-overdue-work-item-wi-atlas-procurement",
+          "sources": [
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+              "field": "evidence.daysOverdue",
+              "value": 9
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+              "field": "evidence.progressPercent",
+              "value": 75
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+              "field": "evidence.status",
+              "value": "IN_PROGRESS"
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+              "field": "evidence.plannedEnd",
+              "value": "2026-02-20T00:00:00.000Z"
+            }
+          ]
+        },
+        {
+          "id": "rec-integration-unblock-progress",
+          "priority": "HIGH",
+          "workItemId": "wi-atlas-integration",
+          "workItemName": "Системийн интеграц хөгжүүлэх",
+          "title": "Интеграцын ахицын саадыг шуурхай арилгах",
+          "action": "Ахиц зогссон шалтгааныг ажлын багтай баталгаажуулж, шаардлагатай орчин, эрх, шийдвэр болон хариуцагчийг тодорхойлон саад арилгах ажиллагааг нэн даруй хэрэгжүүл. Дараагийн ахицын бүртгэлээр өөрчлөлтийг баталгаажуул.",
+          "rationale": "Интеграцын ахиц 9 хоног өөрчлөгдөөгүй, 45 хувь дээр хэвээр байна. Тус ажил критик тул зогсонги байдал нь дараагийн гинжин ажлуудад шууд эрсдэлтэй.",
+          "impactRef": "detected-stalled-progress-wi-atlas-integration",
+          "sources": [
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-stalled-progress-wi-atlas-integration",
+              "field": "evidence.daysWithoutProgress",
+              "value": 9
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-stalled-progress-wi-atlas-integration",
+              "field": "evidence.currentProgressPercent",
+              "value": 45
+            },
+            {
+              "sourceType": "CPM_TASK",
+              "sourceId": "wi-atlas-integration",
+              "field": "isCritical",
+              "value": true
+            },
+            {
+              "sourceType": "CPM_TASK",
+              "sourceId": "wi-atlas-integration",
+              "field": "totalFloatDays",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "id": "rec-migration-dependency-gate",
+          "priority": "CRITICAL",
+          "workItemId": "wi-atlas-migration",
+          "workItemName": "Өгөгдөл шилжүүлэх",
+          "title": "Өгөгдөл шилжүүлэлтийн хамаарлын хаалгыг сэргээх",
+          "action": "Нийлүүлэлт болон интеграцын шаардлагатай гаралтуудыг хүлээн зөвшөөрч баталгаажуулах хүртэл хамааралтай шилжүүлэлтийн ажлыг тусгаарлах буюу түр зогсоо. Хэрэв давхар гүйцэтгэлийг үргэлжлүүлэх шаардлагатай бол эрсдэл, хүлээн авах шалгуур, зөвшөөрлийг албан ёсоор баримтжуул.",
+          "rationale": "Өгөгдөл шилжүүлэх ажил 2 дуусаагүй өмнөх ажилтай үед эхэлсэн бөгөөд тэдгээр хамаарал нь дууссаны дараа эхлэх төрөлтэй. Тус ажил критик, сул хугацаагүй тул зөрчлийг даруй залруулах шаардлагатай.",
+          "impactRef": "detected-dependency-violation-wi-atlas-migration",
+          "sources": [
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-dependency-violation-wi-atlas-migration",
+              "field": "evidence.violationCount",
+              "value": 2
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-dependency-violation-wi-atlas-migration",
+              "field": "evidence.predecessorStatus",
+              "value": "IN_PROGRESS"
+            },
+            {
+              "sourceType": "DEPENDENCY",
+              "sourceId": "dep-atlas-005",
+              "field": "type",
+              "value": "FINISH_TO_START"
+            },
+            {
+              "sourceType": "DEPENDENCY",
+              "sourceId": "dep-atlas-005",
+              "field": "predecessorId",
+              "value": "wi-atlas-procurement"
+            },
+            {
+              "sourceType": "DEPENDENCY",
+              "sourceId": "dep-atlas-006",
+              "field": "type",
+              "value": "FINISH_TO_START"
+            },
+            {
+              "sourceType": "DEPENDENCY",
+              "sourceId": "dep-atlas-006",
+              "field": "predecessorId",
+              "value": "wi-atlas-integration"
+            },
+            {
+              "sourceType": "CPM_TASK",
+              "sourceId": "wi-atlas-migration",
+              "field": "isCritical",
+              "value": true
+            },
+            {
+              "sourceType": "CPM_TASK",
+              "sourceId": "wi-atlas-migration",
+              "field": "totalFloatDays",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "id": "rec-license-overrun-review",
+          "priority": "MEDIUM",
+          "workItemId": "wi-atlas-license",
+          "workItemName": "Програмын лиценз худалдан авах",
+          "title": "Лицензийн төсвийн хэтрэлтийг баталгаажуулж хаах",
+          "action": "Лицензийн худалдан авалтын гэрээ, зөвшөөрөл, нэхэмжлэл болон төсвийн ангиллыг санхүү, худалдан авалтын хамтарсан хяналтаар шалга. Хэтрэлтийн зөвшөөрөл болон төсвийн засварыг баримтжуулж, ижил төрлийн худалдан авалтад урьдчилсан үнийн хяналт хэрэгжүүл.",
+          "rationale": "Лицензийн бодит зардал 27000000.00, төсөв 20000000.00 бөгөөд 7000000.00 төгрөгийн хэтрэлт бүртгэгдсэн. Дууссан ажлын санхүүгийн хаалтыг нотлох баримттайгаар баталгаажуулах шаардлагатай.",
+          "impactRef": "detected-budget-overrun-wi-atlas-license",
+          "sources": [
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-budget-overrun-wi-atlas-license",
+              "field": "evidence.actualCost",
+              "value": "27000000.00"
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-budget-overrun-wi-atlas-license",
+              "field": "evidence.budget",
+              "value": "20000000.00"
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-budget-overrun-wi-atlas-license",
+              "field": "evidence.variance",
+              "value": "7000000.00"
+            },
+            {
+              "sourceType": "WORK_ITEM",
+              "sourceId": "wi-atlas-license",
+              "field": "status",
+              "value": "COMPLETED"
+            }
+          ]
+        },
+        {
+          "id": "rec-procurement-ledger-reconcile",
+          "priority": "HIGH",
+          "workItemId": "wi-atlas-procurement",
+          "workItemName": "Дэд бүтэц нийлүүлэх",
+          "title": "Нийлүүлэлтийн зардлын бүртгэлийг тулган баталгаажуулах",
+          "action": "Ажлын зардлын бүртгэл, ерөнхий дэвтэр болон холбогдох анхан шатны баримтуудыг тулгаж, зөрүүний эх үүсвэрийг тогтоо. Зөв бүртгэлийг баталгаажуулсны дараа шаардлагатай залруулгыг зөвшөөрлийн мөртэйгээр хий.",
+          "rationale": "Бүртгэсэн бодит зардал 72000000.00 байхад ledger нийт 70000000.00 байгаа тул 2000000.00 төгрөгийн зөрүүг санхүүгийн тайлагналд ашиглахаас өмнө арилгах шаардлагатай.",
+          "impactRef": "detected-ledger-mismatch-wi-atlas-procurement",
+          "sources": [
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+              "field": "evidence.recordedActualCost",
+              "value": "72000000.00"
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+              "field": "evidence.ledgerTotal",
+              "value": "70000000.00"
+            },
+            {
+              "sourceType": "ISSUE",
+              "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+              "field": "evidence.variance",
+              "value": "2000000.00"
+            }
+          ]
+        }
+      ]
+    },
+    "metrics": {
+      "tenantId": "tenant-demo",
+      "projectId": "project-atlas",
+      "asOf": "2026-03-01T00:00:00.000Z",
+      "issueDetection": {
+        "expectedCount": 5,
+        "detectedCount": 5,
+        "truePositiveCount": 5,
+        "falsePositiveCount": 0,
+        "falseNegativeCount": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1,
+        "matched": [
+          "BUDGET_OVERRUN:project-atlas:wi-atlas-license",
+          "DEPENDENCY_VIOLATION:project-atlas:wi-atlas-migration",
+          "LEDGER_MISMATCH:project-atlas:wi-atlas-procurement",
+          "OVERDUE_WORK_ITEM:project-atlas:wi-atlas-procurement",
+          "STALLED_PROGRESS:project-atlas:wi-atlas-integration"
+        ],
+        "missing": [],
+        "unexpected": []
+      },
+      "meanDetectionLagDays": 10,
+      "meanEffectiveDateErrorDays": 0,
+      "forecastFinish": "2026-05-09T00:00:00.000Z",
+      "actualFinish": "2026-05-12T00:00:00.000Z",
+      "forecastErrorDays": 3
+    },
+    "provenance": {
+      "narrativeMode": "DETERMINISTIC",
+      "recommendationSource": "AGENT_RUN",
+      "a2RunId": "3af0faf9-a19f-4bf9-b1a5-2a80d447cc69",
+      "a2TraceId": null,
+      "a3TraceId": null
+    }
+  },
+  "documentBundle": {
+    "schemaVersion": 1,
+    "requestId": "a46f89fd-fef2-4392-8cf6-e8d8e701837f",
+    "generatedAt": "2026-07-28T14:12:12.242Z",
+    "tenantId": "tenant-demo",
+    "projectId": "project-atlas",
+    "asOf": "2026-03-01T00:00:00.000Z",
+    "documents": [
+      {
+        "type": "PROJECT_REPORT",
+        "title": "ERP шинэчлэлийн төсөл төслийн хяналтын тайлан",
+        "report": {
+          "schemaVersion": 1,
+          "generatedAt": "2026-07-28T14:12:12.242Z",
+          "project": {
+            "tenantId": "tenant-demo",
+            "projectId": "project-atlas",
+            "projectCode": "ATLAS",
+            "projectName": "ERP шинэчлэлийн төсөл",
+            "asOf": "2026-03-01T00:00:00.000Z"
+          },
+          "narrative": {
+            "language": "mn",
+            "executiveOverview": "Төслийн төлөвийг хугацаа, хамаарал, явц болон зардлын баталгаажсан мэдээлэлд тулгуурлан нэгтгэв.",
+            "riskNarrative": "Илэрсэн эрсдэлүүд нь ажлын уялдаа, хэрэгжилтийн дараалал болон санхүүгийн хяналтад анхаарал шаардаж байна.",
+            "recommendationNarrative": "Баталгаажсан зөвлөмжүүдийг эх баримттай нь тулган, хариуцагч болон хэрэгжилтийн дарааллаар удирдах шаардлагатай.",
+            "conclusion": "Шийдвэр бүрийг эх өгөгдөл, дүрмийн үр дүн болон баталгаажсан эх сурвалжтай холбоотой хэрэгжүүлэх нь зүйтэй."
+          },
+          "analysis": {
+            "schemaVersion": 1,
+            "tenantId": "tenant-demo",
+            "projectId": "project-atlas",
+            "projectCode": "ATLAS",
+            "projectName": "ERP шинэчлэлийн төсөл",
+            "asOf": "2026-03-01T00:00:00.000Z",
+            "cpm": {
+              "projectStart": "2026-01-05T00:00:00.000Z",
+              "projectFinish": "2026-05-09T00:00:00.000Z",
+              "projectDurationDays": 125,
+              "topologicalOrder": [
+                "wi-atlas-discovery",
+                "wi-atlas-design",
+                "wi-atlas-license",
+                "wi-atlas-procurement",
+                "wi-atlas-integration",
+                "wi-atlas-migration",
+                "wi-atlas-training",
+                "wi-atlas-pilot",
+                "wi-atlas-rollout"
+              ],
+              "criticalWorkItemIds": [
+                "wi-atlas-discovery",
+                "wi-atlas-design",
+                "wi-atlas-integration",
+                "wi-atlas-migration",
+                "wi-atlas-training",
+                "wi-atlas-pilot",
+                "wi-atlas-rollout"
+              ],
+              "criticalPaths": [
+                [
+                  "wi-atlas-discovery",
+                  "wi-atlas-design",
+                  "wi-atlas-integration",
+                  "wi-atlas-migration",
+                  "wi-atlas-training",
+                  "wi-atlas-pilot",
+                  "wi-atlas-rollout"
+                ]
+              ],
+              "tasks": [
+                {
+                  "workItemId": "wi-atlas-discovery",
+                  "code": "AT-001",
+                  "name": "Шаардлага тодорхойлох",
+                  "durationDays": 11,
+                  "earliestStartOffset": 0,
+                  "earliestFinishOffset": 11,
+                  "latestStartOffset": 0,
+                  "latestFinishOffset": 11,
+                  "totalFloatDays": 0,
+                  "freeFloatDays": 0,
+                  "earliestStart": "2026-01-05T00:00:00.000Z",
+                  "earliestFinish": "2026-01-15T00:00:00.000Z",
+                  "latestStart": "2026-01-05T00:00:00.000Z",
+                  "latestFinish": "2026-01-15T00:00:00.000Z",
+                  "isCritical": true
+                },
+                {
+                  "workItemId": "wi-atlas-design",
+                  "code": "AT-002",
+                  "name": "Шийдлийн архитектур",
+                  "durationDays": 17,
+                  "earliestStartOffset": 11,
+                  "earliestFinishOffset": 28,
+                  "latestStartOffset": 11,
+                  "latestFinishOffset": 28,
+                  "totalFloatDays": 0,
+                  "freeFloatDays": 0,
+                  "earliestStart": "2026-01-16T00:00:00.000Z",
+                  "earliestFinish": "2026-02-01T00:00:00.000Z",
+                  "latestStart": "2026-01-16T00:00:00.000Z",
+                  "latestFinish": "2026-02-01T00:00:00.000Z",
+                  "isCritical": true
+                },
+                {
+                  "workItemId": "wi-atlas-license",
+                  "code": "AT-003",
+                  "name": "Програмын лиценз худалдан авах",
+                  "durationDays": 12,
+                  "earliestStartOffset": 28,
+                  "earliestFinishOffset": 40,
+                  "latestStartOffset": 113,
+                  "latestFinishOffset": 125,
+                  "totalFloatDays": 85,
+                  "freeFloatDays": 85,
+                  "earliestStart": "2026-02-02T00:00:00.000Z",
+                  "earliestFinish": "2026-02-13T00:00:00.000Z",
+                  "latestStart": "2026-04-28T00:00:00.000Z",
+                  "latestFinish": "2026-05-09T00:00:00.000Z",
+                  "isCritical": false
+                },
+                {
+                  "workItemId": "wi-atlas-procurement",
+                  "code": "AT-004",
+                  "name": "Дэд бүтэц нийлүүлэх",
+                  "durationDays": 19,
+                  "earliestStartOffset": 28,
+                  "earliestFinishOffset": 47,
+                  "latestStartOffset": 46,
+                  "latestFinishOffset": 65,
+                  "totalFloatDays": 18,
+                  "freeFloatDays": 18,
+                  "earliestStart": "2026-02-02T00:00:00.000Z",
+                  "earliestFinish": "2026-02-20T00:00:00.000Z",
+                  "latestStart": "2026-02-20T00:00:00.000Z",
+                  "latestFinish": "2026-03-10T00:00:00.000Z",
+                  "isCritical": false
+                },
+                {
+                  "workItemId": "wi-atlas-integration",
+                  "code": "AT-005",
+                  "name": "Системийн интеграц хөгжүүлэх",
+                  "durationDays": 37,
+                  "earliestStartOffset": 28,
+                  "earliestFinishOffset": 65,
+                  "latestStartOffset": 28,
+                  "latestFinishOffset": 65,
+                  "totalFloatDays": 0,
+                  "freeFloatDays": 0,
+                  "earliestStart": "2026-02-02T00:00:00.000Z",
+                  "earliestFinish": "2026-03-10T00:00:00.000Z",
+                  "latestStart": "2026-02-02T00:00:00.000Z",
+                  "latestFinish": "2026-03-10T00:00:00.000Z",
+                  "isCritical": true
+                },
+                {
+                  "workItemId": "wi-atlas-migration",
+                  "code": "AT-006",
+                  "name": "Өгөгдөл шилжүүлэх",
+                  "durationDays": 20,
+                  "earliestStartOffset": 65,
+                  "earliestFinishOffset": 85,
+                  "latestStartOffset": 65,
+                  "latestFinishOffset": 85,
+                  "totalFloatDays": 0,
+                  "freeFloatDays": 0,
+                  "earliestStart": "2026-03-11T00:00:00.000Z",
+                  "earliestFinish": "2026-03-30T00:00:00.000Z",
+                  "latestStart": "2026-03-11T00:00:00.000Z",
+                  "latestFinish": "2026-03-30T00:00:00.000Z",
+                  "isCritical": true
+                },
+                {
+                  "workItemId": "wi-atlas-training",
+                  "code": "AT-007",
+                  "name": "Хэрэглэгчийн сургалт",
+                  "durationDays": 15,
+                  "earliestStartOffset": 85,
+                  "earliestFinishOffset": 100,
+                  "latestStartOffset": 85,
+                  "latestFinishOffset": 100,
+                  "totalFloatDays": 0,
+                  "freeFloatDays": 0,
+                  "earliestStart": "2026-03-31T00:00:00.000Z",
+                  "earliestFinish": "2026-04-14T00:00:00.000Z",
+                  "latestStart": "2026-03-31T00:00:00.000Z",
+                  "latestFinish": "2026-04-14T00:00:00.000Z",
+                  "isCritical": true
+                },
+                {
+                  "workItemId": "wi-atlas-pilot",
+                  "code": "AT-008",
+                  "name": "Пилот нэвтрүүлэлт",
+                  "durationDays": 10,
+                  "earliestStartOffset": 100,
+                  "earliestFinishOffset": 110,
+                  "latestStartOffset": 100,
+                  "latestFinishOffset": 110,
+                  "totalFloatDays": 0,
+                  "freeFloatDays": 0,
+                  "earliestStart": "2026-04-15T00:00:00.000Z",
+                  "earliestFinish": "2026-04-24T00:00:00.000Z",
+                  "latestStart": "2026-04-15T00:00:00.000Z",
+                  "latestFinish": "2026-04-24T00:00:00.000Z",
+                  "isCritical": true
+                },
+                {
+                  "workItemId": "wi-atlas-rollout",
+                  "code": "AT-009",
+                  "name": "Үндсэн нэвтрүүлэлт",
+                  "durationDays": 15,
+                  "earliestStartOffset": 110,
+                  "earliestFinishOffset": 125,
+                  "latestStartOffset": 110,
+                  "latestFinishOffset": 125,
+                  "totalFloatDays": 0,
+                  "freeFloatDays": 0,
+                  "earliestStart": "2026-04-25T00:00:00.000Z",
+                  "earliestFinish": "2026-05-09T00:00:00.000Z",
+                  "latestStart": "2026-04-25T00:00:00.000Z",
+                  "latestFinish": "2026-05-09T00:00:00.000Z",
+                  "isCritical": true
+                }
+              ]
+            },
+            "ruleEvaluations": [
+              {
+                "decisionId": "project.overdue-work-item.v1",
+                "decisionVersion": 1,
+                "hitPolicy": "COLLECT",
+                "matchedCount": 1,
+                "outputs": [
+                  {
+                    "id": "detected-overdue-work-item-wi-atlas-procurement",
+                    "ruleId": "project.overdue-work-item.v1",
+                    "type": "OVERDUE_WORK_ITEM",
+                    "severity": "HIGH",
+                    "tenantId": "tenant-demo",
+                    "projectId": "project-atlas",
+                    "workItemId": "wi-atlas-procurement",
+                    "effectiveFrom": "2026-02-21T00:00:00.000Z",
+                    "summary": "AT-004 Дэд бүтэц нийлүүлэх ажил 9 хоног хугацаа хэтэрсэн.",
+                    "evidence": {
+                      "plannedEnd": "2026-02-20T00:00:00.000Z",
+                      "status": "IN_PROGRESS",
+                      "progressPercent": 75,
+                      "daysOverdue": 9
+                    }
+                  }
+                ]
+              },
+              {
+                "decisionId": "project.stalled-progress.v1",
+                "decisionVersion": 1,
+                "hitPolicy": "COLLECT",
+                "matchedCount": 1,
+                "outputs": [
+                  {
+                    "id": "detected-stalled-progress-wi-atlas-integration",
+                    "ruleId": "project.stalled-progress.v1",
+                    "type": "STALLED_PROGRESS",
+                    "severity": "HIGH",
+                    "tenantId": "tenant-demo",
+                    "projectId": "project-atlas",
+                    "workItemId": "wi-atlas-integration",
+                    "effectiveFrom": "2026-02-27T00:00:00.000Z",
+                    "summary": "AT-005 Системийн интеграц хөгжүүлэх ажлын ахиц 9 хоног өөрчлөгдөөгүй.",
+                    "evidence": {
+                      "previousCapturedAt": "2026-02-20T00:00:00.000Z",
+                      "latestCapturedAt": "2026-03-01T00:00:00.000Z",
+                      "previousProgressPercent": 45,
+                      "currentProgressPercent": 45,
+                      "daysWithoutProgress": 9
+                    }
+                  }
+                ]
+              },
+              {
+                "decisionId": "project.dependency-violation.v1",
+                "decisionVersion": 1,
+                "hitPolicy": "COLLECT",
+                "matchedCount": 1,
+                "outputs": [
+                  {
+                    "id": "detected-dependency-violation-wi-atlas-migration",
+                    "ruleId": "project.dependency-violation.v1",
+                    "type": "DEPENDENCY_VIOLATION",
+                    "severity": "CRITICAL",
+                    "tenantId": "tenant-demo",
+                    "projectId": "project-atlas",
+                    "workItemId": "wi-atlas-migration",
+                    "effectiveFrom": "2026-02-18T00:00:00.000Z",
+                    "summary": "AT-006 Өгөгдөл шилжүүлэх ажил 2 дуусаагүй predecessor-тэй үед эхэлсэн.",
+                    "evidence": {
+                      "dependencyIds": [
+                        "dep-atlas-006",
+                        "dep-atlas-005"
+                      ],
+                      "predecessorIds": [
+                        "wi-atlas-integration",
+                        "wi-atlas-procurement"
+                      ],
+                      "predecessorId": "wi-atlas-integration",
+                      "predecessorStatus": "IN_PROGRESS",
+                      "successorActualStart": "2026-02-18T00:00:00.000Z",
+                      "violationCount": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "decisionId": "project.budget-overrun.v1",
+                "decisionVersion": 1,
+                "hitPolicy": "COLLECT",
+                "matchedCount": 1,
+                "outputs": [
+                  {
+                    "id": "detected-budget-overrun-wi-atlas-license",
+                    "ruleId": "project.budget-overrun.v1",
+                    "type": "BUDGET_OVERRUN",
+                    "severity": "MEDIUM",
+                    "tenantId": "tenant-demo",
+                    "projectId": "project-atlas",
+                    "workItemId": "wi-atlas-license",
+                    "effectiveFrom": "2026-01-31T00:00:00.000Z",
+                    "summary": "AT-003 Програмын лиценз худалдан авах ажлын зардал төсвөөс 7000000.00 төгрөгөөр хэтэрсэн.",
+                    "evidence": {
+                      "budget": "20000000.00",
+                      "actualCost": "27000000.00",
+                      "variance": "7000000.00",
+                      "overrunPercent": 35
+                    }
+                  }
+                ]
+              },
+              {
+                "decisionId": "project.ledger-mismatch.v1",
+                "decisionVersion": 1,
+                "hitPolicy": "COLLECT",
+                "matchedCount": 1,
+                "outputs": [
+                  {
+                    "id": "detected-ledger-mismatch-wi-atlas-procurement",
+                    "ruleId": "project.ledger-mismatch.v1",
+                    "type": "LEDGER_MISMATCH",
+                    "severity": "HIGH",
+                    "tenantId": "tenant-demo",
+                    "projectId": "project-atlas",
+                    "workItemId": "wi-atlas-procurement",
+                    "effectiveFrom": "2026-03-01T00:00:00.000Z",
+                    "summary": "AT-004 Дэд бүтэц нийлүүлэх ажлын бүртгэсэн зардал ledger-ээс 2000000.00 төгрөгөөр зөрсөн.",
+                    "evidence": {
+                      "recordedActualCost": "72000000.00",
+                      "ledgerTotal": "70000000.00",
+                      "variance": "2000000.00"
+                    }
+                  }
+                ]
+              }
+            ],
+            "issues": [
+              {
+                "id": "detected-overdue-work-item-wi-atlas-procurement",
+                "ruleId": "project.overdue-work-item.v1",
+                "type": "OVERDUE_WORK_ITEM",
+                "severity": "HIGH",
+                "tenantId": "tenant-demo",
+                "projectId": "project-atlas",
+                "workItemId": "wi-atlas-procurement",
+                "effectiveFrom": "2026-02-21T00:00:00.000Z",
+                "summary": "AT-004 Дэд бүтэц нийлүүлэх ажил 9 хоног хугацаа хэтэрсэн.",
+                "evidence": {
+                  "plannedEnd": "2026-02-20T00:00:00.000Z",
+                  "status": "IN_PROGRESS",
+                  "progressPercent": 75,
+                  "daysOverdue": 9
+                }
+              },
+              {
+                "id": "detected-stalled-progress-wi-atlas-integration",
+                "ruleId": "project.stalled-progress.v1",
+                "type": "STALLED_PROGRESS",
+                "severity": "HIGH",
+                "tenantId": "tenant-demo",
+                "projectId": "project-atlas",
+                "workItemId": "wi-atlas-integration",
+                "effectiveFrom": "2026-02-27T00:00:00.000Z",
+                "summary": "AT-005 Системийн интеграц хөгжүүлэх ажлын ахиц 9 хоног өөрчлөгдөөгүй.",
+                "evidence": {
+                  "previousCapturedAt": "2026-02-20T00:00:00.000Z",
+                  "latestCapturedAt": "2026-03-01T00:00:00.000Z",
+                  "previousProgressPercent": 45,
+                  "currentProgressPercent": 45,
+                  "daysWithoutProgress": 9
+                }
+              },
+              {
+                "id": "detected-dependency-violation-wi-atlas-migration",
+                "ruleId": "project.dependency-violation.v1",
+                "type": "DEPENDENCY_VIOLATION",
+                "severity": "CRITICAL",
+                "tenantId": "tenant-demo",
+                "projectId": "project-atlas",
+                "workItemId": "wi-atlas-migration",
+                "effectiveFrom": "2026-02-18T00:00:00.000Z",
+                "summary": "AT-006 Өгөгдөл шилжүүлэх ажил 2 дуусаагүй predecessor-тэй үед эхэлсэн.",
+                "evidence": {
+                  "dependencyIds": [
+                    "dep-atlas-006",
+                    "dep-atlas-005"
+                  ],
+                  "predecessorIds": [
+                    "wi-atlas-integration",
+                    "wi-atlas-procurement"
+                  ],
+                  "predecessorId": "wi-atlas-integration",
+                  "predecessorStatus": "IN_PROGRESS",
+                  "successorActualStart": "2026-02-18T00:00:00.000Z",
+                  "violationCount": 2
+                }
+              },
+              {
+                "id": "detected-budget-overrun-wi-atlas-license",
+                "ruleId": "project.budget-overrun.v1",
+                "type": "BUDGET_OVERRUN",
+                "severity": "MEDIUM",
+                "tenantId": "tenant-demo",
+                "projectId": "project-atlas",
+                "workItemId": "wi-atlas-license",
+                "effectiveFrom": "2026-01-31T00:00:00.000Z",
+                "summary": "AT-003 Програмын лиценз худалдан авах ажлын зардал төсвөөс 7000000.00 төгрөгөөр хэтэрсэн.",
+                "evidence": {
+                  "budget": "20000000.00",
+                  "actualCost": "27000000.00",
+                  "variance": "7000000.00",
+                  "overrunPercent": 35
+                }
+              },
+              {
+                "id": "detected-ledger-mismatch-wi-atlas-procurement",
+                "ruleId": "project.ledger-mismatch.v1",
+                "type": "LEDGER_MISMATCH",
+                "severity": "HIGH",
+                "tenantId": "tenant-demo",
+                "projectId": "project-atlas",
+                "workItemId": "wi-atlas-procurement",
+                "effectiveFrom": "2026-03-01T00:00:00.000Z",
+                "summary": "AT-004 Дэд бүтэц нийлүүлэх ажлын бүртгэсэн зардал ledger-ээс 2000000.00 төгрөгөөр зөрсөн.",
+                "evidence": {
+                  "recordedActualCost": "72000000.00",
+                  "ledgerTotal": "70000000.00",
+                  "variance": "2000000.00"
+                }
+              }
+            ],
+            "summary": {
+              "workItemCount": 9,
+              "dependencyCount": 9,
+              "projectDurationDays": 125,
+              "criticalWorkItemCount": 7,
+              "criticalPathCount": 1,
+              "issueCount": 5,
+              "issuesByType": {
+                "OVERDUE_WORK_ITEM": 1,
+                "STALLED_PROGRESS": 1,
+                "DEPENDENCY_VIOLATION": 1,
+                "BUDGET_OVERRUN": 1,
+                "LEDGER_MISMATCH": 1
+              },
+              "issuesBySeverity": {
+                "LOW": 0,
+                "MEDIUM": 1,
+                "HIGH": 3,
+                "CRITICAL": 1
+              }
+            }
+          },
+          "recommendations": {
+            "schemaVersion": 1,
+            "language": "mn",
+            "tenantId": "tenant-demo",
+            "projectId": "project-atlas",
+            "projectCode": "ATLAS",
+            "projectName": "ERP шинэчлэлийн төсөл",
+            "asOf": "2026-03-01T00:00:00.000Z",
+            "executiveSummary": "Төслийн гүйцэтгэлд хамаарлын сахилга, ахицын тасалдал, хугацааны хоцрогдол болон зардлын хяналтын зөрүү зэрэг харилцан уялдсан асуудлууд илэрсэн. Нэн тэргүүнд өгөгдөл шилжүүлэх ажлын хамаарлыг зөвшөөрөгдсөн дараалалд оруулж, интеграц ба нийлүүлэлтийн ажлуудад сэргээх арга хэмжээ хэрэгжүүлэх шаардлагатай. Үүний зэрэгцээ лицензийн төсвийн хэтрэлт болон нийлүүлэлтийн зардлын бүртгэлийг санхүүгийн хяналтаар баталгаажуулах нь зүйтэй.",
+            "riskBrief": {
+              "posture": "CRITICAL",
+              "summary": "Төслийн эрсдэлийн төлөв ноцтой байна. Дуусаагүй өмнөх ажлуудтай холбоотой хамаарлын зөрчил нь критик гинжин хэлхээнд нөлөөлөх боломжтой бөгөөд ахицын зогсонги байдал, хугацааны хоцрогдол, санхүүгийн зөрчлүүд нэмэлт удирдлагын анхаарал шаардаж байна.",
+              "observations": [
+                {
+                  "id": "obs-execution-control-pattern",
+                  "kind": "PATTERN",
+                  "priority": "CRITICAL",
+                  "confidence": "HIGH",
+                  "direction": null,
+                  "title": "Гүйцэтгэл ба хяналтын олон төрлийн зөрчил давхар илэрсэн",
+                  "summary": "Хугацаа хэтэрсэн ажил, ахицын зогсонги байдал, хамаарлын зөрчил, төсвийн хэтрэлт болон зардлын бүртгэлийн зөрүү зэрэг асуудлууд зэрэгцэн илэрсэн нь төслийн гүйцэтгэл, хамаарал, санхүүгийн хяналтыг нэгдсэн байдлаар чангатгах шаардлагатайг харуулж байна.",
+                  "workItemIds": [
+                    "wi-atlas-procurement",
+                    "wi-atlas-integration",
+                    "wi-atlas-migration",
+                    "wi-atlas-license"
+                  ],
+                  "impactRefs": [
+                    "detected-overdue-work-item-wi-atlas-procurement",
+                    "detected-stalled-progress-wi-atlas-integration",
+                    "detected-dependency-violation-wi-atlas-migration",
+                    "detected-budget-overrun-wi-atlas-license",
+                    "detected-ledger-mismatch-wi-atlas-procurement"
+                  ],
+                  "sources": [
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+                      "field": "type",
+                      "value": "OVERDUE_WORK_ITEM"
+                    },
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-stalled-progress-wi-atlas-integration",
+                      "field": "type",
+                      "value": "STALLED_PROGRESS"
+                    },
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                      "field": "type",
+                      "value": "DEPENDENCY_VIOLATION"
+                    },
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-budget-overrun-wi-atlas-license",
+                      "field": "type",
+                      "value": "BUDGET_OVERRUN"
+                    },
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+                      "field": "type",
+                      "value": "LEDGER_MISMATCH"
+                    },
+                    {
+                      "sourceType": "ANALYSIS_SUMMARY",
+                      "sourceId": "project-atlas",
+                      "field": "issueCount",
+                      "value": 5
+                    }
+                  ]
+                },
+                {
+                  "id": "obs-migration-dependency-condition",
+                  "kind": "ROOT_CAUSE",
+                  "priority": "CRITICAL",
+                  "confidence": "HIGH",
+                  "direction": null,
+                  "title": "Өгөгдөл шилжүүлэх ажил хамаарлын нөхцөл хангагдахаас өмнө эхэлсэн",
+                  "summary": "Өгөгдөл шилжүүлэх ажил нь нийлүүлэлт болон интеграцын ажлуудтай дууссаны дараа эхлэх хамааралтай боловч бодит эхлэл бүртгэгдэх үед өмнөх ажлууд дуусаагүй байсан нь илэрсэн хамаарлын зөрчлийн шууд нөхцөлтэй нийцэж байна.",
+                  "workItemIds": [
+                    "wi-atlas-migration",
+                    "wi-atlas-integration",
+                    "wi-atlas-procurement"
+                  ],
+                  "impactRefs": [
+                    "detected-dependency-violation-wi-atlas-migration"
+                  ],
+                  "sources": [
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                      "field": "evidence.predecessorStatus",
+                      "value": "IN_PROGRESS"
+                    },
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                      "field": "evidence.successorActualStart",
+                      "value": "2026-02-18T00:00:00.000Z"
+                    },
+                    {
+                      "sourceType": "DEPENDENCY",
+                      "sourceId": "dep-atlas-005",
+                      "field": "predecessorId",
+                      "value": "wi-atlas-procurement"
+                    },
+                    {
+                      "sourceType": "DEPENDENCY",
+                      "sourceId": "dep-atlas-005",
+                      "field": "successorId",
+                      "value": "wi-atlas-migration"
+                    },
+                    {
+                      "sourceType": "DEPENDENCY",
+                      "sourceId": "dep-atlas-005",
+                      "field": "type",
+                      "value": "FINISH_TO_START"
+                    },
+                    {
+                      "sourceType": "DEPENDENCY",
+                      "sourceId": "dep-atlas-006",
+                      "field": "predecessorId",
+                      "value": "wi-atlas-integration"
+                    },
+                    {
+                      "sourceType": "DEPENDENCY",
+                      "sourceId": "dep-atlas-006",
+                      "field": "successorId",
+                      "value": "wi-atlas-migration"
+                    },
+                    {
+                      "sourceType": "DEPENDENCY",
+                      "sourceId": "dep-atlas-006",
+                      "field": "type",
+                      "value": "FINISH_TO_START"
+                    },
+                    {
+                      "sourceType": "WORK_ITEM",
+                      "sourceId": "wi-atlas-migration",
+                      "field": "actualStart",
+                      "value": "2026-02-18T00:00:00.000Z"
+                    }
+                  ]
+                },
+                {
+                  "id": "obs-integration-stall-trend",
+                  "kind": "TREND",
+                  "priority": "HIGH",
+                  "confidence": "HIGH",
+                  "direction": "DETERIORATING",
+                  "title": "Интеграцын ахиц зогсонги болсон",
+                  "summary": "Дараалсан ахицын бүртгэлүүдэд интеграцын гүйцэтгэл өөрчлөгдөөгүй бөгөөд энэ ажил критик гинжин хэлхээнд багтаж байна. Иймээс саадыг арилгахгүй бол дараагийн ажлуудын хуваарийн эрсдэл нэмэгдэх төлөвтэй.",
+                  "workItemIds": [
+                    "wi-atlas-integration"
+                  ],
+                  "impactRefs": [
+                    "detected-stalled-progress-wi-atlas-integration"
+                  ],
+                  "sources": [
+                    {
+                      "sourceType": "ISSUE",
+                      "sourceId": "detected-stalled-progress-wi-atlas-integration",
+                      "field": "type",
+                      "value": "STALLED_PROGRESS"
+                    },
+                    {
+                      "sourceType": "PROGRESS_SNAPSHOT",
+                      "sourceId": "snapshot-integration-02",
+                      "field": "progressPercent",
+                      "value": 45
+                    },
+                    {
+                      "sourceType": "PROGRESS_SNAPSHOT",
+                      "sourceId": "snapshot-integration-02",
+                      "field": "capturedAt",
+                      "value": "2026-02-20T00:00:00.000Z"
+                    },
+                    {
+                      "sourceType": "PROGRESS_SNAPSHOT",
+                      "sourceId": "snapshot-integration-03",
+                      "field": "progressPercent",
+                      "value": 45
+                    },
+                    {
+                      "sourceType": "PROGRESS_SNAPSHOT",
+                      "sourceId": "snapshot-integration-03",
+                      "field": "capturedAt",
+                      "value": "2026-03-01T00:00:00.000Z"
+                    },
+                    {
+                      "sourceType": "CPM_TASK",
+                      "sourceId": "wi-atlas-integration",
+                      "field": "isCritical",
+                      "value": true
+                    }
+                  ]
+                }
+              ]
+            },
+            "recommendations": [
+              {
+                "id": "rec-procurement-overdue-recovery",
+                "priority": "HIGH",
+                "workItemId": "wi-atlas-procurement",
+                "workItemName": "Дэд бүтэц нийлүүлэх",
+                "title": "Нийлүүлэлтийн ажлын сэргээх төлөвлөгөөг батлах",
+                "action": "Үлдсэн нийлүүлэлтийн хамрах хүрээ, саад, хариуцагч болон гүйцэтгэлийн дарааллыг нягталж, ажлыг дуусгах сэргээх төлөвлөгөөг удирдлагын түвшинд батлан хэрэгжилтийг ойр давтамжаар хяна.",
+                "rationale": "Ажил төлөвлөсөн дуусах хугацаанаас 9 хоног хэтэрсэн бөгөөд гүйцэтгэл 75 хувьтай, үргэлжилж буй төлөвтэй байна. Хоцрогдлыг шуурхай удирдахгүй бол хамааралтай ажлуудын гүйцэтгэлд дарамт үүсгэнэ.",
+                "impactRef": "detected-overdue-work-item-wi-atlas-procurement",
+                "sources": [
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+                    "field": "evidence.daysOverdue",
+                    "value": 9
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+                    "field": "evidence.progressPercent",
+                    "value": 75
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+                    "field": "evidence.status",
+                    "value": "IN_PROGRESS"
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-overdue-work-item-wi-atlas-procurement",
+                    "field": "evidence.plannedEnd",
+                    "value": "2026-02-20T00:00:00.000Z"
+                  }
+                ]
+              },
+              {
+                "id": "rec-integration-unblock-progress",
+                "priority": "HIGH",
+                "workItemId": "wi-atlas-integration",
+                "workItemName": "Системийн интеграц хөгжүүлэх",
+                "title": "Интеграцын ахицын саадыг шуурхай арилгах",
+                "action": "Ахиц зогссон шалтгааныг ажлын багтай баталгаажуулж, шаардлагатай орчин, эрх, шийдвэр болон хариуцагчийг тодорхойлон саад арилгах ажиллагааг нэн даруй хэрэгжүүл. Дараагийн ахицын бүртгэлээр өөрчлөлтийг баталгаажуул.",
+                "rationale": "Интеграцын ахиц 9 хоног өөрчлөгдөөгүй, 45 хувь дээр хэвээр байна. Тус ажил критик тул зогсонги байдал нь дараагийн гинжин ажлуудад шууд эрсдэлтэй.",
+                "impactRef": "detected-stalled-progress-wi-atlas-integration",
+                "sources": [
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-stalled-progress-wi-atlas-integration",
+                    "field": "evidence.daysWithoutProgress",
+                    "value": 9
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-stalled-progress-wi-atlas-integration",
+                    "field": "evidence.currentProgressPercent",
+                    "value": 45
+                  },
+                  {
+                    "sourceType": "CPM_TASK",
+                    "sourceId": "wi-atlas-integration",
+                    "field": "isCritical",
+                    "value": true
+                  },
+                  {
+                    "sourceType": "CPM_TASK",
+                    "sourceId": "wi-atlas-integration",
+                    "field": "totalFloatDays",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "id": "rec-migration-dependency-gate",
+                "priority": "CRITICAL",
+                "workItemId": "wi-atlas-migration",
+                "workItemName": "Өгөгдөл шилжүүлэх",
+                "title": "Өгөгдөл шилжүүлэлтийн хамаарлын хаалгыг сэргээх",
+                "action": "Нийлүүлэлт болон интеграцын шаардлагатай гаралтуудыг хүлээн зөвшөөрч баталгаажуулах хүртэл хамааралтай шилжүүлэлтийн ажлыг тусгаарлах буюу түр зогсоо. Хэрэв давхар гүйцэтгэлийг үргэлжлүүлэх шаардлагатай бол эрсдэл, хүлээн авах шалгуур, зөвшөөрлийг албан ёсоор баримтжуул.",
+                "rationale": "Өгөгдөл шилжүүлэх ажил 2 дуусаагүй өмнөх ажилтай үед эхэлсэн бөгөөд тэдгээр хамаарал нь дууссаны дараа эхлэх төрөлтэй. Тус ажил критик, сул хугацаагүй тул зөрчлийг даруй залруулах шаардлагатай.",
+                "impactRef": "detected-dependency-violation-wi-atlas-migration",
+                "sources": [
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                    "field": "evidence.violationCount",
+                    "value": 2
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-dependency-violation-wi-atlas-migration",
+                    "field": "evidence.predecessorStatus",
+                    "value": "IN_PROGRESS"
+                  },
+                  {
+                    "sourceType": "DEPENDENCY",
+                    "sourceId": "dep-atlas-005",
+                    "field": "type",
+                    "value": "FINISH_TO_START"
+                  },
+                  {
+                    "sourceType": "DEPENDENCY",
+                    "sourceId": "dep-atlas-005",
+                    "field": "predecessorId",
+                    "value": "wi-atlas-procurement"
+                  },
+                  {
+                    "sourceType": "DEPENDENCY",
+                    "sourceId": "dep-atlas-006",
+                    "field": "type",
+                    "value": "FINISH_TO_START"
+                  },
+                  {
+                    "sourceType": "DEPENDENCY",
+                    "sourceId": "dep-atlas-006",
+                    "field": "predecessorId",
+                    "value": "wi-atlas-integration"
+                  },
+                  {
+                    "sourceType": "CPM_TASK",
+                    "sourceId": "wi-atlas-migration",
+                    "field": "isCritical",
+                    "value": true
+                  },
+                  {
+                    "sourceType": "CPM_TASK",
+                    "sourceId": "wi-atlas-migration",
+                    "field": "totalFloatDays",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "id": "rec-license-overrun-review",
+                "priority": "MEDIUM",
+                "workItemId": "wi-atlas-license",
+                "workItemName": "Програмын лиценз худалдан авах",
+                "title": "Лицензийн төсвийн хэтрэлтийг баталгаажуулж хаах",
+                "action": "Лицензийн худалдан авалтын гэрээ, зөвшөөрөл, нэхэмжлэл болон төсвийн ангиллыг санхүү, худалдан авалтын хамтарсан хяналтаар шалга. Хэтрэлтийн зөвшөөрөл болон төсвийн засварыг баримтжуулж, ижил төрлийн худалдан авалтад урьдчилсан үнийн хяналт хэрэгжүүл.",
+                "rationale": "Лицензийн бодит зардал 27000000.00, төсөв 20000000.00 бөгөөд 7000000.00 төгрөгийн хэтрэлт бүртгэгдсэн. Дууссан ажлын санхүүгийн хаалтыг нотлох баримттайгаар баталгаажуулах шаардлагатай.",
+                "impactRef": "detected-budget-overrun-wi-atlas-license",
+                "sources": [
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-budget-overrun-wi-atlas-license",
+                    "field": "evidence.actualCost",
+                    "value": "27000000.00"
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-budget-overrun-wi-atlas-license",
+                    "field": "evidence.budget",
+                    "value": "20000000.00"
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-budget-overrun-wi-atlas-license",
+                    "field": "evidence.variance",
+                    "value": "7000000.00"
+                  },
+                  {
+                    "sourceType": "WORK_ITEM",
+                    "sourceId": "wi-atlas-license",
+                    "field": "status",
+                    "value": "COMPLETED"
+                  }
+                ]
+              },
+              {
+                "id": "rec-procurement-ledger-reconcile",
+                "priority": "HIGH",
+                "workItemId": "wi-atlas-procurement",
+                "workItemName": "Дэд бүтэц нийлүүлэх",
+                "title": "Нийлүүлэлтийн зардлын бүртгэлийг тулган баталгаажуулах",
+                "action": "Ажлын зардлын бүртгэл, ерөнхий дэвтэр болон холбогдох анхан шатны баримтуудыг тулгаж, зөрүүний эх үүсвэрийг тогтоо. Зөв бүртгэлийг баталгаажуулсны дараа шаардлагатай залруулгыг зөвшөөрлийн мөртэйгээр хий.",
+                "rationale": "Бүртгэсэн бодит зардал 72000000.00 байхад ledger нийт 70000000.00 байгаа тул 2000000.00 төгрөгийн зөрүүг санхүүгийн тайлагналд ашиглахаас өмнө арилгах шаардлагатай.",
+                "impactRef": "detected-ledger-mismatch-wi-atlas-procurement",
+                "sources": [
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+                    "field": "evidence.recordedActualCost",
+                    "value": "72000000.00"
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+                    "field": "evidence.ledgerTotal",
+                    "value": "70000000.00"
+                  },
+                  {
+                    "sourceType": "ISSUE",
+                    "sourceId": "detected-ledger-mismatch-wi-atlas-procurement",
+                    "field": "evidence.variance",
+                    "value": "2000000.00"
+                  }
+                ]
+              }
+            ]
+          },
+          "metrics": {
+            "tenantId": "tenant-demo",
+            "projectId": "project-atlas",
+            "asOf": "2026-03-01T00:00:00.000Z",
+            "issueDetection": {
+              "expectedCount": 5,
+              "detectedCount": 5,
+              "truePositiveCount": 5,
+              "falsePositiveCount": 0,
+              "falseNegativeCount": 0,
+              "precision": 1,
+              "recall": 1,
+              "f1": 1,
+              "matched": [
+                "BUDGET_OVERRUN:project-atlas:wi-atlas-license",
+                "DEPENDENCY_VIOLATION:project-atlas:wi-atlas-migration",
+                "LEDGER_MISMATCH:project-atlas:wi-atlas-procurement",
+                "OVERDUE_WORK_ITEM:project-atlas:wi-atlas-procurement",
+                "STALLED_PROGRESS:project-atlas:wi-atlas-integration"
+              ],
+              "missing": [],
+              "unexpected": []
+            },
+            "meanDetectionLagDays": 10,
+            "meanEffectiveDateErrorDays": 0,
+            "forecastFinish": "2026-05-09T00:00:00.000Z",
+            "actualFinish": "2026-05-12T00:00:00.000Z",
+            "forecastErrorDays": 3
+          },
+          "provenance": {
+            "narrativeMode": "DETERMINISTIC",
+            "recommendationSource": "AGENT_RUN",
+            "a2RunId": "3af0faf9-a19f-4bf9-b1a5-2a80d447cc69",
+            "a2TraceId": null,
+            "a3TraceId": null
+          }
+        }
+      },
+      {
+        "type": "EXECUTIVE_CONCLUSION",
+        "title": "ERP шинэчлэлийн төсөл төслийн удирдлагын дүгнэлт",
+        "body": "ERP шинэчлэлийн төсөл төслийн 2026-03-01-ны байдлын шинжилгээгээр 5 баталгаажсан асуудал илэрсэн. Төслийн тооцоолсон үргэлжлэх хугацаа 125 хоног бөгөөд 5 зөвлөмжийн ноорог бэлтгэгдсэн.",
+        "decisionPoints": [
+          "Үлдсэн нийлүүлэлтийн хамрах хүрээ, саад, хариуцагч болон гүйцэтгэлийн дарааллыг нягталж, ажлыг дуусгах сэргээх төлөвлөгөөг удирдлагын түвшинд батлан хэрэгжилтийг ойр давтамжаар хяна.",
+          "Ахиц зогссон шалтгааныг ажлын багтай баталгаажуулж, шаардлагатай орчин, эрх, шийдвэр болон хариуцагчийг тодорхойлон саад арилгах ажиллагааг нэн даруй хэрэгжүүл. Дараагийн ахицын бүртгэлээр өөрчлөлтийг баталгаажуул.",
+          "Нийлүүлэлт болон интеграцын шаардлагатай гаралтуудыг хүлээн зөвшөөрч баталгаажуулах хүртэл хамааралтай шилжүүлэлтийн ажлыг тусгаарлах буюу түр зогсоо. Хэрэв давхар гүйцэтгэлийг үргэлжлүүлэх шаардлагатай бол эрсдэл, хүлээн авах шалгуур, зөвшөөрлийг албан ёсоор баримтжуул.",
+          "Лицензийн худалдан авалтын гэрээ, зөвшөөрөл, нэхэмжлэл болон төсвийн ангиллыг санхүү, худалдан авалтын хамтарсан хяналтаар шалга. Хэтрэлтийн зөвшөөрөл болон төсвийн засварыг баримтжуулж, ижил төрлийн худалдан авалтад урьдчилсан үнийн хяналт хэрэгжүүл.",
+          "Ажлын зардлын бүртгэл, ерөнхий дэвтэр болон холбогдох анхан шатны баримтуудыг тулгаж, зөрүүний эх үүсвэрийг тогтоо. Зөв бүртгэлийг баталгаажуулсны дараа шаардлагатай залруулгыг зөвшөөрлийн мөртэйгээр хий."
+        ],
+        "sourceIssueIds": [
+          "detected-overdue-work-item-wi-atlas-procurement",
+          "detected-stalled-progress-wi-atlas-integration",
+          "detected-dependency-violation-wi-atlas-migration",
+          "detected-budget-overrun-wi-atlas-license",
+          "detected-ledger-mismatch-wi-atlas-procurement"
+        ],
+        "sourceRecommendationIds": [
+          "rec-procurement-overdue-recovery",
+          "rec-integration-unblock-progress",
+          "rec-migration-dependency-gate",
+          "rec-license-overrun-review",
+          "rec-procurement-ledger-reconcile"
+        ]
+      },
+      {
+        "type": "OFFICIAL_LETTER",
+        "title": "ERP шинэчлэлийн төсөл төслийн албан бичгийн ноорог",
+        "recipient": "Төслийн удирдах зөвлөл",
+        "subject": "ERP шинэчлэлийн төсөл төслийн хяналтын үр дүнгийн тухай",
+        "salutation": "Хүндэт удирдлагын багт,",
+        "body": "ATLAS кодтой төслийн 2026-03-01-ны байдлын хяналтын тайланг хүргүүлж байна. Шинжилгээгээр 5 баталгаажсан асуудал илэрсэн бөгөөд 5 зөвлөмжийн ноорог бэлтгэгдсэн.",
+        "requestedAction": "Үлдсэн нийлүүлэлтийн хамрах хүрээ, саад, хариуцагч болон гүйцэтгэлийн дарааллыг нягталж, ажлыг дуусгах сэргээх төлөвлөгөөг удирдлагын түвшинд батлан хэрэгжилтийг ойр давтамжаар хяна. Ахиц зогссон шалтгааныг ажлын багтай баталгаажуулж, шаардлагатай орчин, эрх, шийдвэр болон хариуцагчийг тодорхойлон саад арилгах ажиллагааг нэн даруй хэрэгжүүл. Дараагийн ахицын бүртгэлээр өөрчлөлтийг баталгаажуул. Нийлүүлэлт болон интеграцын шаардлагатай гаралтуудыг хүлээн зөвшөөрч баталгаажуулах хүртэл хамааралтай шилжүүлэлтийн ажлыг тусгаарлах буюу түр зогсоо. Хэрэв давхар гүйцэтгэлийг үргэлжлүүлэх шаардлагатай бол эрсдэл, хүлээн авах шалгуур, зөвшөөрлийг албан ёсоор баримтжуул. Лицензийн худалдан авалтын гэрээ, зөвшөөрөл, нэхэмжлэл болон төсвийн ангиллыг санхүү, худалдан авалтын хамтарсан хяналтаар шалга. Хэтрэлтийн зөвшөөрөл болон төсвийн засварыг баримтжуулж, ижил төрлийн худалдан авалтад урьдчилсан үнийн хяналт хэрэгжүүл. Ажлын зардлын бүртгэл, ерөнхий дэвтэр болон холбогдох анхан шатны баримтуудыг тулгаж, зөрүүний эх үүсвэрийг тогтоо. Зөв бүртгэлийг баталгаажуулсны дараа шаардлагатай залруулгыг зөвшөөрлийн мөртэйгээр хий.",
+        "closing": "Энэхүү нооргийг эх өгөгдөлтэй тулган хянаж, батлах эсэхийг шийдвэрлэнэ үү.",
+        "signatoryPlaceholder": "Баталгаажуулах албан тушаалтан",
+        "sourceIssueIds": [
+          "detected-overdue-work-item-wi-atlas-procurement",
+          "detected-stalled-progress-wi-atlas-integration",
+          "detected-dependency-violation-wi-atlas-migration",
+          "detected-budget-overrun-wi-atlas-license",
+          "detected-ledger-mismatch-wi-atlas-procurement"
+        ],
+        "sourceRecommendationIds": [
+          "rec-procurement-overdue-recovery",
+          "rec-integration-unblock-progress",
+          "rec-migration-dependency-gate",
+          "rec-license-overrun-review",
+          "rec-procurement-ledger-reconcile"
+        ]
+      }
+    ]
+  },
+  "documentDrafts": {
+    "runId": "6e504948-138a-4cc9-a267-53052ece0a40",
+    "draftIds": [
+      "a33f928a-c482-4f85-a781-da542f83a2ae",
+      "7d67bb66-c73a-401a-ad1b-a2543ca414af",
+      "a762445c-be67-4903-850b-bd91cca6bced"
+    ],
+    "reused": false
+  },
+  "narrativeGeneration": {
+    "provider": null,
+    "modelId": null,
+    "finishReason": null,
+    "usage": null
+  },
+  "judge": null,
+  "draftComparison": null
+}

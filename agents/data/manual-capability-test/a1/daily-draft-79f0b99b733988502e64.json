@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "recordId": "review-daily-draft-79f0b99b733988502e64",
+  "draftId": "daily-draft-79f0b99b733988502e64",
+  "requestId": "manual-image-1785343899",
+  "sourceSha256": "aff9ea76eafa7a83583d1904974a26a26abd99224be5fc80e0a980d03cb042fa",
+  "tenantId": "tenant-demo",
+  "projectId": "project-buildwatch-simulation",
+  "status": "NEEDS_CORRECTION",
+  "draft": {
+    "schemaVersion": 1,
+    "draftType": "DAILY_REPORT",
+    "draftId": "daily-draft-79f0b99b733988502e64",
+    "requestId": "manual-image-1785343899",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "sourceArtifacts": [
+      {
+        "artifactId": "source-image-fa606512e6c59aba416a",
+        "kind": "SOURCE_IMAGE",
+        "mediaType": "image/png",
+        "sha256": "fa606512e6c59aba416a0ce4953246e22ecc19e22ab286cb86fd152d0b391eb8",
+        "storageKey": "artifacts/fa606512e6c59aba416a0ce4953246e22ecc19e22ab286cb86fd152d0b391eb8.png",
+        "sizeBytes": 10604
+      }
+    ],
+    "rawText": "BW-017 ажлын талбайн зураг",
+    "language": "mn",
+    "reportDate": null,
+    "location": {
+      "block": null,
+      "stage": null,
+      "floor": null,
+      "zone": null
+    },
+    "progressEntries": [
+      {
+        "entryId": "daily-draft-79f0b99b733988502e64-progress-001",
+        "workItem": {
+          "code": "BW-017",
+          "name": "Шатны марш",
+          "candidateCodes": []
+        },
+        "progressMode": "UNSPECIFIED",
+        "progressPercent": null,
+        "quantityDone": null,
+        "unit": null,
+        "status": null,
+        "blocker": null,
+        "note": "Эх сурвалжид BW-017 ажлын талбайн зураг гэж тэмдэглэсэн боловч тоон ахиц мэдээлээгүй.",
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.0.workItem.code",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-2a1ae8544bfdb86422dd",
+                "fieldPath": "progressEntries.0.workItem.code",
+                "quote": "BW-017 ажлын талбайн зураг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.workItem.name",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-2a1ae8544bfdb86422dd",
+                "fieldPath": "progressEntries.0.workItem.name",
+                "quote": "BW-017",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attendanceEntries": [],
+    "materialSignals": [],
+    "photoObservations": [
+      {
+        "observationId": "daily-draft-79f0b99b733988502e64-photo-001",
+        "photoArtifactId": "source-image-fa606512e6c59aba416a",
+        "kind": "UNREADABLE",
+        "statement": "Зурагт барилгын ажлын талбайн уншигдахуйц дүрслэл харагдахгүй; хар дэвсгэр дээр “mind” гэсэн график байна.",
+        "reviewQuestion": "Энэ зураг BW-017 ажлын талбайн зураг мөн эсэхийг шалгана уу.",
+        "workItemCandidateCodes": [
+          "BW-017"
+        ],
+        "confidence": 0.99,
+        "evidence": [
+          {
+            "sourceType": "IMAGE",
+            "sourceId": "source-image-fa606512e6c59aba416a",
+            "fieldPath": "photoObservations.0",
+            "quote": null,
+            "imageRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 1,
+              "height": 1,
+              "description": "Зургийн бүх хэсэг"
+            }
+          }
+        ],
+        "advisoryOnly": true
+      }
+    ],
+    "clarificationQuestions": [
+      {
+        "questionId": "daily-draft-79f0b99b733988502e64-question-001",
+        "fieldPath": "reportDate",
+        "reason": "MISSING_REQUIRED_VALUE",
+        "question": "Өдрийн тайлангийн огноог оруулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      }
+    ],
+    "duplicateCandidates": [],
+    "fieldConfidence": [
+      {
+        "fieldPath": "dailyReport.photoObservations.0",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "IMAGE",
+            "sourceId": "source-image-fa606512e6c59aba416a",
+            "fieldPath": "dailyReport.photoObservations.0",
+            "quote": "mind",
+            "imageRegion": {
+              "x": 0,
+              "y": 0,
+              "width": 1,
+              "height": 1,
+              "description": "Зургийн бүх хэсэг"
+            }
+          }
+        ]
+      }
+    ],
+    "overallConfidence": 0.8875,
+    "confidenceLevel": "HIGH",
+    "validationIssues": [
+      {
+        "code": "MISSING_REPORT_DATE",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "reportDate"
+        ],
+        "message": "Daily report date is required before approval.",
+        "deterministic": true
+      }
+    ],
+    "status": "NEEDS_CORRECTION",
+    "requiresHumanReview": true
+  },
+  "humanEditedFieldPaths": [],
+  "approvedCommand": null,
+  "approvalEvent": null,
+  "rejection": null,
+  "createdAt": "2026-07-29T16:51:50.430Z",
+  "updatedAt": "2026-07-29T16:51:50.430Z"
+}

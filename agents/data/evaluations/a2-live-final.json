@@ -1,0 +1,300 @@
+{
+  "mode": "latest",
+  "provider": null,
+  "model": null,
+  "suite": "a2-project-observer-v1",
+  "generatedAt": "2026-07-28T13:35:38.445Z",
+  "totalCases": 3,
+  "successfulCases": 3,
+  "passedCases": 3,
+  "groundedCases": 3,
+  "matchedFields": 24,
+  "totalFields": 24,
+  "passRate": 1,
+  "groundingRate": 1,
+  "fieldAccuracy": 1,
+  "observationKinds": {
+    "truePositive": 3,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "recommendationImpacts": {
+    "truePositive": 5,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "cases": [
+    {
+      "caseId": "a2-atlas-risk-observation",
+      "tags": [
+        "risk",
+        "pattern",
+        "root-cause",
+        "trend",
+        "recommendation"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "groundingValid": true,
+      "observationKinds": {
+        "truePositive": 3,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "recommendationImpacts": {
+        "truePositive": 5,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-demo",
+          "actual": "tenant-demo",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-atlas",
+          "actual": "project-atlas",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "CRITICAL",
+          "actual": "CRITICAL",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "BUDGET_OVERRUN",
+            "DEPENDENCY_VIOLATION",
+            "LEDGER_MISMATCH",
+            "OVERDUE_WORK_ITEM",
+            "STALLED_PROGRESS"
+          ],
+          "actual": [
+            "BUDGET_OVERRUN",
+            "DEPENDENCY_VIOLATION",
+            "LEDGER_MISMATCH",
+            "OVERDUE_WORK_ITEM",
+            "STALLED_PROGRESS"
+          ],
+          "matched": true
+        },
+        {
+          "field": "observationKinds",
+          "expected": [
+            "PATTERN",
+            "ROOT_CAUSE",
+            "TREND"
+          ],
+          "actual": [
+            "PATTERN",
+            "ROOT_CAUSE",
+            "TREND"
+          ],
+          "matched": true
+        },
+        {
+          "field": "recommendationImpactRefs",
+          "expected": [
+            "detected-budget-overrun-wi-atlas-license",
+            "detected-dependency-violation-wi-atlas-migration",
+            "detected-ledger-mismatch-wi-atlas-procurement",
+            "detected-overdue-work-item-wi-atlas-procurement",
+            "detected-stalled-progress-wi-atlas-integration"
+          ],
+          "actual": [
+            "detected-budget-overrun-wi-atlas-license",
+            "detected-dependency-violation-wi-atlas-migration",
+            "detected-ledger-mismatch-wi-atlas-procurement",
+            "detected-overdue-work-item-wi-atlas-procurement",
+            "detected-stalled-progress-wi-atlas-integration"
+          ],
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a2-private-tenant-isolation",
+      "tags": [
+        "no-risk",
+        "tenant-isolation",
+        "authorization"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "groundingValid": true,
+      "observationKinds": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "recommendationImpacts": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-isolation",
+          "actual": "tenant-isolation",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-private",
+          "actual": "project-private",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "NONE",
+          "actual": "NONE",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "observationKinds",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "recommendationImpactRefs",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    },
+    {
+      "caseId": "a2-river-no-risk",
+      "tags": [
+        "no-risk",
+        "empty-output",
+        "same-tenant"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "groundingValid": true,
+      "observationKinds": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "recommendationImpacts": {
+        "truePositive": 0,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-demo",
+          "actual": "tenant-demo",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-river",
+          "actual": "project-river",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "NONE",
+          "actual": "NONE",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "observationKinds",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "recommendationImpactRefs",
+          "expected": [],
+          "actual": [],
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

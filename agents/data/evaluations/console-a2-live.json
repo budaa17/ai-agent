@@ -1,0 +1,144 @@
+{
+  "mode": "live",
+  "provider": "openai",
+  "model": "gpt-5.6-sol",
+  "suite": "a2-project-observer-v1",
+  "generatedAt": "2026-07-30T07:18:54.611Z",
+  "totalCases": 1,
+  "successfulCases": 1,
+  "passedCases": 1,
+  "groundedCases": 1,
+  "matchedFields": 8,
+  "totalFields": 8,
+  "passRate": 1,
+  "groundingRate": 1,
+  "fieldAccuracy": 1,
+  "observationKinds": {
+    "truePositive": 3,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "recommendationImpacts": {
+    "truePositive": 5,
+    "falsePositive": 0,
+    "falseNegative": 0,
+    "precision": 1,
+    "recall": 1
+  },
+  "cases": [
+    {
+      "caseId": "a2-atlas-risk-observation",
+      "tags": [
+        "risk",
+        "pattern",
+        "root-cause",
+        "trend",
+        "recommendation"
+      ],
+      "succeeded": true,
+      "passed": true,
+      "matchedFields": 8,
+      "totalFields": 8,
+      "groundingValid": true,
+      "observationKinds": {
+        "truePositive": 3,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "recommendationImpacts": {
+        "truePositive": 5,
+        "falsePositive": 0,
+        "falseNegative": 0,
+        "precision": 1,
+        "recall": 1
+      },
+      "fields": [
+        {
+          "field": "tenantId",
+          "expected": "tenant-demo",
+          "actual": "tenant-demo",
+          "matched": true
+        },
+        {
+          "field": "projectId",
+          "expected": "project-atlas",
+          "actual": "project-atlas",
+          "matched": true
+        },
+        {
+          "field": "asOf",
+          "expected": "2026-03-01T00:00:00.000Z",
+          "actual": "2026-03-01T00:00:00.000Z",
+          "matched": true
+        },
+        {
+          "field": "riskPosture",
+          "expected": "CRITICAL",
+          "actual": "CRITICAL",
+          "matched": true
+        },
+        {
+          "field": "issueTypes",
+          "expected": [
+            "BUDGET_OVERRUN",
+            "DEPENDENCY_VIOLATION",
+            "LEDGER_MISMATCH",
+            "OVERDUE_WORK_ITEM",
+            "STALLED_PROGRESS"
+          ],
+          "actual": [
+            "BUDGET_OVERRUN",
+            "DEPENDENCY_VIOLATION",
+            "LEDGER_MISMATCH",
+            "OVERDUE_WORK_ITEM",
+            "STALLED_PROGRESS"
+          ],
+          "matched": true
+        },
+        {
+          "field": "observationKinds",
+          "expected": [
+            "PATTERN",
+            "ROOT_CAUSE",
+            "TREND"
+          ],
+          "actual": [
+            "PATTERN",
+            "ROOT_CAUSE",
+            "TREND"
+          ],
+          "matched": true
+        },
+        {
+          "field": "recommendationImpactRefs",
+          "expected": [
+            "detected-budget-overrun-wi-atlas-license",
+            "detected-dependency-violation-wi-atlas-migration",
+            "detected-ledger-mismatch-wi-atlas-procurement",
+            "detected-overdue-work-item-wi-atlas-procurement",
+            "detected-stalled-progress-wi-atlas-integration"
+          ],
+          "actual": [
+            "detected-budget-overrun-wi-atlas-license",
+            "detected-dependency-violation-wi-atlas-migration",
+            "detected-ledger-mismatch-wi-atlas-procurement",
+            "detected-overdue-work-item-wi-atlas-procurement",
+            "detected-stalled-progress-wi-atlas-integration"
+          ],
+          "matched": true
+        },
+        {
+          "field": "groundingValid",
+          "expected": true,
+          "actual": true,
+          "matched": true
+        }
+      ],
+      "error": null
+    }
+  ]
+}

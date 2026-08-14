@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "simulationType": "BUILDWATCH_OPERATIONAL_V22",
+  "seed": "buildwatch-v22-phase2-v1",
+  "generatedAt": "2026-03-28T23:59:59.000Z",
+  "windowStart": "2026-01-05",
+  "windowEnd": "2026-03-28",
+  "deterministic": true,
+  "llmRequired": false,
+  "files": {
+    "publicAgentDataset": "agent-dataset.json",
+    "privateTenantFixture": "private-fixture.json",
+    "hiddenAnswerKey": "answer-key.json"
+  },
+  "counts": {
+    "workItems": 48,
+    "planningDays": 40,
+    "planItemDecisions": 120,
+    "photos": 117,
+    "verificationDrafts": 39,
+    "forecasts": 10,
+    "answerCases": 20
+  },
+  "safety": "answer-key.json and private-fixture.json must never be passed to an agent under evaluation"
+}

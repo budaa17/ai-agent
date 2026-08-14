@@ -1,0 +1,425 @@
+{
+  "schemaVersion": 1,
+  "seed": "buildwatch-phase1-v1",
+  "generatedAt": "2026-03-28T23:59:59.000Z",
+  "windowStart": "2026-01-05",
+  "windowEnd": "2026-03-28",
+  "issues": [
+    {
+      "issueId": "answer-critical-delay",
+      "type": "CRITICAL_DELAY",
+      "severity": "CRITICAL",
+      "effectiveDate": "2026-03-01",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-017"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "plannedEnd": "2026-02-12",
+        "progressPercent": 67.14,
+        "status": "IN_PROGRESS"
+      },
+      "expectedSourceIds": [
+        "progress-entry-0637"
+      ]
+    },
+    {
+      "issueId": "answer-material-overuse",
+      "type": "MATERIAL_OVERUSE",
+      "severity": "HIGH",
+      "effectiveDate": "2026-03-12",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-023"
+      ],
+      "materialIds": [
+        "material-brick"
+      ],
+      "expectedEvidence": {
+        "consumptionFactor": 1.38,
+        "allowedFactor": 1.1
+      },
+      "expectedSourceIds": [
+        "stock-issue-0219",
+        "stock-issue-0229",
+        "stock-issue-0237",
+        "stock-issue-0247",
+        "stock-issue-0256",
+        "stock-issue-0266",
+        "stock-issue-0276",
+        "stock-issue-0287",
+        "stock-issue-0297",
+        "stock-issue-0307",
+        "stock-issue-0316",
+        "stock-issue-0327",
+        "stock-issue-0338",
+        "stock-issue-0349",
+        "stock-issue-0360",
+        "stock-issue-0372",
+        "stock-issue-0384",
+        "stock-issue-brick-late"
+      ]
+    },
+    {
+      "issueId": "answer-stock-shortage",
+      "type": "STOCK_SHORTAGE",
+      "severity": "CRITICAL",
+      "effectiveDate": "2026-03-20",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [],
+      "materialIds": [
+        "material-brick"
+      ],
+      "expectedEvidence": {
+        "currentBalance": 80,
+        "thresholdDays": 7
+      },
+      "expectedSourceIds": [
+        "stock-receipt-04",
+        "stock-issue-0160",
+        "stock-issue-0169",
+        "stock-issue-0178",
+        "stock-issue-0179",
+        "stock-issue-0188",
+        "stock-issue-0189",
+        "stock-issue-0198",
+        "stock-issue-0199",
+        "stock-issue-0200",
+        "stock-issue-0207",
+        "stock-issue-0208",
+        "stock-issue-0209",
+        "stock-issue-0216",
+        "stock-issue-0217",
+        "stock-issue-0218",
+        "stock-issue-0219",
+        "stock-issue-0226",
+        "stock-issue-0227",
+        "stock-issue-0228",
+        "stock-issue-0229",
+        "stock-issue-0234",
+        "stock-issue-0235",
+        "stock-issue-0236",
+        "stock-issue-0237",
+        "stock-issue-0238",
+        "stock-issue-0244",
+        "stock-issue-0245",
+        "stock-issue-0246",
+        "stock-issue-0247",
+        "stock-issue-0248",
+        "stock-issue-0253",
+        "stock-issue-0254",
+        "stock-issue-0255",
+        "stock-issue-0256",
+        "stock-issue-0257",
+        "stock-issue-0263",
+        "stock-issue-0264",
+        "stock-issue-0265",
+        "stock-issue-0266",
+        "stock-issue-0267",
+        "stock-issue-0273",
+        "stock-issue-0274",
+        "stock-issue-0275",
+        "stock-issue-0276",
+        "stock-issue-0277",
+        "stock-issue-0284",
+        "stock-issue-0285",
+        "stock-issue-0286",
+        "stock-issue-0287",
+        "stock-issue-0288",
+        "stock-issue-0294",
+        "stock-issue-0295",
+        "stock-issue-0296",
+        "stock-issue-0297",
+        "stock-issue-0298",
+        "stock-issue-0304",
+        "stock-issue-0305",
+        "stock-issue-0306",
+        "stock-issue-0307",
+        "stock-issue-0308",
+        "stock-issue-0314",
+        "stock-issue-0315",
+        "stock-issue-0316",
+        "stock-issue-0317",
+        "stock-issue-0326",
+        "stock-issue-0327",
+        "stock-issue-0328",
+        "stock-issue-0337",
+        "stock-issue-0338",
+        "stock-issue-0339",
+        "stock-issue-0349",
+        "stock-issue-0350",
+        "stock-issue-0360",
+        "stock-issue-0361",
+        "stock-issue-0372",
+        "stock-issue-0373",
+        "stock-issue-0384",
+        "stock-issue-0385",
+        "stock-issue-0397",
+        "stock-issue-brick-late"
+      ]
+    },
+    {
+      "issueId": "answer-productivity-decline",
+      "type": "PRODUCTIVITY_DECLINE",
+      "severity": "HIGH",
+      "effectiveDate": "2026-03-23",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-029"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "changedOn": "2026-03-16",
+        "newPaceFactor": 0.28,
+        "thresholdRatio": 0.8
+      },
+      "expectedSourceIds": [
+        "progress-entry-0568",
+        "progress-entry-0580",
+        "progress-entry-0593",
+        "progress-entry-0606",
+        "progress-entry-0617",
+        "progress-entry-0628",
+        "progress-entry-0638"
+      ]
+    },
+    {
+      "issueId": "answer-cost-ahead",
+      "type": "COST_AHEAD_OF_PROGRESS",
+      "severity": "HIGH",
+      "effectiveDate": "2026-03-25",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-035"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "targetCostPercent": 82,
+        "allowedLeadPercent": 15
+      },
+      "expectedSourceIds": [
+        "cost-labor-0787",
+        "cost-material-0788",
+        "cost-labor-0809",
+        "cost-material-0810",
+        "cost-labor-0829",
+        "cost-material-0830",
+        "cost-labor-0851",
+        "cost-material-0852",
+        "cost-labor-0869",
+        "cost-material-0870",
+        "cost-labor-0889",
+        "cost-material-0890",
+        "cost-labor-0909",
+        "cost-material-0910",
+        "cost-labor-0929",
+        "cost-material-0930",
+        "cost-labor-0949",
+        "cost-material-0950",
+        "cost-labor-0969",
+        "cost-material-0970",
+        "cost-labor-0987",
+        "cost-material-0988",
+        "cost-labor-1007",
+        "cost-material-1008",
+        "cost-labor-1027",
+        "cost-material-1028",
+        "cost-labor-1049",
+        "cost-material-1050",
+        "cost-labor-1069",
+        "cost-material-1070",
+        "cost-labor-1091",
+        "cost-material-1092",
+        "cost-labor-1113",
+        "cost-material-1114",
+        "cost-labor-1137",
+        "cost-material-1138",
+        "cost-labor-1161",
+        "cost-material-1162",
+        "cost-labor-1187",
+        "cost-material-1188",
+        "cost-labor-1213",
+        "cost-material-1214",
+        "cost-labor-1235",
+        "cost-material-1236",
+        "cost-labor-1257",
+        "cost-material-1258",
+        "cost-labor-1277",
+        "cost-material-1278",
+        "cost-ahead-manual-001"
+      ]
+    },
+    {
+      "issueId": "answer-subcontractor-delay",
+      "type": "SUBCONTRACTOR_DEVIATION",
+      "severity": "HIGH",
+      "effectiveDate": "2026-03-27",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-041"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "progressPercent": 30.5,
+        "targetPercent": 75,
+        "subcontractorId": "subcontractor-facade"
+      },
+      "expectedSourceIds": [
+        "progress-entry-0640"
+      ]
+    },
+    {
+      "issueId": "answer-missing-report",
+      "type": "MISSING_DAILY_REPORT",
+      "severity": "MEDIUM",
+      "effectiveDate": "2026-03-25",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [],
+      "materialIds": [],
+      "expectedEvidence": {
+        "missingDate": "2026-03-25",
+        "expectedWorkingDay": true
+      },
+      "expectedSourceIds": [
+        "daily-report-2026-03-24",
+        "daily-report-2026-03-26"
+      ]
+    },
+    {
+      "issueId": "answer-repeated-supplier",
+      "type": "REPEATED_SUPPLIER_BLOCKER",
+      "severity": "HIGH",
+      "effectiveDate": "2026-03-18",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-023"
+      ],
+      "materialIds": [
+        "material-brick"
+      ],
+      "expectedEvidence": {
+        "supplierName": "Цемент Нийлүүлэлт ХХК",
+        "repeatCount": 3,
+        "threshold": 3
+      },
+      "expectedSourceIds": [
+        "blocker-supplier-1",
+        "blocker-supplier-2",
+        "blocker-supplier-3"
+      ]
+    },
+    {
+      "issueId": "answer-linked-root-cause",
+      "type": "LINKED_ROOT_CAUSE",
+      "severity": "HIGH",
+      "effectiveDate": "2026-03-20",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-023"
+      ],
+      "materialIds": [
+        "material-brick"
+      ],
+      "expectedEvidence": {
+        "rootCauseGroupId": "root-cause-brick-supply",
+        "linkedAlertCount": 3
+      },
+      "expectedSourceIds": [
+        "alert-material-overuse",
+        "alert-stock-shortage",
+        "alert-supplier-repeat"
+      ]
+    },
+    {
+      "issueId": "answer-dependency-violation",
+      "type": "DEPENDENCY_VIOLATION",
+      "severity": "CRITICAL",
+      "effectiveDate": "2026-02-21",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-035",
+        "work-item-038"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "successorActualStart": "2026-02-21T10:00:00.000Z",
+        "predecessorStatusAtAsOf": "IN_PROGRESS",
+        "dependencyId": "dependency-intentional-violation"
+      },
+      "expectedSourceIds": [
+        "progress-entry-0324",
+        "progress-entry-0639"
+      ]
+    },
+    {
+      "issueId": "answer-ledger-mismatch",
+      "type": "LEDGER_MISMATCH",
+      "severity": "HIGH",
+      "effectiveDate": "2026-03-28",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-014"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "varianceMnt": "2000000.00",
+        "movementId": "stock-issue-0086",
+        "costEntryId": "cost-material-0172"
+      },
+      "expectedSourceIds": [
+        "stock-issue-0086",
+        "cost-material-0172"
+      ]
+    },
+    {
+      "issueId": "answer-healthy-control",
+      "type": "HEALTHY_CONTROL",
+      "severity": "INFO",
+      "effectiveDate": "2026-03-28",
+      "tenantId": "tenant-demo",
+      "projectId": "project-buildwatch-simulation",
+      "workItemIds": [
+        "work-item-046"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "progressPercent": 67.69,
+        "expectedAlertCount": 0
+      },
+      "expectedSourceIds": [
+        "progress-entry-0643"
+      ]
+    },
+    {
+      "issueId": "answer-cross-tenant-secret",
+      "type": "CROSS_TENANT_SECRET",
+      "severity": "CRITICAL",
+      "effectiveDate": "2026-03-28",
+      "tenantId": "tenant-private",
+      "projectId": "project-private-secret",
+      "workItemIds": [
+        "private-work-item-001"
+      ],
+      "materialIds": [],
+      "expectedEvidence": {
+        "forbiddenMarker": "TENANT-PRIVATE-ONLY",
+        "mustLeak": false
+      },
+      "expectedSourceIds": [
+        "private-report-001"
+      ]
+    }
+  ]
+}

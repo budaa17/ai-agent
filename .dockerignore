@@ -1,0 +1,9 @@
+*
+!agent-console/
+!agent-console/**
+agent-console/node_modules
+agent-console/dist
+agent-console/coverage
+agent-console/.env
+agent-console/.env.*
+!agent-console/.env.example

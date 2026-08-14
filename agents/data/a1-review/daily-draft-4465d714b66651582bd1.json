@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 1,
+  "recordId": "review-daily-draft-4465d714b66651582bd1",
+  "draftId": "daily-draft-4465d714b66651582bd1",
+  "requestId": "7e550f46-6bd7-4163-a5ee-83aaef6ccec6",
+  "sourceSha256": "fbdf8b73c21c5bc2f3bda4c6e5aed6db87698ec26d643a0c1bc8b636188c17dc",
+  "tenantId": "tenant-demo",
+  "projectId": "project-buildwatch-simulation",
+  "status": "NEEDS_CORRECTION",
+  "draft": {
+    "schemaVersion": 1,
+    "draftType": "DAILY_REPORT",
+    "draftId": "daily-draft-4465d714b66651582bd1",
+    "requestId": "7e550f46-6bd7-4163-a5ee-83aaef6ccec6",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "sourceArtifacts": [],
+    "rawText": "2026-07-30-ны өдрийн байдлаар SK-001 Суурийн газар шорооны ажлаар өнөөдөр 120 м3 гүйцэтгэв. Хуримтлагдсан гүйцэтгэл 320/500 м3 буюу 64%. Нийт 8 ажилтан 8 цаг ажиллаж, 18 литр дизель түлш зарцуулсан.",
+    "language": "mn",
+    "reportDate": "2026-07-30",
+    "location": {
+      "block": null,
+      "stage": null,
+      "floor": null,
+      "zone": null
+    },
+    "progressEntries": [
+      {
+        "entryId": "daily-draft-4465d714b66651582bd1-progress-001",
+        "workItem": {
+          "code": null,
+          "name": "Суурийн газар шорооны ажил",
+          "candidateCodes": [
+            "BW-005",
+            "BW-001"
+          ]
+        },
+        "progressMode": "INCREMENTAL",
+        "progressPercent": null,
+        "quantityDone": "120",
+        "unit": "м3",
+        "status": "IN_PROGRESS",
+        "blocker": null,
+        "note": "Энэ ажлын эх код SK-001 нь зөвшөөрөгдсөн каталогт байхгүй; нэрийн утгаар BW-005 эсвэл BW-001-тэй тохирч болзошгүй.",
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.0.workItem.name",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.0.workItem.name",
+                "quote": "Суурийн газар шорооны ажлаар",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.quantityDone",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.0.quantityDone",
+                "quote": "өнөөдөр 120 м3 гүйцэтгэв",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.unit",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.0.unit",
+                "quote": "120 м3",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressMode",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.0.progressMode",
+                "quote": "өнөөдөр 120 м3 гүйцэтгэв",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.status",
+            "score": 0.9,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.0.status",
+                "quote": "гүйцэтгэв",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.workItem.candidateCodes",
+            "score": 0.55,
+            "level": "LOW",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.0.workItem.candidateCodes",
+                "quote": "Суурийн газар шорооны ажлаар",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "entryId": "daily-draft-4465d714b66651582bd1-progress-002",
+        "workItem": {
+          "code": null,
+          "name": "Суурийн газар шорооны ажил",
+          "candidateCodes": [
+            "BW-005",
+            "BW-001"
+          ]
+        },
+        "progressMode": "CUMULATIVE",
+        "progressPercent": 64,
+        "quantityDone": "320",
+        "unit": "м3",
+        "status": "IN_PROGRESS",
+        "blocker": null,
+        "note": "Нийт төлөвлөгөөт хэмжээ 500 м3 гэж эх сурвалжид дурдсан.",
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.1.quantityDone",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.1.quantityDone",
+                "quote": "Хуримтлагдсан гүйцэтгэл 320/500 м3",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.1.progressPercent",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.1.progressPercent",
+                "quote": "320/500 м3 буюу 64%",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.1.progressMode",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.1.progressMode",
+                "quote": "Хуримтлагдсан гүйцэтгэл",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.1.status",
+            "score": 0.95,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.1.status",
+                "quote": "64%",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.1.workItem.candidateCodes",
+            "score": 0.55,
+            "level": "LOW",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "progressEntries.1.workItem.candidateCodes",
+                "quote": "Суурийн газар шорооны ажлаар",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attendanceEntries": [
+      {
+        "entryId": "daily-draft-4465d714b66651582bd1-attendance-001",
+        "teamType": "UNKNOWN",
+        "teamRef": null,
+        "teamName": null,
+        "workItemCodes": [],
+        "headcount": 8,
+        "hoursPerPerson": 8,
+        "totalHours": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "attendanceEntries.0.headcount",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "attendanceEntries.0.headcount",
+                "quote": "Нийт 8 ажилтан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.hoursPerPerson",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "attendanceEntries.0.hoursPerPerson",
+                "quote": "8 цаг ажиллаж",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.teamType",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "attendanceEntries.0.teamType",
+                "quote": "ажилтан",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "materialSignals": [
+      {
+        "signalId": "daily-draft-4465d714b66651582bd1-material-001",
+        "signalType": "CONSUMED",
+        "rawName": "дизель түлш",
+        "normalizedName": null,
+        "materialRef": null,
+        "quantity": "18",
+        "unit": "литр",
+        "supplierName": null,
+        "workItemCodes": [],
+        "note": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "materialSignals.0.signalType",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "materialSignals.0.signalType",
+                "quote": "дизель түлш зарцуулсан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.rawName",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "materialSignals.0.rawName",
+                "quote": "дизель түлш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.quantity",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "materialSignals.0.quantity",
+                "quote": "18 литр",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.unit",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-76ddfd01fb24eb73a58c",
+                "fieldPath": "materialSignals.0.unit",
+                "quote": "18 литр",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "photoObservations": [],
+    "clarificationQuestions": [
+      {
+        "questionId": "daily-draft-4465d714b66651582bd1-question-001",
+        "fieldPath": "progressEntries.0.workItem.code",
+        "reason": "AMBIGUOUS_REFERENCE",
+        "question": "Энэ ахиц аль ажлын мөрөнд хамаарахыг сонгоно уу.",
+        "options": [
+          {
+            "value": "BW-005",
+            "label": "BW-005 — Суурийн нүх ухалт"
+          },
+          {
+            "value": "BW-001",
+            "label": "BW-001 — Бэлтгэл ба газар шороо"
+          }
+        ],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-4465d714b66651582bd1-question-002",
+        "fieldPath": "progressEntries.0.workItem.candidateCodes",
+        "reason": "LOW_CONFIDENCE",
+        "question": "progressEntries.0.workItem.candidateCodes утгыг эх тайлантай тулгаж баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-4465d714b66651582bd1-question-003",
+        "fieldPath": "progressEntries.1.workItem.code",
+        "reason": "AMBIGUOUS_REFERENCE",
+        "question": "Энэ ахиц аль ажлын мөрөнд хамаарахыг сонгоно уу.",
+        "options": [
+          {
+            "value": "BW-005",
+            "label": "BW-005 — Суурийн нүх ухалт"
+          },
+          {
+            "value": "BW-001",
+            "label": "BW-001 — Бэлтгэл ба газар шороо"
+          }
+        ],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-4465d714b66651582bd1-question-004",
+        "fieldPath": "progressEntries.1.workItem.candidateCodes",
+        "reason": "LOW_CONFIDENCE",
+        "question": "progressEntries.1.workItem.candidateCodes утгыг эх тайлантай тулгаж баталгаажуулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-4465d714b66651582bd1-question-005",
+        "fieldPath": "attendanceEntries.0.teamName",
+        "reason": "MISSING_REQUIRED_VALUE",
+        "question": "Ирцийн багийн нэрийг оруулна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-4465d714b66651582bd1-question-006",
+        "fieldPath": "attendanceEntries.0.teamType",
+        "reason": "MISSING_REQUIRED_VALUE",
+        "question": "Энэ нь өөрийн баг уу, эсвэл туслан гүйцэтгэгчийн баг уу?",
+        "options": [
+          {
+            "value": "OWN",
+            "label": "Өөрийн баг"
+          },
+          {
+            "value": "SUBCONTRACTOR",
+            "label": "Туслан гүйцэтгэгч"
+          }
+        ],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-4465d714b66651582bd1-question-007",
+        "fieldPath": "materialSignals.0.materialRef",
+        "reason": "AMBIGUOUS_REFERENCE",
+        "question": "Материалын catalog мөрийг сонгоно уу.",
+        "options": [],
+        "requiredForApproval": true
+      }
+    ],
+    "duplicateCandidates": [],
+    "fieldConfidence": [
+      {
+        "fieldPath": "dailyReport.reportDate",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-76ddfd01fb24eb73a58c",
+            "fieldPath": "dailyReport.reportDate",
+            "quote": "2026-07-30-ны өдрийн байдлаар",
+            "imageRegion": null
+          }
+        ]
+      }
+    ],
+    "overallConfidence": 0.4758,
+    "confidenceLevel": "LOW",
+    "validationIssues": [
+      {
+        "code": "UNRESOLVED_WORK_ITEM_progressEntries.0.workItem",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "progressEntries.0.workItem.code"
+        ],
+        "message": "Progress entry could not be resolved to exactly one project work item.",
+        "deterministic": true
+      },
+      {
+        "code": "UNRESOLVED_WORK_ITEM_progressEntries.1.workItem",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "progressEntries.1.workItem.code"
+        ],
+        "message": "Progress entry could not be resolved to exactly one project work item.",
+        "deterministic": true
+      },
+      {
+        "code": "MISSING_ATTENDANCE_TEAM_0",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "attendanceEntries.0.teamRef",
+          "attendanceEntries.0.teamName"
+        ],
+        "message": "Attendance requires a team reference or name.",
+        "deterministic": true
+      },
+      {
+        "code": "UNKNOWN_ATTENDANCE_TEAM_TYPE_0",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "attendanceEntries.0.teamType"
+        ],
+        "message": "Attendance team type must be confirmed before approval.",
+        "deterministic": true
+      },
+      {
+        "code": "UNRESOLVED_MATERIAL_0",
+        "severity": "WARNING",
+        "fieldPaths": [
+          "materialSignals.0.materialRef"
+        ],
+        "message": "Material signal could not be normalized to the project catalog.",
+        "deterministic": true
+      }
+    ],
+    "status": "NEEDS_CORRECTION",
+    "requiresHumanReview": true
+  },
+  "humanEditedFieldPaths": [],
+  "approvedCommand": null,
+  "approvalEvent": null,
+  "rejection": null,
+  "createdAt": "2026-07-30T09:16:36.576Z",
+  "updatedAt": "2026-07-30T09:16:36.576Z"
+}

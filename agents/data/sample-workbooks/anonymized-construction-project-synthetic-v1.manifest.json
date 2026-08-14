@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "sampleId": "anonymized-construction-project-synthetic-v1",
+  "classification": "SYNTHETIC_ANONYMIZED",
+  "source": {
+    "providedBy": "USER",
+    "receivedOn": "2026-07-30",
+    "workbookClaim": "SELF_DESCRIBED_SYNTHETIC",
+    "independentlyVerifiedRealOrigin": false
+  },
+  "file": {
+    "originalName": "anonymized_construction_project_sample.xlsx",
+    "storedName": "anonymized-construction-project-synthetic-v1.xlsx",
+    "mediaType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "sizeBytes": 69653,
+    "sha256": "f3f3ef49c40605098fb34b9377475af059bdfbf672780602beb98e486e450eaf"
+  },
+  "usage": {
+    "contractMappingAllowed": true,
+    "parserFixtureAllowed": true,
+    "agentContextAllowed": false,
+    "goldenAnswerAllowed": false,
+    "satisfiesAnonymizedRealSampleRequirement": false
+  },
+  "safety": {
+    "auditedOn": "2026-07-30",
+    "zipMagicValid": true,
+    "encrypted": false,
+    "macroEntryCount": 0,
+    "externalLinkEntryCount": 0,
+    "embeddedObjectEntryCount": 0,
+    "externalFormulaCount": 0,
+    "directIdentifierFindingCount": 0,
+    "reviewedNumericFalsePositiveCount": 4
+  },
+  "integrity": {
+    "sheetCount": 9,
+    "workItemCount": 20,
+    "dependencyEdgeCount": 28,
+    "duplicateWorkItemCodeCount": 0,
+    "missingWorkItemReferenceCount": 0,
+    "missingDependencyCount": 0,
+    "dependencyCycleNodeCount": 0
+  },
+  "sheets": [
+    {
+      "name": "README",
+      "headerRow": 3,
+      "recordCount": 11,
+      "mappingStatus": "REFERENCE_ONLY",
+      "mappingTargets": [],
+      "requiredColumns": [
+        "Талбар",
+        "Утга"
+      ],
+      "mappingNote": "Төслийн synthetic гарал, anonymization арга, хугацаа ба мөнгөн дүнгийн хувиргалтыг тайлбарлана."
+    },
+    {
+      "name": "Lists",
+      "headerRow": 1,
+      "recordCount": 10,
+      "mappingStatus": "REFERENCE_ONLY",
+      "mappingTargets": [],
+      "requiredColumns": [
+        "Status",
+        "Unit",
+        "Role",
+        "Cost_Category",
+        "Material_Category",
+        "Daily_Status"
+      ],
+      "mappingNote": "Excel mapping UI болон importer-ийн lookup утгуудын reference болно."
+    },
+    {
+      "name": "Work_Plan",
+      "headerRow": 3,
+      "recordCount": 20,
+      "mappingStatus": "PARTIAL_CONTRACT_MAPPING",
+      "mappingTargets": [
+        "activeBaseline",
+        "workItems",
+        "dependencies"
+      ],
+      "requiredColumns": [
+        "Work_Code",
+        "Work_Name",
+        "Discipline",
+        "Planned_Start",
+        "Planned_End",
+        "Duration_Days",
+        "Dependency",
+        "Planned_Qty",
+        "Unit",
+        "Progress_Pct",
+        "Status",
+        "Budget_Adjusted",
+        "Actual_Cost",
+        "Variance"
+      ],
+      "mappingNote": "Work item, baseline огноо/төсөв болон dependency-г өгнө; WBS parent, calendar, priority, assignee, critical flag, dependency type/lag нэмэлт policy шаарддаг."
+    },
+    {
+      "name": "Daily_Reports",
+      "headerRow": 3,
+      "recordCount": 76,
+      "mappingStatus": "PARTIAL_CONTRACT_MAPPING",
+      "mappingTargets": [
+        "dailyReports",
+        "progressEntries",
+        "blockers"
+      ],
+      "requiredColumns": [
+        "Report_ID",
+        "Date",
+        "Work_Code",
+        "Crew_Count",
+        "Hours_Worked",
+        "Qty_Completed",
+        "Unit",
+        "Daily_Status",
+        "Issue_Code",
+        "Safety_Incident",
+        "Progress_Note",
+        "Weather"
+      ],
+      "mappingNote": "Өдрийн гүйцэтгэл, issue, safety, weather signal өгнө; submit/approve identity, cumulative quantity болон structured blocker detail дутуу."
+    },
+    {
+      "name": "Attendance",
+      "headerRow": 3,
+      "recordCount": 336,
+      "mappingStatus": "PARTIAL_CONTRACT_MAPPING",
+      "mappingTargets": [
+        "attendanceEntries"
+      ],
+      "requiredColumns": [
+        "Attendance_ID",
+        "Date",
+        "Employee_Code",
+        "Role_Code",
+        "Shift",
+        "Regular_Hours",
+        "Overtime_Hours",
+        "Work_Code"
+      ],
+      "mappingNote": "Нэг ажилтны мөрүүдийг date, work item, role-оор aggregate хийж contract-ийн team/headcount/hours хэлбэрт оруулна."
+    },
+    {
+      "name": "Materials",
+      "headerRow": 3,
+      "recordCount": 36,
+      "mappingStatus": "PARTIAL_CONTRACT_MAPPING",
+      "mappingTargets": [
+        "materials",
+        "stockMovements",
+        "costEntries"
+      ],
+      "requiredColumns": [
+        "Material_Txn_ID",
+        "Date",
+        "Work_Code",
+        "Material_Code",
+        "Category",
+        "Description",
+        "Qty",
+        "Unit",
+        "Unit_Cost_Adjusted",
+        "Total_Cost",
+        "Vendor_Code"
+      ],
+      "mappingNote": "Material master, quantity, cost, vendor signal өгнө; орлого/зарлага movement kind тусдаа баганагүй тул importer policy шаардана."
+    },
+    {
+      "name": "Costs",
+      "headerRow": 3,
+      "recordCount": 71,
+      "mappingStatus": "PARTIAL_CONTRACT_MAPPING",
+      "mappingTargets": [
+        "costEntries"
+      ],
+      "requiredColumns": [
+        "Cost_ID",
+        "Date",
+        "Work_Code",
+        "Category",
+        "Description",
+        "Qty",
+        "Unit",
+        "Unit_Price_Adjusted",
+        "Total_Cost",
+        "Reference_Code"
+      ],
+      "mappingNote": "Cost entry amount/category/source mapping боломжтой; daily report холбоос болон source type normalization нэмэлт дүрэм шаарддаг."
+    },
+    {
+      "name": "Dashboard",
+      "headerRow": 3,
+      "recordCount": 13,
+      "mappingStatus": "DERIVED_ONLY",
+      "mappingTargets": [],
+      "requiredColumns": [
+        "KPI",
+        "Value",
+        "Status",
+        "Count"
+      ],
+      "mappingNote": "Derived KPI тул canonical import хийхгүй; source sheet-үүдээс дахин тооцоолох reference болгон ашиглана."
+    },
+    {
+      "name": "Data_Dictionary",
+      "headerRow": 3,
+      "recordCount": 9,
+      "mappingStatus": "REFERENCE_ONLY",
+      "mappingTargets": [],
+      "requiredColumns": [
+        "Sheet",
+        "Field",
+        "Description",
+        "Privacy Note"
+      ],
+      "mappingNote": "Column meaning ба privacy transformation-ийн reference metadata."
+    }
+  ],
+  "limitations": [
+    "Workbook README нь өгөгдлийг бодит мэт зохиомол гэж тодорхойлсон; anonymized бодит төслийн sample шаардлагыг хангахгүй.",
+    "Excel serial огноог timezone-safe ISO date болгон хөрвүүлэх importer хараахан хэрэгжээгүй.",
+    "Baseline approval metadata, ажлын calendar/holiday, WBS parent, location, priority, assignee болон critical flag байхгүй.",
+    "Dependency нь comma-separated predecessor code бөгөөд type болон lag агуулаагүй.",
+    "Daily report approval lifecycle болон attendance-to-report шууд identifier байхгүй.",
+    "Material transaction direction тодорхой биш; stock receipt/issue төрлийг policy-гүйгээр таамаглаж болохгүй.",
+    "Dashboard нь derived data тул canonical source болгон импортлох ёсгүй."
+  ]
+}

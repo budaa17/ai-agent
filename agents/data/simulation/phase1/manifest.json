@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "seed": "buildwatch-phase1-v1",
+  "generatedAt": "2026-03-28T23:59:59.000Z",
+  "windowStart": "2026-01-05",
+  "windowEnd": "2026-03-28",
+  "files": {
+    "agentSnapshot": "snapshot.json",
+    "privateTenantFixture": "private-snapshot.json",
+    "hiddenAnswerKey": "answer-key.json"
+  },
+  "counts": {
+    "workItems": 48,
+    "dependencies": 40,
+    "dailyReports": 70,
+    "progressEntries": 645,
+    "answerIssues": 13
+  }
+}

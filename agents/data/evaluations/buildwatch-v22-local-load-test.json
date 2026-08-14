@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "suite": "BUILDWATCH_V22_LOCAL_CONCURRENT_LOAD_TEST",
+  "generatedAt": "2026-08-05T04:26:12.360Z",
+  "environment": {
+    "node": "v22.23.2",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "connections": 50,
+  "durationSecPerEndpoint": 15,
+  "cases": [
+    {
+      "id": "health-live",
+      "path": "/health/live",
+      "description": "Liveness probe: full Express middleware stack, no DB round trip",
+      "result": {
+        "requests": 68450,
+        "durationSec": 15.08,
+        "throughputReqPerSec": 4564,
+        "latencyMs": {
+          "p50": 10,
+          "p95": 14,
+          "p99": 16,
+          "max": 58
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "non2xx": 0
+      }
+    },
+    {
+      "id": "health-ready",
+      "path": "/health/ready",
+      "description": "Readiness probe: middleware stack + a real `SELECT 1` DB round trip",
+      "result": {
+        "requests": 30267,
+        "durationSec": 15.04,
+        "throughputReqPerSec": 2018,
+        "latencyMs": {
+          "p50": 24,
+          "p95": 31,
+          "p99": 34,
+          "max": 203
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "non2xx": 0
+      }
+    },
+    {
+      "id": "openapi-json",
+      "path": "/openapi.json",
+      "description": "Static-ish JSON payload assembly and serialization under load",
+      "result": {
+        "requests": 33900,
+        "durationSec": 15.1,
+        "throughputReqPerSec": 2260,
+        "latencyMs": {
+          "p50": 21,
+          "p95": 31,
+          "p99": 35,
+          "max": 58
+        },
+        "errors": 0,
+        "timeouts": 0,
+        "non2xx": 0
+      }
+    }
+  ]
+}

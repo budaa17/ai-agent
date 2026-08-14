@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 1,
+  "recordId": "review-daily-draft-1f1458914adabd2bcd1b",
+  "draftId": "daily-draft-1f1458914adabd2bcd1b",
+  "requestId": "terminal-live-text-20260729-001",
+  "sourceSha256": "271e38f45094a56be3628adb22857e4d881d7f2d98a359fd7582d774ee9559d3",
+  "tenantId": "tenant-demo",
+  "projectId": "project-buildwatch-simulation",
+  "status": "NEEDS_CORRECTION",
+  "draft": {
+    "schemaVersion": 1,
+    "draftType": "DAILY_REPORT",
+    "draftId": "daily-draft-1f1458914adabd2bcd1b",
+    "requestId": "terminal-live-text-20260729-001",
+    "tenantId": "tenant-demo",
+    "projectId": "project-buildwatch-simulation",
+    "sourceArtifacts": [],
+    "rawText": "2026-03-30-нд A блокийн 2-р давхарт BW-017 Шатны марш ажилд өнөөдөр 4 м3 ажил гүйцэтгэж, нийт явц 69 хувь болсон. Өөрийн үндсэн багийн 6 ажилтан тус бүр 8 цаг ажилласан. Цемент 100 кг зарцуулсан.",
+    "language": "mn",
+    "reportDate": "2026-03-30",
+    "location": {
+      "block": "A блок",
+      "stage": null,
+      "floor": "2-р давхар",
+      "zone": null
+    },
+    "progressEntries": [
+      {
+        "entryId": "daily-draft-1f1458914adabd2bcd1b-progress-001",
+        "workItem": {
+          "code": "BW-017",
+          "name": "Шатны марш",
+          "candidateCodes": []
+        },
+        "progressMode": "CUMULATIVE",
+        "progressPercent": 69,
+        "quantityDone": "4",
+        "unit": "м3",
+        "status": "IN_PROGRESS",
+        "blocker": null,
+        "note": "Өнөөдөр 4 м3 ажил гүйцэтгэсэн нь тухайн өдрийн нэмэгдэл хэмжээ; нийт явц 69 хувь болсон.",
+        "fieldConfidence": [
+          {
+            "fieldPath": "progressEntries.0.workItem.code",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "progressEntries.0.workItem.code",
+                "quote": "BW-017 Шатны марш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.workItem.name",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "progressEntries.0.workItem.name",
+                "quote": "BW-017 Шатны марш",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.progressPercent",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "progressEntries.0.progressPercent",
+                "quote": "нийт явц 69 хувь болсон",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.quantityDone",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "progressEntries.0.quantityDone",
+                "quote": "өнөөдөр 4 м3 ажил гүйцэтгэж",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.unit",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "progressEntries.0.unit",
+                "quote": "4 м3",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "progressEntries.0.status",
+            "score": 0.95,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "progressEntries.0.status",
+                "quote": "нийт явц 69 хувь болсон",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "attendanceEntries": [
+      {
+        "entryId": "daily-draft-1f1458914adabd2bcd1b-attendance-001",
+        "teamType": "OWN",
+        "teamRef": null,
+        "teamName": "өөрийн үндсэн баг",
+        "workItemCodes": [
+          "BW-017"
+        ],
+        "headcount": 6,
+        "hoursPerPerson": 8,
+        "totalHours": 48,
+        "fieldConfidence": [
+          {
+            "fieldPath": "attendanceEntries.0.teamType",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "attendanceEntries.0.teamType",
+                "quote": "Өөрийн үндсэн багийн",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.teamName",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "attendanceEntries.0.teamName",
+                "quote": "Өөрийн үндсэн багийн",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.headcount",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "attendanceEntries.0.headcount",
+                "quote": "6 ажилтан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.hoursPerPerson",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "attendanceEntries.0.hoursPerPerson",
+                "quote": "тус бүр 8 цаг ажилласан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "attendanceEntries.0.totalHours",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "attendanceEntries.0.totalHours",
+                "quote": "6 ажилтан тус бүр 8 цаг ажилласан",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "materialSignals": [
+      {
+        "signalId": "daily-draft-1f1458914adabd2bcd1b-material-001",
+        "signalType": "CONSUMED",
+        "rawName": "Цемент",
+        "normalizedName": null,
+        "materialRef": null,
+        "quantity": "100",
+        "unit": "кг",
+        "supplierName": null,
+        "workItemCodes": [
+          "BW-017"
+        ],
+        "note": null,
+        "fieldConfidence": [
+          {
+            "fieldPath": "materialSignals.0.signalType",
+            "score": 0.98,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "materialSignals.0.signalType",
+                "quote": "Цемент 100 кг зарцуулсан",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.rawName",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "materialSignals.0.rawName",
+                "quote": "Цемент",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.quantity",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "materialSignals.0.quantity",
+                "quote": "100 кг",
+                "imageRegion": null
+              }
+            ]
+          },
+          {
+            "fieldPath": "materialSignals.0.unit",
+            "score": 0.99,
+            "level": "HIGH",
+            "evidence": [
+              {
+                "sourceType": "TEXT",
+                "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+                "fieldPath": "materialSignals.0.unit",
+                "quote": "100 кг",
+                "imageRegion": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "photoObservations": [],
+    "clarificationQuestions": [
+      {
+        "questionId": "daily-draft-1f1458914adabd2bcd1b-question-001",
+        "fieldPath": "progressEntries.0.quantityDone",
+        "reason": "LOGIC_CONFLICT",
+        "question": "Нийт хуримтлагдсан хэмжээг өмнөх бүртгэлтэй тулгаж засна уу.",
+        "options": [],
+        "requiredForApproval": true
+      },
+      {
+        "questionId": "daily-draft-1f1458914adabd2bcd1b-question-002",
+        "fieldPath": "materialSignals.0.materialRef",
+        "reason": "AMBIGUOUS_REFERENCE",
+        "question": "Материалын catalog мөрийг сонгоно уу.",
+        "options": [],
+        "requiredForApproval": true
+      }
+    ],
+    "duplicateCandidates": [],
+    "fieldConfidence": [
+      {
+        "fieldPath": "dailyReport.reportDate",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+            "fieldPath": "dailyReport.reportDate",
+            "quote": "2026-03-30-нд",
+            "imageRegion": null
+          }
+        ]
+      },
+      {
+        "fieldPath": "dailyReport.location.block",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+            "fieldPath": "dailyReport.location.block",
+            "quote": "A блокийн",
+            "imageRegion": null
+          }
+        ]
+      },
+      {
+        "fieldPath": "dailyReport.location.floor",
+        "score": 0.99,
+        "level": "HIGH",
+        "evidence": [
+          {
+            "sourceType": "TEXT",
+            "sourceId": "source-text-f161fd0a48f81ea4fb5a",
+            "fieldPath": "dailyReport.location.floor",
+            "quote": "2-р давхарт",
+            "imageRegion": null
+          }
+        ]
+      }
+    ],
+    "overallConfidence": 0.7861,
+    "confidenceLevel": "MEDIUM",
+    "validationIssues": [
+      {
+        "code": "CUMULATIVE_QUANTITY_REGRESSION_0",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "progressEntries.0.quantityDone"
+        ],
+        "message": "Cumulative quantity 4 is below the existing 170.711.",
+        "deterministic": true
+      },
+      {
+        "code": "QUANTITY_PERCENT_MISMATCH_0",
+        "severity": "ERROR",
+        "fieldPaths": [
+          "progressEntries.0.quantityDone",
+          "progressEntries.0.progressPercent"
+        ],
+        "message": "Quantity implies 1.57% but the report states 69%.",
+        "deterministic": true
+      },
+      {
+        "code": "UNRESOLVED_MATERIAL_0",
+        "severity": "WARNING",
+        "fieldPaths": [
+          "materialSignals.0.materialRef"
+        ],
+        "message": "Material signal could not be normalized to the project catalog.",
+        "deterministic": true
+      }
+    ],
+    "status": "NEEDS_CORRECTION",
+    "requiresHumanReview": true
+  },
+  "humanEditedFieldPaths": [],
+  "approvedCommand": null,
+  "approvalEvent": null,
+  "rejection": null,
+  "createdAt": "2026-07-29T05:56:55.006Z",
+  "updatedAt": "2026-07-29T05:56:55.006Z"
+}

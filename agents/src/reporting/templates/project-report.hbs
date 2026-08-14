@@ -1,0 +1,327 @@
+<html lang="mn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{project.projectCode}} төслийн хяналтын тайлан</title>
+    <style>
+      @font-face {
+        font-family: "Noto Sans Embedded";
+        src: url("data:font/ttf;base64,{{fontBase64}}") format("truetype");
+                        font-style: normal;
+                        font-weight: 100 900;
+                        font-display: block;
+                      }
+
+                      :root {
+                        color-scheme: light;
+                        --ink: #172033;
+                        --muted: #667085;
+                        --line: #d8dee9;
+                        --panel: #f6f8fb;
+                        --brand: #2647a8;
+                        --critical: #a61b1b;
+                        --high: #c55316;
+                        --medium: #9a7200;
+                        --low: #3b6f44;
+                      }
+
+                      * {
+                        box-sizing: border-box;
+                      }
+
+                      @page {
+                        size: A4;
+                        margin: 12mm;
+                      }
+
+                      body {
+                        margin: 0;
+                        color: var(--ink);
+                        background: #fff;
+                        font-family: "Noto Sans Embedded", "Segoe UI", sans-serif;
+                        font-size: 10.5px;
+                        line-height: 1.48;
+                      }
+
+                      h1, h2, h3, p {
+                        margin-top: 0;
+                      }
+
+                      h1 {
+                        margin-bottom: 6px;
+                        font-size: 25px;
+                        line-height: 1.2;
+                      }
+
+                      h2 {
+                        margin: 24px 0 10px;
+                        padding-bottom: 5px;
+                        border-bottom: 2px solid var(--brand);
+                        font-size: 16px;
+                      }
+
+                      h3 {
+                        margin-bottom: 6px;
+                        font-size: 12px;
+                      }
+
+                      .header {
+                        padding: 20px 22px;
+                        color: #fff;
+                        background: linear-gradient(135deg, #172b68, #315bc5);
+                        border-radius: 12px;
+                      }
+
+                      .header-meta {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px 18px;
+                        opacity: .92;
+                      }
+
+                      .badge {
+                        display: inline-block;
+                        padding: 2px 8px;
+                        border-radius: 999px;
+                        color: #fff;
+                        font-size: 9px;
+                        font-weight: 700;
+                        letter-spacing: .02em;
+                      }
+
+                      .CRITICAL { background: var(--critical); }
+                      .HIGH { background: var(--high); }
+                      .MEDIUM { background: var(--medium); }
+                      .LOW { background: var(--low); }
+
+                      .grid {
+                        display: grid;
+                        grid-template-columns: repeat(4, minmax(0, 1fr));
+                        gap: 9px;
+                      }
+
+                      .card {
+                        padding: 11px;
+                        border: 1px solid var(--line);
+                        border-radius: 9px;
+                        background: var(--panel);
+                        break-inside: avoid;
+                      }
+
+                      .metric-value {
+                        margin-top: 4px;
+                        color: var(--brand);
+                        font-size: 21px;
+                        font-weight: 750;
+                      }
+
+                      .muted {
+                        color: var(--muted);
+                      }
+
+                      .narrative {
+                        padding: 12px 14px;
+                        border-left: 4px solid var(--brand);
+                        background: #f7f9ff;
+                        break-inside: avoid;
+                      }
+
+                      .path {
+                        padding: 9px 12px;
+                        border-radius: 8px;
+                        background: #edf2ff;
+                        color: #1d3d97;
+                        font-weight: 700;
+                      }
+
+                      table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        font-size: 9px;
+                      }
+
+                      th, td {
+                        padding: 6px 7px;
+                        border: 1px solid var(--line);
+                        text-align: left;
+                        vertical-align: top;
+                      }
+
+                      th {
+                        background: #e9edf5;
+                        font-weight: 700;
+                      }
+
+                      tr {
+                        break-inside: avoid;
+                      }
+
+                      .issue, .recommendation {
+                        margin-bottom: 9px;
+                        padding: 11px 12px;
+                        border: 1px solid var(--line);
+                        border-radius: 9px;
+                        break-inside: avoid;
+                      }
+
+                      .issue-title, .recommendation-title {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 12px;
+                        margin-bottom: 6px;
+                      }
+
+                      pre {
+                        overflow-wrap: anywhere;
+                        white-space: pre-wrap;
+                        margin: 7px 0 0;
+                        padding: 8px;
+                        border-radius: 6px;
+                        background: #f2f4f7;
+                        font: 8.5px/1.4 "Noto Sans Embedded", sans-serif;
+                      }
+
+                      .footer {
+                        margin-top: 24px;
+                        padding-top: 9px;
+                        border-top: 1px solid var(--line);
+                        color: var(--muted);
+                        font-size: 8px;
+                      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>{{project.projectName}}</h1>
+      <div class="header-meta">
+        <span>Төслийн код: <strong>{{project.projectCode}}</strong></span>
+        <span>Тайлангийн огноо: <strong>{{asOfDisplay}}</strong></span>
+        <span>Үүсгэсэн: <strong>{{generatedAtDisplay}}</strong></span>
+      </div>
+    </header>
+
+    <h2>Удирдлагын хураангуй</h2>
+    <div class="narrative">
+      <p>{{narrative.executiveOverview}}</p>
+      <p>{{narrative.riskNarrative}}</p>
+      <p>{{narrative.recommendationNarrative}}</p>
+      <p>{{narrative.conclusion}}</p>
+    </div>
+
+    <h2>Үндсэн үзүүлэлт</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="muted">Нийт ажил</div>
+        <div class="metric-value">{{analysis.summary.workItemCount}}</div>
+      </div>
+      <div class="card">
+        <div class="muted">Төслийн үргэлжлэх хоног</div>
+        <div class="metric-value">{{analysis.summary.projectDurationDays}}</div>
+      </div>
+      <div class="card">
+        <div class="muted">Critical ажил</div>
+        <div class="metric-value">{{analysis.summary.criticalWorkItemCount}}</div>
+      </div>
+      <div class="card">
+        <div class="muted">Илэрсэн асуудал</div>
+        <div class="metric-value">{{analysis.summary.issueCount}}</div>
+      </div>
+    </div>
+
+    <h2>Үнэлгээний хэмжүүр</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Precision</th>
+          <th>Recall</th>
+          <th>F1</th>
+          <th>Detection lag</th>
+          <th>Effective-date MAE</th>
+          <th>Forecast error</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{formatPercentage metrics.issueDetection.precision}}</td>
+          <td>{{formatPercentage metrics.issueDetection.recall}}</td>
+          <td>{{formatPercentage metrics.issueDetection.f1}}</td>
+          <td>{{formatMetricDays metrics.meanDetectionLagDays}} хоног</td>
+          <td>{{formatMetricDays metrics.meanEffectiveDateErrorDays}} хоног</td>
+          <td>{{formatMetricDays metrics.forecastErrorDays}} хоног</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Critical path</h2>
+    <p class="path">{{criticalPathDisplay}}</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Код</th>
+          <th>Ажил</th>
+          <th>Хугацаа</th>
+          <th>Эхлэх</th>
+          <th>Дуусах</th>
+          <th>Float</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each analysis.cpm.tasks}}
+          <tr>
+            <td>{{code}}</td>
+            <td>{{name}}</td>
+            <td>{{durationDays}} хоног</td>
+            <td>{{formatDate earliestStart}}</td>
+            <td>{{formatDate earliestFinish}}</td>
+            <td>{{totalFloatDays}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <h2>Илэрсэн асуудлууд</h2>
+    {{#each issues}}
+      <article class="issue">
+        <div class="issue-title">
+          <h3>{{workItemCode}} · {{typeLabel}}</h3>
+          <span class="badge {{severity}}">{{severityLabel}}</span>
+        </div>
+        <p>{{summary}}</p>
+        <div class="muted">Үүссэн огноо: {{formatDate effectiveFrom}}</div>
+        <pre>{{formatEvidence evidence}}</pre>
+      </article>
+    {{/each}}
+
+    <h2>Баталгаажсан зөвлөмж</h2>
+    {{#if hasRecommendations}}
+      {{#each recommendationItems}}
+        <article class="recommendation">
+          <div class="recommendation-title">
+            <h3>{{workItemName}} · {{title}}</h3>
+            <span class="badge {{priority}}">{{priorityLabel}}</span>
+          </div>
+          <p><strong>Арга хэмжээ:</strong> {{action}}</p>
+          <p><strong>Үндэслэл:</strong> {{rationale}}</p>
+          <div class="muted">Impact: {{impactRef}} · Sources: {{sources.length}}</div>
+        </article>
+      {{/each}}
+    {{else}}
+      <div class="card">A2 зөвлөмжийн гаралт оруулаагүй. Тайланд детерминистик шинжилгээний хэсгийг
+        харуулав.</div>
+    {{/if}}
+
+    <footer class="footer">
+      Narrative:
+      {{provenance.narrativeMode}}
+      · Recommendation source:
+      {{provenance.recommendationSource}}
+      · A2 run:
+      {{provenance.a2RunId}}
+      · A2 trace:
+      {{provenance.a2TraceId}}
+      · A3 trace:
+      {{provenance.a3TraceId}}
+    </footer>
+  </body>
+</html>
