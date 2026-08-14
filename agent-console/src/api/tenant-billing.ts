@@ -108,7 +108,10 @@ export const tenantBillingApi = {
   entitlements: () => billingRequest("/v1/billing/entitlements", entitlementsSchema),
   invoices: () => billingRequest("/v1/billing/invoices", invoicesSchema),
   portal: () =>
-    billingRequest("/v1/billing/portal", z.object({ url: z.string() }), { method: "POST" }),
+    billingRequest("/v1/billing/portal", z.object({ url: z.string() }), {
+      method: "POST",
+      body: {},
+    }),
   cancel: (reason: string | null) =>
     billingRequest(
       "/v1/billing/cancel",

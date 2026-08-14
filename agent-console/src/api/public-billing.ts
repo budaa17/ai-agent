@@ -98,6 +98,7 @@ async function request<T>(
 ): Promise<T> {
   const response = await fetch(`${baseUrl}${path}`, {
     method: init?.method ?? "GET",
+    cache: "no-store",
     ...(init?.body === undefined
       ? {}
       : {

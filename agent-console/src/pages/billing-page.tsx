@@ -1,5 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { AlertTriangle, ExternalLink } from "lucide-react";
 import { tenantBillingApi } from "../api/tenant-billing";
 import { Button, Card, ErrorState, LoadingState, PageHeading } from "../components/ui";
@@ -204,10 +205,26 @@ export function BillingPage() {
         )}
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <Button onClick={() => portal.mutate()} disabled={portal.isPending}>
-            Төлбөрийн тохиргоо
-            <ExternalLink aria-hidden className="ml-2 inline h-4 w-4" />
-          </Button>
+          {data.subscription === null ? (
+            <Link
+              to="/pricing"
+              className="inline-flex items-center rounded bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400"
+            >
+              Багц сонгох
+            </Link>
+          ) : data.subscription.provider === "MANUAL_INVOICE" ? (
+            <a
+              href="#billing-invoices"
+              className="inline-flex items-center rounded bg-sky-500 px-4 py-2 text-sm font-medium text-slate-950 hover:bg-sky-400"
+            >
+              Нэхэмжлэхүүдийг харах
+            </a>
+          ) : (
+            <Button onClick={() => portal.mutate()} disabled={portal.isPending}>
+              Төлбөрийн тохиргоо
+              <ExternalLink aria-hidden className="ml-2 inline h-4 w-4" />
+            </Button>
+          )}
           {data.subscription !== null && data.subscription.cancelAtPeriodEnd === false && (
             <Button variant="secondary" onClick={() => cancel.mutate()} disabled={cancel.isPending}>
               Хугацааны эцэст цуцлах
@@ -267,64 +284,66 @@ export function BillingPage() {
         )}
       </Card>
 
-      <Card>
-        <h2 className="text-lg font-semibold">Нэхэмжлэх</h2>
-        {invoices.isLoading && <p className="mt-3 text-sm text-slate-400">Ачаалж байна…</p>}
-        {invoices.data !== undefined && invoices.data.invoices.length === 0 && (
-          <p className="mt-3 text-sm text-slate-400">Одоогоор нэхэмжлэх алга.</p>
-        )}
-        {invoices.data !== undefined && invoices.data.invoices.length > 0 && (
-          <div className="mt-4 overflow-x-auto">
-            <table className="w-full min-w-[36rem] text-sm">
-              <thead>
-                <tr className="border-b border-slate-800 text-left text-slate-400">
-                  <th scope="col" className="py-2 pr-4 font-medium">
-                    Огноо
-                  </th>
-                  <th scope="col" className="py-2 pr-4 font-medium">
-                    Дугаар
-                  </th>
-                  <th scope="col" className="py-2 pr-4 font-medium">
-                    Дүн (НӨАТ-тай)
-                  </th>
-                  <th scope="col" className="py-2 pr-4 font-medium">
-                    Төлөв
-                  </th>
-                  <th scope="col" className="py-2 font-medium">
-                    Баримт
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {invoices.data.invoices.map((invoice) => (
-                  <tr key={invoice.id} className="border-b border-slate-800/60">
-                    <td className="py-2 pr-4">{formatDate(invoice.createdAt)}</td>
-                    <td className="py-2 pr-4">{invoice.invoiceNumber ?? "—"}</td>
-                    <td className="py-2 pr-4">
-                      {formatMinor(invoice.totalMinor, invoice.currency)}
-                    </td>
-                    <td className="py-2 pr-4">{invoice.status}</td>
-                    <td className="py-2">
-                      {invoice.hostedInvoiceUrl === null ? (
-                        "—"
-                      ) : (
-                        <a
-                          href={invoice.hostedInvoiceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sky-400 underline"
-                        >
-                          Харах
-                        </a>
-                      )}
-                    </td>
+      <div id="billing-invoices">
+        <Card>
+          <h2 className="text-lg font-semibold">Нэхэмжлэх</h2>
+          {invoices.isLoading && <p className="mt-3 text-sm text-slate-400">Ачаалж байна…</p>}
+          {invoices.data !== undefined && invoices.data.invoices.length === 0 && (
+            <p className="mt-3 text-sm text-slate-400">Одоогоор нэхэмжлэх алга.</p>
+          )}
+          {invoices.data !== undefined && invoices.data.invoices.length > 0 && (
+            <div className="mt-4 overflow-x-auto">
+              <table className="w-full min-w-[36rem] text-sm">
+                <thead>
+                  <tr className="border-b border-slate-800 text-left text-slate-400">
+                    <th scope="col" className="py-2 pr-4 font-medium">
+                      Огноо
+                    </th>
+                    <th scope="col" className="py-2 pr-4 font-medium">
+                      Дугаар
+                    </th>
+                    <th scope="col" className="py-2 pr-4 font-medium">
+                      Дүн (НӨАТ-тай)
+                    </th>
+                    <th scope="col" className="py-2 pr-4 font-medium">
+                      Төлөв
+                    </th>
+                    <th scope="col" className="py-2 font-medium">
+                      Баримт
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </Card>
+                </thead>
+                <tbody>
+                  {invoices.data.invoices.map((invoice) => (
+                    <tr key={invoice.id} className="border-b border-slate-800/60">
+                      <td className="py-2 pr-4">{formatDate(invoice.createdAt)}</td>
+                      <td className="py-2 pr-4">{invoice.invoiceNumber ?? "—"}</td>
+                      <td className="py-2 pr-4">
+                        {formatMinor(invoice.totalMinor, invoice.currency)}
+                      </td>
+                      <td className="py-2 pr-4">{invoice.status}</td>
+                      <td className="py-2">
+                        {invoice.hostedInvoiceUrl === null ? (
+                          "—"
+                        ) : (
+                          <a
+                            href={invoice.hostedInvoiceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sky-400 underline"
+                          >
+                            Харах
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </Card>
+      </div>
     </div>
   );
 }

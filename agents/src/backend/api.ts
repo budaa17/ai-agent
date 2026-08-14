@@ -454,6 +454,7 @@ export function createPhase9Api(services: Phase9ApiServices, options: Phase9ApiO
       if (catalog === undefined) {
         throw new Phase9ApiError("RESOURCE_NOT_FOUND", 404, "Resource not found");
       }
+      response.setHeader("cache-control", "no-store");
       response.json(await catalog.listPublicPlans());
     }),
   );
