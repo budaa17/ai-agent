@@ -14,6 +14,9 @@ importers:
       '@ai-sdk/otel':
         specifier: 1.0.37
         version: 1.0.37(zod@4.4.3)
+      '@ai-sdk/provider':
+        specifier: 4.0.3
+        version: 4.0.3
       '@gorules/zen-engine':
         specifier: ^0.54.0
         version: 0.54.0(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)
