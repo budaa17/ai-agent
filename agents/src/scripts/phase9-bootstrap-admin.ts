@@ -1,7 +1,11 @@
 import "dotenv/config";
 import { randomUUID } from "node:crypto";
 import { prisma } from "../prisma.js";
-import { hashPhase9Password, normalizePhase9Email } from "../backend/index.js";
+import {
+  hashPhase9Password,
+  normalizePhase9Email,
+  verifyPhase9Password,
+} from "../backend/index.js";
 
 function argument(name: string): string | undefined {
   const index = process.argv.indexOf(name);
@@ -15,6 +19,7 @@ function flag(name: string): boolean {
 async function main() {
   const tenantSlug = (argument("--tenant") ?? "tenant-demo").trim();
   const createTenant = flag("--create-tenant");
+  const ensure = flag("--ensure");
   const tenantName = argument("--tenant-name")?.trim();
   const email = argument("--email") ?? process.env.PHASE9_BOOTSTRAP_EMAIL;
   const displayName = (argument("--name") ?? "BuildWatch Company Admin").trim();
@@ -44,13 +49,36 @@ async function main() {
     throw new Error("PHASE9_BOOTSTRAP_PASSWORD must contain 12-200 characters");
   }
   const emailNormalized = normalizePhase9Email(email);
-  const passwordHash = await hashPhase9Password(password);
   const existingTenant = await prisma.tenant.findUnique({ where: { slug: tenantSlug } });
   if (existingTenant === null && !createTenant) {
     throw new Error(
       `Tenant ${tenantSlug} was not found; add --create-tenant --tenant-name <name> for explicit first provisioning`,
     );
   }
+  if (ensure && existingTenant !== null) {
+    const existingUser = await prisma.user.findUnique({
+      where: {
+        tenantId_emailNormalized: {
+          tenantId: existingTenant.id,
+          emailNormalized,
+        },
+      },
+      include: { credential: { select: { passwordHash: true } } },
+    });
+    if (
+      existingUser?.tenantRole === "COMPANY_ADMIN" &&
+      existingUser.status === "ACTIVE" &&
+      existingUser.emailVerifiedAt !== null &&
+      existingUser.credential !== null &&
+      (await verifyPhase9Password(password, existingUser.credential.passwordHash))
+    ) {
+      process.stdout.write(
+        `Phase 9 company admin already ready: tenant=${tenantSlug} email=${emailNormalized}\n`,
+      );
+      return;
+    }
+  }
+  const passwordHash = await hashPhase9Password(password);
   const userId = randomUUID();
   await prisma.$transaction(async (transaction) => {
     const tenant = createTenant
