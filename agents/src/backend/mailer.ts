@@ -53,6 +53,9 @@ export const smtpConfigSchema = z
     host: z.string().trim().min(1).max(253),
     port: z.number().int().min(1).max(65_535),
     secure: z.boolean(),
+    connectionTimeoutMs: z.number().int().min(1_000).max(60_000),
+    greetingTimeoutMs: z.number().int().min(1_000).max(60_000),
+    socketTimeoutMs: z.number().int().min(1_000).max(120_000),
     user: z.string().trim().min(1).max(320).nullable(),
     password: z.string().min(1).max(1_024).nullable(),
     from: mailboxSchema,
@@ -72,6 +75,11 @@ function nonBlank(value: string | undefined): string | undefined {
  * configured, which is a normal state on a developer machine.
  */
 export function resolveSmtpConfig(environment: NodeJS.ProcessEnv = process.env): SmtpConfig | null {
+  const enabled = (nonBlank(environment.SMTP_ENABLED) ?? "true").toLowerCase();
+  if (enabled === "false") return null;
+  if (enabled !== "true") {
+    throw new Error("SMTP_ENABLED must be true or false");
+  }
   const host = nonBlank(environment.SMTP_HOST);
   const configuredFrom = nonBlank(environment.SMTP_FROM);
   if (host === undefined || configuredFrom === undefined) return null;
@@ -94,6 +102,9 @@ export function resolveSmtpConfig(environment: NodeJS.ProcessEnv = process.env):
     // Implicit TLS is port 465; 587 upgrades with STARTTLS, which nodemailer
     // does automatically when `secure` is false.
     secure: (nonBlank(environment.SMTP_SECURE) ?? String(port === 465)) === "true",
+    connectionTimeoutMs: Number(environment.SMTP_CONNECTION_TIMEOUT_MS ?? "10000"),
+    greetingTimeoutMs: Number(environment.SMTP_GREETING_TIMEOUT_MS ?? "10000"),
+    socketTimeoutMs: Number(environment.SMTP_SOCKET_TIMEOUT_MS ?? "15000"),
     user,
     password: nonBlank(environment.SMTP_PASSWORD) ?? null,
     from,
@@ -120,6 +131,9 @@ export class SmtpMailer implements Mailer {
         host: config.host,
         port: config.port,
         secure: config.secure,
+        connectionTimeout: config.connectionTimeoutMs,
+        greetingTimeout: config.greetingTimeoutMs,
+        socketTimeout: config.socketTimeoutMs,
         auth:
           config.user === null || config.password === null
             ? undefined

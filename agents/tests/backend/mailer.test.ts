@@ -35,12 +35,31 @@ describe("mail transport resolution", () => {
     expect(resolveSmtpConfig({ SMTP_HOST: "smtp.test" } as NodeJS.ProcessEnv)).toBeNull();
   });
 
+  it("allows a deployment to explicitly disable an unreachable SMTP transport", () => {
+    expect(
+      resolveSmtpConfig({
+        SMTP_ENABLED: "false",
+        SMTP_HOST: "smtp.gmail.com",
+        SMTP_FROM: "BuildWatch <sender@gmail.com>",
+      } as NodeJS.ProcessEnv),
+    ).toBeNull();
+    expect(() =>
+      resolveSmtpConfig({ SMTP_ENABLED: "sometimes" } as NodeJS.ProcessEnv),
+    ).toThrow(/true or false/iu);
+  });
+
   it("defaults to STARTTLS on 587 and implicit TLS on 465", () => {
     const starttls = resolveSmtpConfig({
       SMTP_HOST: "smtp.test",
       SMTP_FROM: "no-reply@buildwatch.mn",
     } as NodeJS.ProcessEnv);
-    expect(starttls).toMatchObject({ port: 587, secure: false });
+    expect(starttls).toMatchObject({
+      port: 587,
+      secure: false,
+      connectionTimeoutMs: 10_000,
+      greetingTimeoutMs: 10_000,
+      socketTimeoutMs: 15_000,
+    });
 
     const implicit = resolveSmtpConfig({
       SMTP_HOST: "smtp.test",
