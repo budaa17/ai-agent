@@ -16,6 +16,17 @@ function flag(name: string): boolean {
   return process.argv.includes(name);
 }
 
+function transactionStartTimedOut(error: unknown): boolean {
+  return (
+    error instanceof Error &&
+    error.message.toLocaleLowerCase("en-US").includes("unable to start a transaction")
+  );
+}
+
+function delay(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
 async function main() {
   const tenantSlug = (argument("--tenant") ?? "tenant-demo").trim();
   const createTenant = flag("--create-tenant");
@@ -80,77 +91,89 @@ async function main() {
   }
   const passwordHash = await hashPhase9Password(password);
   const userId = randomUUID();
-  await prisma.$transaction(async (transaction) => {
-    const tenant = createTenant
-      ? await transaction.tenant.upsert({
-          where: { slug: tenantSlug },
-          update: {},
-          create: {
-            id: randomUUID(),
-            slug: tenantSlug,
-            name: tenantName!,
-          },
-        })
-      : existingTenant!;
-    const user = await transaction.user.upsert({
-      where: {
-        tenantId_emailNormalized: {
-          tenantId: tenant.id,
-          emailNormalized,
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      await prisma.$transaction(
+        async (transaction) => {
+          const tenant = createTenant
+            ? await transaction.tenant.upsert({
+                where: { slug: tenantSlug },
+                update: {},
+                create: {
+                  id: randomUUID(),
+                  slug: tenantSlug,
+                  name: tenantName!,
+                },
+              })
+            : existingTenant!;
+          const user = await transaction.user.upsert({
+            where: {
+              tenantId_emailNormalized: {
+                tenantId: tenant.id,
+                emailNormalized,
+              },
+            },
+            update: {
+              displayName,
+              tenantRole: "COMPANY_ADMIN",
+              status: "ACTIVE",
+              tokenVersion: { increment: 1 },
+              emailVerifiedAt: new Date(),
+            },
+            create: {
+              id: userId,
+              tenantId: tenant.id,
+              email,
+              emailNormalized,
+              displayName,
+              tenantRole: "COMPANY_ADMIN",
+              status: "ACTIVE",
+              tokenVersion: 1,
+              emailVerifiedAt: new Date(),
+            },
+          });
+          await transaction.userCredential.upsert({
+            where: { userId: user.id },
+            update: {
+              passwordHash,
+              passwordChangedAt: new Date(),
+              failedLoginCount: 0,
+              lockedUntil: null,
+            },
+            create: { userId: user.id, passwordHash },
+          });
+          await transaction.refreshSession.updateMany({
+            where: { tenantId: tenant.id, userId: user.id, revokedAt: null },
+            data: { revokedAt: new Date() },
+          });
+          await transaction.auditLog.create({
+            data: {
+              id: randomUUID(),
+              tenantId: tenant.id,
+              actorUserId: user.id,
+              actorRole: "COMPANY_ADMIN",
+              action: "BOOTSTRAP_COMPANY_ADMIN",
+              entityType: "USER",
+              entityId: user.id,
+              reason: "Explicit Phase 9 bootstrap command",
+              correlationId: randomUUID(),
+              sourceVersion: "buildwatch-v22-phase9-bootstrap-v1",
+              metadata: {
+                tenantSlug,
+                tenantCreated: existingTenant === null,
+              },
+            },
+          });
         },
-      },
-      update: {
-        displayName,
-        tenantRole: "COMPANY_ADMIN",
-        status: "ACTIVE",
-        tokenVersion: { increment: 1 },
-        emailVerifiedAt: new Date(),
-      },
-      create: {
-        id: userId,
-        tenantId: tenant.id,
-        email,
-        emailNormalized,
-        displayName,
-        tenantRole: "COMPANY_ADMIN",
-        status: "ACTIVE",
-        tokenVersion: 1,
-        emailVerifiedAt: new Date(),
-      },
-    });
-    await transaction.userCredential.upsert({
-      where: { userId: user.id },
-      update: {
-        passwordHash,
-        passwordChangedAt: new Date(),
-        failedLoginCount: 0,
-        lockedUntil: null,
-      },
-      create: { userId: user.id, passwordHash },
-    });
-    await transaction.refreshSession.updateMany({
-      where: { tenantId: tenant.id, userId: user.id, revokedAt: null },
-      data: { revokedAt: new Date() },
-    });
-    await transaction.auditLog.create({
-      data: {
-        id: randomUUID(),
-        tenantId: tenant.id,
-        actorUserId: user.id,
-        actorRole: "COMPANY_ADMIN",
-        action: "BOOTSTRAP_COMPANY_ADMIN",
-        entityType: "USER",
-        entityId: user.id,
-        reason: "Explicit Phase 9 bootstrap command",
-        correlationId: randomUUID(),
-        sourceVersion: "buildwatch-v22-phase9-bootstrap-v1",
-        metadata: {
-          tenantSlug,
-          tenantCreated: existingTenant === null,
-        },
-      },
-    });
-  });
+        { maxWait: 30_000, timeout: 60_000 },
+      );
+      break;
+    } catch (error) {
+      if (attempt === 3 || !transactionStartTimedOut(error)) throw error;
+      process.stderr.write(`Phase 9 bootstrap transaction busy; retrying (${attempt}/3)\n`);
+      await delay(attempt * 2_000);
+    }
+  }
   process.stdout.write(
     `Phase 9 company admin ready: tenant=${tenantSlug} email=${emailNormalized} tenantCreated=${existingTenant === null}\n`,
   );
