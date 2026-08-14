@@ -188,7 +188,7 @@ const SOURCES = [
 ] as const;
 
 export function LandingPage() {
-  const { catalog, error, loading } = usePublicPlans();
+  const { catalog, error, loading, slow, retry } = usePublicPlans();
   const plans = catalog?.plans ?? [];
 
   useDocumentMeta({
@@ -543,12 +543,16 @@ export function LandingPage() {
           {loading && (
             <p className="bw-catalog-loading" role="status">
               Багцын бодит мэдээллийг ачаалж байна…
+              {slow && " Сервер идэвхжиж байгаа тул анхны ачаалалт нэг минут орчим байж болно."}
             </p>
           )}
           {error !== null && (
-            <p role="alert" className="bw-catalog-error">
-              {error}. Үнэ зохиож харуулахгүй — бүрэн харьцуулалтын хуудсаас дахин оролдоно уу.
-            </p>
+            <div role="alert" className="bw-catalog-error">
+              <p>{error}. Үнэ зохиож харуулахгүй.</p>
+              <button type="button" onClick={retry}>
+                Дахин оролдох
+              </button>
+            </div>
           )}
 
           <div className="bw-plan-grid">

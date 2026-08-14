@@ -1,4 +1,4 @@
-const CACHE_NAME = "buildwatch-shell-v1";
+const CACHE_NAME = "buildwatch-shell-v2";
 const APP_SHELL = ["/", "/manifest.webmanifest", "/icons/buildwatch.svg"];
 
 self.addEventListener("install", (event) => {

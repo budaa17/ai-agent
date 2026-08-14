@@ -119,6 +119,18 @@ describe("pricing page", () => {
     await waitFor(() => expect(screen.getByRole("alert")).toBeInTheDocument());
     expect(screen.queryByText(/₮/)).not.toBeInTheDocument();
   });
+
+  it("lets the visitor retry a failed catalogue request", async () => {
+    mockedFetchPublicPlans
+      .mockRejectedValueOnce(new Error("Багцын мэдээлэл ачаалж чадсангүй"))
+      .mockResolvedValueOnce(CATALOG);
+    renderPricing();
+
+    await userEvent.click(await screen.findByRole("button", { name: "Дахин оролдох" }));
+
+    expect(await screen.findByText(/3 идэвхтэй төсөл/)).toBeInTheDocument();
+    expect(mockedFetchPublicPlans).toHaveBeenCalledTimes(2);
+  });
 });
 
 describe("marketing copy discipline", () => {
@@ -148,7 +160,8 @@ describe("public API transport", () => {
     // Without the prefix the request resolves to the SPA's own index.html and the
     // pricing page silently shows nothing.
     const source = await readFile(resolve("src/api/public-billing.ts"), "utf8");
-    expect(source).toMatch(/VITE_API_BASE_URL as string \| undefined\) \?\? "\/api"/);
+    expect(source).toMatch(/VITE_API_BASE_URL as string \| undefined/);
+    expect(source).toContain('|| "/api"');
 
     const proxied = await readFile(resolve("vite.config.ts"), "utf8");
     expect(proxied).toContain('"/api"');

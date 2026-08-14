@@ -92,6 +92,9 @@ export function CompanySignupPage() {
   const [adminDisplayName, setAdminDisplayName] = useState("");
   const [signupIntentId, setSignupIntentId] = useState<string | null>(null);
   const [code, setCode] = useState("");
+  const [developmentVerificationCode, setDevelopmentVerificationCode] = useState<string | null>(
+    null,
+  );
   const [resendSeconds, setResendSeconds] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -111,6 +114,8 @@ export function CompanySignupPage() {
         interval,
       });
       setSignupIntentId(result.signupIntentId);
+      setDevelopmentVerificationCode(result.verificationCode ?? null);
+      if (result.verificationCode !== undefined) setCode(result.verificationCode);
       setResendSeconds(60);
       // A previous request may already have verified this idempotent signup.
       // Never trap that buyer on a code screen whose one-time code was consumed.
@@ -186,7 +191,8 @@ export function CompanySignupPage() {
     setError(null);
     try {
       const result = await resendCompanySignupCode(signupIntentId);
-      setCode("");
+      setDevelopmentVerificationCode(result.verificationCode ?? null);
+      setCode(result.verificationCode ?? "");
       setResendSeconds(result.retryAfterSeconds);
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Код дахин илгээж чадсангүй");
@@ -285,10 +291,26 @@ export function CompanySignupPage() {
 
       {step === "VERIFY" && (
         <form onSubmit={submitVerification} className="mt-8 space-y-4">
-          <p className="text-slate-300">
-            <strong>{adminEmail}</strong> хаяг руу илгээсэн 6 оронтой кодыг оруулна уу. Код 10 минут
-            хүчинтэй бөгөөд баталгаажуулсны дараа төлбөрийн хуудас руу шилжинэ.
-          </p>
+          {developmentVerificationCode === null ? (
+            <p className="text-slate-300">
+              <strong>{adminEmail}</strong> хаяг руу илгээсэн 6 оронтой кодыг оруулна уу. Код 10
+              минут хүчинтэй бөгөөд баталгаажуулсны дараа төлбөрийн хуудас руу шилжинэ.
+            </p>
+          ) : (
+            <div
+              role="status"
+              className="rounded border border-amber-500/40 bg-amber-500/10 p-4 text-slate-700"
+            >
+              <p className="font-semibold text-amber-800">Demo орчин — SMTP тохируулаагүй</p>
+              <p className="mt-1 text-sm">
+                Email бодитоор илгээгдээгүй. Backend-ийн development fallback кодыг автоматаар
+                орууллаа:
+              </p>
+              <p className="mt-3 font-mono text-2xl font-semibold tracking-[0.3em] text-slate-950">
+                {developmentVerificationCode}
+              </p>
+            </div>
+          )}
           <label className="block">
             <span className="text-sm text-slate-300">Баталгаажуулах код</span>
             <input

@@ -64,7 +64,7 @@ export function PricingPage() {
   });
 
   const [interval, setInterval] = useState<"MONTH" | "YEAR">("YEAR");
-  const { catalog, error } = usePublicPlans();
+  const { catalog, error, loading, slow, retry } = usePublicPlans();
 
   const plans = useMemo(
     () =>
@@ -112,15 +112,29 @@ export function PricingPage() {
       </div>
 
       {error !== null && (
-        <p
+        <div
           role="alert"
-          className="mt-8 rounded border border-rose-500/40 bg-rose-500/10 p-4 text-rose-200"
+          className="mx-auto mt-8 flex max-w-2xl flex-col items-center gap-3 rounded border border-rose-500/40 bg-rose-500/10 p-4 text-center text-rose-200"
         >
-          {error}
-        </p>
+          <p>{error}</p>
+          <button
+            type="button"
+            onClick={retry}
+            className="rounded border border-rose-300/50 px-4 py-2 font-medium hover:bg-rose-100/10"
+          >
+            Дахин оролдох
+          </button>
+        </div>
       )}
-      {catalog === null && error === null && (
-        <p className="mt-8 text-center text-slate-400">Багцын мэдээлэл ачаалж байна…</p>
+      {loading && (
+        <div className="mt-8 text-center text-slate-400" role="status" aria-live="polite">
+          <p>Багцын мэдээлэл ачаалж байна…</p>
+          {slow && (
+            <p className="mt-2 text-sm">
+              Сервер идэвхжиж байна. Анхны ачаалалт нэг минут орчим үргэлжилж болно.
+            </p>
+          )}
+        </div>
       )}
 
       <div className="bw-pricing-card-grid mt-10">

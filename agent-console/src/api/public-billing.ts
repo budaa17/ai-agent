@@ -16,7 +16,11 @@ import { z } from "zod";
  * it and the production deployment rewrites it. A public route is no different,
  * so it must carry the prefix too or it resolves to the SPA's own index.html.
  */
-const baseUrl = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "/api";
+const baseUrl =
+  (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim().replace(/\/$/, "") || "/api";
+
+const PLAN_REQUEST_TIMEOUTS_MS = [30_000, 45_000] as const;
+const PLAN_RETRY_DELAY_MS = 750;
 
 export const publicPlanEntitlementSchema = z.object({
   featureKey: z.string(),
@@ -94,11 +98,12 @@ export class PublicApiError extends Error {
 async function request<T>(
   path: string,
   schema: z.ZodType<T>,
-  init?: { method?: string; body?: unknown },
+  init?: { method?: string; body?: unknown; signal?: AbortSignal },
 ): Promise<T> {
   const response = await fetch(`${baseUrl}${path}`, {
     method: init?.method ?? "GET",
     cache: "no-store",
+    ...(init?.signal === undefined ? {} : { signal: init.signal }),
     ...(init?.body === undefined
       ? {}
       : {
@@ -116,8 +121,51 @@ async function request<T>(
   return schema.parse(payload);
 }
 
-export function fetchPublicPlans(): Promise<PublicPlanCatalog> {
-  return request("/public/v1/plans", publicPlanCatalogSchema);
+function retryablePlanError(cause: unknown): boolean {
+  return (
+    !(cause instanceof PublicApiError) ||
+    cause.status === 408 ||
+    cause.status === 429 ||
+    cause.status >= 500
+  );
+}
+
+function wait(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+export async function fetchPublicPlans(): Promise<PublicPlanCatalog> {
+  let lastError: unknown = null;
+
+  for (let attempt = 0; attempt < PLAN_REQUEST_TIMEOUTS_MS.length; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), PLAN_REQUEST_TIMEOUTS_MS[attempt]);
+
+    try {
+      return await request("/public/v1/plans", publicPlanCatalogSchema, {
+        signal: controller.signal,
+      });
+    } catch (cause: unknown) {
+      lastError = controller.signal.aborted
+        ? new PublicApiError(408, "Багцын API хугацаандаа хариулсангүй")
+        : cause;
+
+      if (!retryablePlanError(lastError) || attempt === PLAN_REQUEST_TIMEOUTS_MS.length - 1) {
+        break;
+      }
+      await wait(PLAN_RETRY_DELAY_MS);
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  if (lastError instanceof PublicApiError && lastError.status !== 408) {
+    throw lastError;
+  }
+  throw new PublicApiError(
+    504,
+    "Багцын сервер түр сэрж байна эсвэл сүлжээ удаан байна. Дахин оролдоно уу",
+  );
 }
 
 export function createCompanySignup(input: {

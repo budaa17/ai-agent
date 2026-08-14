@@ -77,4 +77,26 @@ describe("company signup workspace slug", () => {
     );
     expect(billingApi.startCompanyCheckout).toHaveBeenCalledWith("signup-1");
   });
+
+  it("shows and fills the development code when no SMTP transport exists", async () => {
+    billingApi.createCompanySignup.mockResolvedValueOnce({
+      signupIntentId: "signup-dev",
+      status: "PENDING",
+      verificationCode: "482615",
+    });
+    render(
+      <MemoryRouter initialEntries={["/company-signup?plan=starter&interval=YEAR"]}>
+        <CompanySignupPage />
+      </MemoryRouter>,
+    );
+
+    await userEvent.type(screen.getByLabelText("Компанийн нэр"), "Demo компани");
+    await userEvent.type(screen.getByLabelText("Администраторын нэр"), "Demo админ");
+    await userEvent.type(screen.getByLabelText("Администраторын имэйл"), "demo@example.com");
+    await userEvent.click(screen.getByRole("button", { name: "Үргэлжлүүлэх" }));
+
+    expect(await screen.findByText("Demo орчин — SMTP тохируулаагүй")).toBeInTheDocument();
+    expect(screen.getByText("482615")).toBeInTheDocument();
+    expect(screen.getByLabelText("Баталгаажуулах код")).toHaveValue("482615");
+  });
 });
