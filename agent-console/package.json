@@ -5,7 +5,7 @@
   "type": "module",
   "packageManager": "pnpm@11.17.0",
   "engines": {
-    "node": ">=22"
+    "node": ">=22 <23"
   },
   "scripts": {
     "dev": "node scripts/dev.mjs",
@@ -15,7 +15,8 @@
     "api:export": "pnpm --dir ../agents run openapi:export:v22",
     "api:generate": "pnpm run api:export && openapi-typescript ../agents/data/openapi/buildwatch-v22.json -o src/api/generated.ts",
     "typecheck": "tsc --noEmit",
-    "build": "pnpm run api:generate && tsc --noEmit && vite build",
+    "build": "pnpm run typecheck && vite build",
+    "build:with-api": "pnpm run api:generate && pnpm run build",
     "build:agents": "node scripts/build-agents.mjs",
     "check": "pnpm run api:generate && pnpm run typecheck",
     "lint": "eslint .",

@@ -44,6 +44,14 @@ export type A0ArtifactRole =
   | "WBS_DEPENDENCIES"
   | "DRAWING_REFERENCE";
 
+const apiBaseUrl = (
+  (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim() || "/api"
+).replace(/\/+$/, "");
+
+function apiUrl(path: string): string {
+  return `${apiBaseUrl}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
 export class BuildWatchApiError extends Error {
   readonly code: string;
   readonly status: number;
@@ -94,7 +102,7 @@ async function refreshAccessToken(): Promise<boolean> {
       setTokens(null);
       return false;
     }
-    const response = await fetch("/api/v1/auth/refresh", {
+    const response = await fetch(apiUrl("/v1/auth/refresh"), {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ refreshToken: tokens.refreshToken }),
@@ -131,16 +139,14 @@ export async function authorizedFetch(
   const source = new Request(input, init);
   const run = () => fetch(withAuthorization(source.clone()));
   let response = await run();
-  const isAuthRoute = new URL(source.url, window.location.origin).pathname.startsWith(
-    "/api/v1/auth/",
-  );
+  const isAuthRoute = new URL(source.url, window.location.origin).pathname.includes("/v1/auth/");
   if (response.status === 401 && !isAuthRoute && (await refreshAccessToken())) {
     response = await run();
   }
   return response;
 }
 
-const openApiClient = createClient<paths>({ baseUrl: "/api", fetch: authorizedFetch });
+const openApiClient = createClient<paths>({ baseUrl: apiBaseUrl, fetch: authorizedFetch });
 
 async function responseError(response: Response, fallback?: unknown): Promise<BuildWatchApiError> {
   let candidate = fallback;
@@ -208,7 +214,7 @@ export const buildWatchApi = {
     const tokens = getTokens();
     setTokens(null);
     if (tokens === null) return;
-    await fetch("/api/v1/auth/logout", {
+    await fetch(apiUrl("/v1/auth/logout"), {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ refreshToken: tokens.refreshToken }),
@@ -279,7 +285,7 @@ export const buildWatchApi = {
     });
     if (sha256 !== undefined) headers.set("x-content-sha256", sha256);
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/artifacts`,
+      apiUrl(`/v1/projects/${encodeURIComponent(projectId)}/artifacts`),
       {
         method: "POST",
         headers,
@@ -318,7 +324,7 @@ export const buildWatchApi = {
     },
   ) {
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/a1-intakes`,
+      apiUrl(`/v1/projects/${encodeURIComponent(projectId)}/a1-intakes`),
       {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -339,7 +345,9 @@ export const buildWatchApi = {
     idempotencyKey: string,
   ) {
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/a1-drafts/${encodeURIComponent(draftId)}`,
+      apiUrl(
+        `/v1/projects/${encodeURIComponent(projectId)}/a1-drafts/${encodeURIComponent(draftId)}`,
+      ),
       {
         method: "PATCH",
         headers: {
@@ -357,7 +365,7 @@ export const buildWatchApi = {
     input: { requestId: string; asOf: string; includePdf: boolean },
   ) {
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/a3-documents`,
+      apiUrl(`/v1/projects/${encodeURIComponent(projectId)}/a3-documents`),
       {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -453,7 +461,7 @@ export const buildWatchApi = {
    */
   async health(kind: "live" | "ready" = "ready"): Promise<boolean> {
     try {
-      const response = await fetch(`/api/health/${kind}`, { cache: "no-store" });
+      const response = await fetch(apiUrl(`/health/${kind}`), { cache: "no-store" });
       return response.ok;
     } catch {
       return false;
@@ -464,7 +472,9 @@ export const buildWatchApi = {
    * projects, so a deep link outside that page still needs a name to show.
    */
   async project(projectId: string) {
-    const response = await authorizedFetch(`/api/v1/projects/${encodeURIComponent(projectId)}`);
+    const response = await authorizedFetch(
+      apiUrl(`/v1/projects/${encodeURIComponent(projectId)}`),
+    );
     if (!response.ok) throw await responseError(response);
     return projectSummarySchema.parse(await response.json());
   },
@@ -475,7 +485,9 @@ export const buildWatchApi = {
   async compareVersions(projectId: string, leftId: string, rightId: string) {
     const query = new URLSearchParams({ leftId, rightId });
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/versions/compare?${query.toString()}`,
+      apiUrl(
+        `/v1/projects/${encodeURIComponent(projectId)}/versions/compare?${query.toString()}`,
+      ),
     );
     if (!response.ok) throw await responseError(response);
     return versionComparisonSchema.parse(await response.json());
@@ -487,7 +499,7 @@ export const buildWatchApi = {
   async latestForecast(projectId: string, asOf?: string) {
     const query = asOf === undefined ? "" : `?${new URLSearchParams({ asOf }).toString()}`;
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/forecast/latest${query}`,
+      apiUrl(`/v1/projects/${encodeURIComponent(projectId)}/forecast/latest${query}`),
     );
     if (response.status === 204 || response.status === 404) return null;
     if (!response.ok) throw await responseError(response);
@@ -495,7 +507,7 @@ export const buildWatchApi = {
   },
   async inventory(projectId: string) {
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/inventory`,
+      apiUrl(`/v1/projects/${encodeURIComponent(projectId)}/inventory`),
     );
     if (!response.ok) throw await responseError(response);
     return inventorySchema.parse(await response.json());
@@ -517,7 +529,7 @@ export const buildWatchApi = {
     idempotencyKey: string,
   ) {
     const response = await authorizedFetch(
-      `/api/v1/projects/${encodeURIComponent(projectId)}/inventory/movements`,
+      apiUrl(`/v1/projects/${encodeURIComponent(projectId)}/inventory/movements`),
       {
         method: "POST",
         headers: {
