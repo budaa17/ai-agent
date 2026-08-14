@@ -5,9 +5,9 @@ services:
     plan: free
     region: singapore
     rootDir: agents
-    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run deploy:build
-    startCommand: pnpm run deploy:migrate && pnpm run seed:billing:plans && pnpm run bootstrap:phase9 -- --ensure --create-tenant --tenant buildwatch --tenant-name BuildWatch && pnpm run start
-    initialDeployHook: pnpm run seed:billing:plans && pnpm run bootstrap:phase9 -- --create-tenant --tenant buildwatch --tenant-name BuildWatch
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run deploy:build && pnpm run deploy:migrate && pnpm run seed:billing:plans
+    startCommand: node dist/scripts/phase9-server.js
+    initialDeployHook: pnpm run bootstrap:phase9 -- --ensure --create-tenant --tenant buildwatch --tenant-name BuildWatch
     healthCheckPath: /health/live
     autoDeployTrigger: commit
    
