@@ -22,6 +22,15 @@ export const phase9BackendConfigSchema = z
     artifactSigningSecret: secretSchema,
     emailVerificationSecret: secretSchema,
     artifactRoot: z.string().trim().min(1).max(2_000),
+    artifactStorageProvider: z.enum(["local", "supabase"]),
+    supabaseUrl: z.string().url().nullable(),
+    supabaseServiceRoleKey: z.string().trim().min(16).max(4_096).nullable(),
+    supabaseStorageBucket: z
+      .string()
+      .trim()
+      .regex(/^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$/u)
+      .nullable(),
+    corsOrigins: z.array(z.string().url()).max(20),
     rabbitMqUrl: z.string().url().nullable(),
     trustProxyHops: z.number().int().min(0).max(3),
     apiRateLimitWindowMs: z.number().int().min(1_000).max(3_600_000),
@@ -69,6 +78,20 @@ export const phase9BackendConfigSchema = z
       });
     }
 
+    if (
+      config.artifactStorageProvider === "supabase" &&
+      (config.supabaseUrl === null ||
+        config.supabaseServiceRoleKey === null ||
+        config.supabaseStorageBucket === null)
+    ) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "Supabase artifact storage requires SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, and SUPABASE_STORAGE_BUCKET",
+        path: ["artifactStorageProvider"],
+      });
+    }
+
     if (config.nodeEnv === "production") {
       if (new URL(config.publicBaseUrl).protocol !== "https:") {
         context.addIssue({
@@ -112,13 +135,23 @@ export function resolvePhase9BackendConfig(
   };
   const sharedDevelopmentSecret = nonBlank(environment.PHASE9_DEVELOPMENT_SECRET);
   const nodeEnv = environment.NODE_ENV ?? "development";
+  const isRender = environment.RENDER === "true";
+  const host = nonBlank(environment.PHASE9_API_HOST) ?? (isRender ? "0.0.0.0" : "127.0.0.1");
+  const port = Number(
+    nonBlank(environment.PHASE9_API_PORT) ?? nonBlank(environment.PORT) ?? "4180",
+  );
+  const corsOrigins = (environment.PHASE9_CORS_ORIGINS ?? "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter((origin) => origin.length > 0);
   return phase9BackendConfigSchema.parse({
     nodeEnv,
-    host: environment.PHASE9_API_HOST ?? "127.0.0.1",
-    port: Number(environment.PHASE9_API_PORT ?? "4180"),
+    host,
+    port,
     publicBaseUrl:
-      environment.PHASE9_PUBLIC_BASE_URL ??
-      `http://${environment.PHASE9_API_HOST ?? "127.0.0.1"}:${environment.PHASE9_API_PORT ?? "4180"}`,
+      nonBlank(environment.PHASE9_PUBLIC_BASE_URL) ??
+      nonBlank(environment.RENDER_EXTERNAL_URL) ??
+      `http://${host}:${port}`,
     jwtSecret: nonBlank(environment.PHASE9_JWT_SECRET) ?? sharedDevelopmentSecret,
     cursorSecret: nonBlank(environment.PHASE9_CURSOR_SECRET) ?? sharedDevelopmentSecret,
     artifactSigningSecret:
@@ -126,6 +159,11 @@ export function resolvePhase9BackendConfig(
     emailVerificationSecret:
       nonBlank(environment.PHASE9_EMAIL_VERIFICATION_SECRET) ?? sharedDevelopmentSecret,
     artifactRoot: nonBlank(environment.PHASE9_ARTIFACT_ROOT) ?? "data/artifacts",
+    artifactStorageProvider: nonBlank(environment.PHASE9_ARTIFACT_STORAGE_PROVIDER) ?? "local",
+    supabaseUrl: nonBlank(environment.SUPABASE_URL) ?? null,
+    supabaseServiceRoleKey: nonBlank(environment.SUPABASE_SERVICE_ROLE_KEY) ?? null,
+    supabaseStorageBucket: nonBlank(environment.SUPABASE_STORAGE_BUCKET) ?? null,
+    corsOrigins,
     rabbitMqUrl: nonBlank(environment.RABBITMQ_URL) ?? null,
     trustProxyHops: Number(environment.PHASE11_TRUST_PROXY_HOPS ?? "0"),
     apiRateLimitWindowMs: Number(environment.PHASE11_RATE_LIMIT_WINDOW_MS ?? "60000"),

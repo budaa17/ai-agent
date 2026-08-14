@@ -11,6 +11,9 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx src/index.ts",
+    "start": "node dist/scripts/phase9-server.js",
+    "deploy:build": "prisma generate && pnpm run build",
+    "deploy:migrate": "prisma migrate deploy",
     "check": "tsc --noEmit",
     "docs:check:v22": "tsx src/scripts/validate-buildwatch-v22-docs.ts",
     "test:contracts:v22": "vitest run tests/contracts/buildwatch-v22-design.test.ts tests/contracts/buildwatch-v22-commercial.test.ts tests/contracts/buildwatch-v22-operations.test.ts tests/contracts/buildwatch-v22-versioning.test.ts",

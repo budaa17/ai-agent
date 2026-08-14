@@ -111,6 +111,7 @@ async function findIdempotencyAfterConflict(client: PrismaClient, tenantId: stri
 }
 
 export interface Phase10ArtifactWrite {
+  bucket: string;
   objectKey: string;
   remove(): Promise<void>;
 }
@@ -122,6 +123,7 @@ export interface Phase10ArtifactStorage {
       projectId: string;
       artifactId: string;
       originalFileName: string;
+      mediaType: string;
       body: Buffer;
     }>,
   ): Promise<Phase10ArtifactWrite>;
@@ -140,6 +142,7 @@ export class LocalPhase10ArtifactStorage implements Phase10ArtifactStorage {
       projectId: string;
       artifactId: string;
       originalFileName: string;
+      mediaType: string;
       body: Buffer;
     }>,
   ): Promise<Phase10ArtifactWrite> {
@@ -161,6 +164,7 @@ export class LocalPhase10ArtifactStorage implements Phase10ArtifactStorage {
     await mkdir(dirname(target), { recursive: true });
     await writeFile(target, input.body, { flag: "wx" });
     return {
+      bucket: "local",
       objectKey,
       remove: () => rm(target, { force: true }),
     };
@@ -1836,6 +1840,7 @@ export class Phase10FrontendService {
       projectId,
       artifactId,
       originalFileName,
+      mediaType: input.mediaType,
       body: input.body,
     });
     try {
@@ -1859,7 +1864,7 @@ export class Phase10FrontendService {
               id: artifactId,
               tenantId: principal.tenantId,
               projectId,
-              bucket: "local",
+              bucket: stored.bucket,
               objectKey: stored.objectKey,
               originalFileName,
               mediaType: input.mediaType,

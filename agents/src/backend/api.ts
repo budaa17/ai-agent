@@ -113,6 +113,7 @@ export interface Phase9ApiOptions {
   apiRateLimitMaxRequests?: number;
   authRateLimitMaxRequests?: number;
   maxArtifactBytes?: number;
+  corsOrigins?: readonly string[];
   metricsToken?: string | null;
   logger?: Phase9ApiLogger;
   errorReporter?: AgentErrorReporter;
@@ -289,6 +290,51 @@ export function createPhase9Api(services: Phase9ApiServices, options: Phase9ApiO
         projectTag: phase11TelemetryTag(/\/v1\/projects\/([^/?]+)/u.exec(request.originalUrl)?.[1]),
       });
     });
+    next();
+  });
+  const corsOrigins = new Set(options.corsOrigins ?? []);
+  app.use((request: AuthenticatedRequest, response, next) => {
+    const origin = request.header("origin");
+    if (origin === undefined) {
+      next();
+      return;
+    }
+    if (!corsOrigins.has(origin)) {
+      if (request.method === "OPTIONS") {
+        next(new Phase9ApiError("AUTH_FORBIDDEN", 403, "Origin is not allowed"));
+        return;
+      }
+      next();
+      return;
+    }
+    response.setHeader("access-control-allow-origin", origin);
+    response.append("vary", "Origin");
+    response.setHeader(
+      "access-control-allow-headers",
+      [
+        "Authorization",
+        "Content-Type",
+        "Idempotency-Key",
+        "X-Content-Sha256",
+        "X-Device-Name",
+        "X-File-Name",
+        "X-File-Name-Encoding",
+        "X-Request-Id",
+      ].join(", "),
+    );
+    response.setHeader(
+      "access-control-allow-methods",
+      "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS",
+    );
+    response.setHeader(
+      "access-control-expose-headers",
+      "X-Request-Id, RateLimit-Limit, RateLimit-Remaining, RateLimit-Reset, Retry-After",
+    );
+    response.setHeader("access-control-max-age", "600");
+    if (request.method === "OPTIONS") {
+      response.status(204).end();
+      return;
+    }
     next();
   });
   app.use(["/v1", "/platform/v1"], (request: AuthenticatedRequest, response, next) => {

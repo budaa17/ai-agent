@@ -117,6 +117,7 @@ describe("BuildWatch Phase 10 frontend service", () => {
         projectId: "project-1",
         artifactId: "asset-1",
         originalFileName: "../../outside.png",
+        mediaType: "image/png",
         body: Buffer.from("safe-bytes"),
       });
       const target = resolve(root, ...written.objectKey.split("/"));

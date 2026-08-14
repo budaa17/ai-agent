@@ -41,6 +41,7 @@ import { PlatformBillingService } from "./platform-billing-service.js";
 import { createMailer, resolveSmtpConfig } from "./mailer.js";
 import { createTenantLimitReservation } from "./tenant-limit-reservation.js";
 import { LocalPhase10ArtifactStorage, Phase10FrontendService } from "./phase10-service.js";
+import { SupabaseArtifactStorage } from "./supabase-artifact-storage.js";
 import { Phase10A0IntakeService } from "./a0-intake-service.js";
 import { createPhase11ArtifactSecurity } from "./phase11-artifact-security.js";
 import { collectPhase11OperationalGauges } from "./phase11-observability.js";
@@ -178,14 +179,23 @@ export function createPhase9ProductionRuntime(client: PrismaClient, config: Phas
     config.artifactSigningSecret,
     config.publicBaseUrl,
   );
-  const objectStore = new LocalPhase9ObjectStore(config.artifactRoot);
+  const artifactStorage =
+    config.artifactStorageProvider === "supabase"
+      ? new SupabaseArtifactStorage({
+          projectUrl: config.supabaseUrl!,
+          serviceRoleKey: config.supabaseServiceRoleKey!,
+          bucket: config.supabaseStorageBucket!,
+          requestTimeoutMs: config.requestTimeoutMs,
+        })
+      : null;
+  const objectStore = artifactStorage ?? new LocalPhase9ObjectStore(config.artifactRoot);
   const a0Intake = new Phase10A0IntakeService(client, projects, {
     read: (asset) => objectStore.read(asset as never),
   });
   const frontend = new Phase10FrontendService(
     client,
     projects,
-    new LocalPhase10ArtifactStorage(config.artifactRoot),
+    artifactStorage ?? new LocalPhase10ArtifactStorage(config.artifactRoot),
     undefined,
     createPhase11ArtifactSecurity({
       maxBytes: config.maxArtifactBytes,
@@ -256,6 +266,7 @@ export function createPhase9ProductionRuntime(client: PrismaClient, config: Phas
       apiRateLimitMaxRequests: config.apiRateLimitMaxRequests,
       authRateLimitMaxRequests: config.authRateLimitMaxRequests,
       maxArtifactBytes: config.maxArtifactBytes,
+      corsOrigins: config.corsOrigins,
       metricsToken: config.metricsToken,
       logger,
       errorReporter,

@@ -1,0 +1,78 @@
+services:
+  - type: web
+    name: buildwatch-api
+    runtime: node
+    plan: free
+    region: singapore
+    rootDir: agents
+    buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run deploy:build
+    startCommand: pnpm run deploy:migrate && pnpm run start
+    initialDeployHook: pnpm run seed:billing:plans && pnpm run bootstrap:phase9 -- --create-tenant --tenant buildwatch --tenant-name BuildWatch
+    healthCheckPath: /health/live
+    autoDeployTrigger: commit
+    maxShutdownDelaySeconds: 30
+    envVars:
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: NODE_ENV
+        value: development
+      - key: BUILDWATCH_DEPLOYMENT_STAGE
+        value: development
+      - key: PRODUCTION_DATABASE
+        value: "true"
+      - key: PHASE11_TRUST_PROXY_HOPS
+        value: "1"
+      - key: PHASE11_REQUIRE_EXTERNAL_MALWARE_SCAN
+        value: "false"
+      - key: PLATFORM_REQUIRE_MFA
+        value: "false"
+      - key: PHASE9_ARTIFACT_ROOT
+        value: /tmp/buildwatch-artifacts
+      - key: PHASE9_ARTIFACT_STORAGE_PROVIDER
+        value: supabase
+      - key: PUPPETEER_SKIP_DOWNLOAD
+        value: "true"
+      - key: BILLING_PROVIDER
+        value: MANUAL_INVOICE
+      - key: BILLING_ENVIRONMENT
+        value: sandbox
+      - key: BILLING_MANUAL_INVOICE_ENABLED
+        value: "true"
+      - key: OPENAI_MODEL
+        value: gpt-5.6-sol
+      - key: A1_OPENAI_MODEL
+        value: gpt-5.6-luna
+      - key: A2_OPENAI_MODEL
+        value: gpt-5.6-sol
+      - key: A3_OPENAI_MODEL
+        value: gpt-5.6-luna
+      - key: DATABASE_URL
+        sync: false
+      - key: PHASE9_CORS_ORIGINS
+        sync: false
+      - key: BUILDWATCH_PUBLIC_BASE_URL
+        sync: false
+      - key: BILLING_RETURN_URL_ALLOWLIST
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: PHASE9_BOOTSTRAP_EMAIL
+        sync: false
+      - key: PHASE9_BOOTSTRAP_PASSWORD
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        sync: false
+      - key: PHASE9_JWT_SECRET
+        generateValue: true
+      - key: PHASE9_CURSOR_SECRET
+        generateValue: true
+      - key: PHASE9_ARTIFACT_SIGNING_SECRET
+        generateValue: true
+      - key: PHASE9_EMAIL_VERIFICATION_SECRET
+        generateValue: true
+      - key: PHASE11_METRICS_TOKEN
+        generateValue: true
