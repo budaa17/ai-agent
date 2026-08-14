@@ -6,7 +6,7 @@ services:
     region: singapore
     rootDir: agents
     buildCommand: corepack enable && pnpm install --frozen-lockfile && pnpm run deploy:build
-    startCommand: pnpm run deploy:migrate && pnpm run bootstrap:phase9 -- --ensure --create-tenant --tenant buildwatch --tenant-name BuildWatch && pnpm run start
+    startCommand: pnpm run deploy:migrate && pnpm run seed:billing:plans && pnpm run bootstrap:phase9 -- --ensure --create-tenant --tenant buildwatch --tenant-name BuildWatch && pnpm run start
     initialDeployHook: pnpm run seed:billing:plans && pnpm run bootstrap:phase9 -- --create-tenant --tenant buildwatch --tenant-name BuildWatch
     healthCheckPath: /health/live
     autoDeployTrigger: commit

@@ -4,6 +4,7 @@ import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../prisma.js";
+import { SupabaseArtifactStorage } from "../backend/supabase-artifact-storage.js";
 import { assertProductionSeedAllowed } from "../runtime/seed-guard.js";
 import {
   buildArchitectureDrawing,
@@ -64,6 +65,12 @@ const CALENDAR_VERSION = "mn-6day-2026";
 function argument(name: string): string | undefined {
   const index = process.argv.indexOf(name);
   return index < 0 ? undefined : process.argv[index + 1];
+}
+
+function requiredEnvironment(name: string): string {
+  const value = process.env[name]?.trim();
+  if (!value) throw new Error(`${name} is required when PHASE9_ARTIFACT_STORAGE_PROVIDER=supabase`);
+  return value;
 }
 
 /**
@@ -227,12 +234,25 @@ async function resetDemoProject(tenantId: string): Promise<void> {
     await prisma.auditLog.deleteMany({ where: scope });
     await prisma.project.deleteMany({ where: { tenantId, id: DEMO_PROJECT_ID } });
 
-    // Catalogs are tenant-scoped, so only the ones this seed owns are removed.
-    await prisma.workNorm.deleteMany({ where: { tenantId } });
-    await prisma.productivityRate.deleteMany({ where: { tenantId } });
-    await prisma.priceCatalogEntry.deleteMany({ where: { tenantId } });
-    await prisma.materialAlias.deleteMany({ where: { tenantId } });
-    await prisma.materialItem.deleteMany({ where: { tenantId } });
+    // Catalog rows are tenant-scoped and may be shared by unrelated projects.
+    // Delete only deterministic ids owned by this fixture.
+    const materialIds = MATERIALS.map((material) => id("mat", material.code));
+    const normIds = WORK_PACKAGES.filter((pkg) => pkg.norm !== undefined).map((pkg) =>
+      id("norm", pkg.code),
+    );
+    const productivityIds = WORK_PACKAGES.filter((pkg) => pkg.productivity !== undefined).map(
+      (pkg) => id("rate", pkg.code),
+    );
+    const priceIds = MATERIALS.map((material) => id("price", material.code));
+    await prisma.workNorm.deleteMany({ where: { tenantId, id: { in: normIds } } });
+    await prisma.productivityRate.deleteMany({
+      where: { tenantId, id: { in: productivityIds } },
+    });
+    await prisma.priceCatalogEntry.deleteMany({ where: { tenantId, id: { in: priceIds } } });
+    await prisma.materialAlias.deleteMany({
+      where: { tenantId, materialItemId: { in: materialIds } },
+    });
+    await prisma.materialItem.deleteMany({ where: { tenantId, id: { in: materialIds } } });
     await prisma.normCatalog.deleteMany({ where: { tenantId, code: "NORM-MN" } });
     await prisma.priceCatalog.deleteMany({ where: { tenantId, code: "PRICE-UB" } });
     await prisma.materialCatalog.deleteMany({ where: { tenantId, code: "MAT-MN" } });
@@ -288,6 +308,19 @@ async function main() {
 
   const artifactRoot = resolve(process.env.PHASE9_ARTIFACT_ROOT ?? "data/artifacts");
   const projectArtifactDir = resolve(artifactRoot, tenantId, DEMO_PROJECT_ID);
+  const storageProvider = (process.env.PHASE9_ARTIFACT_STORAGE_PROVIDER ?? "local").trim();
+  if (storageProvider !== "local" && storageProvider !== "supabase") {
+    throw new Error(`Unsupported PHASE9_ARTIFACT_STORAGE_PROVIDER: ${storageProvider}`);
+  }
+  const remoteStorage =
+    storageProvider === "supabase"
+      ? new SupabaseArtifactStorage({
+          projectUrl: requiredEnvironment("SUPABASE_URL"),
+          serviceRoleKey: requiredEnvironment("SUPABASE_SERVICE_ROLE_KEY"),
+          bucket: requiredEnvironment("SUPABASE_STORAGE_BUCKET"),
+          upsertWrites: true,
+        })
+      : null;
 
   // -- Reset ---------------------------------------------------------------
   await resetDemoProject(tenantId);
@@ -345,6 +378,7 @@ async function main() {
 
   const artifacts: DemoArtifact[] = [];
   const artifactById = new Map<string, DemoArtifact>();
+  const artifactLocationById = new Map<string, { bucket: string; objectKey: string }>();
   for (const descriptor of renderers) {
     const assetId = id("file", descriptor.key);
     const objectKey = [tenantId, DEMO_PROJECT_ID, assetId, descriptor.fileName].join("/");
@@ -359,8 +393,23 @@ async function main() {
       await mkdir(dirname(target), { recursive: true });
       await writeFile(target, stored.body);
     }
+    const location =
+      remoteStorage === null
+        ? { bucket: "local", objectKey }
+        : await remoteStorage.put({
+            tenantId,
+            projectId: DEMO_PROJECT_ID,
+            artifactId: assetId,
+            originalFileName: stored.fileName,
+            mediaType: stored.mediaType,
+            body: stored.body,
+          });
     artifacts.push(stored);
     artifactById.set(assetId, stored);
+    artifactLocationById.set(assetId, {
+      bucket: location.bucket,
+      objectKey: location.objectKey,
+    });
   }
 
   // -- Project, work items, dependencies ------------------------------------
@@ -635,20 +684,24 @@ async function main() {
   });
 
   // -- Design intake -------------------------------------------------------
-  const fileAssetRows = [...artifactById.entries()].map(([assetId, item]) => ({
-    id: assetId,
-    tenantId,
-    projectId: DEMO_PROJECT_ID,
-    bucket: "local",
-    objectKey: [tenantId, DEMO_PROJECT_ID, assetId, item.fileName].join("/"),
-    originalFileName: item.fileName,
-    mediaType: item.mediaType,
-    sizeBytes: item.body.byteLength,
-    sha256: item.sha256,
-    status: "AVAILABLE" as const,
-    uploadedByUserId: item.key.startsWith("photo") ? supervisor : engineer,
-    retentionUntil: day("2030-12-31"),
-  }));
+  const fileAssetRows = [...artifactById.entries()].map(([assetId, item]) => {
+    const location = artifactLocationById.get(assetId);
+    if (location === undefined) throw new Error(`Artifact location missing for ${assetId}`);
+    return {
+      id: assetId,
+      tenantId,
+      projectId: DEMO_PROJECT_ID,
+      bucket: location.bucket,
+      objectKey: location.objectKey,
+      originalFileName: item.fileName,
+      mediaType: item.mediaType,
+      sizeBytes: item.body.byteLength,
+      sha256: item.sha256,
+      status: "AVAILABLE" as const,
+      uploadedByUserId: item.key.startsWith("photo") ? supervisor : engineer,
+      retentionUntil: day("2030-12-31"),
+    };
+  });
   if (fileAssetRows.length > 0) {
     await prisma.fileAsset.createMany({ data: fileAssetRows });
   }

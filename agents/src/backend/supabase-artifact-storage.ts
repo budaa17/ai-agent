@@ -2,10 +2,7 @@ import { createHash } from "node:crypto";
 import { basename } from "node:path";
 import type { Phase9ObjectStore } from "./api.js";
 import { Phase9ApiError } from "./contracts.js";
-import type {
-  Phase10ArtifactStorage,
-  Phase10ArtifactWrite,
-} from "./phase10-service.js";
+import type { Phase10ArtifactStorage, Phase10ArtifactWrite } from "./phase10-service.js";
 import type { Phase9FileAssetRecord } from "./store.js";
 
 export type SupabaseArtifactStorageOptions = Readonly<{
@@ -14,6 +11,7 @@ export type SupabaseArtifactStorageOptions = Readonly<{
   bucket: string;
   requestTimeoutMs?: number;
   fetchImpl?: typeof fetch;
+  upsertWrites?: boolean;
 }>;
 
 function encodedObjectPath(objectKey: string): string {
@@ -37,6 +35,7 @@ export class SupabaseArtifactStorage implements Phase10ArtifactStorage, Phase9Ob
   readonly #bucket: string;
   readonly #timeoutMs: number;
   readonly #fetch: typeof fetch;
+  readonly #upsertWrites: boolean;
 
   constructor(options: SupabaseArtifactStorageOptions) {
     this.#baseUrl = options.projectUrl.replace(/\/+$/u, "");
@@ -44,6 +43,7 @@ export class SupabaseArtifactStorage implements Phase10ArtifactStorage, Phase9Ob
     this.#bucket = options.bucket;
     this.#timeoutMs = options.requestTimeoutMs ?? 30_000;
     this.#fetch = options.fetchImpl ?? globalThis.fetch;
+    this.#upsertWrites = options.upsertWrites ?? false;
   }
 
   async put(
@@ -66,7 +66,7 @@ export class SupabaseArtifactStorage implements Phase10ArtifactStorage, Phase9Ob
       method: "POST",
       headers: {
         "content-type": input.mediaType,
-        "x-upsert": "false",
+        "x-upsert": String(this.#upsertWrites),
       },
       body: input.body,
     });

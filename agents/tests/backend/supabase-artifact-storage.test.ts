@@ -2,7 +2,10 @@ import { createHash } from "node:crypto";
 import { SupabaseArtifactStorage } from "../../src/backend/supabase-artifact-storage.js";
 import type { Phase9FileAssetRecord } from "../../src/backend/store.js";
 
-function asset(body: Buffer, overrides: Partial<Phase9FileAssetRecord> = {}): Phase9FileAssetRecord {
+function asset(
+  body: Buffer,
+  overrides: Partial<Phase9FileAssetRecord> = {},
+): Phase9FileAssetRecord {
   return {
     id: "asset-1",
     tenantId: "tenant-1",
@@ -85,5 +88,30 @@ describe("SupabaseArtifactStorage", () => {
       code: "ARTIFACT_ACCESS_DENIED",
       status: 403,
     });
+  });
+
+  it("can explicitly upsert deterministic demo artifacts", async () => {
+    const requests: RequestInit[] = [];
+    const storage = new SupabaseArtifactStorage({
+      projectUrl: "https://example.supabase.co",
+      serviceRoleKey: "service-role-secret-value",
+      bucket: "buildwatch-artifacts",
+      upsertWrites: true,
+      fetchImpl: (async (_url, init) => {
+        requests.push(init ?? {});
+        return new Response("{}", { status: 200 });
+      }) as typeof fetch,
+    });
+
+    await storage.put({
+      tenantId: "tenant-1",
+      projectId: "project-1",
+      artifactId: "asset-1",
+      originalFileName: "plan.pdf",
+      mediaType: "application/pdf",
+      body: Buffer.from("demo"),
+    });
+
+    expect(requests[0]?.headers).toMatchObject({ "x-upsert": "true" });
   });
 });

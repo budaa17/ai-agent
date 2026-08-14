@@ -4,6 +4,15 @@ import { z } from "zod";
 import { prisma } from "../prisma.js";
 import { hashPhase9Password, normalizePhase9Email, platformRoleSchema } from "../backend/index.js";
 
+function transactionStartTimedOut(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  return message.includes("Unable to start a transaction in the given time");
+}
+
+function delay(milliseconds: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
 function argument(name: string): string | undefined {
   const index = process.argv.indexOf(name);
   return index < 0 ? undefined : process.argv[index + 1];
@@ -32,59 +41,71 @@ async function main() {
   const passwordHash = await hashPhase9Password(password);
   const principalId = randomUUID();
   const correlationId = randomUUID();
-  await prisma.$transaction(async (transaction) => {
-    const principal = await transaction.platformPrincipal.upsert({
-      where: { emailNormalized },
-      update: {
-        email,
-        displayName,
-        role,
-        status: "ACTIVE",
-        tokenVersion: { increment: 1 },
-        ...(markMfaEnrolled ? { mfaEnrolledAt: new Date() } : {}),
-      },
-      create: {
-        id: principalId,
-        email,
-        emailNormalized,
-        displayName,
-        role,
-        status: "ACTIVE",
-        tokenVersion: 1,
-        mfaEnrolledAt: markMfaEnrolled ? new Date() : null,
-      },
-    });
-    await transaction.platformCredential.upsert({
-      where: { principalId: principal.id },
-      update: {
-        passwordHash,
-        passwordChangedAt: new Date(),
-        failedLoginCount: 0,
-        lockedUntil: null,
-      },
-      create: { principalId: principal.id, passwordHash },
-    });
-    await transaction.platformRefreshSession.updateMany({
-      where: { principalId: principal.id, revokedAt: null },
-      data: { revokedAt: new Date() },
-    });
-    await transaction.platformAuditLog.create({
-      data: {
-        id: randomUUID(),
-        actorPrincipalId: principal.id,
-        actorRole: principal.role,
-        tenantId: null,
-        action: "BOOTSTRAP_PLATFORM_PRINCIPAL",
-        entityType: "PLATFORM_PRINCIPAL",
-        entityId: principal.id,
-        result: "SUCCESS",
-        reason: "Explicit platform bootstrap command",
-        correlationId,
-        sourceVersion: "buildwatch-platform-bootstrap-v1",
-        metadata: { role: principal.role },
-      },
-    });
-  });
+  for (let attempt = 1; attempt <= 3; attempt += 1) {
+    try {
+      await prisma.$transaction(
+        async (transaction) => {
+          const principal = await transaction.platformPrincipal.upsert({
+            where: { emailNormalized },
+            update: {
+              email,
+              displayName,
+              role,
+              status: "ACTIVE",
+              tokenVersion: { increment: 1 },
+              ...(markMfaEnrolled ? { mfaEnrolledAt: new Date() } : {}),
+            },
+            create: {
+              id: principalId,
+              email,
+              emailNormalized,
+              displayName,
+              role,
+              status: "ACTIVE",
+              tokenVersion: 1,
+              mfaEnrolledAt: markMfaEnrolled ? new Date() : null,
+            },
+          });
+          await transaction.platformCredential.upsert({
+            where: { principalId: principal.id },
+            update: {
+              passwordHash,
+              passwordChangedAt: new Date(),
+              failedLoginCount: 0,
+              lockedUntil: null,
+            },
+            create: { principalId: principal.id, passwordHash },
+          });
+          await transaction.platformRefreshSession.updateMany({
+            where: { principalId: principal.id, revokedAt: null },
+            data: { revokedAt: new Date() },
+          });
+          await transaction.platformAuditLog.create({
+            data: {
+              id: randomUUID(),
+              actorPrincipalId: principal.id,
+              actorRole: principal.role,
+              tenantId: null,
+              action: "BOOTSTRAP_PLATFORM_PRINCIPAL",
+              entityType: "PLATFORM_PRINCIPAL",
+              entityId: principal.id,
+              result: "SUCCESS",
+              reason: "Explicit platform bootstrap command",
+              correlationId,
+              sourceVersion: "buildwatch-platform-bootstrap-v1",
+              metadata: { role: principal.role },
+            },
+          });
+        },
+        { maxWait: 30_000, timeout: 60_000 },
+      );
+      break;
+    } catch (error) {
+      if (attempt === 3 || !transactionStartTimedOut(error)) throw error;
+      process.stderr.write(`Platform bootstrap transaction busy; retrying (${attempt}/3)\n`);
+      await delay(attempt * 1_000);
+    }
+  }
 
   process.stdout.write(
     `Platform principal ready: email=${emailNormalized} role=${role} correlationId=${correlationId}\n`,
